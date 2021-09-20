@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CrmWebAppAndroid</string>
+    <string name="hintEmail">Email</string>
+    <string name="hintPass">Password</string>
+    <string name="btnLoginTxt">Login</string>
+    <string name="BtnNewCompanyTxt">New Company</string>
 </resources>
