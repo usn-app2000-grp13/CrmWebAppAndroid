@@ -14,11 +14,14 @@ class LoginActivity : AppCompatActivity() {
         val binding = DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login)
         //only for testing purposes!!
         val sp = this?.getPreferences(Context.MODE_PRIVATE)
+        /* enable this for login bypass after first time login
 
         if (sp.getBoolean("logged", false)){
             goToMainActivity()
             finish()
         }
+
+         */
 
         binding.btnLogin.setOnClickListener {
             goToMainActivity()
