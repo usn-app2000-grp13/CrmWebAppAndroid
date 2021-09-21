@@ -5,6 +5,13 @@
       <map>
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/activity_login.xml" value="0.190625" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_calender.xml" value="0.23333333333333334" />
+        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_customer.xml" value="0.24739583333333334" />
+        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_employee.xml" value="0.2015625" />
+        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_service.xml" value="0.2015625" />
+        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_todo.xml" value="0.2015625" />
+        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/nav_header.xml" value="0.20520833333333333" />
+        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/menu/navdrawer_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2234375" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2234375" />
       </map>

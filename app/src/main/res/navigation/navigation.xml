@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/calenderFragment">
+
+    <fragment
+        android:id="@+id/calenderFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.CalenderFragment"
+        android:label="fragment_calender"
+        tools:layout="@layout/fragment_calender" />
+    <fragment
+        android:id="@+id/customerFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.CustomerFragment"
+        android:label="fragment_customer"
+        tools:layout="@layout/fragment_customer" />
+    <fragment
+        android:id="@+id/employeeFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmployeeFragment"
+        android:label="fragment_employee"
+        tools:layout="@layout/fragment_employee" />
+    <fragment
+        android:id="@+id/serviceFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.ServiceFragment"
+        android:label="fragment_service"
+        tools:layout="@layout/fragment_service" />
+    <fragment
+        android:id="@+id/todoFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.TodoFragment"
+        android:label="fragment_todo"
+        tools:layout="@layout/fragment_todo" />
+</navigation>

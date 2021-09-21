@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/todoFragment"
+        android:title="@string/todo" />
+    <item
+        android:id="@+id/customerFragment"
+        android:title="@string/customer" />
+    <item
+        android:id="@+id/employeeFragment"
+        android:title="@string/employee" />
+    <item
+        android:id="@+id/serviceFragment"
+        android:title="@string/service" />
+</menu>
