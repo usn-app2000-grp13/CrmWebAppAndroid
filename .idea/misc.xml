@@ -3,15 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/drawable/ic_background_image.xml" value="0.22135416666666666" />
-        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
-        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/activity_login.xml" value="0.21" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2755208333333333" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2755208333333333" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_calender.xml" value="0.13333333333333333" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_customer.xml" value="0.176" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_employee.xml" value="0.259375" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_service.xml" value="0.1" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_todo.xml" value="0.17300724637681159" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/nav_header.xml" value="0.17300724637681159" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/menu/navdrawer_menu.xml" value="0.259375" />
+        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/activity_login.xml" value="0.190625" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_calender.xml" value="0.23333333333333334" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_customer.xml" value="0.24739583333333334" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_employee.xml" value="0.2015625" />
-        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_login.xml" value="0.1828125" />
-        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_new_company.xml" value="0.23333333333333334" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_service.xml" value="0.2015625" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_todo.xml" value="0.2015625" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/nav_header.xml" value="0.20520833333333333" />
@@ -26,5 +31,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
   </component>
 </project>
