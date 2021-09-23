@@ -7,15 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentLoginBinding
+import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewCompanyBinding
 
 
 class NewCompanyFragment : Fragment() {
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
+        val binding = FragmentNewCompanyBinding.inflate(inflater)
         //inflate the layout and bind the binding
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_company, container, false)
+        return binding.root
     }
 
 }

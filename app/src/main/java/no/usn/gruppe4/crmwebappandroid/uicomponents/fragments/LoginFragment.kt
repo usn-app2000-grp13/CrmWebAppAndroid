@@ -18,14 +18,13 @@ import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
 
 class LoginFragment : Fragment() {
 
-    private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding!!
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         //inflate the layout and bind the binding
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        val binding = FragmentLoginBinding.inflate(inflater)
         // Inflate the layout for this fragment
 
         binding.loginbtn.setOnClickListener {
@@ -40,11 +39,6 @@ class LoginFragment : Fragment() {
 
         //inflate the layout
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
 
