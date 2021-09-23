@@ -5,7 +5,8 @@
       <map>
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2755208333333333" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2755208333333333" />
-        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_customer.xml" value="0.259375" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_calender.xml" value="0.13333333333333333" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_customer.xml" value="0.176" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_employee.xml" value="0.259375" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_service.xml" value="0.1" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_todo.xml" value="0.17300724637681159" />
