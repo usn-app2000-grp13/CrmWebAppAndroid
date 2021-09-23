@@ -8,8 +8,12 @@
     <fragment
         android:id="@+id/calenderFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.CalenderFragment"
-        android:label="fragment_calender"
-        tools:layout="@layout/fragment_calender" />
+        android:label="@string/calender"
+        tools:layout="@layout/fragment_calender">
+        <action
+            android:id="@+id/action_calenderFragment_to_newAppointmentFragment"
+            app:destination="@id/newAppointmentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/customerFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.CustomerFragment"
@@ -30,4 +34,8 @@
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.TodoFragment"
         android:label="fragment_todo"
         tools:layout="@layout/fragment_todo" />
+    <fragment
+        android:id="@+id/newAppointmentFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewAppointmentFragment"
+        android:label="@string/newAppointment" />
 </navigation>

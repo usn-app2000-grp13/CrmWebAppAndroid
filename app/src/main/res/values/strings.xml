@@ -13,4 +13,22 @@
     <string name="customer">Customers</string>
     <string name="employee">Employees</string>
     <string name="service">Services</string>
+    <string name="hintDate">Date</string>
+    <string name="hintTime">Time</string>
+    <string name="hintFirstName">FirstName</string>
+    <string name="hintLastName">LastName</string>
+    <string name="hintPhone">Phone</string>
+    <string name="newAppointment">New appointment</string>
+
+    <string-array name="services">
+        <item>HairCut Adult</item>
+        <item>Hair Coloring</item>
+        <item>HairCut Kids</item>
+        <item>Bride Package</item>
+    </string-array>
+    <string-array name="employees">
+        <item>Cato</item>
+        <item>Bjorn</item>
+        <item>Trygve</item>
+    </string-array>
 </resources>

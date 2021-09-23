@@ -31,7 +31,7 @@ class LoginFragment : Fragment() {
             val i = Intent(activity, MainActivity::class.java)
             startActivity(i)
             //the fragment KILLER!!!!
-            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
+            //activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
         binding.newCompanybtn.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_newCompanyFragment)
