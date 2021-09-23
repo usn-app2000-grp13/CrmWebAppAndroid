@@ -3,15 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/drawable/ic_background_image.xml" value="0.22135416666666666" />
-        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.36512820512820515" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/drawable/bgcircle.xml" value="0.36512820512820515" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.36512820512820515" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/activity_login.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/activity_main.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/fragment_calender.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/fragment_customer.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/fragment_employee.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/fragment_login.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/fragment_new_appointment.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/fragment_new_company.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/fragment_service.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/fragment_todo.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/nav_header.xml" value="0.3546875" />
+        <entry key="..\:/AndroidStudioProjects/CrmWebAppAndroid/app/src/main/res/layout/recycler_view_item.xml" value="0.3546875" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/activity_login.xml" value="0.21" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
-        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_calender.xml" value="0.2170767004341534" />
+        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_calender.xml" value="0.23333333333333334" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_customer.xml" value="0.24739583333333334" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_employee.xml" value="0.2015625" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_login.xml" value="0.1828125" />
-        <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_new_appointment.xml" value="0.24744897959183673" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_new_company.xml" value="0.23333333333333334" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_service.xml" value="0.2015625" />
         <entry key="..\:/Programming/Android/CrmWebAppAndroid/app/src/main/res/layout/fragment_todo.xml" value="0.2015625" />
