@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import no.usn.gruppe4.crmwebappandroid.R
+import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCustomerBinding
 
 class CustomerFragment : Fragment() {
 
@@ -13,8 +14,9 @@ class CustomerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val binding = FragmentCustomerBinding.inflate(inflater)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_customer, container, false)
+        return binding.root
     }
 
 }
