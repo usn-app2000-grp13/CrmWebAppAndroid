@@ -24,11 +24,23 @@
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmployeeFragment"
         android:label="fragment_employee"
         tools:layout="@layout/fragment_employee" />
+
     <fragment
         android:id="@+id/serviceFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.ServiceFragment"
         android:label="fragment_service"
-        tools:layout="@layout/fragment_service" />
+        tools:layout="@layout/fragment_service" >
+        <action
+            android:id="@+id/action_serviceFragment_to_newServiceFragment"
+            app:destination="@id/newServiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newServiceFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewServiceFragment"
+        android:label="fragment_new_service"
+        tools:layout="@layout/fragment_new_service" />
+
+
     <fragment
         android:id="@+id/todoFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.TodoFragment"

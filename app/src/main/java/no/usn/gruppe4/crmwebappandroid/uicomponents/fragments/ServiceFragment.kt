@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
-import no.usn.gruppe4.crmwebappandroid.databinding.FragmentLoginBinding
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentServiceBinding
 
 class ServiceFragment : Fragment() {
 
-    lateinit var binding: FragmentServiceBinding
+    lateinit var binding : FragmentServiceBinding
 
     // 1) String tabell variabel
     lateinit var tab: Array<String>
@@ -40,6 +40,12 @@ class ServiceFragment : Fragment() {
         binding.listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             test(tab[position])
         }
+
+        // 6) Lytter metode som registrerer klikk på newService-knappen
+        binding.fabNewService.setOnClickListener {
+           findNavController().navigate(R.id.action_serviceFragment_to_newServiceFragment)
+        }
+
         return binding.root
     }
 
