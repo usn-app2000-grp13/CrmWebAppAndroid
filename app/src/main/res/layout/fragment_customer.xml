@@ -11,31 +11,24 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:contentDescription="background image of circle"
             android:id="@+id/imageView4"
-            android:layout_width="450dp"
-            android:layout_height="450dp"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
             android:src="@drawable/bgcircle"
-            tools:ignore="ImageContrastCheck"
+            tools:ignore="ImageContrastCheck,MissingConstraints"
             tools:layout_editor_absoluteX="65dp"
             tools:layout_editor_absoluteY="121dp" />
 
-        <ScrollView
-            android:layout_width="411dp"
-            android:layout_height="733dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="-3dp">
 
-            <LinearLayout
+
+
+            <ListView
+                android:id="@+id/customerList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_height="match_parent"
+                android:padding="8dp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/customerList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-        </ScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabNewCustomer"
