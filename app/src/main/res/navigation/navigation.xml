@@ -56,7 +56,11 @@
     <fragment
         android:id="@+id/newAppointmentFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewAppointmentFragment"
-        android:label="@string/newAppointment" />
+        android:label="@string/newAppointment" >
+        <action
+            android:id="@+id/action_newAppointmentFragment_to_calenderFragment"
+            app:destination="@id/calenderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newEmployeeFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewEmployeeFragment"

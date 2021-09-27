@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.android.synthetic.main.fragment_new_appointment.*
 import no.usn.gruppe4.crmwebappandroid.R
@@ -43,6 +45,10 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
             adapter ->  adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinner.adapter = adapter
         }
+        ArrayAdapter.createFromResource(requireContext(), R.array.employees, android.R.layout.simple_spinner_dropdown_item).also {
+                adapter ->  adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinner2.adapter = adapter
+        }
 
         btnDate = binding.naDate
         btnTime = binding.naTime
@@ -56,16 +62,21 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
             TimePickerDialog(requireContext(), this, hour, minute, true).show()
         }
 
+        binding.naCancel.setOnClickListener {
+            findNavController().navigate(R.id.action_newAppointmentFragment_to_calenderFragment)
+        }
+
         binding.naSubmit.setOnClickListener {
             val fname = binding.txtFirstName.text
             val lname = binding.txtLastName.text
             val phone = binding.txtPhone.text
             val email = binding.txtEmail.text
             val service = binding.spinner.selectedItem.toString()
-
+            val employee = binding.spinner2.selectedItem.toString()
             println("$savedDay / $savedMonth / $savedYear \n " +
                     "\"$savedHour : $savedMinute\" \n " +
-                    "$fname $lname $phone $email $service" )
+                    "$fname $lname $phone $email $service $employee" )
+            findNavController().navigate(R.id.action_newAppointmentFragment_to_calenderFragment)
         }
 
         // Inflate the layout for this fragment
