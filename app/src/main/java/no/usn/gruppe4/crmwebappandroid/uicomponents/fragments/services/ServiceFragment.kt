@@ -1,4 +1,4 @@
-package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
+package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -50,7 +50,8 @@ class ServiceFragment : Fragment() {
     }
 
     private fun test(s: String) {
-        binding.textView.text = s
+        //binding.textView.text = s
+        findNavController().navigate(R.id.action_serviceFragment_to_inspectServiceFragment)
     }
 
 }

@@ -34,18 +34,31 @@
 
     <fragment
         android:id="@+id/serviceFragment"
-        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.ServiceFragment"
-        android:label="fragment_service"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.ServiceFragment"
+        android:label="Services"
         tools:layout="@layout/fragment_service" >
         <action
             android:id="@+id/action_serviceFragment_to_newServiceFragment"
             app:destination="@id/newServiceFragment" />
+        <action
+            android:id="@+id/action_serviceFragment_to_inspectServiceFragment"
+            app:destination="@id/inspectServiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/newServiceFragment"
-        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewServiceFragment"
-        android:label="fragment_new_service"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.NewServiceFragment"
+        android:label="New service"
         tools:layout="@layout/fragment_new_service" />
+    <fragment
+        android:id="@+id/inspectServiceFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.InspectServiceFragment"
+        android:label="Inspect service"
+        tools:layout="@layout/fragment_inspect_service" />
+    <fragment
+        android:id="@+id/editServiceFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.EditServiceFragment"
+        android:label="Edit service"
+        tools:layout="@layout/fragment_edit_service" />
 
 
     <fragment
