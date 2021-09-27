@@ -31,10 +31,7 @@ class CalenderFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 Log.i("CLICK", "onItemClick: ${position}")
                 val bundle = Bundle()
-                bundle.putInt("appointmentId", position)
-                bundle.putString("appointmentTime", myDataset[position].time.toString())
-                bundle.putString("appointmentCus", myDataset[position].customer.toString())
-                bundle.putString("appointmentSer", myDataset[position].service.toString())
+                bundle.putParcelable("appointment", myDataset[position])
                 findNavController().navigate(R.id.action_calenderFragment_to_appointmentClicked, bundle)
             }
         })

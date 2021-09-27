@@ -4,6 +4,7 @@ import android.content.Context
 import no.usn.gruppe4.crmwebappandroid.R
 import java.io.IOException
 import java.nio.charset.Charset
+import java.util.*
 
 class Datasource {
     //read in json from file
@@ -18,5 +19,9 @@ class Datasource {
             return null
         }
         return jsonString
+    }
+    fun getTodayCalender(): Calendar?{
+        val cal = Calendar.getInstance()
+        return cal
     }
 }
