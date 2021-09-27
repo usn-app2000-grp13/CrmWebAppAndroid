@@ -7,19 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
-import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEmployeeBinding
+import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewEmployeeBinding
 
 
-class EmployeeFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [NewEmployeeFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class NewEmployeeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        val binding = FragmentEmployeeBinding.inflate(inflater)
+        val binding = FragmentNewEmployeeBinding.inflate(inflater)
         // Inflate the layout for this fragment
-        binding.fabNewEmployee.setOnClickListener {
-            findNavController().navigate(R.id.action_employeeFragment_to_newEmployeeFragment2)
-        }
+        binding.neCancel.setOnClickListener{findNavController().navigate(
+            R.id.action_newEmployeeFragment_to_employeeFragment)}
         return binding.root
     }
+
 
 }

@@ -23,7 +23,14 @@
         android:id="@+id/employeeFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmployeeFragment"
         android:label="fragment_employee"
-        tools:layout="@layout/fragment_employee" />
+        tools:layout="@layout/fragment_employee" >
+        <action
+            android:id="@+id/action_employeeFragment_to_newEmployeeFragment2"
+            app:destination="@id/newEmployeeFragment" />
+        <action
+            android:id="@+id/action_employeeFragment_to_employeeCard"
+            app:destination="@id/employeeCard" />
+    </fragment>
 
     <fragment
         android:id="@+id/serviceFragment"
@@ -50,4 +57,22 @@
         android:id="@+id/newAppointmentFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewAppointmentFragment"
         android:label="@string/newAppointment" />
+    <fragment
+        android:id="@+id/newEmployeeFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewEmployeeFragment"
+        android:label="fragment_new_employee"
+        tools:layout="@layout/fragment_new_employee" >
+        <action
+            android:id="@+id/action_newEmployeeFragment_to_employeeFragment"
+            app:destination="@id/employeeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/employeeCard"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmployeeCard"
+        android:label="fragment_employee_card"
+        tools:layout="@layout/fragment_employee_card" >
+        <action
+            android:id="@+id/action_employeeCard_to_employeeFragment"
+            app:destination="@id/employeeFragment" />
+    </fragment>
 </navigation>
