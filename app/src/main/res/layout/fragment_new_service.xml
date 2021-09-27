@@ -16,45 +16,78 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.300" >
+            app:layout_constraintVertical_bias="0.100" >
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/naServiceName"
+                android:id="@+id/naTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Service Name"
+                android:hint="Title"
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
                 android:minHeight="@dimen/custom_min_height">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtServiceName"
+                    android:id="@+id/txtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/naServicePrice"
+                android:id="@+id/naDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Service Price"
+                android:hint="Description"
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
                 android:minHeight="@dimen/custom_min_height">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtServicePrice"
+                    android:id="@+id/txtDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/naDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Duration"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/naPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Price"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:id="@+id/naSubmit"
                 android:layout_width="match_parent"
