@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_calenderFragment_to_newAppointmentFragment"
             app:destination="@id/newAppointmentFragment" />
+        <action
+            android:id="@+id/action_calenderFragment_to_appointmentClicked"
+            app:destination="@id/appointmentClicked" />
     </fragment>
     <fragment
         android:id="@+id/customerFragment"
@@ -92,4 +95,8 @@
             android:id="@+id/action_employeeCard_to_employeeFragment"
             app:destination="@id/employeeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/appointmentClicked"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.AppointmentClicked"
+        android:label="AppointmentClicked" />
 </navigation>
