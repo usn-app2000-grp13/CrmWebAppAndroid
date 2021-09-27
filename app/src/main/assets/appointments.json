@@ -1,0 +1,26 @@
+[{
+  "time": "08:30",
+  "customer": "Bjarne Betjent",
+  "service": "HairCut Adult"
+},{"time": "09:00",
+  "customer": "Max Mekker",
+  "service": "HairCut Kids"
+},{"time": "10:00",
+  "customer": "Dorothea Dahl",
+  "service": "HairCut Adult"
+},{"time": "10:00",
+  "customer": "William Gates",
+  "service": "Hair Coloring"
+},{"time": "10:40",
+  "customer": "Charles Darvin",
+  "service": "Hair Coloring"
+},{"time": "11:30",
+  "customer": "Elton John",
+  "service": "HairCut Kids"
+},{"time": "13:00",
+  "customer": "Dave Murphy",
+  "service": "HairCut Kids"
+},{"time": "13:50",
+  "customer": "Clark Kent",
+  "service": "HairCut Adult"
+}]
