@@ -99,4 +99,8 @@
         android:id="@+id/appointmentClicked"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.AppointmentClicked"
         android:label="@string/AppointmentCard" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

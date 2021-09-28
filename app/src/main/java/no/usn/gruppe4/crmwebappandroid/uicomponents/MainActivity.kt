@@ -3,6 +3,7 @@ package no.usn.gruppe4.crmwebappandroid.uicomponents
 import android.app.PendingIntent.getActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -30,4 +31,5 @@ class MainActivity : AppCompatActivity() {
 
         return NavigationUI.navigateUp(navController, drawerLayout)
     }
+
 }
