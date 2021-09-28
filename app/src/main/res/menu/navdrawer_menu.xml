@@ -14,4 +14,7 @@
     <item
         android:id="@+id/serviceFragment"
         android:title="@string/service" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:title="Settings"/>
 </menu>
