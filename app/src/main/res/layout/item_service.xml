@@ -3,29 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:padding="16dp"
-    android:paddingStart="76dp">
+    android:layout_height="70dp"
+    android:padding="10dp"
+    android:paddingStart="30dp" >
 
     <TextView
-        android:id="@+id/tvNavn"
+        android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Test"
+        android:text="Haircut Adult"
         android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvVerdi"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvDuration"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvVerdi"
-        android:layout_width="0dp"
+        android:id="@+id/tvDuration"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:text="Test"
+        android:text="30 min"
+        android:textColor="#000000"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/tvPrice"
+        app:layout_constraintStart_toEndOf="@+id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:text="400 kr"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvDuration"
+        app:layout_constraintTop_toTopOf="parent" />
 
     />
 

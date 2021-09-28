@@ -4,11 +4,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import no.usn.gruppe4.crmwebappandroid.R
-import no.usn.tj233512.myapplication.serviceAtribute
+import no.usn.gruppe4.crmwebappandroid.models.service.Service
 
 // Adapteren lager views til items i recyclerViev. Og å sette content for våre items
 class ServiceAdapter(
-    var todos: List<serviceAtribute>    // en liste med todo-okbjekter
+    var todos: List<Service>    // en liste med todo-okbjekter
 ) : RecyclerView.Adapter<ServiceAdapter.TodoViewHolder>() {
 
     // Hver adapter for recyclerviwet trenger en indre klasse som er en viewHolder klasse
@@ -23,10 +23,12 @@ class ServiceAdapter(
     // Binder data til våre items
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         holder.itemView.apply {        // itemView holder alle viewene i itemdoTo
-            val tvNavn : TextView = findViewById(R.id.tvNavn)
-            tvNavn.text = todos[position].navn
-            val tvVerdi : TextView = findViewById(R.id.tvVerdi)
-            tvVerdi.text = todos[position].verdi
+            val title : TextView = findViewById(R.id.tvTitle)
+            title.text = todos[position].title
+            val duration : TextView = findViewById(R.id.tvDuration)
+            duration.text = todos[position].duration
+            val price : TextView = findViewById(R.id.tvPrice)
+            price.text = todos[position].price
         }
     }
     //returnerer hvor mange items vi har i recyclerview

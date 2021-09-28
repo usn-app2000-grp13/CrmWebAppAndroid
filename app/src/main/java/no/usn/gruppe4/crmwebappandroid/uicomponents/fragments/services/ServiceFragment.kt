@@ -5,11 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.navigation.fragment.findNavController
-import no.usn.gruppe4.crmwebappandroid.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentServiceBinding
+import no.usn.gruppe4.crmwebappandroid.models.service.Service
+import ServiceAdapter
 
 class ServiceFragment : Fragment() {
 
@@ -21,29 +21,24 @@ class ServiceFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentServiceBinding.inflate(inflater)
 
-        // 2) initierer string tabell
-        tab = resources.getStringArray(R.array.services)
+        var servicees = mutableListOf(
+            Service("Haircut Adult","Standard Haircut for adults","30 min","400 kr"),
+            Service("Haircut Kids","Standard Haircut for kids","25 min","300 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr")
+        )
 
-        // 3) arrayAdapter (Denne bruker vi til å koble tabellen til listviewet)
-        var arrayAdapter = activity?.let {
-            ArrayAdapter(
-                it,
-                android.R.layout.simple_list_item_1,
-                tab
-            )
-        }
+        val adapter = ServiceAdapter(servicees) 	// lager en TodoAdapter. Sender med listen som parameter
+        binding.rvServices.adapter = adapter	// kobler adapteren til recyclerViewen rvTodos
+        binding.rvServices.layoutManager = LinearLayoutManager(activity) // velger layoutManager til recyclerViewen rvTodos
 
-        // 4) kobbler arrayAdapteren til listviewet i xml filen
-        binding.listView.adapter = arrayAdapter
-
-        // 5) Lytter metode som registrerer klikk i listen
-        binding.listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            test(tab[position])
+        // 5) Lytter metode som registrerer klikk i listen !!!!!!!!
+        binding.textView.setOnClickListener {
+            findNavController().navigate(no.usn.gruppe4.crmwebappandroid.R.id.action_serviceFragment_to_inspectServiceFragment)
         }
 
         // 6) Lytter metode som registrerer klikk på newService-knappen
         binding.fabNewService.setOnClickListener {
-           findNavController().navigate(R.id.action_serviceFragment_to_newServiceFragment)
+           findNavController().navigate(no.usn.gruppe4.crmwebappandroid.R.id.action_serviceFragment_to_newServiceFragment)
         }
 
         return binding.root
@@ -51,7 +46,7 @@ class ServiceFragment : Fragment() {
 
     private fun test(s: String) {
         //binding.textView.text = s
-        findNavController().navigate(R.id.action_serviceFragment_to_inspectServiceFragment)
+        findNavController().navigate(no.usn.gruppe4.crmwebappandroid.R.id.action_serviceFragment_to_inspectServiceFragment)
     }
 
 }
