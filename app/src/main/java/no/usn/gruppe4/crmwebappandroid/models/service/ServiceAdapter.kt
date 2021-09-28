@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 
-class ServiceAdapter (
-    private val context: Context,
-    private val dataset: List<Service>):RecyclerView.Adapter<ServiceAdapter.ItemViewHolder>(){
+class ServiceAdapter (private val context: Context, private val dataset: List<Service>): RecyclerView.Adapter<ServiceAdapter.ItemViewHolder>(){
     private lateinit var mlistener : OnItemClickListener
 
     interface OnItemClickListener{
@@ -46,6 +44,6 @@ class ServiceAdapter (
     }
 
     override fun getItemCount(): Int {
-        return 5//dataset.size
+        return dataset.size
     }
 }

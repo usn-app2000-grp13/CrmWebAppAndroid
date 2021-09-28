@@ -21,7 +21,7 @@ class ServiceFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentServiceBinding.inflate(inflater)
 
-        var services = listOf(
+        val serviceList:List<Service> = listOf(
             Service("Haircut Adult","Standard Haircut for adults","30 min","400 kr"),
             Service("Haircut Kids","Standard Haircut for kids","25 min","300 kr"),
             Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
@@ -41,15 +41,14 @@ class ServiceFragment : Fragment() {
             Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
             Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
         )
-
-        val myDataset = services
-        val adapter = ServiceAdapter(requireContext(), myDataset)
+        //val myDataset = services
+        val adapter = ServiceAdapter(requireContext(), serviceList)
 
         binding.rvServices.adapter = adapter
         adapter.setOnItemClickListener(object: ServiceAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 val bundle = Bundle()
-                bundle.putParcelable("service", myDataset[position])
+                bundle.putParcelable("service", serviceList[position])
                 findNavController().navigate(R.id.action_serviceFragment_to_newServiceFragment, bundle)
             }
         })
