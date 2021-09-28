@@ -1,26 +1,65 @@
 [{
+  "date" : "28/09/2021",
   "time": "08:30",
+  "duration": "45",
+  "comment": "making a comment just to make a comment thats verry long just to see what would happen testing testing",
   "customer": "Bjarne Betjent",
-  "service": "HairCut Adult"
-},{"time": "09:00",
+  "service": "HairCut Adult",
+  "employee": "Cato"
+},{
+  "date" : "28/09/2021",
+  "time": "09:00",
+  "duration": "45",
+  "comment": "",
   "customer": "Max Mekker",
-  "service": "HairCut Kids"
-},{"time": "10:00",
+  "service": "HairCut Kids",
+  "employee": "Cato"
+},{
+  "date" : "28/09/2021",
+  "time": "10:00",
+  "duration": "45",
+  "comment": "",
   "customer": "Dorothea Dahl",
-  "service": "HairCut Adult"
-},{"time": "10:00",
+  "service": "HairCut Adult",
+  "employee": "Cato"
+},{
+  "date" : "28/09/2021",
+  "time": "10:00",
+  "duration": "45",
+  "comment": "",
   "customer": "William Gates",
-  "service": "Hair Coloring"
-},{"time": "10:40",
+  "service": "Hair Coloring",
+  "employee": "Cato"
+},{
+  "date" : "28/09/2021",
+  "time": "10:40",
+  "duration": "45",
+  "comment": "",
   "customer": "Charles Darvin",
-  "service": "Hair Coloring"
-},{"time": "11:30",
+  "service": "Hair Coloring",
+  "employee": "Cato"
+},{
+  "date" : "28/09/2021",
+  "time": "11:30",
+  "duration": "45",
+  "comment": "",
   "customer": "Elton John",
-  "service": "HairCut Kids"
-},{"time": "13:00",
+  "service": "HairCut Kids",
+  "employee": "Cato"
+},{
+  "date" : "28/09/2021",
+  "time": "13:00",
+  "duration": "45",
+  "comment": "",
   "customer": "Dave Murphy",
-  "service": "HairCut Kids"
-},{"time": "13:50",
+  "service": "HairCut Kids",
+  "employee": "Cato"
+},{
+  "date" : "28/09/2021",
+  "time": "13:50",
+  "duration": "45",
+  "comment": "",
   "customer": "Clark Kent",
-  "service": "HairCut Adult"
+  "service": "HairCut Adult",
+  "employee": "Cato"
 }]
