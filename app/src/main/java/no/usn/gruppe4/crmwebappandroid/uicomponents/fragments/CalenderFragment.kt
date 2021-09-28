@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCalenderBinding
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Datasource
@@ -14,6 +15,7 @@ import no.usn.gruppe4.crmwebappandroid.models.appointment.AppointmentAdapter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
+import no.usn.gruppe4.crmwebappandroid.models.appointment.AppointmentHeaderAdapter
 
 
 class CalenderFragment : Fragment() {
@@ -26,10 +28,11 @@ class CalenderFragment : Fragment() {
         val binding = FragmentCalenderBinding.inflate(inflater)
         val myDataset = getAppointmentList()
         val adapter = AppointmentAdapter(requireContext(), myDataset)
-        binding.recyclerView.adapter = adapter
+        val headerAdapter = AppointmentHeaderAdapter()
+        val concatAdapter = ConcatAdapter(headerAdapter, adapter)
+        binding.recyclerView.adapter = concatAdapter
         adapter.setOnItemClickListener(object: AppointmentAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                Log.i("CLICK", "onItemClick: ${position}")
                 val bundle = Bundle()
                 bundle.putParcelable("appointment", myDataset[position])
                 findNavController().navigate(R.id.action_calenderFragment_to_appointmentClicked, bundle)

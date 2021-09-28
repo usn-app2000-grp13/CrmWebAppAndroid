@@ -84,7 +84,8 @@
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
                 android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtDuration"
@@ -103,7 +104,8 @@
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
                 android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtComment"
@@ -147,7 +149,10 @@
             <ListView
                 android:id="@+id/editAppServiceList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="140dp"
+                android:layout_margin="10dp"
+                android:scrollbars="vertical"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -182,7 +187,10 @@
             <ListView
                 android:id="@+id/editAppCustomerList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="140dp"
+                android:layout_margin="10dp"
+                android:scrollbars="vertical"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -215,7 +223,11 @@
             <ListView
                 android:id="@+id/editAppEmployeeList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="140dp"
+                android:layout_margin="10dp"
+                android:scrollbars="vertical"/>
+
+
 
             <FrameLayout
                 android:layout_width="match_parent"
