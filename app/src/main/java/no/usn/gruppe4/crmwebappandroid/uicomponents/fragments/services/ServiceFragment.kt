@@ -49,7 +49,7 @@ class ServiceFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 val bundle = Bundle()
                 bundle.putParcelable("service", serviceList[position])
-                findNavController().navigate(R.id.action_serviceFragment_to_newServiceFragment, bundle)
+                findNavController().navigate(R.id.action_serviceFragment_to_inspectServiceFragment, bundle)
             }
         })
         binding.rvServices.setHasFixedSize(true)
