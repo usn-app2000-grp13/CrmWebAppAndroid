@@ -28,6 +28,13 @@
     <string name="newCustomer">New Customer</string>
     <string name="btnCancel">Cancel</string>
     <string name="btnSubmit">Submit</string>
+    <string name="settings">Settings</string>
+    <string name="hintStreet">Street</string>
+    <string name="hintStreetnumber">Nr</string>
+    <string name="hintPostCode">PostCode</string>
+    <string name="hintpostarea">PostArea</string>
+    <string name="hintAppartment">Apt. Nr.</string>
+    <string name="hintBirthday">Birthday</string>
 
     <string-array name="services">
         <item>HairCut Adult</item>
