@@ -22,6 +22,12 @@
     <string name="hintComment">Comments</string>
     <string name="newAppointment">New appointment</string>
     <string name="btnAdd">Add</string>
+    <string name="btnUpdate">Update</string>
+    <string name="btnDelete">Delete</string>
+    <string name="AppointmentCard">Appointment Card</string>
+    <string name="newCustomer">New Customer</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="btnSubmit">Submit</string>
 
     <string-array name="services">
         <item>HairCut Adult</item>

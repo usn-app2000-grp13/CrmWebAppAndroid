@@ -15,6 +15,9 @@ data class Appointment(
     val service: String,
     val employee: String
 ) : Parcelable {
+    override fun toString(): String {
+        return "date: $date, time $time, comment: $comment, duration: $duration, customer: $customer, service: $service, employee: $employee"
+    }
 }
 
 /*

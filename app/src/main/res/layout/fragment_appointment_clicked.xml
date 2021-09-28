@@ -8,7 +8,7 @@
         android:fillViewport="true">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             tools:context=".uicomponents.fragments.services.AppointmentClicked"
             android:orientation="vertical"
             android:padding="25dp"
@@ -32,14 +32,13 @@
                     android:text="@string/hintDate"
                     android:textSize="20sp"
                     android:padding="8dp"
-                    android:layout_gravity="left"/>
+                    android:layout_gravity="start"/>
 
                 <Button
                     android:id="@+id/btnEditAppDate"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_weight="1"
+                    android:layout_gravity="end"
                     android:clickable="false"
                     app:icon="@android:drawable/ic_menu_today"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -60,16 +59,15 @@
                     android:minWidth="@dimen/custom_min_width"
                     android:minHeight="@dimen/custom_min_height"
                     android:text="@string/hintTime"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:padding="8dp"
-                    android:layout_gravity="left"/>
+                    android:layout_gravity="start"/>
 
                 <Button
                     android:id="@+id/btnEditAppTime"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_weight="1"
+                    android:layout_gravity="end"
                     android:clickable="false"
                     app:icon="@android:drawable/ic_menu_today"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -119,7 +117,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:padding="8dp"
                 android:text="@string/service"
                 android:layout_gravity="center"
@@ -133,7 +131,8 @@
                     android:id="@+id/editAppService"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/btnEditAppService"
                     android:minHeight="48dp"
                     android:textSize="20sp" />
 
@@ -141,7 +140,7 @@
                     android:id="@+id/btnEditAppService"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:text="@string/btnAdd" />
 
             </RelativeLayout>
@@ -157,11 +156,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:padding="8dp"
                 android:text="@string/customer"
                 android:layout_gravity="center"
                 />
+
+            <Button
+                android:id="@+id/btnAppEditNewCus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/newCustomer"
+                android:layout_margin="15dp"/>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -171,7 +178,8 @@
                     android:id="@+id/editAppCustomer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/btnEditAppCustomer"
                     android:minHeight="48dp"
                     android:textSize="20sp" />
 
@@ -179,7 +187,7 @@
                     android:id="@+id/btnEditAppCustomer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:text="@string/btnAdd" />
 
             </RelativeLayout>
@@ -194,11 +202,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:padding="8dp"
                 android:text="@string/employee"
                 android:layout_gravity="center"
                 />
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -208,7 +218,8 @@
                     android:id="@+id/editAppEmployee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/btnEditAppEmployee"
                     android:minHeight="48dp"
                     android:textSize="20sp" />
 
@@ -216,7 +227,7 @@
                     android:id="@+id/btnEditAppEmployee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:text="@string/btnAdd" />
 
             </RelativeLayout>
@@ -226,8 +237,6 @@
                 android:layout_height="140dp"
                 android:layout_margin="10dp"
                 android:scrollbars="vertical"/>
-
-
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -239,16 +248,15 @@
                     android:id="@+id/btnEditAppEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edit"
-                    android:layout_gravity="left"
-                    />
+                    android:layout_gravity="start"
+                    android:text="@string/btnUpdate" />
+
                 <Button
                     android:id="@+id/btnEditAppDelete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Delete"
-                    android:layout_gravity="right"
-                    />
+                    android:layout_gravity="end"
+                    android:text="@string/btnDelete" />
 
             </FrameLayout>
 
