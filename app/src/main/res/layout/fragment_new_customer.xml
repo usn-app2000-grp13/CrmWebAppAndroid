@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/customerEditFirstname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/hintFirstName"
+            android:maxWidth="@dimen/custom_max_width"
+            android:minWidth="@dimen/custom_min_width"
+            android:minHeight="@dimen/custom_min_height">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editAppTxtCustomerFirstname"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:inputType="text|textMultiLine"
+                android:text="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/customerEditLastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/hintLastName"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editAppTxtCustomerLastname"
+                android:layout_width="133dp"
+                android:layout_height="wrap_content"
+                android:inputType="text|textMultiLine"
+                android:text="" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/customerEditEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/hintEmail"
+            android:maxWidth="@dimen/custom_max_width"
+            android:minWidth="@dimen/custom_min_width"
+            android:minHeight="@dimen/custom_min_height">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editAppTxtCustomerEmail"
+                android:layout_width="133dp"
+                android:layout_height="wrap_content"
+                android:inputType="text|textMultiLine"
+                android:text="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/customerEditPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/hintPhone"
+            android:maxWidth="@dimen/custom_max_width"
+            android:minWidth="@dimen/custom_min_width"
+            android:minHeight="@dimen/custom_min_height">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editAppTxtCustomerPhone"
+                android:layout_width="133dp"
+                android:layout_height="wrap_content"
+                android:inputType="text|textMultiLine"
+                android:text="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/customerCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="cancel" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

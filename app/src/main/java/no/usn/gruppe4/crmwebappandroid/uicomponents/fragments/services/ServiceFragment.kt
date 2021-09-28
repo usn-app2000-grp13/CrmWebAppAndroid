@@ -24,7 +24,22 @@ class ServiceFragment : Fragment() {
         var servicees = mutableListOf(
             Service("Haircut Adult","Standard Haircut for adults","30 min","400 kr"),
             Service("Haircut Kids","Standard Haircut for kids","25 min","300 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr")
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
         )
 
         val adapter = ServiceAdapter(servicees) 	// lager en TodoAdapter. Sender med listen som parameter

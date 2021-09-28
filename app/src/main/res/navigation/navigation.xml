@@ -21,7 +21,21 @@
         android:id="@+id/customerFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.CustomerFragment"
         android:label="fragment_customer"
-        tools:layout="@layout/fragment_customer" />
+        tools:layout="@layout/fragment_customer" >
+        <action
+            android:id="@+id/action_customerFragment_to_newCustomerFragment2"
+            app:destination="@id/newCustomerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCustomerFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewCustomerFragment"
+        android:label="New Customer"
+        tools:layout="@layout/fragment_new_customer" >
+        <action
+            android:id="@+id/action_newCustomerFragment_to_customerFragment"
+            app:destination="@id/customerFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/employeeFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmployeeFragment"
