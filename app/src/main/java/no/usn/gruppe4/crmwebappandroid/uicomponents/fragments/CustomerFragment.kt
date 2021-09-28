@@ -45,7 +45,7 @@ class CustomerFragment : Fragment() {
 
         // Add event on click for the + symbol on the navigation button (lower right)
         binding.fabNewCustomer.setOnClickListener{
-            findNavController().navigate(R.id.action_serviceFragment_to_newServiceFragment);
+            findNavController().navigate(R.id.action_customerFragment_to_newCustomerFragment2);
         }
 
         return binding.root
