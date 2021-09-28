@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentServiceBinding
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
-import ServiceAdapter
+import no.usn.gruppe4.crmwebappandroid.R
+import no.usn.gruppe4.crmwebappandroid.models.employee.ServiceAdapter
 
 class ServiceFragment : Fragment() {
 
@@ -21,7 +21,7 @@ class ServiceFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentServiceBinding.inflate(inflater)
 
-        var servicees = mutableListOf(
+        var services = listOf(
             Service("Haircut Adult","Standard Haircut for adults","30 min","400 kr"),
             Service("Haircut Kids","Standard Haircut for kids","25 min","300 kr"),
             Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
@@ -42,26 +42,23 @@ class ServiceFragment : Fragment() {
             Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
         )
 
-        val adapter = ServiceAdapter(servicees) 	// lager en TodoAdapter. Sender med listen som parameter
-        binding.rvServices.adapter = adapter	// kobler adapteren til recyclerViewen rvTodos
-        binding.rvServices.layoutManager = LinearLayoutManager(activity) // velger layoutManager til recyclerViewen rvTodos
+        val myDataset = services
+        val adapter = ServiceAdapter(requireContext(), myDataset)
 
-        // 5) Lytter metode som registrerer klikk i listen !!!!!!!!
-        binding.textView.setOnClickListener {
-            findNavController().navigate(no.usn.gruppe4.crmwebappandroid.R.id.action_serviceFragment_to_inspectServiceFragment)
-        }
+        binding.rvServices.adapter = adapter
+        adapter.setOnItemClickListener(object: ServiceAdapter.OnItemClickListener{
+            override fun onItemClick(position: Int) {
+                val bundle = Bundle()
+                bundle.putParcelable("service", myDataset[position])
+                findNavController().navigate(R.id.action_serviceFragment_to_newServiceFragment, bundle)
+            }
+        })
+        binding.rvServices.setHasFixedSize(true)
 
         // 6) Lytter metode som registrerer klikk på newService-knappen
         binding.fabNewService.setOnClickListener {
            findNavController().navigate(no.usn.gruppe4.crmwebappandroid.R.id.action_serviceFragment_to_newServiceFragment)
         }
-
         return binding.root
     }
-
-    private fun test(s: String) {
-        //binding.textView.text = s
-        findNavController().navigate(no.usn.gruppe4.crmwebappandroid.R.id.action_serviceFragment_to_inspectServiceFragment)
-    }
-
 }
