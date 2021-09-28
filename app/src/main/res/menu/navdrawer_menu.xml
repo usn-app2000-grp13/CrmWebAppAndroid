@@ -4,17 +4,22 @@
 
     <item
         android:id="@+id/todoFragment"
+        android:icon="@drawable/ic_baseline_assignment_24"
         android:title="@string/todo" />
     <item
         android:id="@+id/customerFragment"
+        android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/customer" />
     <item
         android:id="@+id/employeeFragment"
+        android:icon="@drawable/ic_baseline_person_outline_24"
         android:title="@string/employee" />
     <item
         android:id="@+id/serviceFragment"
+        android:icon="@drawable/ic_baseline_room_service_24"
         android:title="@string/service" />
     <item
         android:id="@+id/settingsFragment"
-        android:title="Settings"/>
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Settings" />
 </menu>
