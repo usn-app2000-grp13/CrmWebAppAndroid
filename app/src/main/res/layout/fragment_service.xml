@@ -18,17 +18,6 @@ xmlns:tools="http://schemas.android.com/tools">
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/service"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.94" />
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabNewService"
             android:layout_width="wrap_content"

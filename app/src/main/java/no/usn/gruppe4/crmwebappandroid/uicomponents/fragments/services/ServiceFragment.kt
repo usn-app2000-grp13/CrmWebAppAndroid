@@ -15,36 +15,23 @@ class ServiceFragment : Fragment() {
 
     lateinit var binding : FragmentServiceBinding
 
-    // 1) String tabell variabel
-    lateinit var tab: Array<String>
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentServiceBinding.inflate(inflater)
 
         val serviceList:List<Service> = listOf(
-            Service("Haircut Adult","Standard Haircut for adults","30 min","400 kr"),
-            Service("Haircut Kids","Standard Haircut for kids","25 min","300 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
-            Service("Haircut Teens","Standard Haircut for teens","30 min","400 kr"),
+            Service("HairCut Adult","Standard hairCut for Adult","30 min","400 kr"),
+            Service("Hair Coloring","Standard hair Coloring","40 min","500 kr"),
+            Service("HairCut Kids","Standard hairCut for Kids","20 min","300 kr"),
+            Service("Bride Package","Fancy bride Package","60 min","700 kr"),
+            Service("Wash and styling","Standard hair Washing and styling","20 min","500 kr"),
+            Service("Eyebrow Wax","Standard Eyebrow Wax","30 min","385 kr"),
+            Service("Perm, short hair","Standard Perm for short hair","90 min","1150 kr"),
+            Service("Perm, long hair","Standard Perm for long hair","120 min","1450 kr"),
         )
-        //val myDataset = services
-        val adapter = ServiceAdapter(requireContext(), serviceList)
 
+        val adapter = ServiceAdapter(requireContext(), serviceList)
         binding.rvServices.adapter = adapter
+
         adapter.setOnItemClickListener(object: ServiceAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 val bundle = Bundle()
@@ -54,10 +41,11 @@ class ServiceFragment : Fragment() {
         })
         binding.rvServices.setHasFixedSize(true)
 
-        // 6) Lytter metode som registrerer klikk på newService-knappen
+        // Lytter metode som registrerer klikk på newService-knappen
         binding.fabNewService.setOnClickListener {
            findNavController().navigate(no.usn.gruppe4.crmwebappandroid.R.id.action_serviceFragment_to_newServiceFragment)
         }
+
         return binding.root
     }
 }

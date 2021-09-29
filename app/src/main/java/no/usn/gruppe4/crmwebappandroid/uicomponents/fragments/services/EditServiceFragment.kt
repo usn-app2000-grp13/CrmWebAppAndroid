@@ -8,13 +8,26 @@ import android.view.ViewGroup
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEditServiceBinding
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentServiceBinding
+import no.usn.gruppe4.crmwebappandroid.models.service.Service
 
 class EditServiceFragment : Fragment() {
 
     lateinit var binding : FragmentEditServiceBinding
+    lateinit var service : Service
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.getParcelable<Service>("service").let { el->
+            service = el!!
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentEditServiceBinding.inflate(inflater)
+        binding.txtTitle.setText(service.title)
+        binding.txtDescription.setText(service.description)
+        binding.txtDuration.setText(service.duration)
+        binding.txtPrice.setText(service.price)
         return binding.root
     }
 

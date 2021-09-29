@@ -70,7 +70,11 @@
         android:id="@+id/inspectServiceFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.InspectServiceFragment"
         android:label="Inspect service"
-        tools:layout="@layout/fragment_inspect_service" />
+        tools:layout="@layout/fragment_inspect_service">
+        <action
+            android:id="@+id/action_inspectServiceFragment_to_editServiceFragment"
+            app:destination="@id/editServiceFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editServiceFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.EditServiceFragment"
