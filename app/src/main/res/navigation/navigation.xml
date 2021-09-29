@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/employeeFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmployeeFragment"
-        android:label="fragment_employee"
+        android:label="@string/employee"
         tools:layout="@layout/fragment_employee" >
         <action
             android:id="@+id/action_employeeFragment_to_newEmployeeFragment2"
@@ -98,7 +98,7 @@
     <fragment
         android:id="@+id/newEmployeeFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewEmployeeFragment"
-        android:label="fragment_new_employee"
+        android:label="new employee"
         tools:layout="@layout/fragment_new_employee" >
         <action
             android:id="@+id/action_newEmployeeFragment_to_employeeFragment"
@@ -107,11 +107,14 @@
     <fragment
         android:id="@+id/employeeCard"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmployeeCard"
-        android:label="fragment_employee_card"
+        android:label="Employee information"
         tools:layout="@layout/fragment_employee_card" >
         <action
             android:id="@+id/action_employeeCard_to_employeeFragment"
             app:destination="@id/employeeFragment" />
+        <action
+            android:id="@+id/action_employeeCard_to_editEmployeeFragment"
+            app:destination="@id/editEmployeeFragment" />
     </fragment>
     <fragment
         android:id="@+id/appointmentClicked"
@@ -121,4 +124,12 @@
         android:id="@+id/settingsFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/editEmployeeFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EditEmployeeFragment"
+        android:label="Edit Employee" >
+        <action
+            android:id="@+id/action_editEmployeeFragment_to_employeeCard"
+            app:destination="@id/employeeCard" />
+    </fragment>
 </navigation>

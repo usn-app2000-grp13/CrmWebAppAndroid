@@ -8,5 +8,13 @@ data class Employee (
     val firstname: String,
     val lastname: String,
     val phone: String,
+    val email: String,
+    val level: String,
+    val street: String,
+    val streetNumber: String,
+    val postCode: String,
+    val postArea: String,
+    val apartment: String,
+
 ): Parcelable {
 }
