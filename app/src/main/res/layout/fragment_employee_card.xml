@@ -1,26 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
-    <data>
-
-    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".uicomponents.fragments.services.InspectServiceFragment">
 
-        <ImageView
-            android:contentDescription="background image of circle"
-            android:id="@+id/imageView4"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
-            android:src="@drawable/bgcircle"
-            tools:ignore="ImageContrastCheck,MissingConstraints"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="121dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEmpFirstname"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="16dp"
+            android:paddingStart="76dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:id="@+id/tvEmpFirstname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Firstname"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvEmpFirstnameValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tvEmpFirstnameValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Ola"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEmpLastname"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="16dp"
+            android:paddingStart="76dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clEmpFirstname">
+
+            <TextView
+                android:id="@+id/tvEmpLastname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Lastname"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvEmpLastnameValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvEmpLastnameValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Nordmann"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEmpEmail"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="16dp"
+            android:paddingStart="76dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clEmpLastname">
+
+            <TextView
+                android:id="@+id/tvEmpEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvEmpEmailValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvEmpEmailValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Ola@test.no"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEmpPhone"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="16dp"
+            android:paddingStart="76dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clEmpEmail">
+
+            <TextView
+                android:id="@+id/tvEmpPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvEmpPhoneValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvEmpPhoneValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="5647875454"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEmpLevel"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="16dp"
+            android:paddingStart="76dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clEmpPhone">
+
+            <TextView
+                android:id="@+id/tvEmpLevel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Level"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvEmpLevelValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvEmpLevelValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEmpAddress"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="16dp"
+            android:paddingStart="76dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clEmpLevel">
+
+            <TextView
+                android:id="@+id/tvEmpAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Street"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvEmpAddressValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvEmpAddressValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="concat address info"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="212dp"
+            android:padding="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btnEmpEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/btnUpdate"
+                app:icon="@drawable/ic_baseline_create_24" />
+
+            <Button
+                android:id="@+id/btnEmDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/btnDelete"
+                app:icon="@drawable/ic_baseline_delete_24" />
+
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
