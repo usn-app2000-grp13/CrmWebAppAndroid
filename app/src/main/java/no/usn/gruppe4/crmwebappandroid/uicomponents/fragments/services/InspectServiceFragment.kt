@@ -30,7 +30,7 @@ class InspectServiceFragment : Fragment() {
         binding.tvPriceValue.text       = service.price
 
         // Lytter metode som registrerer klikk på btnEdit-knappen
-        binding.btnEdit.setOnClickListener {
+        binding.btnEditAppEdit.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("service", service)
             findNavController().navigate(no.usn.gruppe4.crmwebappandroid.R.id.action_inspectServiceFragment_to_editServiceFragment,bundle)

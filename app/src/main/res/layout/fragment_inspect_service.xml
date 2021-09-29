@@ -137,25 +137,33 @@
             />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="50dp"
-            android:text="EDIT"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnDelete"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="50dp"
-            android:text="DELETE"
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="212dp"
+            android:padding="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnEdit" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btnEditAppEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/btnUpdate"
+                app:icon="@drawable/ic_baseline_create_24" />
+
+            <Button
+                android:id="@+id/btnEditAppDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/btnDelete"
+                app:icon="@drawable/ic_baseline_delete_24" />
+
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
