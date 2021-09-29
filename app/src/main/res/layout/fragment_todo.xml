@@ -1,13 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".uicomponents.fragments.TodoFragment">
-
-    <TextView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/todo" />
+        tools:context=".uicomponents.fragments.TodoFragment">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/TodoRv"
+                android:layout_width="414dp"
+                android:layout_height="679dp"
+                app:layout_constraintBottom_toTopOf="@+id/todoAddBT"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+            <EditText
+                android:id="@+id/todoET"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Enter Todo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/todoAddBT"
+                app:layout_constraintStart_toStartOf="parent">
+            </EditText>
+
+            <Button
+                android:id="@+id/todoAddBT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add todo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/todoDeleteBT">
+            </Button>
+
+            <Button
+                android:id="@+id/todoDeleteBT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete done"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+            </Button>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>
