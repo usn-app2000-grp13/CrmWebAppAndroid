@@ -10,6 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.VisibleForTesting
+import androidx.core.view.isVisible
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentAppointmentClickedBinding
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
@@ -25,6 +29,7 @@ class AppointmentClicked : Fragment() , DatePickerDialog.OnDateSetListener, Time
     lateinit var textTime: TextView
     lateinit var textDuration: TextView
     lateinit var textComment: TextView
+    var editMode = false;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,9 +117,31 @@ class AppointmentClicked : Fragment() , DatePickerDialog.OnDateSetListener, Time
             val minute: Int? = cal?.get(Calendar.MINUTE)
             TimePickerDialog(requireContext(), this, hour!!, minute!!, true).show()
         }
+
+        binding.btnEditAppEdit.setOnClickListener {
+            flipEditable(binding.editAppTxtComment)
+            flipEditable(binding.editAppTxtDuration)
+            if (!editMode){
+                binding.btnEditAppDate.visibility = View.VISIBLE
+                binding.btnEditAppTime.visibility = View.VISIBLE
+                binding.rlCustomers.visibility = View.VISIBLE
+                binding.rlEmployees.visibility = View.VISIBLE
+                binding.rlServices.visibility = View.VISIBLE
+                binding.btnEditAppEdit.text = "Done"
+                editMode = !editMode
+            }else{
+                binding.btnEditAppDate.visibility = View.GONE
+                binding.btnEditAppTime.visibility = View.GONE
+                binding.rlCustomers.visibility = View.GONE
+                binding.rlEmployees.visibility = View.GONE
+                binding.rlServices.visibility = View.GONE
+                binding.btnEditAppEdit.text = "Edit"
+                editMode = !editMode
+            }
+        }
         textDate.text = appointment?.date
         textTime.text = appointment?.time
-        textDuration.text = appointment?.duration
+        textDuration.text = appointment?.duration + " Minutes"
         textComment.text = appointment?.comment
 
         // Inflate the layout for this fragment
@@ -134,6 +161,20 @@ class AppointmentClicked : Fragment() , DatePickerDialog.OnDateSetListener, Time
             res += "0$element"
         }else res += element.toString()
         return res
+    }
+    fun flipEditable(element: EditText){
+        if (!editMode){
+            element.isClickable = true
+            element.isCursorVisible = true
+            element.isFocusable = true
+            element.isFocusableInTouchMode = true
+        }else{
+            element.isClickable = false
+            element.isCursorVisible = false
+            element.isFocusable = false
+            element.isFocusableInTouchMode = false
+        }
+
     }
 
 }
