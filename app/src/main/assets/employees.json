@@ -6,7 +6,9 @@
     "email": "ola@test.no",
     "level": "2",
     "street": "a street",
-    "streetNumber": "14"
+    "streetNumber": "14",
+    "postArea": "City!",
+    "postCode": "400"
 },
   {
     "firstname": "En",

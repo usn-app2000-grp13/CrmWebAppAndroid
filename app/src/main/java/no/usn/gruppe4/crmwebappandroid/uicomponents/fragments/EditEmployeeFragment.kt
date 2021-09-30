@@ -29,6 +29,11 @@ class EditEmployeeFragment : Fragment() {
         binding.txtNeLastName.setText(employee?.lastname)
         binding.txtNePhone.setText(employee?.phone)
         binding.txtNeEmail.setText(employee?.email)
+        binding.txtNeStreet.setText(employee?.street)
+        binding.txtNeStreetNumber.setText(employee?.streetNumber)
+        binding.txtNePostArea.setText(employee?.postArea)
+        binding.txtNeApartment.setText(employee?.apartment)
+        binding.txtNePostCode.setText(employee?.postCode)
 
         binding.neCancel.setOnClickListener{
             val bundle = Bundle()

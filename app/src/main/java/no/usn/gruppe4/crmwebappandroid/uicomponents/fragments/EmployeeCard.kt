@@ -38,7 +38,7 @@ class EmployeeCard : Fragment() {
         tvEmpPhoneValue.text = employee?.phone
         tvEmpEmailValue.text = employee?.email
         tvEmpLevelValue.text = employee?.level
-        tvEmpAddressValue.text = employee?.street + " " + employee?.streetNumber
+        tvEmpAddressValue.text = employee?.street + " " + employee?.streetNumber + ", " + employee?.postArea + " " + employee?.postCode
 
         binding.btnEmpEdit.setOnClickListener {
             val bundle = Bundle()

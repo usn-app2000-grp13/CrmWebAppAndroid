@@ -15,8 +15,8 @@
     <string name="service">Services</string>
     <string name="hintDate">Date</string>
     <string name="hintTime">Time</string>
-    <string name="hintFirstName">FirstName</string>
-    <string name="hintLastName">LastName</string>
+    <string name="hintFirstName">Firstname</string>
+    <string name="hintLastName">Lastname</string>
     <string name="hintPhone">Phone</string>
     <string name="hintDuration">Duration</string>
     <string name="hintComment">Comments</string>

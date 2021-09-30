@@ -109,6 +109,87 @@
 
 
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neStreet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Street"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeStreet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType= "text"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neStreetNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Street Number"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeStreetNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType= "text"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nePostArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Post Area"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNePostArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType= "text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nePostCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Post Code"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNePostCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType= "text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neApartment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Apartment"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtNeApartment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType= "text"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/neSubmit"
