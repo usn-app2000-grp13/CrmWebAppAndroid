@@ -16,40 +16,71 @@
             >
 
 
-            <FrameLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_margin="10dp">
 
                 <TextView
-                    android:id="@+id/editAppDate"
+                    android:id="@+id/editAppDateHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:maxWidth="@dimen/custom_max_width"
                     android:minWidth="@dimen/custom_min_width"
                     android:minHeight="@dimen/custom_min_height"
-                    android:text="@string/hintDate"
-                    android:textSize="20sp"
                     android:padding="8dp"
-                    android:layout_gravity="start"/>
+                    android:text="Date"
+                    android:gravity="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/editAppDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/editAppDateHeader"
+                    android:layout_toLeftOf="@+id/btnEditAppDate"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height"
+                    android:padding="8dp"
+                    android:text="@string/hintDate"
+                    android:gravity="center"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/btnEditAppDate"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+                    android:layout_below="@id/editAppDateHeader"
+                    android:layout_alignParentEnd="true"
                     android:clickable="false"
                     app:icon="@android:drawable/ic_menu_today"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:visibility="gone"/>
 
-            </FrameLayout>
+            </RelativeLayout>
 
-            <FrameLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/editAppTimeHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height"
+                    android:padding="8dp"
+                    android:text="Time"
+                    android:gravity="center"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/editAppTime"
@@ -61,7 +92,10 @@
                     android:text="@string/hintTime"
                     android:textSize="20sp"
                     android:padding="8dp"
-                    android:layout_gravity="start"/>
+                    android:layout_below="@+id/editAppTimeHeader"
+                    android:gravity="center"
+                    android:layout_alignParentStart="true"
+                    android:layout_toLeftOf="@id/btnEditAppTime"/>
 
                 <Button
                     android:id="@+id/btnEditAppTime"
@@ -70,49 +104,84 @@
                     android:layout_gravity="end"
                     android:clickable="false"
                     app:icon="@android:drawable/ic_menu_today"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:layout_below="@+id/editAppTimeHeader"
+                    android:visibility="gone"
+                    android:layout_alignParentEnd="true" />
 
-            </FrameLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/editAppDuration"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/hintDuration"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
+                android:padding="20dp">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
+                    android:id="@+id/editAppDurationHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height"
+                    android:padding="8dp"
+                    android:text="@string/hintDuration"
+                    android:gravity="center"
+                    android:textSize="20sp" />
+
+                <EditText
                     android:id="@+id/editAppTxtDuration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:inputType="time" />
+                    android:layout_below="@+id/editAppDurationHeader"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/hintDuration"
+                    android:inputType="time"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/editAppComment"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/hintComment"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
+                android:padding="20dp">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
+                    android:id="@+id/editAppCommentHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height"
+                    android:padding="8dp"
+                    android:text="@string/hintComment"
+                    android:gravity="center"
+                    android:textSize="20sp" />
+
+                <EditText
                     android:id="@+id/editAppTxtComment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:inputType="text|textMultiLine" />
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/hintComment"
+                    android:inputType="textMultiLine"
+                    android:layout_below="@+id/editAppCommentHeader"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -122,10 +191,14 @@
                 android:text="@string/service"
                 android:layout_gravity="center"
                 />
+
+
             <RelativeLayout
+                android:id="@+id/rlServices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:visibility="gone">
 
                 <Spinner
                     android:id="@+id/editAppService"
@@ -134,7 +207,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@id/btnEditAppService"
                     android:minHeight="48dp"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    />
 
                 <Button
                     android:id="@+id/btnEditAppService"
@@ -167,12 +241,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/newCustomer"
-                android:layout_margin="15dp"/>
+                android:layout_margin="15dp"
+                android:visibility="gone"/>
 
             <RelativeLayout
+                android:id="@+id/rlCustomers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:visibility="gone">
 
                 <Spinner
                     android:id="@+id/editAppCustomer"
@@ -210,9 +287,11 @@
 
 
             <RelativeLayout
+                android:id="@+id/rlEmployees"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:visibility="gone">
 
                 <Spinner
                     android:id="@+id/editAppEmployee"
