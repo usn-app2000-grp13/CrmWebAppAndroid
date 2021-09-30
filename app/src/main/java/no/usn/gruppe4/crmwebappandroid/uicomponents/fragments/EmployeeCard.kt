@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_employee_card.*
 import no.usn.gruppe4.crmwebappandroid.R
@@ -44,6 +45,21 @@ class EmployeeCard : Fragment() {
             val bundle = Bundle()
             bundle.putParcelable("employee", employee)
             findNavController().navigate(R.id.action_employeeCard_to_editEmployeeFragment,bundle)
+        }
+        binding.btnEmDelete.setOnClickListener{
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setMessage("Are you sure you want to DELETE this employee?")
+                .setCancelable(false)
+                .setPositiveButton("Yes") { dialog, id ->
+                    // Dismiss the dialog
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No") { dialog, id ->
+                    // Dismiss the dialog
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
         }
 
 
