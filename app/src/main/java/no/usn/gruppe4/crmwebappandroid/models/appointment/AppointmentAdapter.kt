@@ -1,14 +1,16 @@
 package no.usn.gruppe4.crmwebappandroid.models.appointment
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import no.usn.gruppe4.crmwebappandroid.R
+import kotlin.math.min
 
-class AppointmentAdapter(private val context: Context, private val dataset: List<Appointment>): RecyclerView.Adapter<AppointmentAdapter.ItemViewHolder>() {
+class AppointmentAdapter(private val context: Context, private val dataset: List<AppointmentResponse.Appointment>): RecyclerView.Adapter<AppointmentAdapter.ItemViewHolder>() {
 
     private lateinit var mlistener : onItemClickListener
 
@@ -39,13 +41,31 @@ class AppointmentAdapter(private val context: Context, private val dataset: List
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+
         val item = dataset[position]
-        holder.textViewTime.text = item.time
-        holder.textViewCust.text = item.customer
-        holder.textViewServ.text = item.service
+        val hour = item.date?.hours!!
+        val minutes = item.date?.minutes!!
+        holder.textViewTime.text = formatTime(hour, minutes)
+        holder.textViewCust.text = "item.comment"
+        holder.textViewServ.text = "item.service"
     }
 
     override fun getItemCount(): Int {
         return dataset.size
+    }
+
+    fun formatTime(hour: Int, minutes: Int): String{
+        var res = ""
+        if (hour < 10){
+            res += "0$hour:"
+        }else{
+            res += "$hour:"
+        }
+        if (minutes < 10){
+            res += "0$minutes"
+        }else{
+            res += "$minutes"
+        }
+        return res
     }
 }
