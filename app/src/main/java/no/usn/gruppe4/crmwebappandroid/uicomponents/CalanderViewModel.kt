@@ -19,11 +19,11 @@ class CalanderViewModel: ViewModel() {
         get() = _appointments
 
 
-    fun getAppointments(req: IdRequest){
+    fun getAppointments(req: String){
         viewModelScope.launch {
             try {
-                val data = RetrofitInstance.api.getAppointment(req)
-                //val data = RetrofitInstance.api.getAppointments("602a7f4891d34d18402f4e44")
+                //val data = RetrofitInstance.api.getAppointment(req)
+                val data = RetrofitInstance.api.getAppointment("602a7f4891d34d18402f4e44")
                 Log.i(TAG, "appointment data: $data")
             }catch (e: Exception){
                 Log.i(TAG, "Error: $e")

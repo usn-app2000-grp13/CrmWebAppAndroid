@@ -38,8 +38,8 @@ class ServiceAdapter (private val context: Context, private val dataset: List<Se
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.tvTitle.text = item.title
-        holder.tvDuration.text = item.duration
+        holder.tvTitle.text = item.name
+        holder.tvDuration.text = item.duration.toString()
         holder.tvPrice.text = item.price
     }
 

@@ -36,14 +36,15 @@ class InspectServiceFragment : Fragment() {
         arguments?.getParcelable<Service>("service").let { el->
             service = el!!
         }
+
     }
 
     @SuppressLint("RestrictedApi")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentInspectServiceBinding.inflate(inflater)
-        binding.tvTitleValue.text       = service.title
+        binding.tvTitleValue.text       = service.name
         binding.tvDescriptionValue.text = service.description
-        binding.tvDurationValue.text    = service.duration
+        binding.tvDurationValue.text    = service.duration.toString()
         binding.tvPriceValue.text       = service.price
 
         // Lytter metode som registrerer klikk på btnEdit-knappen
