@@ -31,7 +31,7 @@
                     android:id="@+id/editAppTxtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="tulleTitle"
                     android:inputType="time" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -51,7 +51,7 @@
                     android:id="@+id/editAppTxtDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="tulleDescription"
                     android:inputType="text|textMultiLine" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +70,7 @@
                     android:id="@+id/editAppTxtDuration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="99"
                     android:inputType="time" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,7 +89,7 @@
                     android:id="@+id/editAppTxtPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="88"
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
