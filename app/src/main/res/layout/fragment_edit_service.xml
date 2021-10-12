@@ -3,108 +3,134 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical" >
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
+            tools:context=".uicomponents.fragments.services.AppointmentClicked"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.100" >
+            android:padding="25dp"
+            android:paddingTop="25dp" >
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/naTitle"
+                android:id="@+id/editAppTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Title"
+                android:hint="Service title"
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                android:minHeight="@dimen/custom_min_height"
+                android:layout_margin="10dp"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtTitle"
-                    android:text="Haircut Adult"
+                    android:id="@+id/editAppTxtTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="This is a service title"
+                    android:inputType="time" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/naDescription"
+                android:id="@+id/editAppDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Description"
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                android:minHeight="@dimen/custom_min_height"
+                android:layout_margin="10dp"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtDescription"
-                    android:text="Standard Haircut for adults"
+                    android:id="@+id/editAppTxtDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-
+                    android:text="This is a description"
+                    android:inputType="text|textMultiLine" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/naDuration"
+                android:id="@+id/editAppDuration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Duration"
+                android:hint="Duration (Minutes)"
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                android:minHeight="@dimen/custom_min_height"
+                android:layout_margin="10dp"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtDuration"
-                    android:text="30 min"
+                    android:id="@+id/editAppTxtDuration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-
+                    android:text="0 min"
+                    android:inputType="time" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/naPrice"
+                android:id="@+id/editAppPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Price"
+                android:hint="Price (NOK)"
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                android:minHeight="@dimen/custom_min_height"
+                android:layout_margin="10dp"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtPrice"
-                    android:text="400 kr"
+                    android:id="@+id/editAppTxtPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="0 kr"
                     android:inputType="numberDecimal" />
-
             </com.google.android.material.textfield.TextInputLayout>
-            <Button
-                android:id="@+id/naUpdate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="update" />
 
-            <Button
-                android:id="@+id/naCancel"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="cancel" />
+                android:padding="15dp"
+                android:layout_margin="10dp">
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="@string/btnCancel" />
+
+                <Button
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="update" />
+
+            </FrameLayout>
 
         </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

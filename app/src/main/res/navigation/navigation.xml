@@ -79,7 +79,8 @@
         android:id="@+id/editServiceFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.EditServiceFragment"
         android:label="Edit service"
-        tools:layout="@layout/fragment_edit_service" />
+        tools:layout="@layout/fragment_edit_service" >
+    </fragment>
 
 
     <fragment

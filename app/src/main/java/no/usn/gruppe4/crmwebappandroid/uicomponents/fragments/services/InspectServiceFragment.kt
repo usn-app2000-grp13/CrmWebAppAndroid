@@ -39,7 +39,6 @@ class InspectServiceFragment : Fragment() {
 
     }
 
-    @SuppressLint("RestrictedApi")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentInspectServiceBinding.inflate(inflater)
         binding.tvTitleValue.text       = service.name
