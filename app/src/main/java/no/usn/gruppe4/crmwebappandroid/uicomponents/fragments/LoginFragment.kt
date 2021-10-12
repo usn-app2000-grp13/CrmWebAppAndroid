@@ -53,6 +53,7 @@ class LoginFragment : Fragment() {
         }
 
        // binding.resetPasswordbtn.setOnClickListener {
+
            // findNavController().navigate(R.id.action_loginFragment_to_resetPasswordFragment)
        // }
 

@@ -5,6 +5,7 @@ import no.usn.gruppe4.crmwebappandroid.models.appointment.AppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.login.LoginRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
 import no.usn.gruppe4.crmwebappandroid.models.login.Test
+import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.models.service.ServiceResponse
 import retrofit2.http.*
 
@@ -30,6 +31,9 @@ interface CrmApi {
     //gjør en kall på /api/service route
     @GET("service")
     suspend fun getServices(): ServiceResponse
+
+    @POST("newService")
+    suspend fun newService(@Body req: Service)
 /*
     @GET("customer")
     suspend fun getCustomers(): CustomerResponse

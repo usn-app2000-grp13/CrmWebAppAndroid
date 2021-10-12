@@ -13,6 +13,10 @@ private const val TAG = "ServiceViewModel"
 
 class ServiceViewModel: ViewModel() {
 
+    private val _adding: MutableLiveData<Boolean> = MutableLiveData()
+    val adding: LiveData<Boolean>
+        get() = _adding
+
     // _services er ikke open til andre klasser
     private val _services: MutableLiveData<List<Service>> = MutableLiveData()
     // en kopi som er open til andre klasser
@@ -31,5 +35,19 @@ class ServiceViewModel: ViewModel() {
             // printer ut data
             Log.i(TAG, "Services: $data")
         }
+    }
+
+    /**
+     * add a new service
+     */
+    fun newService(item: Service){
+        viewModelScope.launch {
+            RetrofitInstance.api.newService(item)
+            _adding.value = true;
+        }
+    }
+
+    fun newAction(){
+        _adding.value = false;
     }
 }

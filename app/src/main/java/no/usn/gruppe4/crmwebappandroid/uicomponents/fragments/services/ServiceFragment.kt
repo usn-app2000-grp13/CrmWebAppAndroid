@@ -29,6 +29,7 @@ class ServiceFragment : Fragment() {
         // database call
         viewModel.getServices()
 
+
 /*
         val serviceList:List<Service> = listOf(
             Service("HairCut Adult","Standard hairCut for Adult","30 min","400 kr"),
