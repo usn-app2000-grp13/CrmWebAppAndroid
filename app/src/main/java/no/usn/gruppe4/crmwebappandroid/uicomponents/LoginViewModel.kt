@@ -27,8 +27,8 @@ class LoginViewModel : ViewModel() {
     fun loginCall(req: LoginRequest){
         viewModelScope.launch {
             try {
-                //val request = LoginRequest("test", "test@test.tes")
-                val data = RetrofitInstance.api.loginUser(req)
+                val request = LoginRequest("test", "test@test.tes")
+                val data = RetrofitInstance.api.loginUser(request)
                 _session.value = data.data
                 Log.i(TAG, "login data: $data")
                 _logged.value = true
