@@ -17,20 +17,20 @@ class EditServiceFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*
+
         arguments?.getParcelable<Service>("service").let { el->
             service = el!!
         }
 
-         */
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentEditServiceBinding.inflate(inflater)
-        binding.txtTitle.setText(service.name)
-        binding.txtDescription.setText(service.description)
-        binding.txtDuration.setText(service.duration)
-        binding.txtPrice.setText(service.price)
+        binding.editAppTxtTitle.setText(service.name)
+        binding.editAppTxtDescription.setText(service.description)
+        binding.editAppTxtDuration.setText(service.duration)
+        binding.editAppTxtPrice.setText(service.price)
         return binding.root
     }
 
