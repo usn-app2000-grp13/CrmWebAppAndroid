@@ -21,8 +21,6 @@ class EditServiceFragment : Fragment() {
         arguments?.getParcelable<Service>("service").let { el->
             service = el!!
         }
-
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
