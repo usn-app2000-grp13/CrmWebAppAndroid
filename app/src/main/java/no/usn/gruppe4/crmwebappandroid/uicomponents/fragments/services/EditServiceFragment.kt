@@ -27,7 +27,7 @@ class EditServiceFragment : Fragment() {
         binding = FragmentEditServiceBinding.inflate(inflater)
         binding.editAppTxtTitle.setText(service.name)
         binding.editAppTxtDescription.setText(service.description)
-        binding.editAppTxtDuration.setText(service.duration)
+        binding.editAppTxtDuration.setText(service.duration.toString())
         binding.editAppTxtPrice.setText(service.price)
         return binding.root
     }

@@ -43,7 +43,7 @@ class AppointmentClicked : Fragment() , DatePickerDialog.OnDateSetListener, Time
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentAppointmentClickedBinding.inflate(inflater)
-
+        /*
         textDate = binding.editAppDate
         textTime = binding.editAppTime
         textDuration = binding.editAppTxtDuration
@@ -143,6 +143,8 @@ class AppointmentClicked : Fragment() , DatePickerDialog.OnDateSetListener, Time
         textTime.text = appointment?.time
         textDuration.text = appointment?.duration + " Minutes"
         textComment.text = appointment?.comment
+
+         */
 
         // Inflate the layout for this fragment
         return binding.root

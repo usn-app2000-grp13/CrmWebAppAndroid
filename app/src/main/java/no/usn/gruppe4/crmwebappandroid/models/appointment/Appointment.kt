@@ -4,20 +4,29 @@ import android.os.Parcelable
 import androidx.annotation.ArrayRes
 import androidx.annotation.StringRes
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
+import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
+import no.usn.gruppe4.crmwebappandroid.models.service.Service
+import java.util.*
 
 @Parcelize
 data class Appointment(
-    val date: String,
-    val time: String,
-    val comment: String,
-    val duration: String,
-    val customer: String,
-    val service: String,
-    val employee: String
+    val __v: Int?,
+    val _id: String?,
+    val _vendor: String?,
+    val comment: String?,
+    val createdAt: String?,
+    val customers: List<OneAppointmentResponse.Customer>,
+    val date: Date?,
+    val duration: Int?,
+    //val employees: List<AppointmentResponse._employee>,
+    val paymentReceived: Boolean?,
+    //val ratings: List<AppointmentResponse.Rating>,
+    val services: List<OneAppointmentResponse.Service>,
+    val timeindex: Int?,
+    val updatedAt: String?
 ) : Parcelable {
-    override fun toString(): String {
-        return "date: $date, time $time, comment: $comment, duration: $duration, customer: $customer, service: $service, employee: $employee"
-    }
+
 }
 
 /*

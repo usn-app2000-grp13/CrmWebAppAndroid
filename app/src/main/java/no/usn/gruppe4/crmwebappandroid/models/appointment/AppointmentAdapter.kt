@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import no.usn.gruppe4.crmwebappandroid.R
 import kotlin.math.min
 
-class AppointmentAdapter(private val context: Context, private val dataset: List<AppointmentResponse.Appointment>): RecyclerView.Adapter<AppointmentAdapter.ItemViewHolder>() {
+class AppointmentAdapter(private val context: Context, private val dataset: List<Appointment>): RecyclerView.Adapter<AppointmentAdapter.ItemViewHolder>() {
 
     private lateinit var mlistener : onItemClickListener
 
@@ -43,28 +43,32 @@ class AppointmentAdapter(private val context: Context, private val dataset: List
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
 
         val item = dataset[position]
-        val hour = item.date?.hours!!
-        val minutes = item.date?.minutes!!
-        holder.textViewTime.text = formatTime(hour, minutes)
-        holder.textViewCust.text = "item.comment"
-        holder.textViewServ.text = "item.service"
+        holder.textViewTime.text = timeIndexFormat(item.timeindex!!)
+        holder.textViewCust.text = item.customers[0]._customer.firstname + " " + item.customers[0]._customer.lastname
+        holder.textViewServ.text = item.services[0]._service.name
     }
 
     override fun getItemCount(): Int {
         return dataset.size
     }
 
-    fun formatTime(hour: Int, minutes: Int): String{
+    /**
+     * function for returning a time in hh:mm format from a timeindex
+     */
+    fun timeIndexFormat(timeindex: Int): String{
         var res = ""
-        if (hour < 10){
-            res += "0$hour:"
+        var clockM = timeindex % 60
+        var clockH = (timeindex - clockM) / 60
+
+        if (clockH < 10){
+            res += "0$clockH:"
         }else{
-            res += "$hour:"
+            res += "$clockH:"
         }
-        if (minutes < 10){
-            res += "0$minutes"
+        if (clockM < 10) {
+            res += "0$clockM"
         }else{
-            res += "$minutes"
+            res += "$clockM"
         }
         return res
     }

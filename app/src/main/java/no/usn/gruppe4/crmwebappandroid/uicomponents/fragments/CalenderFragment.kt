@@ -1,35 +1,29 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 
-import android.content.Intent
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.ConcatAdapter
-import no.usn.gruppe4.crmwebappandroid.R
-import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCalenderBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import no.usn.gruppe4.crmwebappandroid.models.IdRequest
+import no.usn.gruppe4.crmwebappandroid.R
+import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCalenderBinding
 import no.usn.gruppe4.crmwebappandroid.models.appointment.*
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
-import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
-import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
-
+import java.util.*
 
 
 class CalenderFragment : Fragment() {
 
     private lateinit var viewModel: CalanderViewModel
     private lateinit var binding: FragmentCalenderBinding
-    private val appointmentList = mutableListOf<AppointmentResponse.Appointment>()
+    private val appointmentList = mutableListOf<Appointment>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -37,17 +31,27 @@ class CalenderFragment : Fragment() {
         binding = FragmentCalenderBinding.inflate(inflater)
         //set the viewModel
         viewModel = ViewModelProvider(this).get(CalanderViewModel::class.java)
-        viewModel.getAppointments()
+        val date = Date()
+        Log.i("Date ", "$date")
+        viewModel.getMyAppointmentsDate("602a7f4891d34d18402f4e44", correctDate())
         //val myDataset = getAppointmentList()
         val adapter = AppointmentAdapter(requireContext(), appointmentList)
-        val headerAdapter = AppointmentHeaderAdapter()
+        val headerAdapter = AppointmentHeaderAdapter(date)
         val concatAdapter = ConcatAdapter(headerAdapter, adapter)
 
         binding.recyclerView.adapter = concatAdapter
 
         viewModel.appointment.observe(viewLifecycleOwner, { appointments ->
             appointmentList.clear()
-            appointmentList.addAll(appointments)
+            val appointmentIterator = appointments.iterator();
+            while (appointmentIterator.hasNext()){
+                val app = appointmentIterator.next()
+                if (DateUtils.isToday(app.date!!.time)){
+                    appointmentList.add(app)
+                }
+            }
+            //appointmentList.addAll(appointments)
+            appointmentList.sortBy { it.timeindex }
             adapter.notifyDataSetChanged()
         })
 
@@ -63,8 +67,6 @@ class CalenderFragment : Fragment() {
             }
         })
 
-
-
         binding.recyclerView.setHasFixedSize(true)
 
         binding.fabNewAppointment.setOnClickListener {
@@ -73,19 +75,10 @@ class CalenderFragment : Fragment() {
         return binding.root
     }
 
-    fun getAppointmentList(): List<Appointment>{
-        val jsonFileString = Datasource().getJSONDataFromAsset(requireContext(), "appointments.json")
-        if (jsonFileString != null) {
-            //Log.i("JSONENTRY", jsonFileString)
-        }
-
-        val gson = Gson()
-        val listAppointmentType = object : TypeToken<List<Appointment>>() {}.type
-
-        var appointments: List<Appointment> = gson.fromJson(jsonFileString, listAppointmentType)
-        //appointments.forEachIndexed { idx, appointment -> Log.i("data", ">Item $idx: \n$appointment") }
-        return appointments
+    private fun correctDate(): Date{
+        val newDate = Date(System.currentTimeMillis()-24*60*60*1000)
+        Log.i("Date", newDate.toString())
+        return newDate
     }
-
 
 }

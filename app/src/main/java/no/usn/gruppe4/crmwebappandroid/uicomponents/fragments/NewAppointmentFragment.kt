@@ -111,8 +111,8 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
             val time = binding.editAppTime.text.toString()
             val comment = binding.editAppTxtComment.text.toString()
             val duration = binding.editAppTxtDuration.text.toString()
-            var newAppointment: Appointment = Appointment(date, time, comment, duration, customers[0], services[0], employees[0])
-            Log.i("NewCustomer", newAppointment.toString())
+            //var newAppointment: Appointment = Appointment(date, time, comment, duration, customers[0], services[0], employees[0])
+            //Log.i("NewCustomer", newAppointment.toString())
             findNavController().navigate(R.id.action_newAppointmentFragment_to_calenderFragment)
         }
 
