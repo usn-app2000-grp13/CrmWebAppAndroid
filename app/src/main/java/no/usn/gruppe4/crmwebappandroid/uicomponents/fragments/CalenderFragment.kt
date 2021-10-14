@@ -3,7 +3,6 @@ package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCalenderBinding
 import no.usn.gruppe4.crmwebappandroid.models.appointment.*
@@ -79,7 +76,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         })
 
 
-        adapter.setOnItemClickListener(object: AppointmentAdapter.onItemClickListener{
+        adapter.setOnItemClickListener(object: AppointmentAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 /*
                 val bundle = Bundle()

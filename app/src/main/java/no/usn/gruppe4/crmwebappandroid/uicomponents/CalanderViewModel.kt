@@ -37,6 +37,51 @@ class CalanderViewModel: ViewModel() {
         }
     }
 
+    fun newAppointment(appointment: Appointment){
+        viewModelScope.launch {
+            try{
+                RetrofitInstance.api.addAppointment(appointment)
+                Log.i(TAG, "Appointment added")
+            }catch (e : Exception){
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
+    fun removeAppointment(idRequest: IdRequest){
+        viewModelScope.launch {
+            try{
+                RetrofitInstance.api.deleteAppointment(idRequest)
+                Log.i(TAG, "Appointment removed")
+            }catch (e : Exception){
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
+    fun updateAppointment(appointment: Appointment){
+        viewModelScope.launch {
+            try{
+                RetrofitInstance.api.updateAppointment(appointment)
+                Log.i(TAG, "Appointment removed")
+            }catch (e : Exception){
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
+    fun getAllAppointments(){
+        viewModelScope.launch {
+            try {
+                val data = RetrofitInstance.api.getAppointments()
+                _appointments.value = data.data
+                Log.i(TAG, "appointment data: $data")
+            }catch (e: Exception){
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
     fun changeDate(newDate: Date){
         _date.value = newDate
         Log.i("Date", _date.value.toString())

@@ -1,29 +1,27 @@
 package no.usn.gruppe4.crmwebappandroid.models.appointment
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import no.usn.gruppe4.crmwebappandroid.R
-import kotlin.math.min
 
 class AppointmentAdapter(private val context: Context, private val dataset: List<Appointment>): RecyclerView.Adapter<AppointmentAdapter.ItemViewHolder>() {
 
-    private lateinit var mlistener : onItemClickListener
+    private lateinit var mlistener : OnItemClickListener
 
-    interface onItemClickListener{
+    interface OnItemClickListener{
         fun onItemClick(position: Int)
     }
 
-    fun setOnItemClickListener(listener: onItemClickListener){
+    fun setOnItemClickListener(listener: OnItemClickListener){
         mlistener = listener
 
     }
 
-    class ItemViewHolder(val view: View, listener: onItemClickListener) : RecyclerView.ViewHolder(view) {
+    class ItemViewHolder(val view: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(view) {
         val textViewTime: TextView = view.findViewById(R.id.calItemTime)
         val textViewCust: TextView = view.findViewById(R.id.calItemCustomer)
         val textViewServ: TextView = view.findViewById(R.id.calItemService)
@@ -44,8 +42,8 @@ class AppointmentAdapter(private val context: Context, private val dataset: List
 
         val item = dataset[position]
         holder.textViewTime.text = timeIndexFormat(item.timeindex!!)
-        holder.textViewCust.text = item.customers[0]._customer?.firstname + " " + item.customers[0]._customer?.lastname
-        holder.textViewServ.text = item.services[0]._service?.name
+        holder.textViewCust.text = "${item.customers?.get(0)?._customer?.firstname} ${item.customers?.get(0)?._customer?.lastname}"
+        holder.textViewServ.text = item.services?.get(0)?._service!!.name
     }
 
     override fun getItemCount(): Int {
@@ -57,8 +55,8 @@ class AppointmentAdapter(private val context: Context, private val dataset: List
      */
     fun timeIndexFormat(timeindex: Int): String{
         var res = ""
-        var clockM = timeindex % 60
-        var clockH = (timeindex - clockM) / 60
+        val clockM = timeindex % 60
+        val clockH = (timeindex - clockM) / 60
 
         if (clockH < 10){
             res += "0$clockH:"

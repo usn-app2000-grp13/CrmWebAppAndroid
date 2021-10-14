@@ -16,13 +16,13 @@ data class Appointment(
     val _vendor: String?,
     val comment: String?,
     val createdAt: String?,
-    val customers: List<OneAppointmentResponse.Customer>,
+    val customers: List<OneAppointmentResponse.Customer>?,
     val date: Date?,
     val duration: Int?,
-    //val employees: List<AppointmentResponse._employee>,
+    //val employees: List<AppointmentResponse._employee>?,
     val paymentReceived: Boolean?,
-    //val ratings: List<AppointmentResponse.Rating>,
-    val services: List<OneAppointmentResponse.Service>,
+    val ratings: List<AppointmentResponse.Rating>?,
+    val services: List<OneAppointmentResponse.Service>?,
     val timeindex: Int?,
     val updatedAt: String?
 ) : Parcelable {
