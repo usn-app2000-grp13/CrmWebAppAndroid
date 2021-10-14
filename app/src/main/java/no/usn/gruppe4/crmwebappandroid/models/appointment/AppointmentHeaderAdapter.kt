@@ -15,9 +15,7 @@ import java.util.*
 
 class AppointmentHeaderAdapter(date: Date): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     @RequiresApi(Build.VERSION_CODES.N)
-    val formater = SimpleDateFormat("dd/MM/yyyy")
-    @RequiresApi(Build.VERSION_CODES.N)
-    val curDate = formater.format(date)
+    var curDate = setCurDate(date)
     val curEmployee = "Cato"
 
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view){
@@ -37,5 +35,11 @@ class AppointmentHeaderAdapter(date: Date): RecyclerView.Adapter<RecyclerView.Vi
 
     override fun getItemCount(): Int {
         return 1
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun setCurDate(newDate: Date) : String{
+        val formater = SimpleDateFormat("dd/MM/yyyy")
+        return  formater.format(newDate)
     }
 }

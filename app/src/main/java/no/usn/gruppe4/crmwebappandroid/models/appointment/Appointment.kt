@@ -26,9 +26,7 @@ data class Appointment(
     val timeindex: Int?,
     val updatedAt: String?
 ) : Parcelable {
-
+    fun checkDate(date: Date): Boolean{
+        return date.year == this.date!!.year && date.month == this.date!!.month && date.day == this.date!!.day
+    }
 }
-
-/*
-date, comment, duration, Services, Customers, Employees
- */

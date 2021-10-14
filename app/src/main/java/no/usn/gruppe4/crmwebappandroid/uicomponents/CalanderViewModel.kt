@@ -20,56 +20,35 @@ class CalanderViewModel: ViewModel() {
     val appointment: LiveData<List<Appointment>>
         get() = _appointments
 
+    private val _date: MutableLiveData<Date> = MutableLiveData()
+    val date: LiveData<Date>
+        get() = _date
 
-    fun getAppointments(req: String){
+
+    fun getMyAppointmentsDate(_id: String, milles: Long){
         viewModelScope.launch {
             try {
-                //val data = RetrofitInstance.api.getAppointment(req)
-                val data = RetrofitInstance.api.getAppointment("602a7f4891d34d18402f4e44")
-                Log.i(TAG, "appointment data: $data")
-            }catch (e: Exception){
-                Log.i(TAG, "Error: $e")
-            }
-
-        }
-    }
-
-    fun getAppointments(){
-        viewModelScope.launch {
-            try {
-                val data = RetrofitInstance.api.getAppointments()
-                //val data = RetrofitInstance.api.getAppointments("602a7f4891d34d18402f4e44")
-                //_appointments.value = data.data
-                Log.i(TAG, "appointment data: $data")
-            }catch (e: Exception){
-                Log.i(TAG, "Error: $e")
-            }
-        }
-    }
-
-    fun getMyAppointments(_id: String){
-        viewModelScope.launch {
-            try {
-                val data = RetrofitInstance.api.getMyAppointments(_id)
-                //_appointments.value = data.data
-                Log.i(TAG, "appointment data: $data")
-            }catch (e: Exception){
-                Log.i(TAG, "Error: $e")
-            }
-        }
-    }
-
-    fun getMyAppointmentsDate(_id: String, date: Date){
-        viewModelScope.launch {
-            try {
-                val data = RetrofitInstance.api.getMyAppointments2(_id, date)
+                val data = RetrofitInstance.api.getMyAppointments2(_id, correctDate(milles))
                 _appointments.value = data.data
-                //_appointments.value = data.data
                 Log.i(TAG, "appointment data: $data")
             }catch (e: Exception){
                 Log.i(TAG, "Error: $e")
             }
         }
+    }
+
+    fun changeDate(newDate: Date){
+        _date.value = newDate
+        Log.i("Date", _date.value.toString())
+    }
+
+    init {
+        _date.value = Date()
+    }
+
+    private fun correctDate(milles: Long): Date{
+        val newDate = Date(milles-24*60*60*1000)
+        return newDate
     }
 }
 

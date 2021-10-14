@@ -44,8 +44,8 @@ class AppointmentAdapter(private val context: Context, private val dataset: List
 
         val item = dataset[position]
         holder.textViewTime.text = timeIndexFormat(item.timeindex!!)
-        holder.textViewCust.text = item.customers[0]._customer.firstname + " " + item.customers[0]._customer.lastname
-        holder.textViewServ.text = item.services[0]._service.name
+        holder.textViewCust.text = item.customers[0]._customer?.firstname + " " + item.customers[0]._customer?.lastname
+        holder.textViewServ.text = item.services[0]._service?.name
     }
 
     override fun getItemCount(): Int {
