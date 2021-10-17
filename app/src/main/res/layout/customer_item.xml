@@ -10,13 +10,12 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/calenderItem"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
 
             <TextView
-                android:id="@+id/customerItemFirstname"
+                android:id="@+id/custFirstname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -27,26 +26,38 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/customerItemLastname"
+                android:id="@+id/custLastname"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/hintLastName"
                 android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/customerItemFirstname"
+                app:layout_constraintStart_toEndOf="@+id/custFirstname"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/customerItemPhone"
+                android:id="@+id/custPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="56dp"
                 android:text="@string/hintPhone"
                 android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/customerItemLastname"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="24dp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/custEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:text="@string/hintEmail"
+                android:textSize="24sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="155dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>
