@@ -1,5 +1,6 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents
 
+import android.app.Service
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +10,8 @@ import kotlinx.coroutines.launch
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.appointment.AppointmentResponse
+import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
+import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
 import java.util.*
 
@@ -19,6 +22,18 @@ class CalanderViewModel: ViewModel() {
     private val _appointments: MutableLiveData<List<Appointment>> = MutableLiveData()
     val appointment: LiveData<List<Appointment>>
         get() = _appointments
+
+    private val _customers: MutableLiveData<List<Customer>> = MutableLiveData()
+    val customers: LiveData<List<Customer>>
+        get() = _customers
+
+    private val _employees: MutableLiveData<List<AppointmentResponse._employee>> = MutableLiveData()
+    val employees: LiveData<List<AppointmentResponse._employee>>
+        get() = _employees
+
+    private val _services: MutableLiveData<List<no.usn.gruppe4.crmwebappandroid.models.service.Service>> = MutableLiveData()
+    val services: LiveData<List<no.usn.gruppe4.crmwebappandroid.models.service.Service>>
+        get() = _services
 
     private val _date: MutableLiveData<Date> = MutableLiveData()
     val date: LiveData<Date>
@@ -80,6 +95,48 @@ class CalanderViewModel: ViewModel() {
                 Log.i(TAG, "Error: $e")
             }
         }
+    }
+
+    fun getCustomers(){
+        viewModelScope.launch {
+            try{
+                val data = RetrofitInstance.api.getCustomers()
+                _customers.value = data.data
+                Log.i(TAG, "Customer data: $data")
+            }catch (e: Exception){
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
+    fun getEmployees(){
+        viewModelScope.launch {
+            try{
+                val data = RetrofitInstance.api.getEmployees()
+                _employees.value = data.data
+                Log.i(TAG, "Employee data: $data")
+            }catch (e: Exception){
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
+    fun getServices(){
+        viewModelScope.launch {
+            try{
+                val data = RetrofitInstance.api.getServices()
+                _services.value = data.data
+                Log.i(TAG, "Service data: $services")
+            }catch (e: Exception){
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
+    fun getSchemaData(){
+        getEmployees()
+        getCustomers()
+        getServices()
     }
 
     fun changeDate(newDate: Date){

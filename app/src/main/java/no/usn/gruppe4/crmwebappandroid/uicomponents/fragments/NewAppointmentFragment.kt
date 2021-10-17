@@ -13,40 +13,55 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.android.synthetic.main.fragment_new_appointment.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewAppointmentBinding
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
+import no.usn.gruppe4.crmwebappandroid.models.appointment.AppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Datasource
+import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
+import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
+import no.usn.gruppe4.crmwebappandroid.models.service.Service
+import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 import java.util.*
 
 class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     lateinit var textDate: TextView
     lateinit var textTime: TextView
+    private lateinit var viewModel: CalanderViewModel
+    private val serviceList = mutableListOf<Service>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private val customerList = mutableListOf<Customer>()
+
+    // TODO: 14.10.2021 change later to real employee list
+    private val employeeList = mutableListOf<AppointmentResponse._employee>()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
+        //binding
         val binding = FragmentNewAppointmentBinding.inflate(inflater)
+
+        //viewModel instance
+        viewModel = ViewModelProvider(this).get(CalanderViewModel::class.java)
+        viewModel.getSchemaData()
         textDate = binding.editAppDate
         textTime = binding.editAppTime
 
-        //spinner services
-        ArrayAdapter.createFromResource(requireContext(), R.array.services, android.R.layout.simple_spinner_dropdown_item).also {
-                adapter ->  adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.editAppService.adapter = adapter
-        }
+        var selectedService: List<Service>
+        var selectedCustomer: List<Customer>
+        var selectedEmployee: List<AppointmentResponse._employee>
+
         //list services
-        var services: ArrayList<String> = ArrayList()
+        var services: ArrayList<Service> = ArrayList()
         val serviceAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, services)
         binding.editAppServiceList.adapter = serviceAdapter
         binding.btnEditAppService.setOnClickListener {
-            val selectedService = binding.editAppService.selectedItem
-            services.add(selectedService as String)
+            val ser = binding.editAppService.selectedItem
+
             serviceAdapter.notifyDataSetChanged()
         }
 
@@ -116,6 +131,25 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
             findNavController().navigate(R.id.action_newAppointmentFragment_to_calenderFragment)
         }
 
+        viewModel.services.observe(viewLifecycleOwner, {
+            serviceList.clear()
+            serviceList.addAll(it)
+
+            //spinner services
+            binding.editAppService.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,getServiceArray())
+        })
+        viewModel.customers.observe(viewLifecycleOwner, {
+            customerList.clear()
+            customerList.addAll(it)
+        })
+
+        // TODO: 14.10.2021 change later to real employee object
+        viewModel.employees.observe(viewLifecycleOwner, {
+            employeeList.clear()
+            employeeList.addAll(it)
+        })
+        val aa = getServiceArray()
+
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -134,6 +168,15 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
             res += "0$element"
         }else res += element.toString()
         return res
+    }
+
+    fun getServiceArray(): Array<String>{
+
+        val asc = Array(serviceList.size) {
+            i -> serviceList.get(i).name.toString()
+        }
+        asc.forEach { Log.i("Array", it) }
+        return asc
     }
 
 

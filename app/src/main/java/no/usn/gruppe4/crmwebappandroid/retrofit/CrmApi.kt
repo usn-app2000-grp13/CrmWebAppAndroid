@@ -4,6 +4,8 @@ import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.appointment.AppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.appointment.OneAppointmentResponse
+import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerResponse
+import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeResponse
 import no.usn.gruppe4.crmwebappandroid.models.login.LoginRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
 import no.usn.gruppe4.crmwebappandroid.models.login.Test
@@ -41,6 +43,12 @@ interface CrmApi {
     @POST("newService")
     suspend fun newService(@Body req: Service)
 
+    @DELETE("service")
+    suspend fun deleteService(@Body req: IdRequest)
+
+    @POST("Service")
+    suspend fun updateService(@Body req: Service)
+
     //appointment routes
 
     @GET("appointments/{employee}/{date}")
@@ -73,11 +81,19 @@ interface CrmApi {
     @PUT("employee/todo/completed")
     suspend fun setTodoComplete(@Body req: Todo.SetComplete)
 
+    //employee routes
+
+    @GET("employee")
+    suspend fun getEmployees(): EmployeeResponse
+
+    //customer routes
+
+    @GET("customer")
+    suspend fun getCustomers(): CustomerResponse
 
 
 /*
-    @GET("customer")
-    suspend fun getCustomers(): CustomerResponse
+
 
     appointment/:id
 

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
 
@@ -44,6 +45,29 @@ class ServiceViewModel: ViewModel() {
         viewModelScope.launch {
             RetrofitInstance.api.newService(item)
             _adding.value = true;
+        }
+    }
+
+    fun removeService(idRequest: IdRequest){
+        viewModelScope.launch {
+            try{
+                RetrofitInstance.api.deleteService(idRequest)
+                Log.i(TAG, "Delete complete of item: ${idRequest._id}")
+            }catch (e: Exception){
+                Log.i(TAG, "Error: $e")
+            }
+
+        }
+    }
+
+    fun updateService(service: Service){
+        viewModelScope.launch {
+            try{
+                RetrofitInstance.api.updateService(service)
+                Log.i(TAG, "added new service: $service")
+            }catch (e: Exception){
+                Log.i(TAG, "Error: $e")
+            }
         }
     }
 
