@@ -6,24 +6,36 @@ import java.io.IOException
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCustomerBinding
+import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerAdapter
+import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 
 class CustomerFragment : Fragment() {
 
-    private var customerList = getCustomerList()
+    private val customerList = mutableListOf<Customer>()
 
+    lateinit var viewModel: CustomerViewModel
+    lateinit var binding: FragmentCustomerBinding
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val binding = FragmentCustomerBinding.inflate(inflater)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentCustomerBinding.inflate(inflater)
+        //set the viewModel
+        viewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
+        viewModel.getCustomers()
         val adapter = CustomerAdapter(requireContext(), customerList)
+
+        viewModel.customers.observe(viewLifecycleOwner, {
+            customerList.clear()
+            customerList.addAll(it)
+            adapter.notifyDataSetChanged()
+        })
+
+
         binding.customerRecyclerView.adapter = adapter
 
         adapter.setOnItemClickListener(object: CustomerAdapter.OnItemClickListener{
