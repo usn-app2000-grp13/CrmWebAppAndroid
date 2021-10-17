@@ -20,6 +20,7 @@ class CustomerAdapter (private val context: Context, private val dataset: List<C
     }
 
     class ItemViewHolder(val view: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(view) {
+        //disse kommer nå altid til å være der
         val textViewFirstname: TextView = view.findViewById(R.id.custFirstname)
         val textViewLastname: TextView = view.findViewById(R.id.custLastname)
         val textViewPhone: TextView = view.findViewById(R.id.custPhone)
@@ -33,6 +34,7 @@ class CustomerAdapter (private val context: Context, private val dataset: List<C
     }
 
     override fun onCreateViewHolder(parent: ViewGroup,viewType:Int): ItemViewHolder {
+        //endring på employee_item -> customer_item
         val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.customer_item, parent,false)
         return ItemViewHolder(adapterLayout, customerListener)
     }

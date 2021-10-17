@@ -16,19 +16,22 @@ import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerAdapter
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 
 class CustomerFragment : Fragment() {
-
+    //en egen liste i customerFragment som vi kan sende inn til adapteren (pga. grafisk crash)
     private val customerList = mutableListOf<Customer>()
 
+    //legger disse utenfor så at du kan bruke dem i funksjoner
     lateinit var viewModel: CustomerViewModel
     lateinit var binding: FragmentCustomerBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentCustomerBinding.inflate(inflater)
-        //set the viewModel
+        //la till viewmodelen for customers for å gjøre DB call og observeList
         viewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
+        //kaller på metode i viewmodel (pga. async muligheter)
         viewModel.getCustomers()
         val adapter = CustomerAdapter(requireContext(), customerList)
 
+        //for hver endring i originale listen så endrer customerList seg og sier vi ifra om oppdatering til adapteren
         viewModel.customers.observe(viewLifecycleOwner, {
             customerList.clear()
             customerList.addAll(it)
