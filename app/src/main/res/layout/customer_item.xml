@@ -40,23 +40,23 @@
                 android:id="@+id/custPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="56dp"
                 android:text="@string/hintPhone"
                 android:textSize="24sp"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="24dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/custEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="56dp"
                 android:text="@string/hintEmail"
                 android:textSize="24sp"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="155dp" />
+                app:layout_constraintStart_toEndOf="@+id/custPhone"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
