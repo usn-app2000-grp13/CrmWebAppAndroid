@@ -33,4 +33,15 @@ class EmployeeViewModel: ViewModel() {
                 Log.i(TAG,"Error: $e")}
         }
     }
+    //async method for crating a new employee
+    fun newEmployee(employee: Employee){
+        viewModelScope.launch {
+            try {
+                RetrofitInstance.api.postEmployees(employee)
+                Log.i(TAG, "Employee added")
+            }catch (e: Exception){
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
 }

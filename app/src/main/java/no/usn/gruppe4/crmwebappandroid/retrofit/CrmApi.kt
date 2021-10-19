@@ -5,6 +5,7 @@ import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.appointment.AppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.appointment.OneAppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerResponse
+import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeResponse
 import no.usn.gruppe4.crmwebappandroid.models.login.LoginRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
@@ -85,6 +86,9 @@ interface CrmApi {
 
     @GET("employee")
     suspend fun getEmployees(): EmployeeResponse
+
+    @POST("newEmployee")
+    suspend fun postEmployees(@Body req: Employee): EmployeeResponse
 
     //customer routes
 

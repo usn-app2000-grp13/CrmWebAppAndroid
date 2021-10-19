@@ -51,7 +51,7 @@
                 android:minHeight="@dimen/custom_min_height">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/NeLastName"
+                    android:id="@+id/txtNeLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName" />

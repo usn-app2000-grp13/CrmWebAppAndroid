@@ -61,7 +61,7 @@ class EmployeeFragment : Fragment() {
         return binding.root
     }
 
-    fun getEmployeeList(): List<Employee>{
+    /*fun getEmployeeList(): List<Employee>{
         val jsonFileString = getJSONDataFromAsset(requireContext(), "employees.json")
         if(jsonFileString != null){
             Log.i("JSONENTRY", jsonFileString)
@@ -85,6 +85,6 @@ class EmployeeFragment : Fragment() {
             return null
         }
         return jsonString
-    }
+    }*/
 
 }
