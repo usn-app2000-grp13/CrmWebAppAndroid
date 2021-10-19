@@ -38,7 +38,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
     private val customerList = mutableListOf<Customer>()
 
     // TODO: 14.10.2021 change later to real employee list
-    private val employeeList = mutableListOf<AppointmentResponse._employee>()
+    private val employeeList = mutableListOf<Employee>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -53,7 +53,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
 
         var selectedService: List<Service>
         var selectedCustomer: List<Customer>
-        var selectedEmployee: List<AppointmentResponse._employee>
+        var selectedEmployee: List<Employee>
 
         //list services
         var services: ArrayList<Service> = ArrayList()

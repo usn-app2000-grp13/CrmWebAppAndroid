@@ -38,7 +38,7 @@ class EmployeeCard : Fragment() {
         tvEmpLastnameValue.text = employee?.lastname
         tvEmpPhoneValue.text = employee?.phone
         tvEmpEmailValue.text = employee?.email
-        tvEmpLevelValue.text = employee?.level
+        tvEmpLevelValue.text = employee?.level.toString()
         tvEmpAddressValue.text = employee?.street + " " + employee?.streetNumber + ", " + employee?.postArea + " " + employee?.postCode
 
         binding.btnEmpEdit.setOnClickListener {

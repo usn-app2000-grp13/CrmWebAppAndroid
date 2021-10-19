@@ -27,8 +27,8 @@ class CalanderViewModel: ViewModel() {
     val customers: LiveData<List<Customer>>
         get() = _customers
 
-    private val _employees: MutableLiveData<List<AppointmentResponse._employee>> = MutableLiveData()
-    val employees: LiveData<List<AppointmentResponse._employee>>
+    private val _employees: MutableLiveData<List<Employee>> = MutableLiveData()
+    val employees: LiveData<List<Employee>>
         get() = _employees
 
     private val _services: MutableLiveData<List<no.usn.gruppe4.crmwebappandroid.models.service.Service>> = MutableLiveData()
