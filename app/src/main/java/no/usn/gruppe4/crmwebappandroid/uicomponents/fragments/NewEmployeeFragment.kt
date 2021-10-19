@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
@@ -49,6 +48,9 @@ class NewEmployeeFragment : Fragment() {
                 level = 1, updatedAt = null)
 
             viewModel.newEmployee(employee)
+
+            findNavController().navigate(
+                R.id.action_newEmployeeFragment_to_employeeFragment)
 
         }
 

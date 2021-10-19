@@ -7,14 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_employee_card.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEmployeeCardBinding
+import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewEmployeeBinding
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
+import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
 
 
 class EmployeeCard : Fragment() {
+
+    lateinit var binding: FragmentNewEmployeeBinding
+    lateinit var viewModel: EmployeeViewModel
 
     private var employee: Employee? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +58,12 @@ class EmployeeCard : Fragment() {
                 .setCancelable(false)
                 .setPositiveButton("Yes") { dialog, id ->
                     // Dismiss the dialog
+                    viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
+                    val employee = EmployeeViewModel.DeleteEmployee(id = employee?._id)
+                    viewModel.deleteEmployee(employee)
                     dialog.dismiss()
+                    findNavController().navigate(
+                        R.id.action_employeeCard_to_employeeFragment)
                 }
                 .setNegativeButton("No") { dialog, id ->
                     // Dismiss the dialog

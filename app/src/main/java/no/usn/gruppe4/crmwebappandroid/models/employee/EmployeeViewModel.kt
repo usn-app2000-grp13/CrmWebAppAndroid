@@ -37,11 +37,26 @@ class EmployeeViewModel: ViewModel() {
     fun newEmployee(employee: Employee){
         viewModelScope.launch {
             try {
+
                 RetrofitInstance.api.postEmployees(employee)
+                //here should there be a boolean
                 Log.i(TAG, "Employee added")
             }catch (e: Exception){
                 Log.i(TAG, "Error: $e")
             }
         }
     }
+    //async delete employee
+    fun deleteEmployee(employee: DeleteEmployee){
+        viewModelScope.launch {
+        try {
+            RetrofitInstance.api.deleteEmployees(employee)
+            //here should there be a boolean
+            Log.i(TAG, "Employee added")
+        }catch (e: Exception){
+            Log.i(TAG, "Error: $e")
+        }
+        }
+    }
+    data class DeleteEmployee(val id: String?)
 }
