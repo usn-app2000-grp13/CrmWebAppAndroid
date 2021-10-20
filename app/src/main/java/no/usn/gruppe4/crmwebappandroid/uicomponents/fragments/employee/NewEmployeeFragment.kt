@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewEmployeeBinding
+import no.usn.gruppe4.crmwebappandroid.models.employee.Address
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
 
@@ -41,9 +42,11 @@ class NewEmployeeFragment : Fragment() {
             val apartment = binding.txtNeApartment.text?.toString()
             val postCode = binding.txtNePostCode.text?.toString()
 
+            val newAddress = Address(postArea = postArea, apartment = apartment,
+                postCode = postCode, street = street, streetNumber = streetNumber,)
+
             val employee = Employee(_id = null, firstname = firstname, lastname = lastname, phone = phone,
-                email = email, password = password, street = street, streetNumber = streetNumber,
-                postArea = postArea, apartment = apartment, postCode = postCode,
+                email = email, password = password, address = newAddress,
                 active = true,__v = 1, _vendor = null, createdAt = null,
                 level = 1, updatedAt = null)
 

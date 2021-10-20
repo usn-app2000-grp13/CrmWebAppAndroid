@@ -16,11 +16,7 @@ data class Employee (
     val level: Int?,
     val phone: String?,
     val updatedAt: String?,
-    val street: String?,
-    val streetNumber: String?,
-    val postCode: String?,
-    val postArea: String?,
-    val apartment: String?,
+    val address: Address?,
     val password: String?,
     val __v: Int?): Parcelable {
 }

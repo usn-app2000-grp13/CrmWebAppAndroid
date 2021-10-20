@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEditEmployeeBinding
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewEmployeeBinding
+import no.usn.gruppe4.crmwebappandroid.models.employee.Address
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
 
@@ -34,11 +35,11 @@ class EditEmployeeFragment : Fragment() {
         binding.txtNeLastName.setText(employee?.lastname)
         binding.txtNePhone.setText(employee?.phone)
         binding.txtNeEmail.setText(employee?.email)
-        binding.txtNeStreet.setText(employee?.street)
-        binding.txtNeStreetNumber.setText(employee?.streetNumber)
-        binding.txtNePostArea.setText(employee?.postArea)
-        binding.txtNeApartment.setText(employee?.apartment)
-        binding.txtNePostCode.setText(employee?.postCode)
+        binding.txtNeStreet.setText(employee?.address?.street)
+        binding.txtNeStreetNumber.setText(employee?.address?.streetNumber)
+        binding.txtNePostArea.setText(employee?.address?.postArea)
+        binding.txtNeApartment.setText(employee?.address?.apartment)
+        binding.txtNePostCode.setText(employee?.address?.postCode)
 
         binding.neCancel.setOnClickListener{
             val bundle = Bundle()
@@ -59,10 +60,13 @@ class EditEmployeeFragment : Fragment() {
             val apartment = binding.txtNeApartment.text?.toString()
             val postCode = binding.txtNePostCode.text?.toString()
 
-            val newEmployee = Employee(_id = employee?._id, firstname = firstname, lastname = lastname, phone = phone,
-                email = email, password = password, street = street, streetNumber = streetNumber,
-                postArea = postArea, apartment = apartment, postCode = postCode,
-                active = true,__v = employee?.__v, _vendor = employee?._vendor, createdAt = employee?.createdAt,
+            val newAddress = Address(postArea = postArea, apartment = apartment,
+                postCode = postCode, street = street, streetNumber = streetNumber,)
+
+            val newEmployee = Employee(_id = employee?._id, firstname = firstname, lastname = lastname,
+                phone = phone,
+                email = email, password = password, address = newAddress, active = true,
+                __v = employee?.__v, _vendor = employee?._vendor, createdAt = employee?.createdAt,
                 level = employee?.level, updatedAt = null)
         viewModel.alterEmployee(newEmployee)
             val bundle = Bundle()
