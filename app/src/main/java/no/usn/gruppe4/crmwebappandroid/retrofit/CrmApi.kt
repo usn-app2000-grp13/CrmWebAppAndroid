@@ -95,6 +95,9 @@ interface CrmApi {
     @HTTP(method = "DELETE",path = "employee", hasBody = true)
     suspend fun deleteEmployees(@Body req: EmployeeViewModel.DeleteEmployee): EmployeeResponseNoArray
 
+    @PUT("employee")
+    suspend fun putEmployees(@Body req: Employee): EmployeeResponseNoArray
+
     //customer routes
 
     @GET("customer")

@@ -58,5 +58,16 @@ class EmployeeViewModel: ViewModel() {
         }
         }
     }
+
+    fun alterEmployee(employee: Employee){
+        viewModelScope.launch  {
+            try {
+                RetrofitInstance.api.putEmployees(employee)
+                Log.i(TAG, "Employee altered")
+            } catch (e: Exception) {
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
     data class DeleteEmployee(val id: String?)
 }

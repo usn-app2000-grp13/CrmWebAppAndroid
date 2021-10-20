@@ -22,5 +22,5 @@ data class Employee (
     val postArea: String?,
     val apartment: String?,
     val password: String?,
-    val __v: Int): Parcelable {
+    val __v: Int?): Parcelable {
 }
