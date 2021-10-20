@@ -38,7 +38,7 @@
 
     <fragment
         android:id="@+id/employeeFragment"
-        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmployeeFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.employee.EmployeeFragment"
         android:label="@string/employee"
         tools:layout="@layout/fragment_employee" >
         <action
@@ -98,7 +98,7 @@
     </fragment>
     <fragment
         android:id="@+id/newEmployeeFragment"
-        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewEmployeeFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.employee.NewEmployeeFragment"
         android:label="new employee"
         tools:layout="@layout/fragment_new_employee" >
         <action
@@ -107,7 +107,7 @@
     </fragment>
     <fragment
         android:id="@+id/employeeCard"
-        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmployeeCard"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.employee.EmployeeCard"
         android:label="Employee information"
         tools:layout="@layout/fragment_employee_card" >
         <action
@@ -127,7 +127,7 @@
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/editEmployeeFragment"
-        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EditEmployeeFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.employee.EditEmployeeFragment"
         android:label="Edit Employee" >
         <action
             android:id="@+id/action_editEmployeeFragment_to_employeeCard"

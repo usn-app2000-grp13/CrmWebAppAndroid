@@ -52,7 +52,7 @@ class EmployeeViewModel: ViewModel() {
         try {
             RetrofitInstance.api.deleteEmployees(employee)
             //here should there be a boolean
-            Log.i(TAG, "Employee added")
+            Log.i(TAG, "Employee deleted")
         }catch (e: Exception){
             Log.i(TAG, "Error: $e")
         }

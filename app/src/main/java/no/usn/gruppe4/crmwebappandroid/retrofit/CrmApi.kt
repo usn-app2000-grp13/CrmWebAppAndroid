@@ -7,6 +7,7 @@ import no.usn.gruppe4.crmwebappandroid.models.appointment.OneAppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerResponse
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeResponse
+import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeResponseNoArray
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
 import no.usn.gruppe4.crmwebappandroid.models.login.LoginRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
@@ -89,10 +90,10 @@ interface CrmApi {
     suspend fun getEmployees(): EmployeeResponse
 
     @POST("newEmployee")
-    suspend fun postEmployees(@Body req: Employee): EmployeeResponse
+    suspend fun postEmployees(@Body req: Employee): EmployeeResponseNoArray
 
     @HTTP(method = "DELETE",path = "employee", hasBody = true)
-    suspend fun deleteEmployees(@Body req: EmployeeViewModel.DeleteEmployee): EmployeeResponse
+    suspend fun deleteEmployees(@Body req: EmployeeViewModel.DeleteEmployee): EmployeeResponseNoArray
 
     //customer routes
 

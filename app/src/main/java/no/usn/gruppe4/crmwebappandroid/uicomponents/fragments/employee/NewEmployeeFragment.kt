@@ -1,4 +1,4 @@
-package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
+package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.employee
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -47,7 +47,7 @@ class NewEmployeeFragment : Fragment() {
                 active = true,__v = 1, _vendor = null, createdAt = null,
                 level = 1, updatedAt = null)
 
-            viewModel.newEmployee(employee)
+           viewModel.newEmployee(employee)
 
             findNavController().navigate(
                 R.id.action_newEmployeeFragment_to_employeeFragment)

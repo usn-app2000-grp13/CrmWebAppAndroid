@@ -1,4 +1,4 @@
-package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
+package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.employee
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

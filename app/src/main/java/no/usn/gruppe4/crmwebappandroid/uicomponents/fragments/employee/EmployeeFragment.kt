@@ -1,22 +1,17 @@
-package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
+package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.employee
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEmployeeBinding
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeAdapter
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
-import java.io.IOException
 
 
 class EmployeeFragment : Fragment() {
