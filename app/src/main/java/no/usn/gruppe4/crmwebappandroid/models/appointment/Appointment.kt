@@ -19,7 +19,7 @@ data class Appointment(
     val customers: List<OneAppointmentResponse.Customer>?,
     val date: Date?,
     val duration: Int?,
-    //val employees: List<AppointmentResponse._employee>?,
+    val employees: List<OneAppointmentResponse.Employee>?,
     val paymentReceived: Boolean?,
     val ratings: List<AppointmentResponse.Rating>?,
     val services: List<OneAppointmentResponse.Service>?,
