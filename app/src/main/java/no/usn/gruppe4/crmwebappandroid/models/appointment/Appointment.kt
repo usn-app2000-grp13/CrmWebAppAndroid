@@ -1,10 +1,7 @@
 package no.usn.gruppe4.crmwebappandroid.models.appointment
 
 import android.os.Parcelable
-import androidx.annotation.ArrayRes
-import androidx.annotation.StringRes
 import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
