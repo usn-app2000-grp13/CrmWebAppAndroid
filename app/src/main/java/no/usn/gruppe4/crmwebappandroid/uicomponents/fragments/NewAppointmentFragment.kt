@@ -33,70 +33,65 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
     lateinit var textDate: TextView
     lateinit var textTime: TextView
     private lateinit var viewModel: CalanderViewModel
-    private val serviceList = mutableListOf<Service>()
+    private lateinit var binding: FragmentNewAppointmentBinding
+    private var serviceList = mutableListOf<Service>()
+    private var customerList = mutableListOf<Customer>()
+    private var employeeList = mutableListOf<Employee>()
 
-    private val customerList = mutableListOf<Customer>()
+    private var selectedServices = mutableListOf<Service>()
+    private var selectedCustomers = mutableListOf<Customer>()
+    private var selectedEmployees = mutableListOf<Employee>()
+    private lateinit var appointment: Appointment.newAppointment
 
-    // TODO: 14.10.2021 change later to real employee list
-    private val employeeList = mutableListOf<Employee>()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //viewModel instance
+        viewModel = ViewModelProvider(this).get(CalanderViewModel::class.java)
+        appointment = Appointment.newAppointment(null, null, "", null, mutableListOf(), mutableListOf(), mutableListOf())
+        viewModel.setCurAppointment(appointment)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         //binding
-        val binding = FragmentNewAppointmentBinding.inflate(inflater)
+        binding = FragmentNewAppointmentBinding.inflate(inflater)
 
-        //viewModel instance
-        viewModel = ViewModelProvider(this).get(CalanderViewModel::class.java)
+
+        viewModel.curAppointment.observe(viewLifecycleOwner, {
+            appointment = it
+            updateLists()
+        })
+
         viewModel.getSchemaData()
+
         textDate = binding.editAppDate
         textTime = binding.editAppTime
 
-        var selectedService: List<Service>
-        var selectedCustomer: List<Customer>
-        var selectedEmployee: List<Employee>
-
-        //list services
-        var services: ArrayList<Service> = ArrayList()
-        val serviceAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, services)
-        binding.editAppServiceList.adapter = serviceAdapter
+        //Services selection
         binding.btnEditAppService.setOnClickListener {
-            val ser = binding.editAppService.selectedItem
-
-            serviceAdapter.notifyDataSetChanged()
+            val selectedService = binding.editAppService.selectedItem
+            appointment.addService(selectedService as Service)
+            selectedServices.add(selectedService)
+            viewModel.setCurAppointment(appointment)
+            Log.i("service change", appointment.toString())
         }
 
-
-        //spinner customers
-        ArrayAdapter.createFromResource(requireContext(), R.array.customers, android.R.layout.simple_spinner_dropdown_item).also {
-                adapter ->  adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.editAppCustomer.adapter = adapter
-        }
-
-        //list customers
-        var customers: ArrayList<String> = ArrayList()
-        val customerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, customers)
-        binding.editAppCustomerList.adapter = customerAdapter
+        //Customers selection
         binding.btnEditAppCustomer.setOnClickListener {
             val selectedCustomer = binding.editAppCustomer.selectedItem
-            customers.add(selectedCustomer as String)
-            customerAdapter.notifyDataSetChanged()
+            appointment.addCustomer(selectedCustomer as Customer)
+            selectedCustomers.add(selectedCustomer)
+            viewModel.setCurAppointment(appointment)
+            Log.i("customer change", appointment.toString())
         }
 
-
-        //spinner employees
-        ArrayAdapter.createFromResource(requireContext(), R.array.employees, android.R.layout.simple_spinner_dropdown_item).also {
-                adapter ->  adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.editAppEmployee.adapter = adapter
-        }
-
-        //list employees
-        var employees: ArrayList<String> = ArrayList()
-        val employeeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, employees)
-        binding.editAppEmployeeList.adapter = employeeAdapter
+        //Employees selection
         binding.btnEditAppEmployee.setOnClickListener {
             val selectedEmployee = binding.editAppEmployee.selectedItem
-            employees.add(selectedEmployee as String)
-            employeeAdapter.notifyDataSetChanged()
+            appointment.addEmployee(selectedEmployee as Employee)
+            selectedEmployees.add(selectedEmployee)
+            viewModel.setCurAppointment(appointment)
+            Log.i("customer change", appointment.toString())
         }
 
 
@@ -122,12 +117,17 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         }
 
         binding.btnSubmit.setOnClickListener {
-            val date = binding.editAppDate.text.toString()
-            val time = binding.editAppTime.text.toString()
-            val comment = binding.editAppTxtComment.text.toString()
-            val duration = binding.editAppTxtDuration.text.toString()
-            //var newAppointment: Appointment = Appointment(date, time, comment, duration, customers[0], services[0], employees[0])
-            //Log.i("NewCustomer", newAppointment.toString())
+            var duration = 0
+            for (i in selectedServices){
+                duration += i.duration!!
+            }
+            appointment.comment = binding.editAppTxtComment.text.toString()
+            appointment.duration = duration
+            if (appointment.date != null && appointment.timeindex != null){
+                Log.i("NewCustomer", appointment.toString())
+                viewModel.newAppointment(appointment)
+            }
+
             findNavController().navigate(R.id.action_newAppointmentFragment_to_calenderFragment)
         }
 
@@ -136,19 +136,23 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
             serviceList.addAll(it)
 
             //spinner services
-            binding.editAppService.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,getServiceArray())
+            binding.editAppService.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item, serviceList)
         })
         viewModel.customers.observe(viewLifecycleOwner, {
             customerList.clear()
             customerList.addAll(it)
+
+            //spinner customers
+            binding.editAppCustomer.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item, customerList)
         })
 
-        // TODO: 14.10.2021 change later to real employee object
         viewModel.employees.observe(viewLifecycleOwner, {
             employeeList.clear()
             employeeList.addAll(it)
+
+            //spinner employees
+            binding.editAppEmployee.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item, employeeList)
         })
-        val aa = getServiceArray()
 
         // Inflate the layout for this fragment
         return binding.root
@@ -157,11 +161,21 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
 
     override fun onDateSet(p0: DatePicker?, year: Int, month: Int, dayofmonth: Int) {
         textDate.text = reformatDateTime(dayofmonth) + " / " + reformatDateTime(month) + " / " + reformatDateTime(year)
+        val cal = Calendar.getInstance()
+        cal.clear()
+        cal.set(year,month,dayofmonth)
+        val date = Date(cal.timeInMillis)
+        appointment.date = date
+        Log.i("date change", appointment.toString())
     }
 
     override fun onTimeSet(p0: TimePicker?, hour: Int, minute: Int) {
         textTime.text = reformatDateTime(hour) + ":" + reformatDateTime(minute)
+        val timeindex = (hour*60) + minute
+        appointment.timeindex = timeindex
+        Log.i("Time change", appointment.toString())
     }
+
     fun reformatDateTime(element: Int): String{
         var res = ""
         if (element < 10){
@@ -170,13 +184,46 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         return res
     }
 
-    fun getServiceArray(): Array<String>{
-
-        val asc = Array(serviceList.size) {
-            i -> serviceList.get(i).name.toString()
+    fun updateLists(){
+        binding.LLservices.removeAllViews()
+        for (i in selectedServices){
+            var serviceElement = TextView(requireContext())
+            serviceElement.text = i.toString()
+            serviceElement.textSize = 15.0f
+            serviceElement.setOnClickListener {
+                appointment.removeService(i)
+                selectedServices.remove(i)
+                viewModel.setCurAppointment(appointment)
+            }
+            binding.LLservices.addView(serviceElement)
         }
-        asc.forEach { Log.i("Array", it) }
-        return asc
+
+        binding.LLCustomers.removeAllViews()
+        for (i in selectedCustomers){
+            var customerElement = TextView(requireContext())
+            customerElement.text = i.toString()
+            customerElement.textSize = 15.0f
+            customerElement.setOnClickListener {
+                appointment.removeCustomer(i)
+                selectedCustomers.remove(i)
+                viewModel.setCurAppointment(appointment)
+            }
+            binding.LLCustomers.addView(customerElement)
+        }
+
+        binding.LLEmployees.removeAllViews()
+        for (i in selectedEmployees){
+            var employeeElement = TextView(requireContext())
+            employeeElement.text = i.toString()
+            employeeElement.textSize = 15.0f
+            employeeElement.setOnClickListener {
+                appointment.removeEmployee(i)
+                selectedEmployees.remove(i)
+                viewModel.setCurAppointment(appointment)
+            }
+            binding.LLEmployees.addView(employeeElement)
+        }
+
     }
 
 

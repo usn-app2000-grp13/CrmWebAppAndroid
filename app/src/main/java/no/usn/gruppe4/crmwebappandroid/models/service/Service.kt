@@ -9,4 +9,8 @@ data class Service(
     val duration: Int?,
     val name: String?,
     val price: String?,
-) : Parcelable
+) : Parcelable{
+    override fun toString(): String {
+        return "$name"
+    }
+}

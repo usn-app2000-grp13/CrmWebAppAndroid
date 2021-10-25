@@ -61,7 +61,7 @@ interface CrmApi {
     suspend fun getAppointments(): OneAppointmentResponse
 
     @POST("newAppointment")
-    suspend fun addAppointment(@Body req: Appointment)
+    suspend fun addAppointment(@Body req: Appointment.newAppointment)
 
     @PUT("appointment")
     suspend fun updateAppointment(@Body req: Appointment)
