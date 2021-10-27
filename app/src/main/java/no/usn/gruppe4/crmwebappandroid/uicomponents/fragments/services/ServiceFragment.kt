@@ -11,10 +11,8 @@ import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentServiceBinding
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.R
-import no.usn.gruppe4.crmwebappandroid.models.appointment.AppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.employee.ServiceAdapter
-import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
-import no.usn.gruppe4.crmwebappandroid.uicomponents.ServiceViewModel
+import no.usn.gruppe4.crmwebappandroid.models.service.ServiceViewModel
 
 class ServiceFragment : Fragment() {
 

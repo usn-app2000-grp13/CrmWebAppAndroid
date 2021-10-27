@@ -80,6 +80,9 @@
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.EditServiceFragment"
         android:label="Edit service"
         tools:layout="@layout/fragment_edit_service" >
+        <action
+            android:id="@+id/action_editServiceFragment_to_inspectServiceFragment"
+            app:destination="@id/inspectServiceFragment" />
     </fragment>
 
 

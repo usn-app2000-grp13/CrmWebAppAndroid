@@ -1,4 +1,4 @@
-package no.usn.gruppe4.crmwebappandroid.uicomponents
+package no.usn.gruppe4.crmwebappandroid.models.service
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
+import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
 
@@ -56,7 +57,6 @@ class ServiceViewModel: ViewModel() {
             }catch (e: Exception){
                 Log.i(TAG, "Error: $e")
             }
-
         }
     }
 
@@ -64,6 +64,7 @@ class ServiceViewModel: ViewModel() {
         viewModelScope.launch {
             try{
                 RetrofitInstance.api.updateService(service)
+                _adding.value = true
                 Log.i(TAG, "added new service: $service")
             }catch (e: Exception){
                 Log.i(TAG, "Error: $e")
@@ -74,4 +75,7 @@ class ServiceViewModel: ViewModel() {
     fun newAction(){
         _adding.value = false;
     }
+
+    //test
+    data class DeleteService(val id: String?)
 }

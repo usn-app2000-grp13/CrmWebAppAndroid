@@ -14,6 +14,8 @@ import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
 import no.usn.gruppe4.crmwebappandroid.models.login.Test
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.models.service.ServiceResponse
+import no.usn.gruppe4.crmwebappandroid.models.service.ServiceResponseNoArray
+import no.usn.gruppe4.crmwebappandroid.models.service.ServiceViewModel
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoResponse
 import retrofit2.http.*
@@ -46,10 +48,10 @@ interface CrmApi {
     @POST("newService")
     suspend fun newService(@Body req: Service)
 
-    @DELETE("service")
+    @HTTP(method = "DELETE",path = "service", hasBody = true)
     suspend fun deleteService(@Body req: IdRequest)
 
-    @POST("Service")
+    @PUT("service")
     suspend fun updateService(@Body req: Service)
 
     //appointment routes

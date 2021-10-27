@@ -1,41 +1,30 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
+import android.view.*
 import androidx.navigation.fragment.findNavController
-import androidx.test.platform.app.InstrumentationRegistry
+import androidx.lifecycle.ViewModelProvider
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentInspectServiceBinding
-import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
+import no.usn.gruppe4.crmwebappandroid.models.IdRequest
+import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
-import android.widget.TextView
-import androidx.core.content.PackageManagerCompat.LOG_TAG
-
-import android.content.DialogInterface
-
-import android.text.Html
-import android.util.Log
-import androidx.core.content.PackageManagerCompat
-import android.R
-import android.graphics.Color.green
-import android.widget.Button
-
-import androidx.core.content.ContextCompat
+import no.usn.gruppe4.crmwebappandroid.models.service.ServiceViewModel
 
 class InspectServiceFragment : Fragment() {
 
     lateinit var binding : FragmentInspectServiceBinding
     lateinit var service : Service
+    lateinit var serviceViewModel: ServiceViewModel
+    private var serviceList = kotlin.collections.mutableListOf<Service>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.getParcelable<Service>("service").let { el->
             service = el!!
         }
+        // 2a) serviceViewModel (db)
+        serviceViewModel = ViewModelProvider(this).get(ServiceViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -54,7 +43,11 @@ class InspectServiceFragment : Fragment() {
 
         // Lytter metode som registrerer klikk på btnDelete-knappen
         binding.btnEditAppDelete.setOnClickListener {
-            val builder = AlertDialog.Builder(requireContext())
+
+            val id = service._id
+            serviceViewModel.removeService(IdRequest(id))
+
+            /*val builder = AlertDialog.Builder(requireContext())
             builder.setMessage("Are you sure you want to Delete this Service?")
                 .setCancelable(false)
                 .setPositiveButton("Yes") { dialog, id ->
@@ -71,7 +64,7 @@ class InspectServiceFragment : Fragment() {
             val buttonPositive: Button = alert.getButton(DialogInterface.BUTTON_POSITIVE)
             buttonPositive.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
             val buttonNegative: Button = alert.getButton(DialogInterface.BUTTON_NEGATIVE)
-            buttonNegative.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+            buttonNegative.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))*/
         }
 
         return binding.root

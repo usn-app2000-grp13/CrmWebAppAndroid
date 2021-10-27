@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
 
-private const val TAG  = "EmployeeViewModel"
+const val TAG  = "EmployeeViewModel"
 
 
 class EmployeeViewModel: ViewModel() {
