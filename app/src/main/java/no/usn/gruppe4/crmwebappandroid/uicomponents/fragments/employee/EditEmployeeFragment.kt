@@ -21,7 +21,7 @@ class EditEmployeeFragment : Fragment() {
     lateinit var viewModel: EmployeeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.getParcelable<Employee>("employee").let { el->
+        arguments?.getParcelable<Employee>("employee").let { el ->
             employee = el
         }
     }
@@ -41,13 +41,14 @@ class EditEmployeeFragment : Fragment() {
         binding.txtNeApartment.setText(employee?.address?.apartment)
         binding.txtNePostCode.setText(employee?.address?.postCode)
 
-        binding.neCancel.setOnClickListener{
+        binding.neCancel.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("employee", employee)
             findNavController().navigate(
-            R.id.action_editEmployeeFragment_to_employeeCard,bundle
-        )}
-        binding.neSubmit.setOnClickListener{
+                R.id.action_editEmployeeFragment_to_employeeCard, bundle
+            )
+        }
+        binding.neSubmit.setOnClickListener {
             viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
             val firstname = binding.txtNeFirstName.text?.toString()
             val lastname = binding.txtNeLastName.text?.toString()
@@ -60,19 +61,24 @@ class EditEmployeeFragment : Fragment() {
             val apartment = binding.txtNeApartment.text?.toString()
             val postCode = binding.txtNePostCode.text?.toString()
 
-            val newAddress = Address(postArea = postArea, apartment = apartment,
-                postCode = postCode, street = street, streetNumber = streetNumber,)
+            val newAddress = Address(
+                postArea = postArea, apartment = apartment,
+                postCode = postCode, street = street, streetNumber = streetNumber,
+            )
 
-            val newEmployee = Employee(_id = employee?._id, firstname = firstname, lastname = lastname,
+            val newEmployee = Employee(
+                _id = employee?._id, firstname = firstname, lastname = lastname,
                 phone = phone,
                 email = email, password = password, address = newAddress, active = true,
                 __v = employee?.__v, _vendor = employee?._vendor, createdAt = employee?.createdAt,
-                level = employee?.level, updatedAt = null)
-        viewModel.alterEmployee(newEmployee)
+                level = employee?.level, updatedAt = null
+            )
+            viewModel.alterEmployee(newEmployee)
             val bundle = Bundle()
             bundle.putParcelable("employee", newEmployee)
             findNavController().navigate(
-                R.id.action_editEmployeeFragment_to_employeeCard,bundle)
+                R.id.action_editEmployeeFragment_to_employeeCard, bundle
+            )
         }
 
 
