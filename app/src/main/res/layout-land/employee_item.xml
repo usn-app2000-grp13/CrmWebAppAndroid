@@ -7,9 +7,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardBackgroundColor="?attr/colorSecondary">
-
+        android:layout_margin="8dp">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,8 +48,18 @@
                 android:textSize="24sp"
                 app:layout_constraintStart_toEndOf="@+id/calItemLastname"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/calItemEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="asdf@test.sd"
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@+id/calItemPhone"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>
-
 

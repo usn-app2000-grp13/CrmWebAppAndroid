@@ -78,12 +78,9 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
         adapter.setOnItemClickListener(object: AppointmentAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
-                /*
                 val bundle = Bundle()
-                bundle.putString("appointment", appointmentList[position]._id)
+                bundle.putParcelable("appointment", appointmentList[position])
                 findNavController().navigate(R.id.action_calenderFragment_to_appointmentClicked, bundle)
-
-                 */
             }
         })
 

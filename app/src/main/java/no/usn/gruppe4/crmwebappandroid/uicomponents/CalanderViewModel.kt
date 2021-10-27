@@ -39,7 +39,14 @@ class CalanderViewModel: ViewModel() {
     val date: LiveData<Date>
         get() = _date
 
+    private val _curAppointment: MutableLiveData<Appointment.newAppointment> = MutableLiveData()
+    val curAppointment: LiveData<Appointment.newAppointment>
+        get() = _curAppointment
 
+
+    fun setCurAppointment(app: Appointment.newAppointment){
+        _curAppointment.value = app
+    }
     fun getMyAppointmentsDate(_id: String, milles: Long){
         viewModelScope.launch {
             try {
@@ -52,7 +59,7 @@ class CalanderViewModel: ViewModel() {
         }
     }
 
-    fun newAppointment(appointment: Appointment){
+    fun newAppointment(appointment: Appointment.newAppointment){
         viewModelScope.launch {
             try{
                 RetrofitInstance.api.addAppointment(appointment)

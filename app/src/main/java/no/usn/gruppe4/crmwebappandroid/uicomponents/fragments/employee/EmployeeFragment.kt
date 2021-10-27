@@ -21,7 +21,11 @@ class EmployeeFragment : Fragment() {
     lateinit var viewModel: EmployeeViewModel
     lateinit var binding: FragmentEmployeeBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         binding = FragmentEmployeeBinding.inflate(inflater)
         //val myDataset = getEmployeeList()
@@ -40,7 +44,7 @@ class EmployeeFragment : Fragment() {
         })
 
         binding.empRecyclerView.adapter = adapter
-        adapter.setOnItemClickListener(object: EmployeeAdapter.OnItemClickListener{
+        adapter.setOnItemClickListener(object : EmployeeAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 val bundle = Bundle()
                 bundle.putParcelable("employee", employeeList[position])

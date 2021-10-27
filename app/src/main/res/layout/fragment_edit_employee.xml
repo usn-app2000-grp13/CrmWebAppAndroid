@@ -2,209 +2,205 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
 
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/neFirstName"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/hintFirstName"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNeFirstName"
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/neFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
+                    android:hint="@string/hintFirstName"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNeFirstName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/neLastName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/hintLastName"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNeLastName"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/neLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
+                    android:hint="@string/hintLastName"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNeLastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/nePhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/hintPhone"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNePhone"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nePhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPhonetic" />
+                    android:hint="@string/hintPhone"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNePhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPhonetic" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/neEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/hintEmail"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNeEmail"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/neEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
+                    android:hint="@string/hintEmail"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNeEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress" />
 
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/nePassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/hintPass"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNePassword"
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/neStreet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:hint="@string/hintStreet"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNeStreet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
 
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/neStreet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Street"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNeStreet"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/neStreetNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType= "text"/>
+                    android:hint="@string/hint_street_number"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNeStreetNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
 
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/neStreetNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Street Number"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNeStreetNumber"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nePostArea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType= "text"/>
+                    android:hint="@string/hintPostArea"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNePostArea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/nePostArea"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Post Area"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNePostArea"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nePostCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType= "text"/>
+                    android:hint="@string/hintPostCode"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height">
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/nePostCode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Post Code"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNePostCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNePostCode"
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/neApartment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType= "text"/>
+                    android:hint="@string/hintApartment"
+                    android:maxWidth="@dimen/custom_max_width"
+                    android:minWidth="@dimen/custom_min_width"
+                    android:minHeight="@dimen/custom_min_height">
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/neApartment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Apartment"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNeApartment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNeApartment"
+                <Button
+                    android:id="@+id/neSubmit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType= "text"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:text="@string/btnSubmit" />
 
-            <Button
-                android:id="@+id/neSubmit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="submit" />
-
-            <Button
-                android:id="@+id/neCancel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="cancel" />
+                <Button
+                    android:id="@+id/neCancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btnCancel" />
 
 
-        </LinearLayout>
+            </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

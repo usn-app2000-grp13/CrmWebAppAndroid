@@ -63,12 +63,12 @@ interface CrmApi {
     suspend fun getAppointments(): OneAppointmentResponse
 
     @POST("newAppointment")
-    suspend fun addAppointment(@Body req: Appointment)
+    suspend fun addAppointment(@Body req: Appointment.newAppointment)
 
     @PUT("appointment")
     suspend fun updateAppointment(@Body req: Appointment)
 
-    @DELETE("appointment")
+    @HTTP(method = "DELETE",path = "appointment", hasBody = true)
     suspend fun deleteAppointment(@Body req: IdRequest)
 
 
@@ -80,7 +80,7 @@ interface CrmApi {
     @PUT("employeeself/todo")
     suspend fun addTodo(@Body req: Todo)
 
-    @DELETE("employee/todo")
+    @HTTP(method = "DELETE",path = "employee/todo", hasBody = true)
     suspend fun deleteTodo(@Body req: IdRequest)
 
     @PUT("employee/todo/completed")
@@ -94,6 +94,9 @@ interface CrmApi {
     @POST("newEmployee")
     suspend fun postEmployees(@Body req: Employee): EmployeeResponseNoArray
 
+    //Retrofit seems to think body for delete is not a thing,
+    //it is however so on our api, so need to write the delete somewhat differently.
+    //https://stackoverflow.com/questions/37942474/delete-method-is-not-supportingnon-body-http-method-cannot-contain-body-or-t
     @HTTP(method = "DELETE",path = "employee", hasBody = true)
     suspend fun deleteEmployees(@Body req: EmployeeViewModel.DeleteEmployee): EmployeeResponseNoArray
 

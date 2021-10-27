@@ -333,7 +333,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:clickable="false"
-                    android:hint="@string/hintAppartment"
+                    android:hint="@string/hintApartment"
                     android:minWidth="100dp"
                     app:boxBackgroundColor="@color/white">
 

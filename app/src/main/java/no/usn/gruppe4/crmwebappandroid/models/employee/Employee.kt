@@ -19,4 +19,7 @@ data class Employee (
     val address: Address?,
     val password: String?,
     val __v: Int?): Parcelable {
+    override fun toString(): String {
+        return "$firstname $lastname"
+    }
 }
