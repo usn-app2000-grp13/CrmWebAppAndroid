@@ -54,7 +54,7 @@ class EditEmployeeFragment : Fragment() {
             val lastname = binding.txtNeLastName.text?.toString()
             val phone = binding.txtNePhone.text?.toString()
             val email = binding.txtNeEmail.text?.toString()
-            val password = binding.txtNePassword.text?.toString()
+            //val password = binding.txtNePassword.text?.toString()
             val street = binding.txtNeStreet.text?.toString()
             val streetNumber = binding.txtNeStreetNumber.text?.toString()
             val postArea = binding.txtNePostArea.text?.toString()
@@ -69,7 +69,7 @@ class EditEmployeeFragment : Fragment() {
             val newEmployee = Employee(
                 _id = employee?._id, firstname = firstname, lastname = lastname,
                 phone = phone,
-                email = email, password = password, address = newAddress, active = true,
+                email = email, password = null, address = newAddress, active = true,
                 __v = employee?.__v, _vendor = employee?._vendor, createdAt = employee?.createdAt,
                 level = employee?.level, updatedAt = null
             )

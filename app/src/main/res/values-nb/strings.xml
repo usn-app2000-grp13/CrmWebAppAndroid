@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">CrmWebAppAndroid</string>
+    <string name="hintEmail">Epost</string>
+    <string name="hintPass">Passord</string>
+    <string name="btnLoginTxt">Login</string>
+    <string name="BtnNewCompanyTxt">Nytt selskap</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="FragmentCalenderName">Kalender</string>
+    <string name="fragmentCustomerName">Kunder</string>
+
+    <string name="calender">Kalender</string>
+    <string name="todo">Å gjøre</string>
+    <string name="customer">Kunder</string>
+    <string name="employee">Ansatte</string>
+    <string name="service">Tjenester</string>
+    <string name="hintDate">Dato</string>
+    <string name="hintTime">Tid</string>
+    <string name="hintFirstName">Fornavn</string>
+    <string name="hintLastName">Etternavn</string>
+    <string name="hintPhone">Telefon</string>
+    <string name="hintDuration">Lengde</string>
+    <string name="hintComment">Kommentar</string>
+    <string name="newAppointment">Ny avtale</string>
+    <string name="btnAdd">Legg til</string>
+    <string name="btnUpdate">Oppdater</string>
+    <string name="btnDelete">Slett</string>
+    <string name="AppointmentCard">Tjeneste Oversikt</string>
+    <string name="newCustomer">Ny Kunde</string>
+    <string name="btnCancel">Avbryt</string>
+    <string name="btnSubmit">Send Inn</string>
+    <string name="settings">Alternativ</string>
+    <string name="hintStreetnumber">Nr</string>
+    <string name="hintPostCode">Post Kode</string>
+    <string name="hintpostarea">Post Ommråde</string>
+    <string name="hintApartment">Leilighet</string>
+    <string name="hintBirthday">Bursdag</string>
+    <string name="Firstname">Fornavn</string>
+    <string name="Lastname">Etternavn</string>
+    <string name="Email">Epost</string>
+    <string name="Phone">Telefon</string>
+    <string name="Level">Nivå</string>
+    <string name="Address">Addresse</string>
+    <string name="hintStreet">Gate</string>
+    <string name="hint_street_number">Gate Nummer</string>
+    <string name="hintPostArea">Post Ommråde</string>
+
+
+
+
+</resources>

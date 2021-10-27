@@ -29,12 +29,20 @@
     <string name="btnCancel">Cancel</string>
     <string name="btnSubmit">Submit</string>
     <string name="settings">Settings</string>
-    <string name="hintStreet">Street</string>
     <string name="hintStreetnumber">Nr</string>
-    <string name="hintPostCode">PostCode</string>
-    <string name="hintpostarea">PostArea</string>
-    <string name="hintAppartment">Apt. Nr.</string>
+    <string name="hintPostCode">Post Code</string>
+    <string name="hintpostarea">Post Area</string>
+    <string name="hintApartment">Apt. Nr.</string>
     <string name="hintBirthday">Birthday</string>
+    <string name="Firstname">Firstname</string>
+    <string name="Lastname">Lastname</string>
+    <string name="Email">Email</string>
+    <string name="Phone">Phone</string>
+    <string name="Level">Level</string>
+    <string name="Address">Address</string>
+    <string name="hintStreet">Street</string>
+    <string name="hint_street_number">Street Number</string>
+    <string name="hintPostArea">Post Area</string>
 
     <string-array name="services">
         <item>HairCut Adult</item>

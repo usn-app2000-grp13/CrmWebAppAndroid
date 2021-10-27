@@ -10,15 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:contentDescription="background image of circle"
-            android:id="@+id/imageView4"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
-            android:src="@drawable/bgcircle"
-            tools:ignore="ImageContrastCheck,MissingConstraints"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="121dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/empRecyclerView"
