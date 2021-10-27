@@ -15,7 +15,7 @@ private const val TAG = "LoginViewModel"
 
 class LoginViewModel : ViewModel() {
 
-    private val _logged: MutableLiveData<Boolean> = MutableLiveData()
+    private val _logged: MutableLiveData<Boolean> = MutableLiveData(false)
     val logged: LiveData<Boolean>
         get() = _logged
 
@@ -23,22 +23,25 @@ class LoginViewModel : ViewModel() {
     val session: LiveData<SessionResponse.Data>
         get() = _session
 
+    private val _status: MutableLiveData<Boolean> = MutableLiveData(true)
+    val status: LiveData<Boolean>
+        get() = _status
+
 
     fun loginCall(req: LoginRequest){
         viewModelScope.launch {
             try {
+                _status.value = false
                 val request = LoginRequest("test", "test@test.tes")
                 val data = RetrofitInstance.api.loginUser(request)
                 _session.value = data.data
                 Log.i(TAG, "login data: $data")
+                _status.value = true
                 _logged.value = true
             }catch (e: Exception){
-
+                Log.i(TAG, "login Error: $e")
+                _status.value = true
             }
         }
-    }
-
-    init {
-        _logged.value = false
     }
 }
