@@ -2,210 +2,258 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="20dp" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".tabviewTest.fragment1"
-            android:layout_margin="20dp"
-            android:gravity="center">
-
-
-            <TextView
-                android:id="@+id/TvAppointmentInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="Appointment info"
-                android:textSize="25sp"
-                android:layout_marginTop="50dp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <RelativeLayout
-                android:id="@+id/dateTimeContainer"
+                android:id="@+id/mainContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/TvAppointmentInfo"
-                android:gravity="center">
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                tools:context=".tabviewTest.fragment1">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tfDate"
+
+                <TextView
+                    android:id="@+id/TvAppointmentInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_toLeftOf="@+id/tfTime"
-                    android:clickable="false"
-                    app:endIconMode="custom"
-                    app:endIconDrawable="@drawable/ic_baseline_date_range_24"
-                    android:hint="Date"
-                    app:boxBackgroundColor="@color/white">
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:text="Appointment info"
+                    android:textSize="25sp" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtDate"
+                <RelativeLayout
+                    android:id="@+id/dateTimeContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/TvAppointmentInfo"
+                    android:gravity="center">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toLeftOf="@+id/tfTime"
+                        android:clickable="false"
+                        android:hint="Date"
+                        app:boxBackgroundColor="@color/white"
+                        app:endIconDrawable="@drawable/ic_baseline_date_range_24"
+                        app:endIconMode="custom">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:text="01/01/1999" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:clickable="false"
+                        android:hint="Time"
+                        app:boxBackgroundColor="@color/white"
+                        app:endIconDrawable="@drawable/ic_baseline_access_time_24"
+                        app:endIconMode="custom">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:text="15:40" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/CustomerContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dateTimeContainer"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/TvCustomer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:text="Customers"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:id="@+id/listCustomer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/TvCustomer"
+                        android:gravity="center"
+                        android:orientation="vertical" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ServiceContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/CustomerContainer"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/TvService"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:text="Services"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:id="@+id/listService"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/TvService"
+                        android:gravity="center"
+                        android:orientation="vertical" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/employeeContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ServiceContainer"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/TvEmployee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:text="Employees"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ListEmployee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/TvEmployee"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/TvDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/employeeContainer"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:text="Notes"
+                    android:textSize="25sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tfDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TvDescription"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="20dp"
+                    android:clickable="false"
+                    android:hint="Extra Notes"
+                    app:boxBackgroundColor="@color/white">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
                         android:clickable="false"
-                        android:cursorVisible="false"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:text="01/01/1999" />
+                        android:gravity="top"
+                        android:inputType="textMultiLine"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tfTime"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:clickable="false"
-                    app:endIconMode="custom"
-                    app:endIconDrawable="@drawable/ic_baseline_access_time_24"
-                    android:hint="Time"
-                    app:boxBackgroundColor="@color/white">
+                    android:layout_below="@+id/tfDescription"
+                    android:padding="20dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtTime"
-                        android:layout_width="match_parent"
+                    <Button
+                        android:id="@+id/btnEditAppointment"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:text="15:40" />
+                        android:layout_alignParentEnd="true"
+                        android:text="Edit"
+                        android:textColor="?attr/colorOnPrimarySurface"
+                        app:icon="@drawable/ic_baseline_create_24"
+                        app:iconTint="@android:color/primary_text_dark" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    <Button
+                        android:id="@+id/btnDeleteAppointment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="Delete"
+                        android:textColor="@color/design_default_color_on_primary"
+                        app:icon="@drawable/ic_baseline_delete_24"
+                        app:iconTint="@color/design_default_color_on_primary" />
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/CustomerContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/dateTimeContainer"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/TvCustomer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:text="Customers"
-                    android:textSize="20sp" />
-
-                <LinearLayout
-                    android:id="@+id/listCustomer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/TvCustomer"
-                    android:gravity="center"
-                    android:orientation="vertical" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/ServiceContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/CustomerContainer"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/TvService"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:text="Services"
-                    android:textSize="20sp" />
-
-                <LinearLayout
-                    android:id="@+id/listService"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/TvService"
-                    android:gravity="center"
-                    android:orientation="vertical" />
+                </RelativeLayout>
 
             </RelativeLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <RelativeLayout
-                android:id="@+id/employeeContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ServiceContainer"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/TvEmployee"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:text="Employees"
-                    android:textSize="20sp" />
-
-                <LinearLayout
-                    android:id="@+id/ListEmployee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/TvEmployee"
-                    android:gravity="center"
-                    android:orientation="vertical" />
-
-
-            </RelativeLayout>
-
-
-            <TextView
-                android:id="@+id/TvDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Notes"
-                android:textSize="25sp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/employeeContainer"
-                android:layout_marginTop="15dp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tfDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Extra Notes"
-                android:clickable="false"
-                android:layout_below="@+id/TvDescription"
-                android:layout_margin="10dp"
-                app:boxBackgroundColor="@color/white"
-                android:layout_marginTop="20dp"
-                >
-
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:gravity="top"
-                    android:overScrollMode="always"
-                    android:clickable="false"
-                    android:inputType="textMultiLine"
-                    android:scrollbarStyle="insideInset"
-                    android:scrollbars="vertical"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </RelativeLayout>
-    </ScrollView>
 </layout>

@@ -12,12 +12,16 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.VisibleForTesting
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentAppointmentClickedBinding
+import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Datasource
+import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,12 +32,9 @@ class AppointmentClicked : Fragment() {
 
     private var TAG = "AppointmentClicked"
     private var appointment: Appointment? = null
-    lateinit var textDate: TextView
-    lateinit var textTime: TextView
-    lateinit var textDuration: TextView
-    lateinit var textComment: TextView
     lateinit var binding: FragmentAppointmentClickedBinding
-    var editMode = false;
+    private lateinit var viewModel: CalanderViewModel
+    private var deleted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,18 +43,35 @@ class AppointmentClicked : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAppointmentClickedBinding.inflate(inflater)
+        viewModel = ViewModelProvider(this).get(CalanderViewModel::class.java)
+
         Log.i(TAG, "appointment Received: ${appointment.toString()}")
 
         binding.txtTime.setText(timeIndexFormat(appointment?.timeindex!!))
         binding.txtDate.setText(SimpleDateFormat("yyyy-MM-dd").format(appointment?.date))
         binding.txtDescription.setText(appointment?.comment.toString())
 
+        binding.btnDeleteAppointment.setOnClickListener {
+            viewModel.removeAppointment(IdRequest(appointment?._id))
+            deleted = true
+        }
+
         populateLists()
+
+        viewModel.status.observe(viewLifecycleOwner, {
+            if (it){
+                if (deleted){
+                    findNavController().navigate(R.id.action_appointmentClicked_to_calenderFragment)
+                }
+                binding.mainContainer.visibility = View.VISIBLE
+                binding.progressBar2.visibility = View.GONE
+            }else{
+                binding.mainContainer.visibility = View.GONE
+                binding.progressBar2.visibility = View.VISIBLE
+            }
+        })
 
         // Inflate the layout for this fragment
         return binding.root

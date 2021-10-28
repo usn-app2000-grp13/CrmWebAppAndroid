@@ -43,6 +43,10 @@ class CalanderViewModel: ViewModel() {
     val curAppointment: LiveData<Appointment.newAppointment>
         get() = _curAppointment
 
+    private val _status: MutableLiveData<Boolean> = MutableLiveData(true)
+    val status: LiveData<Boolean>
+        get() = _status
+
 
     fun setCurAppointment(app: Appointment.newAppointment){
         _curAppointment.value = app
@@ -73,8 +77,10 @@ class CalanderViewModel: ViewModel() {
     fun removeAppointment(idRequest: IdRequest){
         viewModelScope.launch {
             try{
+                _status.value = false
                 RetrofitInstance.api.deleteAppointment(idRequest)
                 Log.i(TAG, "Appointment removed")
+                _status.value = true
             }catch (e : Exception){
                 Log.i(TAG, "Error: $e")
             }
