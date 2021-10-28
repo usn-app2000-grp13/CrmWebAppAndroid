@@ -31,7 +31,6 @@ class NewServiceFragment : Fragment() {
             val price: String =  binding.editAppTxtPrice.text.toString()
             val service = Service("null",description,duration,name,price)
             serviceViewModel.newService(service)
-            //findNavController().popBackStack()
         }
 
         binding.btnCancel.setOnClickListener{

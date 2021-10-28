@@ -15,19 +15,28 @@ private const val TAG = "ServiceViewModel"
 
 class ServiceViewModel: ViewModel() {
 
+    //private boolea verdi som sier om vi må vente med å gå videre til databasen er oppdatert
     private val _adding: MutableLiveData<Boolean> = MutableLiveData()
+
+    // kopi som er tilgjengelig for andre klasser
     val adding: LiveData<Boolean>
         get() = _adding
 
-    // _services er ikke open til andre klasser
+    // _services er private og ikke tilgjengelig for andre klasser
     private val _services: MutableLiveData<List<Service>> = MutableLiveData()
-    // en kopi som er open til andre klasser
+
+    // kopi som er tilgjengelig for andre klasser
     val services: LiveData<List<Service>>
         get() = _services
 
-    /**
-     * getServices henter services fra database og legger dem i _services liste
-     */
+    // Denne metoden kalles når vi går inn på et fragment.
+    // adding blir da sett til false. De metodene under som skal endre noe i databasen setter adding til true når
+    // database endringen er ferdig. Da kan brukeren tryggt bli sendt videre.
+    fun newAction(){
+        _adding.value = false;
+    }
+
+    // henter services fra databasen og legger dem i _services listen
     fun getServices(){
         viewModelScope.launch {
             // gjør database call og setter over json til objekter og legger disse i en variabel
@@ -39,9 +48,7 @@ class ServiceViewModel: ViewModel() {
         }
     }
 
-    /**
-     * add a new service
-     */
+    // add a new service
     fun newService(item: Service){
         viewModelScope.launch {
             RetrofitInstance.api.newService(item)
@@ -49,6 +56,7 @@ class ServiceViewModel: ViewModel() {
         }
     }
 
+    // remove service
     fun removeService(idRequest: IdRequest){
         viewModelScope.launch {
             try{
@@ -60,6 +68,7 @@ class ServiceViewModel: ViewModel() {
         }
     }
 
+    // update service
     fun updateService(service: Service){
         viewModelScope.launch {
             try{
@@ -72,10 +81,4 @@ class ServiceViewModel: ViewModel() {
         }
     }
 
-    fun newAction(){
-        _adding.value = false;
-    }
-
-    //test
-    data class DeleteService(val id: String?)
 }

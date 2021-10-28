@@ -11,10 +11,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".uicomponents.fragments.services.AppointmentClicked"
             android:orientation="vertical"
             android:padding="25dp"
-            android:paddingTop="25dp" >
+            android:paddingTop="25dp"
+            tools:context=".uicomponents.fragments.services.EditServiceFragment">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppTitle"

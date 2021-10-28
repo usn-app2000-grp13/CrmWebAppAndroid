@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- Trygve -->
+    <style name="textInputLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxWidth">@dimen/custom_max_width</item>
+        <item name="android:minWidth">@dimen/custom_min_width</item>
+        <item name="android:minHeight">@dimen/custom_min_height</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:paddingStart">76dp</item>
+    </style>
+
+    <style name="cardTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="cardValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="btnFrameLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_marginBottom">212dp</item>
+        <item name="android:padding">25dp</item>
+    </style>
+
+
+</resources>

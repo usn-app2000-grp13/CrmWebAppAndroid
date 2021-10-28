@@ -18,7 +18,6 @@
     <string name="hintFirstName">Firstname</string>
     <string name="hintLastName">Lastname</string>
     <string name="hintPhone">Phone</string>
-    <string name="hintDuration">Duration</string>
     <string name="hintComment">Comments</string>
     <string name="newAppointment">New appointment</string>
     <string name="btnAdd">Add</string>
@@ -43,6 +42,16 @@
     <string name="hintStreet">Street</string>
     <string name="hint_street_number">Street Number</string>
     <string name="hintPostArea">Post Area</string>
+
+    <string name="hintTitle">Title</string>
+    <string name="hintDescription">Description</string>
+    <string name="hintDuration">Duration (Minutes)</string>
+    <string name="hintPrice">Price (NOK)</string>
+
+    <string name="testTitle">testTitle</string>
+    <string name="testDescription">testDescription</string>
+    <string name="testDuration">10</string>
+    <string name="testPrice">55</string>
 
     <string-array name="services">
         <item>HairCut Adult</item>

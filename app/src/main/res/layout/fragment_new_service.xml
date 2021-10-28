@@ -11,66 +11,51 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".uicomponents.fragments.services.AppointmentClicked"
             android:orientation="vertical"
             android:padding="25dp"
-            android:paddingTop="25dp" >
+            android:paddingTop="25dp"
+            tools:context=".uicomponents.fragments.services.NewServiceFragment">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Service title"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
+                android:hint="@string/hintTitle"
+                app:endIconMode="clear_text"
+                style="@style/textInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="tulleTitle"
+                    android:text="@string/testTitle"
                     android:inputType="time" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Description"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
+                android:hint="@string/hintDescription"
+                app:endIconMode="clear_text"
+                style="@style/textInputLayout" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="tulleDescription"
+                    android:text="@string/testDescription"
                     android:inputType="text|textMultiLine" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppDuration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Duration (Minutes)"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
+                android:hint="@string/hintDuration"
+                app:endIconMode="clear_text"
+                style="@style/textInputLayout" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtDuration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="99"
+                    android:text="@string/testDuration"
                     android:inputType="time" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,18 +63,15 @@
                 android:id="@+id/editAppPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Price (NOK)"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
+                android:hint="@string/hintPrice"
+                app:endIconMode="clear_text"
+                style="@style/textInputLayout" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="88"
+                    android:text="@string/testPrice"
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,7 +94,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:text="@string/btnSubmit" />
-
             </FrameLayout>
 
         </LinearLayout>

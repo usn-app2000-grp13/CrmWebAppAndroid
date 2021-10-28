@@ -2,7 +2,6 @@ package no.usn.gruppe4.crmwebappandroid.retrofit
 
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
-import no.usn.gruppe4.crmwebappandroid.models.appointment.AppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.appointment.OneAppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerResponse
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
@@ -14,7 +13,6 @@ import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
 import no.usn.gruppe4.crmwebappandroid.models.login.Test
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.models.service.ServiceResponse
-import no.usn.gruppe4.crmwebappandroid.models.service.ServiceResponseNoArray
 import no.usn.gruppe4.crmwebappandroid.models.service.ServiceViewModel
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoResponse

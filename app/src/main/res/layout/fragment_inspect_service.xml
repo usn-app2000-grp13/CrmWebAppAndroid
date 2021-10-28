@@ -1,170 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".uicomponents.fragments.services.InspectServiceFragment">
+        android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clTitle"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:padding="16dp"
-            android:paddingStart="76dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Title"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/tvTitleValue"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvTitleValue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Haircut Adult"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-            />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clDescription"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:padding="16dp"
-            android:paddingStart="76dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clTitle">
-
-            <TextView
-                android:id="@+id/tvDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Description"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/tvDescriptionValue"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvDescriptionValue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Standard Haircut for adults"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-            />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clDuration"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:padding="16dp"
-            android:paddingStart="76dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clDescription">
-
-            <TextView
-                android:id="@+id/tvDuration"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Duration"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/tvDurationValue"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvDurationValue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="30 minutes"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-            />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clPrice"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:padding="16dp"
-            android:paddingStart="76dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clDuration">
-
-            <TextView
-                android:id="@+id/tvPrice"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Price"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/tvPriceValue"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvPriceValue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="400 kr"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-            />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginBottom="212dp"
-            android:padding="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:orientation="vertical"
+            tools:context=".uicomponents.fragments.services.InspectServiceFragment">
 
-            <Button
-                android:id="@+id/btnEditAppEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:text="@string/btnUpdate"
-                app:icon="@drawable/ic_baseline_create_24" />
+            <LinearLayout
+                android:id="@+id/cardTitle"
+                android:orientation="vertical"
+                style="@style/card">
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:text="@string/hintTitle"
+                    style="@style/cardTitle" />
+                <TextView
+                    android:id="@+id/tvTitleValue"
+                    android:text="@string/hintTitle"
+                    style="@style/cardValue" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/btnEditAppDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="@string/btnDelete"
-                app:icon="@drawable/ic_baseline_delete_24" />
+            <LinearLayout
+                android:id="@+id/cardDescription"
+                android:orientation="vertical"
+                style="@style/card">
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:text="@string/hintDescription"
+                    style="@style/cardTitle" />
+                <TextView
+                    android:id="@+id/tvDescriptionValue"
+                    android:text="@string/hintDescription"
+                    style="@style/cardValue" />
+            </LinearLayout>
 
-        </FrameLayout>
+        <LinearLayout
+            android:id="@+id/cardDuration"
+            android:orientation="vertical"
+            style="@style/card">
+                <TextView
+                    android:id="@+id/tvDuration"
+                    android:text="@string/hintDuration"
+                    style="@style/cardTitle" />
+                <TextView
+                    android:id="@+id/tvDurationValue"
+                    android:text="@string/hintDuration"
+                    style="@style/cardValue" />
+            </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/cardPrice"
+            android:orientation="vertical"
+            style="@style/card">
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:text="@string/hintPrice"
+                    style="@style/cardTitle" />
+                <TextView
+                    android:id="@+id/tvPriceValue"
+                    android:text="@string/hintPrice"
+                    style="@style/cardValue" />
+            </LinearLayout>
 
+            <FrameLayout
+                style="@style/btnFrameLayout">
+
+                <Button
+                    android:id="@+id/btnEditAppEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="@string/btnUpdate" />
+
+                <Button
+                    android:id="@+id/btnEditAppDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="@string/btnDelete" />
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </layout>
