@@ -10,6 +10,7 @@ import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeResponse
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeResponseNoArray
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
 import no.usn.gruppe4.crmwebappandroid.models.login.LoginRequest
+import no.usn.gruppe4.crmwebappandroid.models.login.ResetPasswordRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
 import no.usn.gruppe4.crmwebappandroid.models.login.Test
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
@@ -36,6 +37,9 @@ interface CrmApi {
 
     @POST("login")
     suspend fun loginUser(@Body req: LoginRequest): SessionResponse
+
+    @POST("resetPassword")
+    suspend fun resetPassword(@Body req: ResetPasswordRequest)
 
     //service routes
 
