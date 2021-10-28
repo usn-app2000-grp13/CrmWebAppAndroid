@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.VisibleForTesting
 import androidx.core.view.isVisible
+import androidx.core.view.marginLeft
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
@@ -84,20 +85,23 @@ class AppointmentClicked : Fragment() {
         binding.ListEmployee.removeAllViews()
         for (i in appointment?.customers!!){
             var customerElement = TextView(requireContext())
-            customerElement.text = "${i._customer?.firstname} ${i._customer?.lastname}"
-            customerElement.textSize = 25.0f
+            customerElement.text = "- ${i._customer?.firstname} ${i._customer?.lastname}"
+            customerElement.textSize = 15.0f
+            customerElement.setPadding(30,10,10,10)
             binding.listCustomer.addView(customerElement)
         }
         for (i in appointment?.employees!!){
             var employeesElement = TextView(requireContext())
-            employeesElement.text = "${i._employee?.firstname} ${i._employee?.lastname}"
-            employeesElement.textSize = 25.0f
+            employeesElement.text = "- ${i._employee?.firstname} ${i._employee?.lastname}"
+            employeesElement.textSize = 15.0f
+            employeesElement.setPadding(30,10,10,10)
             binding.ListEmployee.addView(employeesElement)
         }
         for (i in appointment?.services!!){
             var serviceElement = TextView(requireContext())
-            serviceElement.text = "${i._service?.name}"
-            serviceElement.textSize = 25.0f
+            serviceElement.text = "- ${i._service?.name}"
+            serviceElement.textSize = 15.0f
+            serviceElement.setPadding(30,10,10,10)
             binding.listService.addView(serviceElement)
         }
     }
