@@ -42,6 +42,7 @@
     <string name="hintStreet">Gate</string>
     <string name="hint_street_number">Gate Nummer</string>
     <string name="hintPostArea">Post Ommråde</string>
+    <string name="appointmentinfo">Avtale Info</string>
 
     <string name="hintTitle">Tittel</string>
     <string name="hintDescription">Beskrivelse</string>

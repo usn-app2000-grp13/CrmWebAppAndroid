@@ -9,4 +9,8 @@ data class Service(
     var duration: Int?,
     var name: String?,
     var price: String?,
-) : Parcelable
+) : Parcelable {
+    override fun toString(): String {
+        return "$name"
+    }
+}

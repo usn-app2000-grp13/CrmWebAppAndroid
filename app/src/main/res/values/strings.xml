@@ -42,6 +42,7 @@
     <string name="hintStreet">Street</string>
     <string name="hint_street_number">Street Number</string>
     <string name="hintPostArea">Post Area</string>
+    <string name="appointmentinfo">Appointment Info</string>
 
     <string name="hintTitle">Title</string>
     <string name="hintDescription">Description</string>

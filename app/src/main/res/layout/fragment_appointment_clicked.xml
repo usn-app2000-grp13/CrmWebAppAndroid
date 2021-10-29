@@ -11,9 +11,11 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="20dp" />
+            android:visibility="gone"/>
 
         <ScrollView
             android:id="@+id/scrollView2"
@@ -22,14 +24,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="visible">
 
             <RelativeLayout
                 android:id="@+id/mainContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
-                android:gravity="center"
                 tools:context=".tabviewTest.fragment1">
 
 
@@ -39,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="50dp"
-                    android:text="Appointment info"
+                    android:text="@string/appointmentinfo"
                     android:textSize="25sp" />
 
                 <RelativeLayout
@@ -60,7 +62,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toLeftOf="@+id/tfTime"
                         android:clickable="false"
-                        android:hint="Date"
+                        android:hint="@string/hintDate"
                         app:boxBackgroundColor="@color/white"
                         app:endIconDrawable="@drawable/ic_baseline_date_range_24"
                         app:endIconMode="custom">
@@ -88,7 +90,7 @@
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
                         android:clickable="false"
-                        android:hint="Time"
+                        android:hint="@string/hintTime"
                         app:boxBackgroundColor="@color/white"
                         app:endIconDrawable="@drawable/ic_baseline_access_time_24"
                         app:endIconMode="custom">
@@ -113,15 +115,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/dateTimeContainer"
-                    android:gravity="center">
+                    android:padding="20dp">
 
                     <TextView
                         android:id="@+id/TvCustomer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
-                        android:text="Customers"
+                        android:text="@string/customer"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -129,6 +130,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/TvCustomer"
+                        android:layout_marginLeft="30dp"
                         android:gravity="center"
                         android:orientation="vertical" />
                 </RelativeLayout>
@@ -138,15 +140,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/CustomerContainer"
-                    android:gravity="center">
+                    android:padding="20dp"
+                    >
 
                     <TextView
                         android:id="@+id/TvService"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
-                        android:text="Services"
+                        android:text="@string/service"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -155,6 +157,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/TvService"
                         android:gravity="center"
+                        android:layout_marginLeft="30dp"
                         android:orientation="vertical" />
 
                 </RelativeLayout>
@@ -164,15 +167,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ServiceContainer"
-                    android:gravity="center">
+                    android:padding="20dp"
+                    >
 
                     <TextView
                         android:id="@+id/TvEmployee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
-                        android:text="Employees"
+                        android:text="@string/employee"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -181,6 +184,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/TvEmployee"
                         android:gravity="center"
+                        android:layout_marginLeft="30dp"
                         android:orientation="vertical" >
 
                     </LinearLayout>
@@ -194,10 +198,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/employeeContainer"
-                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
-                    android:text="Notes"
-                    android:textSize="25sp" />
+                    android:text="@string/hintDescription"
+                    android:textSize="25sp"
+                    android:padding="20dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tfDescription"
@@ -207,7 +211,7 @@
                     android:layout_margin="10dp"
                     android:layout_marginTop="20dp"
                     android:clickable="false"
-                    android:hint="Extra Notes"
+                    android:hint="@string/hintDescription"
                     app:boxBackgroundColor="@color/white">
 
 
