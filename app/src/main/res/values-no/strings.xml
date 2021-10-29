@@ -18,11 +18,10 @@
     <string name="hintFirstName">Fornavn</string>
     <string name="hintLastName">Etternavn</string>
     <string name="hintPhone">Telefon</string>
-    <string name="hintDuration">Lengde</string>
     <string name="hintComment">Kommentar</string>
     <string name="newAppointment">Ny avtale</string>
     <string name="btnAdd">Legg til</string>
-    <string name="btnUpdate">Oppdater</string>
+    <string name="btnApply">Apply</string>
     <string name="btnDelete">Slett</string>
     <string name="AppointmentCard">Tjeneste Oversikt</string>
     <string name="newCustomer">Ny Kunde</string>
@@ -44,7 +43,17 @@
     <string name="hint_street_number">Gate Nummer</string>
     <string name="hintPostArea">Post Ommråde</string>
 
-
-
+    <string name="hintTitle">Tittel</string>
+    <string name="hintDescription">Beskrivelse</string>
+    <string name="hintDuration">Varighet (Minutter)</string>
+    <string name="hintPrice">Pris (NOK)</string>
+    <string name="testTitle">testTittel</string>
+    <string name="testDescription">testBeskrivelse</string>
+    <string name="testDuration">10</string>
+    <string name="testPrice">55</string>
+    <string name="btnEdit">Endre</string>
+    <string name="deleteServiceDialog">Er du sikker på at du vil slette denne tjenesten?</string>
+    <string name="yes">ja</string>
+    <string name="no">nei</string>
 
 </resources>

@@ -39,17 +39,13 @@ class EditServiceFragment : Fragment() {
         binding.editAppTxtPrice.setText(service.price)
 
         // 2b) Update knappen kaller serviceViewModel.updateService(service) (db)
-        binding.btnUpdate.setOnClickListener{
+        binding.btnApply.setOnClickListener{
             service.description = binding.editAppTxtDescription.text.toString()
             service.duration = binding.editAppTxtDuration.text.toString().toInt()
             service.name = binding.editAppTxtTitle.text.toString()
             service.price =  binding.editAppTxtPrice.text.toString()
-
             serviceViewModel.updateService(service)
-
-            val bundle = Bundle()
-            bundle.putParcelable("service",service)
-            findNavController().navigate(R.id.action_editServiceFragment_to_inspectServiceFragment,bundle)
+            findNavController().popBackStack()
         }
 
         // Cancel knappen sender brukeren tilbake

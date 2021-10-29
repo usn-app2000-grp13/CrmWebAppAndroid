@@ -9,110 +9,73 @@
         android:fillViewport="true">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="25dp"
-            android:paddingTop="25dp"
-            tools:context=".uicomponents.fragments.services.EditServiceFragment">
+            tools:context=".uicomponents.fragments.services.EditServiceFragment"
+            style="@style/standardLinearLayout">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Service title"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
-
+                android:hint="@string/hintTitle"
+                app:endIconMode="clear_text"
+                style="@style/textInputLayout">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="This is a service title"
-                    android:inputType="time" />
-
+                    android:text="@string/testTitle"
+                    style="@style/textInputEditText" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Description"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
+                android:hint="@string/hintDescription"
+                app:endIconMode="clear_text"
+                style="@style/textInputLayout" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="This is a description"
-                    android:inputType="text|textMultiLine" />
+                    android:text="@string/testDescription"
+                    android:inputType="text|textMultiLine"
+                    style="@style/textInputEditText" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppDuration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Duration (Minutes)"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
+                android:hint="@string/hintDuration"
+                app:endIconMode="clear_text"
+                style="@style/textInputLayout" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtDuration"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0 min"
-                    android:inputType="time" />
+                    android:text="@string/testDuration"
+                    android:inputType="time"
+                    style="@style/textInputEditText" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Price (NOK)"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
+                android:hint="@string/hintPrice"
+                app:endIconMode="clear_text"
+                style="@style/textInputLayout" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtPrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0 kr"
-                    android:inputType="numberDecimal" />
+                    android:text="@string/testPrice"
+                    android:inputType="numberDecimal"
+                    style="@style/textInputEditText" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:layout_margin="10dp">
-
+                style="@style/btnContainer">
                 <Button
                     android:id="@+id/btnCancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:text="@string/btnCancel"
                     android:layout_gravity="start"
-                    android:text="@string/btnCancel" />
-
+                    style="@style/btn" />
                 <Button
-                    android:id="@+id/btnUpdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/btnApply"
+                    android:text="@string/btnApply"
                     android:layout_gravity="end"
-                    android:text="update" />
-
+                    style="@style/btn" />
             </FrameLayout>
 
         </LinearLayout>

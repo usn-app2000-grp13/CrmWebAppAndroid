@@ -21,7 +21,7 @@
     <string name="hintComment">Comments</string>
     <string name="newAppointment">New appointment</string>
     <string name="btnAdd">Add</string>
-    <string name="btnUpdate">Update</string>
+    <string name="btnApply">Apply</string>
     <string name="btnDelete">Delete</string>
     <string name="AppointmentCard">Appointment Card</string>
     <string name="newCustomer">New Customer</string>
@@ -47,11 +47,14 @@
     <string name="hintDescription">Description</string>
     <string name="hintDuration">Duration (Minutes)</string>
     <string name="hintPrice">Price (NOK)</string>
-
     <string name="testTitle">testTitle</string>
     <string name="testDescription">testDescription</string>
     <string name="testDuration">10</string>
     <string name="testPrice">55</string>
+    <string name="btnEdit">Edit</string>
+    <string name="deleteServiceDialog">Are you sure you want to Delete this service?</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
 
     <string-array name="services">
         <item>HairCut Adult</item>
