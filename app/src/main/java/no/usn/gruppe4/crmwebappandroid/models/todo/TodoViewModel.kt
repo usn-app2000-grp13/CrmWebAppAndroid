@@ -25,6 +25,7 @@ class TodoViewModel: ViewModel() {
             try {
                 val data = RetrofitInstance.api.getTodos()
                 _todo.value = data.data.todos
+                Log.i(TAG,"data: $data")
             }catch (e: Exception){
                 Log.i(TAG,"Error $e")
             }
