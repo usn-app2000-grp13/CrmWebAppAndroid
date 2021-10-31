@@ -5,16 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_todo.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentTodoBinding
+import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoAdapter
+import no.usn.gruppe4.crmwebappandroid.models.todo.TodoViewModel
 
 class TodoFragment : Fragment() {
 
     private lateinit var  binding : FragmentTodoBinding
     private lateinit var todoAdepter: TodoAdapter
+    private var todos =  kotlin.collections.mutableListOf<Todo>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,9 +27,9 @@ class TodoFragment : Fragment() {
 
         binding = FragmentTodoBinding.inflate(inflater)
 
-        var todos: MutableList<Todo> = mutableListOf(Todo("Klippe håret"),
+       /* var todos: MutableList<Todo> = mutableListOf(Todo("Klippe håret"),
             Todo("Trene"),
-            Todo("Vaske doen"))                                                             // Skal ta i mot en liste av todo objekter fra databasen
+            Todo("Vaske doen"))  */                                                           //Skal ta i mot en liste av todo objekter fra databasen
         todoAdepter = TodoAdapter(requireContext(),todos)
         binding.TodoRv.adapter = todoAdepter
         todoAdepter.setOnItemClickListener(object : TodoAdapter.OnItemClickListener{
@@ -43,7 +47,6 @@ class TodoFragment : Fragment() {
                 todoET.text.clear()
             }
         }
-
 
         binding.todoDeleteBT.setOnClickListener {
             todoAdepter.deletedDoneTodos()
