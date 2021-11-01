@@ -38,6 +38,9 @@ interface CrmApi {
     @POST("resetPassword")
     suspend fun resetPassword(@Body req: ResetPasswordRequest)
 
+    @GET("logout")
+    suspend fun logoutUser()
+
     //service routes
 
     //gjør en kall på /api/service route

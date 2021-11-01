@@ -9,13 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_settings.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentSettingsBinding
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Datasource
+import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
+import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginActivity
+import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
 import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
 import java.util.*
 
@@ -24,13 +28,23 @@ class SettingsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
     lateinit var binding: FragmentSettingsBinding
     var editable = false
+    private lateinit var sharedPreferences: SharedPrefInterface
+    private lateinit var viewModel: LoginViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
         binding = FragmentSettingsBinding.inflate(inflater)
 
+        //make link the secure shared preference file
+        sharedPreferences = SecSharePref(requireContext(), "secrets")
+
+        //set the viewModel
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
         binding.btnLogout.setOnClickListener {
+            sharedPreferences.clear()
+            viewModel.logout()
             val i = Intent(requireContext(), LoginActivity::class.java)
             startActivity(i)
         }

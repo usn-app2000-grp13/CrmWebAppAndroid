@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.ConcatAdapter
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCalenderBinding
 import no.usn.gruppe4.crmwebappandroid.models.appointment.*
+import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
+import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 import java.util.*
 
@@ -26,6 +28,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private lateinit var binding: FragmentCalenderBinding
     private val appointmentList = mutableListOf<Appointment>()
     private var selectedDate = Date()
+    private lateinit var sharedPreferences: SharedPrefInterface
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,10 +39,16 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         viewModel = ViewModelProvider(this).get(CalanderViewModel::class.java)
         viewModel.getMyAppointmentsDate("602a7f4891d34d18402f4e44", System.currentTimeMillis())
 
+        sharedPreferences = SecSharePref(requireContext(), "secrets")
+        val username = sharedPreferences.get("name")
+        val id = sharedPreferences.get("id")
+        viewModel.getMyAppointmentsDate(id, System.currentTimeMillis())
         //val myDataset = getAppointmentList()
         val adapter = AppointmentAdapter(requireContext(), appointmentList)
-        val headerAdapter = AppointmentHeaderAdapter(selectedDate)
+        val headerAdapter = AppointmentHeaderAdapter(selectedDate, username)
         val concatAdapter = ConcatAdapter(headerAdapter, adapter)
+
+
 
         binding.recyclerView.adapter = concatAdapter
 

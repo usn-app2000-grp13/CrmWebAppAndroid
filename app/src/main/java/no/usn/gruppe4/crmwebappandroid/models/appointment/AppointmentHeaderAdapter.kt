@@ -13,10 +13,10 @@ import no.usn.gruppe4.crmwebappandroid.R
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class AppointmentHeaderAdapter(date: Date): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AppointmentHeaderAdapter(date: Date, curUser: String): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     @RequiresApi(Build.VERSION_CODES.N)
     var curDate = setCurDate(date)
-    val curEmployee = "Cato"
+    val curEmployee = curUser
 
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val dateTextView: TextView = itemView.findViewById(R.id.apHeader)

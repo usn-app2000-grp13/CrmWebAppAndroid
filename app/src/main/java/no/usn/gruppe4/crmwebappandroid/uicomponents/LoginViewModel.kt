@@ -1,20 +1,18 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents
 
+import android.content.Context
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
-import no.usn.gruppe4.crmwebappandroid.models.login.LoginRequest
-import no.usn.gruppe4.crmwebappandroid.models.login.ResetPasswordRequest
-import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
+import no.usn.gruppe4.crmwebappandroid.models.login.*
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
+import java.lang.IllegalArgumentException
 
 
 private const val TAG = "LoginViewModel"
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel() : ViewModel() {
 
 
     private val _session: MutableLiveData<SessionResponse.Data> = MutableLiveData()
@@ -26,20 +24,26 @@ class LoginViewModel : ViewModel() {
         get() = _status
 
 
-    fun loginCall(req: LoginRequest){
+    fun loginCall(req: LoginRequest): Boolean{
+        var status = false
         viewModelScope.launch {
             try {
                 _status.value = 2
-                val request = LoginRequest("test", "test@test.tes")
-                val data = RetrofitInstance.api.loginUser(request)
+                //val request = LoginRequest("test", "test@test.tes")
+
+                val data = RetrofitInstance.api.loginUser(req)
                 _session.value = data.data
                 Log.i(TAG, "login data: $data")
+                status = true
                 _status.value = 3
+
             }catch (e: Exception){
                 Log.i(TAG, "login Error: $e")
                 _status.value = 1
             }
+
         }
+        return status
     }
 
     fun resetPassword(req: ResetPasswordRequest){
@@ -51,6 +55,16 @@ class LoginViewModel : ViewModel() {
             }catch (e: Exception){
                 Log.i(TAG, "Password Reset Error: $e")
                 _status.value = 1
+            }
+        }
+    }
+
+    fun logout(){
+        viewModelScope.launch {
+            try{
+                RetrofitInstance.api.logoutUser()
+            }catch (e: Exception){
+                Log.i(TAG, e.toString())
             }
         }
     }
