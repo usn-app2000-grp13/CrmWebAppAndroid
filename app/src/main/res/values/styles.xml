@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- standardMaterialCardView -->
+    <style name="standardMaterialCardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/smallMargin</item>
+    </style>
+
     <!-- standardLinearLayout -->
     <style name="standardLinearLayout">
         <item name="android:layout_width">match_parent</item>
@@ -36,6 +43,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="android:paddingBottom">@dimen/smallMargin</item>
     </style>
 
@@ -57,5 +65,21 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <!-- serviceItemCard -->
+    <style name="serviceItemCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:paddingStart">@dimen/largeMargin</item>
+        <item name="android:paddingEnd">0dp</item>
+    </style>
+
+    <style name="serviceItemCardTextView">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 
 </resources>
