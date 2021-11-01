@@ -115,14 +115,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/dateTimeContainer"
-                    android:padding="20dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/layout_backgroundbox"
+                    >
 
                     <TextView
                         android:id="@+id/TvCustomer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/customer"
+                        android:layout_margin="10dp"
+                        android:text="@string/customer_underline"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -140,15 +144,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/CustomerContainer"
-                    android:padding="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/layout_backgroundbox"
                     >
 
                     <TextView
                         android:id="@+id/TvService"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/service"
+                        android:layout_margin="10dp"
+                        android:text="@string/service_underline"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -167,15 +174,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ServiceContainer"
-                    android:padding="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/layout_backgroundbox"
                     >
 
                     <TextView
                         android:id="@+id/TvEmployee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/employee"
+                        android:layout_margin="10dp"
+                        android:text="@string/employee_underline"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -185,53 +195,51 @@
                         android:layout_below="@id/TvEmployee"
                         android:gravity="center"
                         android:layout_marginLeft="30dp"
-                        android:orientation="vertical" >
+                        android:orientation="vertical"
+                        >
 
                     </LinearLayout>
 
 
                 </RelativeLayout>
 
-
-                <TextView
-                    android:id="@+id/TvDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/employeeContainer"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/hintDescription"
-                    android:textSize="25sp"
-                    android:padding="20dp"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tfDescription"
+                <RelativeLayout
+                    android:id="@+id/DescriptionContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/TvDescription"
-                    android:layout_margin="10dp"
-                    android:layout_marginTop="20dp"
-                    android:clickable="false"
-                    android:hint="@string/hintDescription"
-                    app:boxBackgroundColor="?attr/colorBackgroundFloating">
+                    android:layout_below="@id/employeeContainer"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/layout_backgroundbox">
 
+                    <TextView
+                        android:id="@+id/TvDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/hintDescription"
+                        android:textSize="20sp"
+                        />
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <TextView
                         android:id="@+id/txtDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:clickable="false"
-                        android:gravity="top"
-                        android:inputType="textMultiLine"
-                        android:overScrollMode="always"
-                        android:scrollbarStyle="insideInset"
-                        android:scrollbars="vertical" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:gravity="left"
+                        android:layout_height="fill_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_below="@id/TvDescription"
+                        android:maxLines="4"
+                        android:lines="4"
+                        android:textSize="18sp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        />
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tfDescription"
+                    android:layout_below="@+id/DescriptionContainer"
                     android:padding="20dp">
 
                     <Button

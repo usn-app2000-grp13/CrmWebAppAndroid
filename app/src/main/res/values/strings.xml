@@ -11,8 +11,11 @@
     <string name="calender">Calender</string>
     <string name="todo">To Do</string>
     <string name="customer">Customers</string>
+    <string name="customer_underline"><u>Customers</u></string>
     <string name="employee">Employees</string>
+    <string name="employee_underline"><u>Employees</u></string>
     <string name="service">Services</string>
+    <string name="service_underline"><u>Services</u></string>
     <string name="hintDate">Date</string>
     <string name="hintTime">Time</string>
     <string name="hintFirstName">Firstname</string>
@@ -45,7 +48,7 @@
     <string name="appointmentinfo">Appointment Info</string>
 
     <string name="hintTitle">Title</string>
-    <string name="hintDescription">Description</string>
+    <string name="hintDescription"><u>Description</u></string>
     <string name="hintDuration">Duration (Minutes)</string>
     <string name="hintPrice">Price (NOK)</string>
     <string name="testTitle">testTitle</string>

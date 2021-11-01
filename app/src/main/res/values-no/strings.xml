@@ -11,8 +11,11 @@
     <string name="calender">Kalender</string>
     <string name="todo">Å gjøre</string>
     <string name="customer">Kunder</string>
+    <string name="customer_underline"><u>Kunder</u></string>
     <string name="employee">Ansatte</string>
+    <string name="employee_underline"><u>Ansatte</u></string>
     <string name="service">Tjenester</string>
+    <string name="service_underline"><u>Tjenester</u></string>
     <string name="hintDate">Dato</string>
     <string name="hintTime">Tid</string>
     <string name="hintFirstName">Fornavn</string>
