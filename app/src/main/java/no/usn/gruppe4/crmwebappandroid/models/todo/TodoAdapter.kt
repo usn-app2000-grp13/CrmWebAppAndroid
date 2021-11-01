@@ -56,23 +56,25 @@ class TodoAdapter(
         }
         notifyDataSetChanged()
     }
-
+/*
     private fun changeColor(todoTw: TextView, todoCB: Boolean) {
         if (todoCB) {
             todoTw.setBackgroundColor(GREEN)
-        } else {
-            todoTw.setBackgroundColor(WHITE)
         }
-    }
+    } */
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         val curTodo = todos[position]
         holder.todoTw.text = curTodo.description
+        holder.todoCB.isChecked = curTodo.completed
+        /*
         holder.todoCB.isChecked = false
         holder.todoCB.setOnCheckedChangeListener { _, b ->
-            changeColor(holder.todoTw, b)
+            //changeColor(holder.todoTw, b)
             curTodo.completed = !curTodo.completed
         }
+
+         */
     }
 
     override fun getItemCount(): Int {

@@ -3,7 +3,9 @@ package no.usn.gruppe4.crmwebappandroid.retrofit
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.appointment.OneAppointmentResponse
+import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerResponse
+import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerResponseNoArray
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeResponse
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeResponseNoArray
@@ -23,11 +25,6 @@ import java.util.*
 interface CrmApi {
     @GET("test")
     suspend fun getProperties(): Test
-
-
-
-
-
 
 
     //login routes
@@ -109,6 +106,9 @@ interface CrmApi {
 
     @GET("customer")
     suspend fun getCustomers(): CustomerResponse
+
+    @POST("newCustomer")
+    suspend fun postCustomer(@Body req: Customer): CustomerResponseNoArray
 
 
 /*

@@ -26,7 +26,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editAppTxtCustomerFirstname"
-                android:layout_width="136dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text|textMultiLine"
                 android:text="" />
@@ -42,7 +42,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editAppTxtCustomerLastname"
-                android:layout_width="133dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text|textMultiLine"
                 android:text="" />
@@ -60,9 +60,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editAppTxtCustomerEmail"
-                android:layout_width="133dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text|textMultiLine"
+                android:inputType="textEmailAddress"
                 android:text="" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,12 +78,16 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editAppTxtCustomerPhone"
-                android:layout_width="133dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text|textMultiLine"
+                android:inputType="textPhonetic"
                 android:text="" />
         </com.google.android.material.textfield.TextInputLayout>
-
+        <Button
+            android:id="@+id/customerSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="submit" />
         <Button
             android:id="@+id/customerCancel"
             android:layout_width="match_parent"
