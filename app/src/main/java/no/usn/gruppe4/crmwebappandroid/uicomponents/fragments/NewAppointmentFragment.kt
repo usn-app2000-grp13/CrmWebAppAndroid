@@ -47,6 +47,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         super.onCreate(savedInstanceState)
         //viewModel instance
         viewModel = ViewModelProvider(this).get(CalanderViewModel::class.java)
+
         appointment = Appointment.newAppointment(null, null, "", null, mutableListOf(), mutableListOf(), mutableListOf())
         viewModel.setCurAppointment(appointment)
     }

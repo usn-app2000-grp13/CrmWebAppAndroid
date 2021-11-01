@@ -93,6 +93,9 @@ interface CrmApi {
     @GET("employee")
     suspend fun getEmployees(): EmployeeResponse
 
+    @GET("employee/{id}")
+    suspend fun getOneEmployee(@Path("id") _id: String): EmployeeResponse.SingleEmployeeResponse
+
     @POST("newEmployee")
     suspend fun postEmployees(@Body req: Employee): EmployeeResponseNoArray
 
@@ -104,6 +107,7 @@ interface CrmApi {
 
     @PUT("employee")
     suspend fun putEmployees(@Body req: Employee): EmployeeResponseNoArray
+
 
     //customer routes
 

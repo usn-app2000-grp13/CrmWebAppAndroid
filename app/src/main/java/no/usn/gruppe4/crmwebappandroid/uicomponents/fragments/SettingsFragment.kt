@@ -16,20 +16,23 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentSettingsBinding
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Datasource
+import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginActivity
 import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
 import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
+import no.usn.gruppe4.crmwebappandroid.uicomponents.SettingsViewModel
 import java.util.*
 
 
-class SettingsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
+class SettingsFragment : Fragment() {
 
     lateinit var binding: FragmentSettingsBinding
     var editable = false
     private lateinit var sharedPreferences: SharedPrefInterface
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: SettingsViewModel
+    private lateinit var user: Employee
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -40,20 +43,20 @@ class SettingsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         sharedPreferences = SecSharePref(requireContext(), "secrets")
 
         //set the viewModel
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
+
+        viewModel.getMyData(sharedPreferences.get("id"))
+
+        viewModel.user.observe(viewLifecycleOwner, {
+            user = it
+            updateFields()
+        })
 
         binding.btnLogout.setOnClickListener {
             sharedPreferences.clear()
             viewModel.logout()
             val i = Intent(requireContext(), LoginActivity::class.java)
             startActivity(i)
-        }
-        binding.tfBirthDate.setEndIconOnClickListener {
-            val cal = Datasource().getTodayCalender()
-            val year: Int? = cal?.get(Calendar.YEAR)
-            val month: Int? = cal?.get(Calendar.MONTH)
-            val day: Int? = cal?.get(Calendar.DAY_OF_MONTH)
-            DatePickerDialog(requireContext(), this, year!!, month!!, day!!).show()
         }
 
         binding.btnEditMode.setOnClickListener {
@@ -69,6 +72,19 @@ class SettingsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         return binding.root
     }
 
+    private fun updateFields() {
+        binding.txtFname.setText(user.firstname)
+        binding.txtLName.setText(user.lastname)
+        binding.txtEmail.setText(user.email)
+        binding.txtTlf.setText(user.phone)
+        binding.txtAdr.setText(user.address?.street)
+        binding.txtStreetNr.setText(user.address?.streetNumber)
+        binding.txtPostArea.setText(user.address?.postArea)
+        binding.txtPostCode.setText(user.address?.postCode)
+        binding.txtApartment.setText(user.address?.apartment)
+
+    }
+
     private fun turnEditable(){
         flipEditable(binding.txtFname, binding.tfFirstName)
         flipEditable(binding.txtLName, binding.tfLastName)
@@ -79,7 +95,6 @@ class SettingsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         flipEditable(binding.txtPostArea, binding.tfPostArea)
         flipEditable(binding.txtPostCode, binding.tfPostCode)
         flipEditable(binding.txtApartment, binding.tfApartment)
-        flipEditable(binding.txtBirthDate, binding.tfBirthDate)
     }
 
     //make textField editable!
@@ -98,13 +113,6 @@ class SettingsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             elmt2.setBoxBackgroundColorResource(R.color.white)
         }
 
-    }
-
-    override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-        val day = reformatDateTime(p3)
-        val month = reformatDateTime(p2)
-        val year = reformatDateTime(p1)
-        binding.txtBirthDate.setText("$day/$month/$year")
     }
 
     fun reformatDateTime(element: Int): String{
