@@ -31,11 +31,13 @@ class EmployeeFragment : Fragment() {
         //val myDataset = getEmployeeList()
         //val adapter = EmployeeAdapter(requireContext(), myDataset)
 
+
         viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
 
         viewModel.getEmployees()
 
         val adapter = EmployeeAdapter(requireContext(), employeeList)
+
 
         viewModel.employee.observe(viewLifecycleOwner, {
             employeeList.clear()

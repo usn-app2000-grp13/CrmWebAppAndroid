@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -31,6 +32,12 @@ class EmployeeCard : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentEmployeeCardBinding.inflate(inflater)
         // Inflate the layout for this fragment
+        // This callback will only be called when MyFragment is at least Started.
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // Handle the back button event
+            findNavController().navigate(R.id.action_employeeCard_to_employeeFragment)
+        }
+
         var tvEmpFirstnameValue = binding.tvEmpFirstnameValue
         var tvEmpLastnameValue = binding.tvEmpLastnameValue
         var tvEmpPhoneValue = binding.tvEmpPhoneValue

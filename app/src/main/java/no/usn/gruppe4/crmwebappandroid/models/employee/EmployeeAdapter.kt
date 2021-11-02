@@ -27,6 +27,7 @@ class EmployeeAdapter(private val context: Context, private val dataset: List<Em
         val textViewFirstname: TextView = view.findViewById(R.id.calItemFirstname)
         val textViewLastname: TextView = view.findViewById(R.id.calItemLastname)
         val textViewPhone: TextView = view.findViewById(R.id.calItemPhone)
+        val textViewEmail: TextView = view.findViewById(R.id.calItemEmail)
 
         init {
             itemView.setOnClickListener {
@@ -46,6 +47,8 @@ class EmployeeAdapter(private val context: Context, private val dataset: List<Em
         holder.textViewFirstname.text = item.firstname
         holder.textViewLastname.text = item.lastname
         holder.textViewPhone.text = item.phone
+
+        holder.textViewEmail.text = item.email
     }
 
 
