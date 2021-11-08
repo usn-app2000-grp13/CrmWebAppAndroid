@@ -12,10 +12,16 @@
         tools:layout="@layout/fragment_calender">
         <action
             android:id="@+id/action_calenderFragment_to_newAppointmentFragment"
-            app:destination="@id/newAppointmentFragment" />
+            app:destination="@id/newAppointmentFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left" />
         <action
             android:id="@+id/action_calenderFragment_to_appointmentClicked"
-            app:destination="@id/appointmentClicked" />
+            app:destination="@id/appointmentClicked"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left" />
     </fragment>
     <fragment
         android:id="@+id/customerFragment"
@@ -97,7 +103,10 @@
         android:label="@string/newAppointment" >
         <action
             android:id="@+id/action_newAppointmentFragment_to_calenderFragment"
-            app:destination="@id/calenderFragment" />
+            app:destination="@id/calenderFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popUpTo="@id/calenderFragment" />
     </fragment>
     <fragment
         android:id="@+id/newEmployeeFragment"
@@ -126,7 +135,10 @@
         android:label="@string/AppointmentCard" >
         <action
             android:id="@+id/action_appointmentClicked_to_calenderFragment"
-            app:destination="@id/calenderFragment" />
+            app:destination="@id/calenderFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_appointmentClicked_to_newAppointmentFragment"
             app:destination="@id/newAppointmentFragment" />
