@@ -12,13 +12,16 @@
         tools:layout="@layout/fragment_calender">
         <action
             android:id="@+id/action_calenderFragment_to_newAppointmentFragment"
-            app:destination="@id/newAppointmentFragment"
+            app:destination="@id/newAppointmentFragment" />
+        <action
+            android:id="@+id/action_calenderFragment_to_appointmentClicked"
+            app:destination="@id/appointmentClicked"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left" />
         <action
-            android:id="@+id/action_calenderFragment_to_appointmentClicked"
-            app:destination="@id/appointmentClicked"
+            android:id="@+id/action_calenderFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left" />

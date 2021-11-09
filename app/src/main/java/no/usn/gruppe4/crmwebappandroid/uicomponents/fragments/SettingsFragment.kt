@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_settings.*
@@ -33,6 +34,10 @@ class SettingsFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPrefInterface
     private lateinit var viewModel: SettingsViewModel
     private lateinit var user: Employee
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {

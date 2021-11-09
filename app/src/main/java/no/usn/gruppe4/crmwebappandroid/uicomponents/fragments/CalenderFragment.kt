@@ -64,6 +64,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             //appointmentList.addAll(appointments)
             appointmentList.sortBy { it.timeindex }
             adapter.notifyDataSetChanged()
+            binding.recyclerView.scheduleLayoutAnimation()
         })
 
         viewModel.date.observe(viewLifecycleOwner, {
