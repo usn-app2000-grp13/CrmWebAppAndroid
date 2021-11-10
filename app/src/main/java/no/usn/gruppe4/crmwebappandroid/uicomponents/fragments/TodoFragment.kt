@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_todo.*
-import no.usn.gruppe4.crmwebappandroid.R
+import kotlinx.android.synthetic.main.item_todo.*
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentTodoBinding
-import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoAdapter
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoViewModel
-import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 
 class TodoFragment : Fragment() {
 
@@ -21,6 +19,7 @@ class TodoFragment : Fragment() {
     private lateinit var todoAdepter: TodoAdapter
     private var todolist =  mutableListOf<Todo>()
     private lateinit var viewModel: TodoViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,7 +61,7 @@ class TodoFragment : Fragment() {
             }
         }
 
-        binding.todoDeleteBT.setOnClickListener {
+        todoDeleteBT.setOnClickListener {
             todoAdepter.deletedDoneTodos()
         }
         // Inflate the layout for this fragment

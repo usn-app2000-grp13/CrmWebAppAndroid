@@ -1,15 +1,12 @@
 package no.usn.gruppe4.crmwebappandroid.models.todo
 
 import android.content.Context
-import android.graphics.Color.GREEN
-import android.graphics.Color.WHITE
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_todo.view.*
 import no.usn.gruppe4.crmwebappandroid.R
 
 class TodoAdapter(

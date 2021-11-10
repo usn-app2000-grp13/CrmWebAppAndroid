@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,17 +16,20 @@
                 android:id="@+id/TodoRv"
                 android:layout_width="414dp"
                 android:layout_height="679dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toTopOf="@+id/todoAddBT"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                app:layout_constraintVertical_bias="1.0" />
+
 
             <EditText
                 android:id="@+id/todoET"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:hint="Enter Todo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/todoAddBT"
@@ -36,18 +40,11 @@
                 android:id="@+id/todoAddBT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="Add todo"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/todoDeleteBT">
-            </Button>
-
-            <Button
-                android:id="@+id/todoDeleteBT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete done"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/todoET">
             </Button>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
