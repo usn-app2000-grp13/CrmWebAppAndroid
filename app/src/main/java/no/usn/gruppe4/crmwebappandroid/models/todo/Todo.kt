@@ -16,4 +16,8 @@ data class Todo (
         val _id: String,
         val todos: IdTodo
     )
+
+    data class addTodo(
+        val todos: Todo
+    )
 }
