@@ -42,6 +42,7 @@ class TodoFragment : Fragment() {
             todolist.clear()
             todolist.addAll(todo)
             todoAdepter.notifyDataSetChanged()
+            binding.TodoRv.scheduleLayoutAnimation()
         })
 
         todoAdepter = TodoAdapter(requireContext(),todolist)
