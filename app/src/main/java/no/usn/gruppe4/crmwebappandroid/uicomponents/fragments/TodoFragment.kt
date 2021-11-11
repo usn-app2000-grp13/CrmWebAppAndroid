@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_todo.*
 import kotlinx.android.synthetic.main.item_todo.*
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentTodoBinding
+import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
+import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoAdapter
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoViewModel
@@ -19,6 +21,7 @@ class TodoFragment : Fragment() {
     private lateinit var todoAdepter: TodoAdapter
     private var todolist =  mutableListOf<Todo>()
     private lateinit var viewModel: TodoViewModel
+    private lateinit var sharedPreferences: SharedPrefInterface
 
 
     override fun onCreateView(
@@ -31,6 +34,9 @@ class TodoFragment : Fragment() {
 
         viewModel.getTodo()
 
+        sharedPreferences = SecSharePref(requireContext(), "secrets")
+        val id = sharedPreferences.get("id")
+
 
         viewModel.todos.observe(viewLifecycleOwner, { todo ->
             todolist.clear()
@@ -40,10 +46,6 @@ class TodoFragment : Fragment() {
 
         todoAdepter = TodoAdapter(requireContext(),todolist)
         binding.TodoRv.adapter = todoAdepter
-        /*  var todos: MutableList<Todo> = mutableListOf(Todo("Klippe håret"),
-               Todo("Trene"),
-               Todo("Vaske doen"))                                                           //Skal ta i mot en liste av todo objekter fra databasen
-         */
 
         todoAdepter.setOnItemClickListener(object : TodoAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
@@ -54,16 +56,20 @@ class TodoFragment : Fragment() {
 
         binding.todoAddBT.setOnClickListener {
             val todoTitle = todoET.text.toString()
+            val todo = Todo(todoTitle)
             if (todoTitle.isNotEmpty()) {
-                val todo = Todo(todoTitle)
                 todoAdepter.addTodo(todo)
                 todoET.text.clear()
             }
+            viewModel.newTodo(todo)
+        }
+/*
+        binding.todoDeleteBT.setOnClickListener{
+
         }
 
-        todoDeleteBT.setOnClickListener {
-            todoAdepter.deletedDoneTodos()
-        }
+ */
+
         // Inflate the layout for this fragment
         return binding.root
     }

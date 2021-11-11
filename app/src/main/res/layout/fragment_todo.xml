@@ -12,40 +12,54 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/TodoRv"
-                android:layout_width="414dp"
-                android:layout_height="679dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toTopOf="@+id/todoAddBT"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@+id/newContainer"
+                app:layout_constraintEnd_toEndOf="@+id/newContainer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                android:layout_margin="15dp">
 
+            </androidx.recyclerview.widget.RecyclerView>
 
-            <EditText
-                android:id="@+id/todoET"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="Enter Todo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/todoAddBT"
-                app:layout_constraintStart_toStartOf="parent">
-            </EditText>
-
-            <Button
-                android:id="@+id/todoAddBT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Add todo"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/newContainer"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/todoET">
-            </Button>
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <Button
+                    android:id="@+id/todoAddBT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Add todo"
+                    app:layout_constraintBottom_toBottomOf="@+id/newContainer"
+                    app:layout_constraintRight_toRightOf="@id/newContainer"
+                    app:layout_constraintTop_toTopOf="@id/newContainer"
+                    tools:layout_editor_absoluteX="291dp"
+                    tools:layout_editor_absoluteY="674dp" />
+
+                <EditText
+                    android:id="@+id/todoET"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="16dp"
+                    android:hint="Enter Todo"
+                    app:layout_constraintBottom_toBottomOf="@+id/todoAddBT"
+                    app:layout_constraintEnd_toStartOf="@+id/todoAddBT"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/todoAddBT" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

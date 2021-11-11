@@ -36,7 +36,7 @@ class TodoViewModel: ViewModel() {
     fun newTodo(todo: Todo){
         viewModelScope.launch {
             try {
-                RetrofitInstance.api.addTodo(todo)
+                RetrofitInstance.api.addTodo(Todo.addTodo(todo))
                 Log.i(TAG,"Todo is added")
             }catch (e: Exception){
                 Log.i(TAG, "Error: $e")
@@ -57,18 +57,17 @@ class TodoViewModel: ViewModel() {
     }
 
     // Sett todos completed
-    /*
+
     fun completTodo(todoComplete: Todo.SetComplete){
         viewModelScope.launch {
             try {
                 RetrofitInstance.api.setTodoComplete(todoComplete)
-                _todo.value = // Somthing true;
             }catch (e: Exception) {
                 Log.i(TAG, "Error $e")
             }
         }
     }
-    */
+
 
 
 }

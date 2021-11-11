@@ -80,7 +80,7 @@ interface CrmApi {
     suspend fun getTodos(): TodoResponse
 
     @PUT("employeeself/todo")
-    suspend fun addTodo(@Body req: Todo)
+    suspend fun addTodo(@Body req: Todo.addTodo)
 
     @HTTP(method = "DELETE",path = "employee/todo", hasBody = true)
     suspend fun deleteTodo(@Body req: IdRequest)

@@ -98,7 +98,7 @@
     <fragment
         android:id="@+id/todoFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.TodoFragment"
-        android:label="fragment_todo"
+        android:label="Todos"
         tools:layout="@layout/fragment_todo" />
     <fragment
         android:id="@+id/newAppointmentFragment"
