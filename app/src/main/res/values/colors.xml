@@ -8,4 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#F1F1F1</color>
+
+    <color name="BlackShadows">#C2B2B4</color>
+    <color name="EnglishViolet">#6B4E71</color>
+    <color name="Charcoal">#3A4454</color>
+    <color name="DarkElectricBlue">#53687E</color>
+    <color name="MistRose">#FFEDED</color>
+    <color name="textGrey">#333333</color>
 </resources>

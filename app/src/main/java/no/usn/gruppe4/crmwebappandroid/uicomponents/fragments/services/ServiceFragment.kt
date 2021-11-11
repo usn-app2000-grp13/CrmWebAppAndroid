@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentServiceBinding
@@ -19,6 +20,7 @@ class ServiceFragment : Fragment() {
     lateinit var binding : FragmentServiceBinding
     lateinit var serviceViewModel: ServiceViewModel
     private var serviceList = kotlin.collections.mutableListOf<Service>()
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentServiceBinding.inflate(inflater)
@@ -38,6 +40,7 @@ class ServiceFragment : Fragment() {
             serviceList.clear()
             serviceList.addAll(service)
             adapter.notifyDataSetChanged()
+            binding.rvServices.scheduleLayoutAnimation()
             Log.i("test", "services $serviceList")
         })
 

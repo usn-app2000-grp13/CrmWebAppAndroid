@@ -60,5 +60,9 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, drawerLayout) || super.onSupportNavigateUp()
     }
 
+    public fun clearBackStackInclusive(tag: String){
+        supportFragmentManager.popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+    }
+
 
 }

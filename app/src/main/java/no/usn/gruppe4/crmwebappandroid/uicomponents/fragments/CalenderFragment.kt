@@ -19,6 +19,7 @@ import no.usn.gruppe4.crmwebappandroid.models.appointment.*
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
+import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
 import java.util.*
 
 
@@ -120,6 +121,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         Log.i("date", "$selectedDate")
         viewModel.changeDate(selectedDate)
     }
+
 
 
 }
