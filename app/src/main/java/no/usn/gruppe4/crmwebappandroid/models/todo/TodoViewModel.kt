@@ -32,27 +32,43 @@ class TodoViewModel: ViewModel() {
         }
     }
 
-    fun newTodo(todos: Todo){
+    // New todos
+    fun newTodo(todo: Todo){
         viewModelScope.launch {
             try {
-                RetrofitInstance.api.addTodo(todos)
-                Log.i(TAG,"Todo er lagt til")
+                RetrofitInstance.api.addTodo(todo)
+                Log.i(TAG,"Todo is added")
             }catch (e: Exception){
                 Log.i(TAG, "Error: $e")
             }
         }
     }
 
-    fun deleteTodo(todos: IdRequest){
+    // Delete todos
+    fun deleteTodo(idRequest: IdRequest){
         viewModelScope.launch {
             try {
-                RetrofitInstance.api.deleteTodo(todos)
-                Log.i(TAG,"Todo deleted")
+                RetrofitInstance.api.deleteTodo(idRequest)
+                Log.i(TAG,"Deleted completed todos of items ${idRequest._id}")
             }catch (e: Exception){
                 Log.i(TAG,"Error $e")
             }
         }
-
     }
+
+    // Sett todos completed
+    /*
+    fun completTodo(todoComplete: Todo.SetComplete){
+        viewModelScope.launch {
+            try {
+                RetrofitInstance.api.setTodoComplete(todoComplete)
+                _todo.value = // Somthing true;
+            }catch (e: Exception) {
+                Log.i(TAG, "Error $e")
+            }
+        }
+    }
+    */
+
 
 }
