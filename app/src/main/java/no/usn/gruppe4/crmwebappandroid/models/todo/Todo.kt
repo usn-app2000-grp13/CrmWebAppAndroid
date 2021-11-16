@@ -1,10 +1,9 @@
 package no.usn.gruppe4.crmwebappandroid.models.todo
 
-import java.util.*
+import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 
-data class Todo (
-    //val _id: String?,
-    //val date: Date?,
+data class Todo  (
+    val _id: String?,
     val description: String?,
     var completed: Boolean = false
 ){
@@ -18,6 +17,12 @@ data class Todo (
     )
 
     data class addTodo(
-        val todos: Todo
+        val todos: Todo,
+
+    )
+
+    data class deleteTodo(
+        val _id: String,
+        val todos: IdRequest
     )
 }

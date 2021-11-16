@@ -1,13 +1,11 @@
 package no.usn.gruppe4.crmwebappandroid.models.todo
 
-import android.nfc.Tag
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
 import java.lang.Exception
 
@@ -45,7 +43,7 @@ class TodoViewModel: ViewModel() {
     }
 
     // Delete todos
-    fun deleteTodo(idRequest: IdRequest){
+    fun deleteTodo(idRequest: Todo.deleteTodo){
         viewModelScope.launch {
             try {
                 RetrofitInstance.api.deleteTodo(idRequest)

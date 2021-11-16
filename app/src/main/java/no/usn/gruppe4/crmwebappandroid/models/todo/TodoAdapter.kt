@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import no.usn.gruppe4.crmwebappandroid.R
@@ -20,14 +21,26 @@ class TodoAdapter(
 
     interface OnItemClickListener{
         fun onItemClick(position: Int)
+        fun onDeleteClick(position: Int)
+        fun onCheckClicked(position: Int)
     }
 
     class TodoViewHolder(itemView: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val todoTw : TextView = itemView.findViewById(R.id.todoTw)
         val todoCB : CheckBox = itemView.findViewById(R.id.todoCB)
+        val btnDelete: ImageView = itemView.findViewById(R.id.todoDeleteBT)
+        val checkBox: CheckBox = itemView.findViewById(R.id.todoCB)
         init {
             itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
+            }
+            btnDelete.setOnClickListener {
+                listener.onDeleteClick(adapterPosition)
+            }
+            checkBox.setOnClickListener {
+                if (!checkBox.isChecked) {
+                    listener.onCheckClicked(adapterPosition)
+                }
             }
         }
     }

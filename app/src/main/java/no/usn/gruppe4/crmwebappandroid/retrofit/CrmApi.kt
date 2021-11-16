@@ -16,7 +16,6 @@ import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
 import no.usn.gruppe4.crmwebappandroid.models.login.Test
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.models.service.ServiceResponse
-import no.usn.gruppe4.crmwebappandroid.models.service.ServiceViewModel
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoResponse
 import retrofit2.http.*
@@ -83,7 +82,7 @@ interface CrmApi {
     suspend fun addTodo(@Body req: Todo.addTodo)
 
     @HTTP(method = "DELETE",path = "employee/todo", hasBody = true)
-    suspend fun deleteTodo(@Body req: IdRequest)
+    suspend fun deleteTodo(@Body req: Todo.deleteTodo)
 
     @PUT("employee/todo/completed")
     suspend fun setTodoComplete(@Body req: Todo.SetComplete)
