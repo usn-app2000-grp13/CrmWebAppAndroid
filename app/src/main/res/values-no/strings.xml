@@ -60,4 +60,9 @@
     <string name="yes">ja</string>
     <string name="no">nei</string>
 
+    <string name="missingNameMsg">Navn kan ikke være tom!</string>
+    <string name="missingDescriptionMsg">Beskrivelse kan ikke være tom!</string>
+    <string name="missingDurationMsg">Varighet kan ikke være tom!</string>
+    <string name="missingPriceMsg">Pris kan ikke være tom!</string>
+
 </resources>

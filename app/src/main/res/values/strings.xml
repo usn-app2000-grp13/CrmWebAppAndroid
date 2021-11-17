@@ -60,6 +60,11 @@
     <string name="yes">yes</string>
     <string name="no">no</string>
 
+    <string name="missingNameMsg">Name can not be empty</string>
+    <string name="missingDescriptionMsg">Description can not be empty</string>
+    <string name="missingDurationMsg">Duration can not be empty</string>
+    <string name="missingPriceMsg">Price can not be empty</string>
+
     <string-array name="services">
         <item>HairCut Adult</item>
         <item>Hair Coloring</item>

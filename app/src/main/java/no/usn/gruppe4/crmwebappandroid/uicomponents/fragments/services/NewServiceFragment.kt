@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewServiceBinding
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.models.service.ServiceViewModel
@@ -25,12 +27,27 @@ class NewServiceFragment : Fragment() {
 
         // 1b) Kaller newService() serviceViewModel. Den er et database kall
         binding.btnSubmit.setOnClickListener{
-            val description: String = binding.editAppTxtDescription.text.toString()
-            val duration: Int = binding.editAppTxtDuration.text.toString().toInt()
-            val name: String = binding.editAppTxtTitle.text.toString()
-            val price: String =  binding.editAppTxtPrice.text.toString()
-            val service = Service("null",description,duration,name,price)
-            serviceViewModel.newService(service)
+            var name = binding.editAppTxtTitle.text.toString()
+            var description = binding.editAppTxtDescription.text.toString()
+            var duration = binding.editAppTxtDuration.text.toString()
+            var price =  binding.editAppTxtPrice.text.toString()
+
+            if (name == "") {
+                Toast.makeText(requireContext(), getString(R.string.missingNameMsg), Toast.LENGTH_LONG).show()
+            }
+            else if (description == "") {
+                Toast.makeText(requireContext(), getString(R.string.missingDescriptionMsg), Toast.LENGTH_LONG).show()
+            }
+            else if (duration == "") {
+                Toast.makeText(requireContext(), getString(R.string.missingDurationMsg), Toast.LENGTH_LONG).show()
+            }
+            else if (price == "") {
+                Toast.makeText(requireContext(), getString(R.string.missingPriceMsg), Toast.LENGTH_LONG).show()
+            }
+            else {
+                val service = Service("null",description,duration.toInt(),name,price)
+                serviceViewModel.newService(service)
+            }
         }
 
         binding.btnCancel.setOnClickListener{

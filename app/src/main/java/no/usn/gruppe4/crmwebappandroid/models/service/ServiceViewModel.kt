@@ -15,7 +15,7 @@ private const val TAG = "ServiceViewModel"
 
 class ServiceViewModel: ViewModel() {
 
-    //private boolea verdi som sier om vi må vente med å gå videre til databasen er oppdatert
+    //private boolean verdi som sier om vi må vente med å gå videre til databasen er oppdatert
     private val _adding: MutableLiveData<Boolean> = MutableLiveData()
 
     // kopi som er tilgjengelig for andre klasser

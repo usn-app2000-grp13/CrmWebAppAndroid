@@ -1,10 +1,13 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEditServiceBinding
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
@@ -40,12 +43,31 @@ class EditServiceFragment : Fragment() {
 
         // 2b) Update knappen kaller serviceViewModel.updateService(service) (db)
         binding.btnApply.setOnClickListener{
-            service.description = binding.editAppTxtDescription.text.toString()
-            service.duration = binding.editAppTxtDuration.text.toString().toInt()
-            service.name = binding.editAppTxtTitle.text.toString()
-            service.price =  binding.editAppTxtPrice.text.toString()
-            serviceViewModel.updateService(service)
-            findNavController().popBackStack()
+            var name = binding.editAppTxtTitle.text.toString()
+            var description = binding.editAppTxtDescription.text.toString()
+            var duration = binding.editAppTxtDuration.text.toString()
+            var price =  binding.editAppTxtPrice.text.toString()
+
+            if (name == "") {
+                Toast.makeText(requireContext(), getString(R.string.missingNameMsg), Toast.LENGTH_LONG).show()
+            }
+            else if (description == "") {
+                Toast.makeText(requireContext(), getString(R.string.missingDescriptionMsg), Toast.LENGTH_LONG).show()
+            }
+            else if (duration == "") {
+                Toast.makeText(requireContext(), getString(R.string.missingDurationMsg), Toast.LENGTH_LONG).show()
+            }
+            else if (price == "") {
+                Toast.makeText(requireContext(), getString(R.string.missingPriceMsg), Toast.LENGTH_LONG).show()
+            }
+            else {
+                service.name = name
+                service.description = description
+                service.duration = duration.toInt()
+                service.price =  price
+                serviceViewModel.updateService(service)
+                findNavController().popBackStack()
+            }
         }
 
         // Cancel knappen sender brukeren tilbake

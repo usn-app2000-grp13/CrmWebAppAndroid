@@ -28,7 +28,7 @@ class ServiceFragment : Fragment() {
         // 1a) serviceViewModel
         serviceViewModel = ViewModelProvider(this).get(ServiceViewModel::class.java)
 
-        // 1b) Kaller getServices() serviceViewModel. Den er et database kall
+        // 1b) Kaller serviceViewModel sin getServices()-metode. Den er et database kall
         serviceViewModel.getServices()
 
         // 2) ServiceAdapter (kobler sammen listen og recyclervievet)
