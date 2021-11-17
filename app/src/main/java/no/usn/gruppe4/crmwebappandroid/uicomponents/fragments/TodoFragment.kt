@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.fragment_todo.*
+import kotlinx.android.synthetic.main.item_todo.*
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentTodoBinding
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
@@ -62,14 +64,16 @@ class TodoFragment : Fragment() {
             }
 
             override fun onCheckClicked(position: Int) {
-                TODO("Not yet implemented")
+                todolist.get(position)
+                todoAdepter.notifyDataSetChanged()
+
             }
 
         })
-/*
+
         binding.todoAddBT.setOnClickListener {
             val todoTitle = todoET.text.toString()
-            val todo = Todo(todoTitle)
+            val todo = Todo(_id = id, todoTitle)
             if (todoTitle.isNotEmpty()) {
                 todoAdepter.addTodo(todo)
                 todoET.text.clear()
@@ -77,7 +81,9 @@ class TodoFragment : Fragment() {
             viewModel.newTodo(todo)
         }
 
- */
+
+
+
         // Inflate the layout for this fragment
         return binding.root
     }

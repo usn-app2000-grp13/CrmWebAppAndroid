@@ -60,17 +60,6 @@ class TodoAdapter(
         notifyItemInserted(todos.size - 1)
     }
 
-/*
-    fun deletedDoneTodos(){
-        todos.removeAll { todo ->
-            todo.completed
-        }
-        notifyDataSetChanged()
-    }
-
- */
-
-
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         val curTodo = todos[position]
         holder.todoTw.text = curTodo.description
