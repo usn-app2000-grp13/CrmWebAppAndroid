@@ -81,7 +81,7 @@ interface CrmApi {
     @PUT("employeeself/todo")
     suspend fun addTodo(@Body req: Todo.addTodo)
 
-    @HTTP(method = "DELETE",path = "employee/todo", hasBody = true)
+    @HTTP(method = "DELETE",path = "employeeself/todo", hasBody = true)
     suspend fun deleteTodo(@Body req: Todo.deleteTodo)
 
     @PUT("employee/todo/completed")

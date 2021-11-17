@@ -47,7 +47,7 @@ class TodoViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 RetrofitInstance.api.deleteTodo(idRequest)
-                Log.i(TAG,"Deleted completed todos of items ${idRequest._id}")
+                Log.i(TAG,"Deleted completed todos of items $idRequest")
             }catch (e: Exception){
                 Log.i(TAG,"Error $e")
             }
