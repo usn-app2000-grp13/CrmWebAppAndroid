@@ -9,10 +9,16 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentAppointmentClickedBinding
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
+import no.usn.gruppe4.crmwebappandroid.models.appointment.OneAppointmentResponse
+import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
+import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
+import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 import java.text.SimpleDateFormat
 
@@ -22,32 +28,55 @@ class AppointmentClicked : Fragment() {
     private var appointment: Appointment? = null
     lateinit var binding: FragmentAppointmentClickedBinding
     private lateinit var viewModel: CalanderViewModel
+    private lateinit var chipGroup: ChipGroup
     private var deleted = false
+    private var editMode = false
+    private var tmpServices: MutableList<Service> = mutableListOf()
+    private var tmpCustomers: MutableList<Customer> = mutableListOf()
+    private var tmpEmployees: MutableList<Employee> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.getParcelable<Appointment>("appointment").let { el->
             appointment = el
         }
+        appointment?.customers?.forEach {
+            tmpCustomers.add(it._customer!!)
+        }
+        appointment?.employees?.forEach {
+            tmpEmployees.add(it._employee!!)
+        }
+        appointment?.services?.forEach {
+            tmpServices.add(it._service!!)
+        }
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAppointmentClickedBinding.inflate(inflater)
         viewModel = ViewModelProvider(this).get(CalanderViewModel::class.java)
-
+        chipGroup = binding.customerChips
         Log.i(TAG, "appointment Received: ${appointment.toString()}")
 
         binding.txtTime.setText(timeIndexFormat(appointment?.timeindex!!))
         binding.txtDate.setText(SimpleDateFormat("yyyy-MM-dd").format(appointment?.date))
-        binding.txtDescription.setText(appointment?.comment.toString())
+        if (appointment?.comment.toString().isEmpty()){
+            binding.txtNotes.setText("")
+        }else{
+            binding.txtNotes.setText(appointment?.comment.toString())
+        }
+
 
         binding.btnDeleteAppointment.setOnClickListener {
             viewModel.removeAppointment(IdRequest(appointment?._id))
             deleted = true
         }
 
-        populateLists()
+        binding.btnEditAppointment.setOnClickListener {
+            makeEditable()
+        }
 
+        getChips()
         viewModel.status.observe(viewLifecycleOwner, {
             if (it){
                 if (deleted){
@@ -66,42 +95,6 @@ class AppointmentClicked : Fragment() {
     }
 
 
-    fun populateLists(){
-        binding.listCustomer.removeAllViews()
-        binding.listService.removeAllViews()
-        binding.ListEmployee.removeAllViews()
-        for (i in appointment?.customers!!){
-            val customerElement = TextView(requireContext())
-            customerElement.text = "${i._customer?.firstname} ${i._customer?.lastname}"
-            customerElement.textSize = 18.0f
-            customerElement.setPadding(30,10,10,10)
-            customerElement.setOnClickListener {
-                Log.i(TAG, "you clicked: ${i.toString()}")
-            }
-            binding.listCustomer.addView(customerElement)
-        }
-        for (i in appointment?.employees!!){
-            val employeesElement = TextView(requireContext())
-            employeesElement.text = "${i._employee?.firstname} ${i._employee?.lastname}"
-            employeesElement.textSize = 18.0f
-            employeesElement.setPadding(30,10,10,10)
-            employeesElement.setOnClickListener {
-                Log.i(TAG, "you clicked: ${i.toString()}")
-            }
-            binding.ListEmployee.addView(employeesElement)
-        }
-        for (i in appointment?.services!!){
-            val serviceElement = TextView(requireContext())
-            serviceElement.text = "${i._service?.name}"
-            serviceElement.textSize = 18.0f
-            serviceElement.setPadding(30,10,10,10)
-            serviceElement.setOnClickListener {
-                Log.i(TAG, "you clicked: ${i.toString()}")
-            }
-            binding.listService.addView(serviceElement)
-        }
-    }
-
     fun timeIndexFormat(timeindex: Int): String{
         var res = ""
         val clockM = timeindex % 60
@@ -118,6 +111,64 @@ class AppointmentClicked : Fragment() {
             res += "$clockM"
         }
         return res
+    }
+    private fun getChips(){
+        for (i in tmpCustomers){
+            binding.customerChips.addView(addChip(i.toString()))
+        }
+        for (i in tmpEmployees){
+            binding.employeeChips.addView(addChip(i.toString()))
+        }
+        for (i in tmpServices){
+            binding.serviceChips.addView(addChip(i.toString()))
+        }
+    }
+
+    private fun addChip(text:String):Chip {
+        val chip = Chip(requireContext())
+        chip.text = text
+        chip.isCloseIconVisible = true
+        chip.setChipBackgroundColorResource(R.color.accent)
+        return chip
+    }
+
+    fun makeEditable(){
+        flipEditable(binding.txtNotes)
+        flipEditable(binding.txtDate)
+        flipEditable(binding.txtTime)
+        editMode = !editMode
+        if (editMode){
+            binding.addCustomers.visibility = View.VISIBLE
+            binding.addEmployees.visibility = View.VISIBLE
+            binding.addServices.visibility = View.VISIBLE
+            binding.btnEditAppointment.text ="Save"
+        }else{
+            binding.addCustomers.visibility = View.GONE
+            binding.addEmployees.visibility = View.GONE
+            binding.addServices.visibility = View.GONE
+            binding.btnEditAppointment.text = "Edit"
+        }
+    }
+
+    fun setValues(){
+    }
+
+    //make textField editable!
+    fun flipEditable(element: TextView){
+        if (!editMode){
+            element.isClickable = true
+            element.isCursorVisible = true
+            element.isFocusable = true
+            element.isFocusableInTouchMode = true
+            element.isEnabled = true
+        }else{
+            element.isClickable = false
+            element.isCursorVisible = false
+            element.isFocusable = false
+            element.isFocusableInTouchMode = false
+            element.isEnabled = false
+        }
+
     }
 
 }

@@ -37,6 +37,7 @@
         <item name="android:layout_height">100dp</item>
         <item name="android:padding">@dimen/smallMargin</item>
         <item name="android:paddingStart">50dp</item>
+        <item name="android:background">@color/verryLight</item>
     </style>
 
     <style name="cardTitle">
@@ -80,6 +81,12 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <!-- appointmentCard -->
+    <style name="appCard">
+        <item name="backgroundColor">?attr/colorSecondary</item>
+    </style>
+
 
 
 </resources>

@@ -1,5 +1,6 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCalenderBinding
+import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.*
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
@@ -93,6 +95,25 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                 bundle.putParcelable("appointment", appointmentList[position])
                 findNavController().navigate(R.id.action_calenderFragment_to_appointmentClicked, bundle)
             }
+
+            override fun onDeleteClick(position: Int) {
+                //delete from list
+                Log.i("Delete button holder: ", "delete button pressed for position $position")
+                viewModel.removeAppointment(IdRequest(appointmentList.get(position)._id))
+                viewModel.getMyAppointmentsDate("602a7f4891d34d18402f4e44", System.currentTimeMillis())
+            }
+
+            override fun onEditClick(position: Int) {
+                Log.i("Edit button holder: ", "Edit button pressed for position $position")
+            }
+
+            override fun onMessageClick(position: Int) {
+                Log.i("Message button holder: ", "Message button pressed for position $position")
+            }
+
+            override fun onExpCusClick(position: Int) {
+                TODO("Not yet implemented")
+            }
         })
 
         binding.recyclerView.setHasFixedSize(true)
@@ -121,6 +142,13 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         Log.i("date", "$selectedDate")
         viewModel.changeDate(selectedDate)
     }
+
+    fun deleteAppointment(appointment: Appointment){
+        viewModel.removeAppointment(IdRequest(appointment._id))
+    }
+
+
+
 
 
 

@@ -21,17 +21,20 @@
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="visible">
+            app:layout_constraintVertical_bias="1.0">
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mainContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
+                android:elevation="4dp"
                 tools:context=".tabviewTest.fragment1">
 
 
@@ -40,32 +43,41 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/appointmentinfo"
-                    android:textSize="25sp" />
+                    android:textSize="30sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/dateTimeContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/TvAppointmentInfo"
-                    android:gravity="center">
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/TvAppointmentInfo">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tfDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_toLeftOf="@+id/tfTime"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
                         android:clickable="false"
                         android:hint="@string/hintDate"
-                        app:boxBackgroundColor="?attr/colorBackgroundFloating"
+                        app:boxBackgroundColor="?attr/colorSecondary"
                         app:endIconDrawable="@drawable/ic_baseline_date_range_24"
-                        app:endIconMode="custom">
+                        app:endIconMode="custom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tfTime"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/txtDate"
@@ -84,16 +96,16 @@
                         android:id="@+id/tfTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
                         android:clickable="false"
                         android:hint="@string/hintTime"
-                        app:boxBackgroundColor="?attr/colorBackgroundFloating"
+                        app:boxBackgroundColor="?attr/colorSecondary"
                         app:endIconDrawable="@drawable/ic_baseline_access_time_24"
-                        app:endIconMode="custom">
+                        app:endIconMode="custom"
+                        app:layout_constraintBottom_toBottomOf="@+id/tfDate"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/tfDate"
+                        app:layout_constraintTop_toTopOf="@+id/tfDate">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/txtTime"
@@ -108,146 +120,140 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <RelativeLayout
-                    android:id="@+id/CustomerContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/TvCustomer"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/dateTimeContainer"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/layout_backgroundbox"
-                    >
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/customer_underline"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@+id/dateTimeContainer"
+                    app:layout_constraintTop_toBottomOf="@+id/dateTimeContainer" />
 
-                    <TextView
-                        android:id="@+id/TvCustomer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="@string/customer_underline"
-                        android:textSize="20sp" />
-
-                    <LinearLayout
-                        android:id="@+id/listCustomer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/TvCustomer"
-                        android:layout_marginLeft="30dp"
-                        android:gravity="center"
-                        android:orientation="vertical" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/ServiceContainer"
-                    android:layout_width="match_parent"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/customerChips"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/CustomerContainer"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/layout_backgroundbox"
-                    >
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/TvCustomer"
+                    app:layout_constraintTop_toBottomOf="@+id/TvCustomer">
 
-                    <TextView
-                        android:id="@+id/TvService"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="@string/service_underline"
-                        android:textSize="20sp" />
+                </com.google.android.material.chip.ChipGroup>
 
-                    <LinearLayout
-                        android:id="@+id/listService"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/TvService"
-                        android:gravity="center"
-                        android:layout_marginLeft="30dp"
-                        android:orientation="vertical" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/employeeContainer"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/TvService"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/ServiceContainer"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/layout_backgroundbox"
-                    >
+                    android:layout_marginTop="16dp"
+                    android:text="@string/service_underline"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@+id/TvCustomer"
+                    app:layout_constraintTop_toBottomOf="@+id/customerChips" />
 
-                    <TextView
-                        android:id="@+id/TvEmployee"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="@string/employee_underline"
-                        android:textSize="20sp" />
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/serviceChips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/TvService"
+                    app:layout_constraintTop_toBottomOf="@+id/TvService">
 
-                    <LinearLayout
-                        android:id="@+id/ListEmployee"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/TvEmployee"
-                        android:gravity="center"
-                        android:layout_marginLeft="30dp"
-                        android:orientation="vertical"
-                        >
+                </com.google.android.material.chip.ChipGroup>
 
-                    </LinearLayout>
+                <TextView
+                    android:id="@+id/TvEmployee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/employee_underline"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@+id/TvService"
+                    app:layout_constraintTop_toBottomOf="@+id/serviceChips" />
 
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/employeeChips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/TvEmployee"
+                    app:layout_constraintTop_toBottomOf="@+id/TvEmployee">
 
-                </RelativeLayout>
+                </com.google.android.material.chip.ChipGroup>
 
-                <RelativeLayout
+                <TextView
+                    android:id="@+id/TvDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/hintDescription"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@+id/TvEmployee"
+                    app:layout_constraintTop_toBottomOf="@+id/employeeChips" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/DescriptionContainer"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/employeeContainer"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/layout_backgroundbox">
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/card_layoutdark"
+                    app:layout_constraintEnd_toEndOf="@+id/dateTimeContainer"
+                    app:layout_constraintStart_toStartOf="@+id/dateTimeContainer"
+                    app:layout_constraintTop_toBottomOf="@+id/TvDescription">
 
-                    <TextView
-                        android:id="@+id/TvDescription"
-                        android:layout_width="wrap_content"
+
+                    <EditText
+                        android:id="@+id/txtNotes"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="@string/hintDescription"
-                        android:textSize="20sp"
-                        />
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:lines="3"
+                        android:inputType="textMultiLine"
+                        android:minHeight="48dp"
+                        android:editable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/txtDescription"
-                        android:gravity="left"
-                        android:layout_height="fill_parent"
-                        android:layout_width="wrap_content"
-                        android:layout_below="@id/TvDescription"
-                        android:maxLines="4"
-                        android:lines="4"
-                        android:textSize="18sp"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        />
-                </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/DescriptionContainer"
-                    android:padding="20dp">
+                    android:padding="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/DescriptionContainer">
 
                     <Button
                         android:id="@+id/btnEditAppointment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:text="Edit"
+                        android:text="@string/btnEdit"
                         android:textColor="?attr/colorOnPrimarySurface"
                         app:icon="@drawable/ic_baseline_create_24"
                         app:iconTint="@android:color/primary_text_dark" />
@@ -257,14 +263,53 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:text="Delete"
+                        android:text="@string/btnDelete"
                         android:textColor="@color/design_default_color_on_primary"
                         app:icon="@drawable/ic_baseline_delete_24"
                         app:iconTint="@color/design_default_color_on_primary" />
 
                 </RelativeLayout>
 
-            </RelativeLayout>
+                <ImageButton
+                    android:id="@+id/addCustomers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/layout_backgroundbox"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/TvCustomer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/TvCustomer"
+                    app:srcCompat="@drawable/ic_baseline_add_24" />
+
+                <ImageButton
+                    android:id="@+id/addEmployees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_backgroundbox"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/TvEmployee"
+                    app:layout_constraintEnd_toEndOf="@+id/addServices"
+                    app:layout_constraintStart_toStartOf="@+id/addServices"
+                    app:layout_constraintTop_toTopOf="@+id/TvEmployee"
+                    app:srcCompat="@drawable/ic_baseline_add_24" />
+
+                <ImageButton
+                    android:id="@+id/addServices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_backgroundbox"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/TvService"
+                    app:layout_constraintEnd_toEndOf="@+id/addCustomers"
+                    app:layout_constraintStart_toStartOf="@+id/addCustomers"
+                    app:layout_constraintTop_toTopOf="@+id/TvService"
+                    app:srcCompat="@drawable/ic_baseline_add_24" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

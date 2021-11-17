@@ -10,20 +10,19 @@ import java.util.*
 @Parcelize
 data class Appointment(
     val _id: String?,
-    val comment: String?,
-    val customers: List<OneAppointmentResponse.Customer>?,
-    val date: Date?,
-    val duration: Int?,
-    val employees: List<OneAppointmentResponse.Employee>?,
+    var comment: String?,
+    var customers: MutableList<OneAppointmentResponse.Customer>?,
+    var date: Date?,
+    var duration: Int?,
+    var employees: MutableList<OneAppointmentResponse.Employee>?,
     val paymentReceived: Boolean?,
-    val ratings: List<AppointmentResponse.Rating>?,
-    var services: List<OneAppointmentResponse.Service>?,
-    val timeindex: Int?,
+    val ratings: MutableList<AppointmentResponse.Rating>?,
+    var services: MutableList<OneAppointmentResponse.Service>?,
+    var timeindex: Int?,
 ) : Parcelable {
     fun checkDate(date: Date): Boolean{
         return date.year == this.date!!.year && date.month == this.date!!.month && date.day == this.date!!.day
     }
-
 
     @Parcelize
     data class newAppointment(var date: Date?,

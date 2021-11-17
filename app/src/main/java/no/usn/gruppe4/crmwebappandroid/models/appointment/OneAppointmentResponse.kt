@@ -14,16 +14,16 @@ data class OneAppointmentResponse(
     @Parcelize
     data class Service(
         val _id: String?,
-        val _service: no.usn.gruppe4.crmwebappandroid.models.service.Service?
+        var _service: no.usn.gruppe4.crmwebappandroid.models.service.Service?
     ): Parcelable
     @Parcelize
     data class Customer(
         val _id: String?,
-        val _customer: no.usn.gruppe4.crmwebappandroid.models.customer.Customer?
+        var _customer: no.usn.gruppe4.crmwebappandroid.models.customer.Customer?
     ): Parcelable
     @Parcelize
     data class Employee(
         val _id: String?,
-        val _employee: no.usn.gruppe4.crmwebappandroid.models.employee.Employee?
+        var _employee: no.usn.gruppe4.crmwebappandroid.models.employee.Employee?
     ): Parcelable
 }
