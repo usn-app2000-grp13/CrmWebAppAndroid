@@ -6,6 +6,7 @@ import no.usn.gruppe4.crmwebappandroid.models.appointment.OneAppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerResponse
 import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerResponseNoArray
+import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerViewModel
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeResponse
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeResponseNoArray
@@ -115,6 +116,12 @@ interface CrmApi {
 
     @POST("newCustomer")
     suspend fun postCustomer(@Body req: Customer): CustomerResponseNoArray
+
+    @PUT("customer")
+     suspend fun putCustomer(@Body req: Customer): CustomerResponseNoArray
+
+    @HTTP(method = "DELETE",path = "customer", hasBody = true)
+     suspend fun deleteCustomer(@Body req: CustomerViewModel.DeleteCustomer): CustomerResponseNoArray
 
 
 /*

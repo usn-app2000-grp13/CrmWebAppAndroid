@@ -29,11 +29,14 @@
     <fragment
         android:id="@+id/customerFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.CustomerFragment"
-        android:label="fragment_customer"
-        tools:layout="@layout/fragment_customer" >
+        android:label="Customer List"
+        tools:layout="@layout/fragment_customer">
         <action
             android:id="@+id/action_customerFragment_to_newCustomerFragment2"
             app:destination="@id/newCustomerFragment" />
+        <action
+            android:id="@+id/action_customerFragment_to_customerEditFragment"
+            app:destination="@id/customerEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/newCustomerFragment"
@@ -157,5 +160,13 @@
         <action
             android:id="@+id/action_editEmployeeFragment_to_employeeCard"
             app:destination="@id/employeeCard" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerEditFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.CustomerEditFragment"
+        android:label="Customer Inspect">
+        <action
+            android:id="@+id/action_customerEditFragment_to_customerFragment"
+            app:destination="@id/customerFragment" />
     </fragment>
 </navigation>

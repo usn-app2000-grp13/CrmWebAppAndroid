@@ -2,7 +2,6 @@ package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import java.io.IOException
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCustomerBinding
-import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerAdapter
-import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
+import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerViewModel
 
 class CustomerFragment : Fragment() {
     //en egen liste i customerFragment som vi kan sende inn til adapteren (pga. grafisk crash)
@@ -26,7 +24,7 @@ class CustomerFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentCustomerBinding.inflate(inflater)
         //la till viewmodelen for customers for å gjøre DB call og observeList
-        viewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
         //kaller på metode i viewmodel (pga. async muligheter)
         viewModel.getCustomers()
         val adapter = CustomerAdapter(requireContext(), customerList)
@@ -46,7 +44,8 @@ class CustomerFragment : Fragment() {
                 println(customerList[position])
                 val bundle = Bundle()
                 bundle.putParcelable("customer", customerList[position])
-                //findNavController().navigate(R.id.action_employeeFragment_to_employeeCard, bundle)
+                findNavController().navigate(R.id.action_customerFragment_to_customerEditFragment, bundle)
+
             }
         })
 
