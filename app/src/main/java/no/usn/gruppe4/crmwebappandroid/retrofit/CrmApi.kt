@@ -19,6 +19,7 @@ import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.models.service.ServiceResponse
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoResponse
+import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
 import retrofit2.http.*
 import java.util.*
 
@@ -37,6 +38,12 @@ interface CrmApi {
 
     @POST("resetPassword")
     suspend fun resetPassword(@Body req: ResetPasswordRequest)
+
+    @GET("/api/auth/verification/resetPassword/{email}/{PasssecretCode}")
+    suspend fun getPasswordResetVerification(@Path("email") email:String, @Path("PasssecretCode") PasssecretCode:String):LoginViewModel.PasswordResetSuccess
+
+    @PUT("/api/auth/resetPassword")
+    suspend fun  setPassword(@Body req: LoginViewModel.NewPassword): LoginViewModel.PasswordResetSuccess
 
     @GET("logout")
     suspend fun logoutUser()

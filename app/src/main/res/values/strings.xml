@@ -64,6 +64,7 @@
     <string name="missingDescriptionMsg">Description can not be empty</string>
     <string name="missingDurationMsg">Duration can not be empty</string>
     <string name="missingPriceMsg">Price can not be empty</string>
+    <string name="code">code</string>
 
     <string-array name="services">
         <item>HairCut Adult</item>

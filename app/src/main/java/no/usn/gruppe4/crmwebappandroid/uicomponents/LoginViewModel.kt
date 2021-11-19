@@ -58,6 +58,26 @@ class LoginViewModel() : ViewModel() {
             }
         }
     }
+    fun getPasswordResetVerification(email: String, code: String){
+        viewModelScope.launch {
+            try {
+                RetrofitInstance.api.getPasswordResetVerification(email, code)
+                Log.i(TAG, "password reset continues")
+            }catch (e: Exception){
+                Log.i(TAG, e.toString())
+            }
+        }
+    }
+    fun setPassword(newPassword: NewPassword){
+        viewModelScope.launch {
+            try {
+                RetrofitInstance.api.setPassword(newPassword)
+                Log.i(TAG, "password reset finished")
+            }catch (e: Exception){
+                Log.i(TAG, e.toString())
+            }
+        }
+    }
 
     fun logout(){
         viewModelScope.launch {
@@ -68,4 +88,6 @@ class LoginViewModel() : ViewModel() {
             }
         }
     }
+    data class PasswordResetSuccess(val success: Boolean?)
+    data class NewPassword(val newPassword: String?)
 }

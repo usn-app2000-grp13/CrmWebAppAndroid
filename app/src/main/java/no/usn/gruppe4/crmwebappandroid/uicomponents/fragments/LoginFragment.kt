@@ -87,6 +87,7 @@ class LoginFragment : Fragment() {
             val email = binding.editTextTextEmailAddress2.text.toString()
             if (email != null){
                 viewModel.resetPassword(ResetPasswordRequest(email))
+                findNavController().navigate(R.id.action_loginFragment_to_emailResetFragment)
             }else {
                 //make email field show error
             }

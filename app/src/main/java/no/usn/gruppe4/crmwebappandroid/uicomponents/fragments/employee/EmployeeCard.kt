@@ -18,7 +18,7 @@ import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
 
 class EmployeeCard : Fragment() {
 
-    lateinit var binding: FragmentNewEmployeeBinding
+    lateinit var binding: FragmentEmployeeCardBinding
     lateinit var viewModel: EmployeeViewModel
 
     private var employee: Employee? = null
@@ -61,7 +61,7 @@ class EmployeeCard : Fragment() {
             val builder = AlertDialog.Builder(requireContext())
             builder.setMessage("Are you sure you want to DELETE this employee?")
                 .setCancelable(false)
-                .setPositiveButton("Yes") { dialog, id ->
+                .setPositiveButton("Yes") { dialog, _ ->
                     // Dismiss the dialog
                     viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
                     val employee = EmployeeViewModel.DeleteEmployee(id = employee?._id)

@@ -17,7 +17,7 @@ import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
 
 class EditEmployeeFragment : Fragment() {
     private var employee: Employee? = null
-    lateinit var binding: FragmentNewEmployeeBinding
+    lateinit var binding: FragmentEditEmployeeBinding
     lateinit var viewModel: EmployeeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

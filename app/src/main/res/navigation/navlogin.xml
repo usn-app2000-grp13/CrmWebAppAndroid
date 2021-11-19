@@ -12,10 +12,33 @@
         <action
             android:id="@+id/action_loginFragment_to_newCompanyFragment"
             app:destination="@id/newCompanyFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_emailResetFragment"
+            app:destination="@id/emailResetFragment" />
     </fragment>
     <fragment
         android:id="@+id/newCompanyFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewCompanyFragment"
         android:label="fragment_new_company"
         tools:layout="@layout/fragment_new_company" />
+    <fragment
+        android:id="@+id/emailResetFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmailResetFragment"
+        android:label="fragment_email_reset"
+        tools:layout="@layout/fragment_email_reset" >
+        <action
+            android:id="@+id/action_emailResetFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_emailResetFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.ResetPasswordFragment"
+        android:label="ResetPasswordFragment" >
+        <action
+            android:id="@+id/action_resetPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
