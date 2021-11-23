@@ -75,7 +75,7 @@ interface CrmApi {
     suspend fun addAppointment(@Body req: Appointment.newAppointment)
 
     @PUT("appointment")
-    suspend fun updateAppointment(@Body req: Appointment)
+    suspend fun updateAppointment(@Body req: Appointment.newAppointment)
 
     @HTTP(method = "DELETE",path = "appointment", hasBody = true)
     suspend fun deleteAppointment(@Body req: IdRequest)

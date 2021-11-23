@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:context=".uicomponents.fragments.services.AppointmentClicked"
@@ -15,84 +15,279 @@
             android:paddingTop="25dp"
             >
 
+            <!-- date time  -->
+            <TextView
+                android:id="@+id/TVNewAppointment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/newAppointment"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dateTimeContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TVNewAppointment">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tfDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:clickable="false"
+                    android:hint="@string/hintDate"
+                    app:endIconDrawable="@drawable/ic_baseline_date_range_24"
+                    app:endIconMode="custom"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tfTime"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editAppDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:text="01/01/1999" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tfTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:hint="@string/hintTime"
+                    app:endIconDrawable="@drawable/ic_baseline_access_time_24"
+                    app:endIconMode="custom"
+                    app:layout_constraintBottom_toBottomOf="@+id/tfDate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tfDate"
+                    app:layout_constraintTop_toTopOf="@+id/tfDate">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editAppTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:text="12:00" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/serviceContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/dateTimeContainer"
+                app:layout_constraintStart_toStartOf="@+id/dateTimeContainer"
+                app:layout_constraintTop_toBottomOf="@+id/dateTimeContainer">
 
                 <TextView
-                    android:id="@+id/editAppDate"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxWidth="@dimen/custom_max_width"
-                    android:minWidth="@dimen/custom_min_width"
-                    android:minHeight="@dimen/custom_min_height"
-                    android:text="@string/hintDate"
-                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
                     android:padding="8dp"
-                    android:layout_gravity="start"/>
+                    android:text="@string/service"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/editAppService"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/btnEditAppService"
+                    android:minHeight="48dp"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnEditAppService"
+                    app:layout_constraintEnd_toStartOf="@+id/btnEditAppService"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btnEditAppService"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <Button
-                    android:id="@+id/btnEditAppDate"
-                    android:layout_width="60dp"
+                    android:id="@+id/btnEditAppService"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:clickable="false"
-                    app:icon="@android:drawable/ic_menu_today"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/btnAdd"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-            </FrameLayout>
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/CGServices"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/btnEditAppService"
+                    app:layout_constraintStart_toStartOf="@+id/editAppService"
+                    app:layout_constraintTop_toBottomOf="@+id/btnEditAppService" />
 
-            <FrameLayout
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/customerContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/employeeContainer"
+                app:layout_constraintEnd_toEndOf="@+id/serviceContainer"
+                app:layout_constraintStart_toStartOf="@+id/serviceContainer"
+                app:layout_constraintTop_toBottomOf="@id/serviceContainer">
 
                 <TextView
-                    android:id="@+id/editAppTime"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxWidth="@dimen/custom_max_width"
-                    android:minWidth="@dimen/custom_min_width"
-                    android:minHeight="@dimen/custom_min_height"
-                    android:text="@string/hintTime"
-                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
                     android:padding="8dp"
-                    android:layout_gravity="start"/>
+                    android:text="@string/customer"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btnEditAppTime"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:clickable="false"
-                    app:icon="@android:drawable/ic_menu_today"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-            </FrameLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/editAppDuration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/hintDuration"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editAppTxtDuration"
+                    android:id="@+id/btnAppEditNewCus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:inputType="time" />
+                    android:layout_margin="15dp"
+                    android:text="@string/newCustomer"
+                    app:layout_constraintTop_toBottomOf="@+id/textView6"
+                    tools:layout_editor_absoluteX="15dp" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <Spinner
+                    android:id="@+id/editAppCustomer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/btnEditAppCustomer"
+                    android:minHeight="48dp"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/btnEditAppCustomer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnAppEditNewCus" />
+
+                <Button
+                    android:id="@+id/btnEditAppCustomer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/btnAdd"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnAppEditNewCus" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/CGCustomers"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/btnEditAppCustomer"
+                    app:layout_constraintStart_toStartOf="@+id/editAppCustomer"
+                    app:layout_constraintTop_toBottomOf="@+id/editAppCustomer" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/employeeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/editAppComment"
+                app:layout_constraintEnd_toEndOf="@+id/customerContainer"
+                app:layout_constraintStart_toStartOf="@+id/customerContainer"
+                app:layout_constraintTop_toBottomOf="@id/customerContainer">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:padding="8dp"
+                    android:text="@string/employee"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/editAppEmployee"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_toStartOf="@+id/btnEditAppEmployee"
+                    android:minHeight="48dp"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/btnEditAppEmployee"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <Button
+                    android:id="@+id/btnEditAppEmployee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/btnAdd"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/CGEmployees"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/btnEditAppEmployee"
+                    app:layout_constraintStart_toStartOf="@+id/editAppEmployee"
+                    app:layout_constraintTop_toBottomOf="@+id/editAppEmployee" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppComment"
@@ -102,168 +297,57 @@
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
                 android:minHeight="@dimen/custom_min_height"
-                android:layout_margin="10dp"
-                app:endIconMode="clear_text">
+                app:endIconMode="clear_text"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+                app:layout_constraintEnd_toEndOf="@+id/employeeContainer"
+                app:layout_constraintStart_toStartOf="@+id/employeeContainer"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtComment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:inputType="text|textMultiLine" />
+                    android:inputType="text|textMultiLine"
+                    android:lines="3"
+                    android:text="" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:padding="8dp"
-                android:text="@string/service"
-                android:layout_gravity="center"
-                />
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-
-                <Spinner
-                    android:id="@+id/editAppService"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@id/btnEditAppService"
-                    android:minHeight="48dp"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/btnEditAppService"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/btnAdd" />
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/LLservices"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:padding="8dp"
-                android:text="@string/customer"
-                android:layout_gravity="center"
-                />
-
-            <Button
-                android:id="@+id/btnAppEditNewCus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/newCustomer"
-                android:layout_margin="15dp"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-
-                <Spinner
-                    android:id="@+id/editAppCustomer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@id/btnEditAppCustomer"
-                    android:minHeight="48dp"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/btnEditAppCustomer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/btnAdd" />
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/LLCustomers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:padding="8dp"
-                android:text="@string/employee"
-                android:layout_gravity="center"
-                />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-
-                <Spinner
-                    android:id="@+id/editAppEmployee"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@+id/btnEditAppEmployee"
-                    android:minHeight="48dp"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/btnEditAppEmployee"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/btnAdd" />
-
-            </RelativeLayout>
-            <LinearLayout
-                android:id="@+id/LLEmployees"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
-            <ListView
-                android:id="@+id/editAppEmployeeList"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_margin="10dp"
-                android:scrollbars="vertical"/>
-
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:layout_margin="10dp">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/editAppComment"
+                app:layout_constraintStart_toStartOf="@+id/editAppComment">
 
                 <Button
                     android:id="@+id/btnCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:text="@string/btnCancel" />
+                    android:text="@string/btnCancel"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnSubmit"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/btnSubmit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:text="@string/btnSubmit" />
+                    android:text="@string/btnSubmit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/btnCancel"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

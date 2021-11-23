@@ -25,13 +25,15 @@ data class Appointment(
     }
 
     @Parcelize
-    data class newAppointment(var date: Date?,
-                              var timeindex: Int?,
-                              var comment: String,
-                              var duration: Int?,
-                              var services: List<_service>,
-                              var customers: List<_customer>,
-                              var employees: List<_employee>,
+    data class newAppointment(
+        var _id: String?,
+        var date: Date?,
+        var timeindex: Int?,
+        var comment: String,
+        var duration: Int?,
+        var services: MutableList<_service>,
+        var customers: MutableList<_customer>,
+        var employees: MutableList<_employee>,
     ): Parcelable {
         fun addService(service: Service){
             var temp = mutableListOf<_service>()

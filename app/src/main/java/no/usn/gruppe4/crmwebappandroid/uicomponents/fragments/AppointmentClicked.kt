@@ -1,5 +1,6 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -32,14 +33,18 @@ class AppointmentClicked : Fragment() {
     private var deleted = false
     private var editMode = false
     private var tmpServices: MutableList<Service> = mutableListOf()
+    private var serviceList = mutableListOf<Service>()
     private var tmpCustomers: MutableList<Customer> = mutableListOf()
+    private var customerList = mutableListOf<Customer>()
     private var tmpEmployees: MutableList<Employee> = mutableListOf()
+    private var employeeList = mutableListOf<Employee>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.getParcelable<Appointment>("appointment").let { el->
             appointment = el
         }
+
         appointment?.customers?.forEach {
             tmpCustomers.add(it._customer!!)
         }
@@ -54,7 +59,23 @@ class AppointmentClicked : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAppointmentClickedBinding.inflate(inflater)
+
+        //initialize viemodel
         viewModel = ViewModelProvider(this).get(CalanderViewModel::class.java)
+        //initialize lists for edit appointment
+        viewModel.getServices()
+        viewModel.services.observe(viewLifecycleOwner, {
+            serviceList.addAll(it)
+        })
+        viewModel.getCustomers()
+        viewModel.customers.observe(viewLifecycleOwner, {
+            customerList.addAll(it)
+        })
+        viewModel.getEmployees()
+        viewModel.employees.observe(viewLifecycleOwner, {
+            employeeList.addAll(it)
+        })
+
         chipGroup = binding.customerChips
         Log.i(TAG, "appointment Received: ${appointment.toString()}")
 
@@ -73,7 +94,9 @@ class AppointmentClicked : Fragment() {
         }
 
         binding.btnEditAppointment.setOnClickListener {
-            makeEditable()
+            val bundle = Bundle()
+            bundle.putParcelable("appointment", appointment)
+            findNavController().navigate(R.id.action_appointmentClicked_to_newAppointmentFragment, bundle)
         }
 
         getChips()
@@ -170,5 +193,7 @@ class AppointmentClicked : Fragment() {
         }
 
     }
+
+
 
 }

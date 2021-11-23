@@ -1,6 +1,5 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents
 
-import android.app.Service
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
-import no.usn.gruppe4.crmwebappandroid.models.appointment.AppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
@@ -87,7 +85,7 @@ class CalanderViewModel: ViewModel() {
         }
     }
 
-    fun updateAppointment(appointment: Appointment){
+    fun updateAppointment(appointment: Appointment.newAppointment){
         viewModelScope.launch {
             try{
                 RetrofitInstance.api.updateAppointment(appointment)
