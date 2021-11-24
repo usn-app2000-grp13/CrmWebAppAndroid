@@ -1,13 +1,11 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
@@ -16,7 +14,6 @@ import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentAppointmentClickedBinding
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
-import no.usn.gruppe4.crmwebappandroid.models.appointment.OneAppointmentResponse
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
@@ -31,7 +28,6 @@ class AppointmentClicked : Fragment() {
     private lateinit var viewModel: CalanderViewModel
     private lateinit var chipGroup: ChipGroup
     private var deleted = false
-    private var editMode = false
     private var tmpServices: MutableList<Service> = mutableListOf()
     private var serviceList = mutableListOf<Service>()
     private var tmpCustomers: MutableList<Customer> = mutableListOf()
@@ -151,49 +147,8 @@ class AppointmentClicked : Fragment() {
         val chip = Chip(requireContext())
         chip.text = text
         chip.isCloseIconVisible = true
-        chip.setChipBackgroundColorResource(R.color.accent)
+        chip.setChipBackgroundColorResource(R.color.primary)
         return chip
     }
-
-    fun makeEditable(){
-        flipEditable(binding.txtNotes)
-        flipEditable(binding.txtDate)
-        flipEditable(binding.txtTime)
-        editMode = !editMode
-        if (editMode){
-            binding.addCustomers.visibility = View.VISIBLE
-            binding.addEmployees.visibility = View.VISIBLE
-            binding.addServices.visibility = View.VISIBLE
-            binding.btnEditAppointment.text ="Save"
-        }else{
-            binding.addCustomers.visibility = View.GONE
-            binding.addEmployees.visibility = View.GONE
-            binding.addServices.visibility = View.GONE
-            binding.btnEditAppointment.text = "Edit"
-        }
-    }
-
-    fun setValues(){
-    }
-
-    //make textField editable!
-    fun flipEditable(element: TextView){
-        if (!editMode){
-            element.isClickable = true
-            element.isCursorVisible = true
-            element.isFocusable = true
-            element.isFocusableInTouchMode = true
-            element.isEnabled = true
-        }else{
-            element.isClickable = false
-            element.isCursorVisible = false
-            element.isFocusable = false
-            element.isFocusableInTouchMode = false
-            element.isEnabled = false
-        }
-
-    }
-
-
 
 }

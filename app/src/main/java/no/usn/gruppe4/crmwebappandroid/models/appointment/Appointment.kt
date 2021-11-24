@@ -35,6 +35,7 @@ data class Appointment(
         var customers: MutableList<_customer>,
         var employees: MutableList<_employee>,
     ): Parcelable {
+        //adds the service id to the list
         fun addService(service: Service){
             var temp = mutableListOf<_service>()
             for (i in services)
@@ -49,9 +50,9 @@ data class Appointment(
             for (i in services)
                 temp.add(i)
 
-            for (i in temp){
-                if (i._service.equals(service._id))
-                    temp.remove(i)
+            for (i in temp.indices){
+                if (temp.get(i).equals(service._id))
+                    temp.remove(temp.get(i))
             }
             services = temp
         }
@@ -69,9 +70,9 @@ data class Appointment(
             for (i in customers)
                 temp.add(i)
 
-            for (i in temp){
-                if (i._customer.equals(customer._id))
-                    temp.remove(i)
+            for (i in temp.indices){
+                if (temp.get(i).equals(customer._id))
+                    temp.remove(temp.get(i))
             }
             customers = temp
         }
@@ -89,9 +90,9 @@ data class Appointment(
             for (i in employees)
                 temp.remove(i)
 
-            for (i in temp){
-                if (i._employee.equals(employee._id))
-                    temp.remove(i)
+            for (i in temp.indices){
+                if (temp.get(i).equals(employee._id))
+                    temp.remove(temp.get(i))
             }
             employees = temp
         }

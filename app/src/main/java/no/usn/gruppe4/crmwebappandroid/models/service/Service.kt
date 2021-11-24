@@ -13,4 +13,10 @@ data class Service(
     override fun toString(): String {
         return "$name"
     }
+    fun checkId(services: List<Service>): Boolean{
+        for (i in services){
+            if (this._id.equals(i._id)) return true
+        }
+        return false
+    }
 }

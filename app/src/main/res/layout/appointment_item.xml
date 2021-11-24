@@ -7,7 +7,7 @@
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
         app:cardElevation="2dp"
-        android:backgroundTint="?attr/colorSecondary"
+        android:backgroundTint="?attr/colorSecondaryVariant"
         app:cardCornerRadius="15dp"
         >
 

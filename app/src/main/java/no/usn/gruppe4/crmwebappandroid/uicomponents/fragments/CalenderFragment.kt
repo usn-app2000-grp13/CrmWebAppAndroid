@@ -88,6 +88,12 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             adapter.notifyDataSetChanged()
         })
 
+        binding.swipeLayout.setOnRefreshListener {
+            binding.swipeLayout.isRefreshing = true
+            viewModel.getMyAppointmentsDate(id, System.currentTimeMillis())
+            Log.i("refresh called", "Refreshing")
+            binding.swipeLayout.isRefreshing = false
+        }
 
         adapter.setOnItemClickListener(object: AppointmentAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {

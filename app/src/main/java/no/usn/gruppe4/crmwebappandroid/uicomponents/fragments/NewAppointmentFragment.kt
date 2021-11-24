@@ -83,13 +83,6 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         //binding
         binding = FragmentNewAppointmentBinding.inflate(inflater)
 
-
-
-        viewModel.curAppointment.observe(viewLifecycleOwner, {
-            it.also { appointment = it }
-            getChips()
-        })
-
         viewModel.getSchemaData()
 
         textDate = binding.editAppDate
@@ -98,35 +91,48 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         SPCustomer = binding.editAppCustomer
         SPEmployee = binding.editAppEmployee
 
+        //viewmodel observes curappointment
+        viewModel.curAppointment.observe(viewLifecycleOwner, {
+            it.also { appointment = it }
+            //makes the chips required
+            getChips()
+        })
 
         //Services selection
         binding.btnEditAppService.setOnClickListener {
-            val selectedService = binding.editAppService.selectedItem
-            appointment.addService(selectedService as Service)
-            selectedServices.add(selectedService)
-            viewModel.setCurAppointment(appointment)
+            val selectedService = binding.editAppService.selectedItem as Service
+            if (!selectedService.checkId(selectedServices)){
+                appointment.addService(selectedService)
+                selectedServices.add(selectedService)
+                viewModel.setCurAppointment(appointment)
+                Log.i("service change", appointment.toString())
+            }
             getChips()
-            Log.i("service change", appointment.toString())
+
         }
 
         //Customers selection
         binding.btnEditAppCustomer.setOnClickListener {
-            val selectedCustomer = binding.editAppCustomer.selectedItem
-            appointment.addCustomer(selectedCustomer as Customer)
-            selectedCustomers.add(selectedCustomer)
-            viewModel.setCurAppointment(appointment)
+            val selectedCustomer = binding.editAppCustomer.selectedItem as Customer
+            if (!selectedCustomer.checkId(selectedCustomers)){
+                appointment.addCustomer(selectedCustomer)
+                selectedCustomers.add(selectedCustomer)
+                viewModel.setCurAppointment(appointment)
+                Log.i("customer change", appointment.toString())
+            }
             getChips()
-            Log.i("customer change", appointment.toString())
         }
 
         //Employees selection
         binding.btnEditAppEmployee.setOnClickListener {
-            val selectedEmployee = binding.editAppEmployee.selectedItem
-            appointment.addEmployee(selectedEmployee as Employee)
-            selectedEmployees.add(selectedEmployee)
-            viewModel.setCurAppointment(appointment)
+            val selectedEmployee = binding.editAppEmployee.selectedItem as Employee
+            if (!selectedEmployee.checkId(selectedEmployees)){
+                appointment.addEmployee(selectedEmployee)
+                selectedEmployees.add(selectedEmployee)
+                viewModel.setCurAppointment(appointment)
+                Log.i("customer change", appointment.toString())
+            }
             getChips()
-            Log.i("customer change", appointment.toString())
         }
 
 
@@ -153,9 +159,16 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
 
         binding.btnSubmit.setOnClickListener {
             var duration = 0
-            for (i in selectedServices){
-                duration += i.duration!!
+            if (selectedServices.size > 0){
+                for (i in selectedServices){
+                    if (i.duration != null){
+                        duration += i.duration!!
+                    }else{
+                        duration += 1
+                    }
+                }
             }
+
             appointment.comment = binding.editAppTxtComment.text.toString()
             appointment.duration = duration
 
@@ -270,17 +283,17 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
                     appointment.removeService(item)
                 }
                 is Employee -> {
-                    selectedEmployees.remove(item)
+                    selectedEmployees.remove(item as Employee)
                     appointment.removeEmployee(item)
                 }
                 is Customer -> {
-                    selectedCustomers.remove(item)
+                    selectedCustomers.remove(item as Customer)
                     appointment.removeCustomer(item)
                 }
             }
             getChips()
         }
-        chip.setChipBackgroundColorResource(R.color.accent)
+        chip.setChipBackgroundColorResource(R.color.primary)
         return chip
     }
 
@@ -291,19 +304,6 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         SPEmployee.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item, availableEmployees)
         availableCustomers = customerList.filter { !selectedCustomers.contains(it) } as MutableList<Customer>
         SPCustomer.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item, availableCustomers)
-    }
-
-    private fun initializeArrays(){
-        selectedServices.forEach {
-            appointment.addService(it as Service)
-        }
-        selectedEmployees.forEach {
-            appointment.addEmployee(it as Employee)
-        }
-        selectedCustomers.forEach {
-            appointment.addCustomer(it as Customer)
-        }
-        viewModel.setCurAppointment(appointment)
     }
 
 }
