@@ -270,45 +270,6 @@
 
                 </RelativeLayout>
 
-                <ImageButton
-                    android:id="@+id/addCustomers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/layout_backgroundbox"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/TvCustomer"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/TvCustomer"
-                    app:srcCompat="@drawable/ic_baseline_add_24" />
-
-                <ImageButton
-                    android:id="@+id/addEmployees"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/layout_backgroundbox"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/TvEmployee"
-                    app:layout_constraintEnd_toEndOf="@+id/addServices"
-                    app:layout_constraintStart_toStartOf="@+id/addServices"
-                    app:layout_constraintTop_toTopOf="@+id/TvEmployee"
-                    app:srcCompat="@drawable/ic_baseline_add_24" />
-
-                <ImageButton
-                    android:id="@+id/addServices"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/layout_backgroundbox"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/TvService"
-                    app:layout_constraintEnd_toEndOf="@+id/addCustomers"
-                    app:layout_constraintStart_toStartOf="@+id/addCustomers"
-                    app:layout_constraintTop_toTopOf="@+id/TvService"
-                    app:srcCompat="@drawable/ic_baseline_add_24" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,7 +26,7 @@ import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
 import java.util.*
 
-
+private const val TAG = "CalenderFragment"
 class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
     private lateinit var viewModel: CalanderViewModel
@@ -40,7 +42,6 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         binding = FragmentCalenderBinding.inflate(inflater)
         //set the viewModel
         viewModel = ViewModelProvider(this).get(CalanderViewModel::class.java)
-        viewModel.getMyAppointmentsDate("602a7f4891d34d18402f4e44", System.currentTimeMillis())
 
         sharedPreferences = SecSharePref(requireContext(), "secrets")
         val username = sharedPreferences.get("name")
@@ -88,6 +89,26 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             adapter.notifyDataSetChanged()
         })
 
+        //Api error handling
+        viewModel.errorMessage.observe(viewLifecycleOwner, {
+            if (it == null){
+                binding.errorImage.visibility = View.GONE
+                Log.i("ErrorMessageTest", "No errors")
+            } else {
+                binding.errorImage.visibility = View.VISIBLE
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        //Api call loading
+        viewModel.isLoading.observe(viewLifecycleOwner, {
+            if (it == false){
+                binding.calenderProgress.visibility = View.GONE
+            }else {
+                binding.calenderProgress.visibility = View.VISIBLE
+            }
+        })
+        //On swipe down refresh
         binding.swipeLayout.setOnRefreshListener {
             binding.swipeLayout.isRefreshing = true
             viewModel.getMyAppointmentsDate(id, System.currentTimeMillis())
@@ -95,30 +116,12 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             binding.swipeLayout.isRefreshing = false
         }
 
+        //list item click inspect appointment
         adapter.setOnItemClickListener(object: AppointmentAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 val bundle = Bundle()
                 bundle.putParcelable("appointment", appointmentList[position])
                 findNavController().navigate(R.id.action_calenderFragment_to_appointmentClicked, bundle)
-            }
-
-            override fun onDeleteClick(position: Int) {
-                //delete from list
-                Log.i("Delete button holder: ", "delete button pressed for position $position")
-                viewModel.removeAppointment(IdRequest(appointmentList.get(position)._id))
-                viewModel.getMyAppointmentsDate("602a7f4891d34d18402f4e44", System.currentTimeMillis())
-            }
-
-            override fun onEditClick(position: Int) {
-                Log.i("Edit button holder: ", "Edit button pressed for position $position")
-            }
-
-            override fun onMessageClick(position: Int) {
-                Log.i("Message button holder: ", "Message button pressed for position $position")
-            }
-
-            override fun onExpCusClick(position: Int) {
-                TODO("Not yet implemented")
             }
         })
 
@@ -151,6 +154,15 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
     fun deleteAppointment(appointment: Appointment){
         viewModel.removeAppointment(IdRequest(appointment._id))
+    }
+    private fun createErrorDialog(message: String) {
+        val builder = AlertDialog.Builder(requireContext())
+            .setMessage(message)
+            .setPositiveButton("Close", DialogInterface.OnClickListener {
+                    dialogInterface, i -> requireActivity().finish()
+            })
+        val alert = builder.create()
+        alert.show()
     }
 
 

@@ -23,14 +23,22 @@ class LoginViewModel() : ViewModel() {
     val status: LiveData<Int>
         get() = _status
 
+    private val _errorMessage = MutableLiveData<String?>(null)
+    val errorMessage: LiveData<String?>
+        get() = _errorMessage
+
+    private val _isLoading = MutableLiveData<Boolean>(false)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
 
     fun loginCall(req: LoginRequest): Boolean{
+        _errorMessage.value = null
+        _isLoading.value = true
         var status = false
         viewModelScope.launch {
             try {
                 _status.value = 2
-                //val request = LoginRequest("test", "test@test.tes")
-
                 val data = RetrofitInstance.api.loginUser(req)
                 _session.value = data.data
                 Log.i(TAG, "login data: $data")
@@ -38,8 +46,11 @@ class LoginViewModel() : ViewModel() {
                 _status.value = 3
 
             }catch (e: Exception){
+                _errorMessage.value = e.message
                 Log.i(TAG, "login Error: $e")
                 _status.value = 1
+            }finally {
+                _isLoading.value = false
             }
 
         }

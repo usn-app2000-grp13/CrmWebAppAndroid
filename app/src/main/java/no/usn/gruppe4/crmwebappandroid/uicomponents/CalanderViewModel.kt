@@ -45,34 +45,52 @@ class CalanderViewModel: ViewModel() {
     val status: LiveData<Boolean>
         get() = _status
 
+    private val _errorMessage = MutableLiveData<String?>(null)
+    val errorMessage: LiveData<String?>
+        get() = _errorMessage
+    private val _isLoading = MutableLiveData<Boolean>(false)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
 
     fun setCurAppointment(app: Appointment.newAppointment){
         _curAppointment.value = app
     }
     fun getMyAppointmentsDate(_id: String, milles: Long){
+        _errorMessage.value = null
+        _isLoading.value = true
         viewModelScope.launch {
             try {
                 val data = RetrofitInstance.api.getMyAppointments2(_id, correctDate(milles))
                 _appointments.value = data.data
                 Log.i(TAG, "appointment data: $data")
             }catch (e: Exception){
+                _errorMessage.value = e.message
                 Log.i(TAG, "Error: $e")
+            }finally {
+                _isLoading.value = false
             }
         }
     }
 
     fun newAppointment(appointment: Appointment.newAppointment){
+        _errorMessage.value = null
+        _isLoading.value = true
         viewModelScope.launch {
             try{
                 RetrofitInstance.api.addAppointment(appointment)
                 Log.i(TAG, "Appointment added")
             }catch (e : Exception){
+                _errorMessage.value = e.message
                 Log.i(TAG, "Error: $e")
+            }finally {
+                _isLoading.value = false
             }
         }
     }
 
     fun removeAppointment(idRequest: IdRequest){
+        _errorMessage.value = null
+        _isLoading.value = true
         viewModelScope.launch {
             try{
                 _status.value = false
@@ -80,66 +98,94 @@ class CalanderViewModel: ViewModel() {
                 Log.i(TAG, "Appointment removed")
                 _status.value = true
             }catch (e : Exception){
+                _errorMessage.value = e.message
                 Log.i(TAG, "Error: $e")
+            }finally {
+                _isLoading.value = true
             }
         }
     }
 
     fun updateAppointment(appointment: Appointment.newAppointment){
+        _errorMessage.value = null
+        _isLoading.value = true
         viewModelScope.launch {
             try{
                 RetrofitInstance.api.updateAppointment(appointment)
                 Log.i(TAG, "Appointment removed")
             }catch (e : Exception){
+                _errorMessage.value = e.message
                 Log.i(TAG, "Error: $e")
+            }finally {
+                _isLoading.value = false
             }
         }
     }
 
     fun getAllAppointments(){
+        _errorMessage.value = null
+        _isLoading.value = true
         viewModelScope.launch {
             try {
                 val data = RetrofitInstance.api.getAppointments()
                 _appointments.value = data.data
                 Log.i(TAG, "appointment data: $data")
             }catch (e: Exception){
+                _errorMessage.value = e.message
                 Log.i(TAG, "Error: $e")
+            }finally {
+                _isLoading.value = false
             }
         }
     }
 
     fun getCustomers(){
+        _errorMessage.value = null
+        _isLoading.value = true
         viewModelScope.launch {
             try{
                 val data = RetrofitInstance.api.getCustomers()
                 _customers.value = data.data
                 Log.i(TAG, "Customer data: $data")
             }catch (e: Exception){
+                _errorMessage.value = null
                 Log.i(TAG, "Error: $e")
+            }finally {
+                _isLoading.value = false
             }
         }
     }
 
     fun getEmployees(){
+        _errorMessage.value = null
+        _isLoading.value = true
         viewModelScope.launch {
             try{
                 val data = RetrofitInstance.api.getEmployees()
                 _employees.value = data.data
                 Log.i(TAG, "Employee data: $data")
             }catch (e: Exception){
+                _errorMessage.value = e.message
                 Log.i(TAG, "Error: $e")
+            }finally {
+                _isLoading.value = false
             }
         }
     }
 
     fun getServices(){
+        _errorMessage.value = null
+        _isLoading.value = true
         viewModelScope.launch {
             try{
                 val data = RetrofitInstance.api.getServices()
                 _services.value = data.data
                 Log.i(TAG, "Service data: $services")
             }catch (e: Exception){
+                _errorMessage.value = e.message
                 Log.i(TAG, "Error: $e")
+            }finally {
+                _isLoading.value = false
             }
         }
     }

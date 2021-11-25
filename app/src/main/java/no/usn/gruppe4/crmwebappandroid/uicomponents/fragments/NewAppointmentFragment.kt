@@ -201,6 +201,23 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
             updateChoices()
         })
 
+        viewModel.isLoading.observe(viewLifecycleOwner, {
+            if (it){
+                binding.newAProgressBar.visibility = View.VISIBLE
+            }else{
+                binding.newAProgressBar.visibility = View.GONE
+            }
+        })
+
+        //Api error handling
+        viewModel.errorMessage.observe(viewLifecycleOwner, {
+            if (it == null){
+                Log.i("ErrorMessageTest", "No errors")
+            } else {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }
+        })
+
         if (appointment.date != null){
             textDate.text = SimpleDateFormat("yyyy-MM-dd").format(appointment?.date)
         }

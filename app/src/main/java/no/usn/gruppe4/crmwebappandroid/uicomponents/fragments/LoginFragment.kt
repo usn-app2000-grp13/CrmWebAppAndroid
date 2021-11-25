@@ -1,25 +1,20 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentLoginBinding
 import no.usn.gruppe4.crmwebappandroid.models.login.*
-import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginActivity
 import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
 import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
-import java.lang.Exception
-import java.lang.IllegalArgumentException
 
 private const val TAG = "LoginFragment"
 
@@ -42,6 +37,7 @@ class LoginFragment : Fragment() {
 
         //logged check
         if (sharedPreferences.getBoolean("logged")){
+            binding.constraintLayout.visibility = View.GONE
             viewModel.loginCall(LoginRequest(sharedPreferences.get("password"), sharedPreferences.get("username")))
         }
 
@@ -55,24 +51,32 @@ class LoginFragment : Fragment() {
             //activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
         viewModel.session.observe(viewLifecycleOwner, {
-
+            sharedPreferences.put("name", "${viewModel.session.value!!.firstname} ${viewModel.session.value!!.lastname}")
+            sharedPreferences.put("id", viewModel.session.value!!.id)
+            sharedPreferences.putBoolean("logged", true)
+            sharedPreferences.put("level", viewModel.session.value!!.level.toString())
+            val i = Intent(activity, MainActivity::class.java)
+            startActivity(i)
         })
 
-        //status indicator observed for scene modification 1 = show login screen 2 = show progress bar 3 = login success
-        viewModel.status.observe(viewLifecycleOwner, {
-            if (it == 1){
+        //Api error handling
+        viewModel.errorMessage.observe(viewLifecycleOwner, {
+            if (it == null){
+                Log.i("ErrorMessageTest", "No errors")
+
+            } else {
                 binding.constraintLayout.visibility = View.VISIBLE
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        //Api call loading
+        viewModel.isLoading.observe(viewLifecycleOwner, {
+            if (it == false){
                 binding.progressBar.visibility = View.GONE
-            }else if (it == 2){
-                binding.constraintLayout.visibility = View.GONE
+            }else {
                 binding.progressBar.visibility = View.VISIBLE
-            }else if (it == 3){
-                sharedPreferences.put("name", "${viewModel.session.value!!.firstname} ${viewModel.session.value!!.lastname}")
-                sharedPreferences.put("id", viewModel.session.value!!.id)
-                sharedPreferences.putBoolean("logged", true)
-                sharedPreferences.put("level", viewModel.session.value!!.level.toString())
-                val i = Intent(activity, MainActivity::class.java)
-                startActivity(i)
+                binding.constraintLayout.visibility = View.GONE
             }
         })
 
