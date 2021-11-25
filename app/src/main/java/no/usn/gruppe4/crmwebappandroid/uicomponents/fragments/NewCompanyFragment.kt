@@ -80,6 +80,8 @@ class NewCompanyFragment : Fragment() {
         })
 
         viewModel.session.observe(viewLifecycleOwner, {
+            sharedPreferences.put("username", company.email!!)
+            sharedPreferences.put("password", company.password!!)
             sharedPreferences.put("name", "${viewModel.session.value!!.firstname} ${viewModel.session.value!!.lastname}")
             sharedPreferences.put("id", viewModel.session.value!!.id)
             sharedPreferences.putBoolean("logged", true)

@@ -43,14 +43,16 @@ class LoginFragment : Fragment() {
 
         //onClickListener for login button sends a loginRequest to the viewModel using the email and password
         binding.loginbtn.setOnClickListener {
-            viewModel.loginCall(LoginRequest(binding.editTextTextPassword2.text.toString(), binding.editTextTextEmailAddress2.text.toString()))
-            sharedPreferences.put("username", binding.editTextTextEmailAddress2.text.toString())
-            sharedPreferences.put("password", binding.editTextTextPassword2.text.toString())
-
+            if (binding.editTextTextPassword2.text.length > 1 && binding.editTextTextEmailAddress2.text.length > 1){
+                viewModel.loginCall(LoginRequest(binding.editTextTextPassword2.text.toString(), binding.editTextTextEmailAddress2.text.toString()))
+                sharedPreferences.put("username", binding.editTextTextEmailAddress2.text.toString())
+                sharedPreferences.put("password", binding.editTextTextPassword2.text.toString())
+            }
             //the fragment KILLER!!!!
             //activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
         viewModel.session.observe(viewLifecycleOwner, {
+
             sharedPreferences.put("name", "${viewModel.session.value!!.firstname} ${viewModel.session.value!!.lastname}")
             sharedPreferences.put("id", viewModel.session.value!!.id)
             sharedPreferences.putBoolean("logged", true)
@@ -63,10 +65,22 @@ class LoginFragment : Fragment() {
         viewModel.errorMessage.observe(viewLifecycleOwner, {
             if (it == null){
                 Log.i("ErrorMessageTest", "No errors")
-
+                binding.constraintLayout.visibility = View.GONE
             } else {
                 binding.constraintLayout.visibility = View.VISIBLE
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        viewModel.status.observe(viewLifecycleOwner, {
+            if (it == 1){
+                binding.constraintLayout.visibility = View.VISIBLE
+            }
+            if (it == 2){
+                binding.constraintLayout.visibility = View.GONE
+            }
+            if (it == 3){
+                //can add login wait screen here
             }
         })
 
@@ -75,7 +89,6 @@ class LoginFragment : Fragment() {
             if (it == false){
                 binding.progressBar.visibility = View.GONE
             }else {
-                binding.progressBar.visibility = View.VISIBLE
                 binding.constraintLayout.visibility = View.GONE
             }
         })
