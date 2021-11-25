@@ -7,6 +7,7 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import no.usn.gruppe4.crmwebappandroid.models.login.*
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
+import no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewCompanyFragment
 import java.lang.IllegalArgumentException
 
 
@@ -86,6 +87,24 @@ class LoginViewModel() : ViewModel() {
                 Log.i(TAG, "password reset finished")
             }catch (e: Exception){
                 Log.i(TAG, e.toString())
+            }
+        }
+    }
+
+    fun newCompany(company: NewCompanyFragment.newCompany){
+        _errorMessage.value = null
+        _isLoading.value = true
+        _status.value = 1   //1 = in progress
+        viewModelScope.launch {
+            try {
+                RetrofitInstance.api.newCompany(company)
+                _status.value = 6   //2 = complete
+            }catch (e: Exception){
+                _errorMessage.value = e.message
+                _status.value = 3   //3 = error
+                Log.i("LoginViewModel", "error: $e")
+            }finally {
+                _isLoading.value = false
             }
         }
     }

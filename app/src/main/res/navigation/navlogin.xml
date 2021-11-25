@@ -19,8 +19,12 @@
     <fragment
         android:id="@+id/newCompanyFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewCompanyFragment"
-        android:label="fragment_new_company"
-        tools:layout="@layout/fragment_new_company" />
+        android:label="new company"
+        tools:layout="@layout/fragment_new_company" >
+        <action
+            android:id="@+id/action_newCompanyFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/emailResetFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.EmailResetFragment"

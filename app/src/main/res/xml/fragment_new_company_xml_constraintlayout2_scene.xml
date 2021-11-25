@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="600"
+        motion:autoTransition="animateToEnd">
+       <KeyFrameSet>
+       </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/tvgeneralinfo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neEmail"
+            motion:layout_constraintEnd_toEndOf="@+id/nePhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/nePhone"
+            motion:layout_constraintStart_toStartOf="@+id/nePhone"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/nePhone"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/neCompanyName"
+            motion:layout_constraintStart_toStartOf="@+id/neCompanyName"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyName"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            motion:layout_constraintTop_toBottomOf="@+id/tvgeneralinfo"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/tvadressinfo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/neEmail"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyStreet"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            motion:layout_constraintTop_toBottomOf="@+id/tvadressinfo"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyStreetNr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            motion:layout_constraintEnd_toStartOf="@+id/guideline2"
+            motion:layout_constraintStart_toEndOf="@+id/neCompanyApartment"
+            motion:layout_constraintTop_toBottomOf="@+id/neCompanyStreet"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyPostCode"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyApartment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/neCompanyPostArea"
+            motion:layout_constraintStart_toStartOf="@+id/guideline2"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyPostArea"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyStreetNr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/neCompanyStreetNr"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="@+id/neCompanyStreetNr"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyApartment"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyStreet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="@+id/neCompanyStreetNr"
+            motion:layout_constraintStart_toStartOf="@+id/guideline2"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/tvcompanycontact"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/neCompanyPostArea"
+            motion:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+            android:layout_marginTop="16dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyFirstName"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/tvcompanycontact"
+            motion:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+            android:layout_marginTop="16dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyLastName"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/neCompanyFirstName"
+            motion:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyUserEmail"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/neCompanyLastName"
+            motion:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyUserPhone"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/neCompanyUserEmail"
+            motion:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyPassword"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/neCompanyUserPhone"
+            motion:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCompanyConfirmPass"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/neCompanyPassword"
+            motion:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neSubmit"
+            motion:layout_constraintEnd_toStartOf="@+id/neCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            motion:layout_constraintTop_toBottomOf="@+id/neCompanyConfirmPass"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="@+id/neCompanyConfirmPass"
+            android:layout_marginTop="16dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/neCancel"
+            motion:layout_constraintEnd_toEndOf="@+id/neCompanyConfirmPass"
+            motion:layout_constraintStart_toEndOf="@+id/neSubmit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/neSubmit"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/neSubmit"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+    </ConstraintSet>
+</MotionScene>

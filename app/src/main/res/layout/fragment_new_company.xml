@@ -5,84 +5,66 @@
     <data>
 
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content"
+            app:layoutDescription="@xml/fragment_new_company_xml_constraintlayout2_scene">
 
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/neCompanyName"
-                android:layout_width="match_parent"
+            <ProgressBar
+                android:id="@+id/newCompanyProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Company Name:"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNeCompanyName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/neCompanyAddress"
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Company Address:"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.60" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/NeLastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
+            <!-- General Company Info -->
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/nePhone"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvgeneralinfo"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/hintPhone"
-                android:maxWidth="@dimen/custom_max_width"
-                android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNePhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPhonetic" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="16dp"
+                android:text="General Info"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/neEmail"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:hint="@string/hintEmail"
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/nePhone"
+                app:layout_constraintStart_toStartOf="@+id/nePhone"
+                app:layout_constraintTop_toBottomOf="@+id/nePhone">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtNeEmail"
@@ -92,38 +74,403 @@
 
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/nePassword"
+                android:id="@+id/nePhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/hintPhone"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyName"
+                app:layout_constraintStart_toStartOf="@+id/neCompanyName"
+                app:layout_constraintTop_toBottomOf="@+id/neCompanyName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNePhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:hint="Company Name:"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvgeneralinfo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Company Address -->
+            <TextView
+                android:id="@+id/tvadressinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Adress info:"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/neEmail" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyStreet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:hint="Street:"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvadressinfo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyStreet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyStreetNr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Nr:"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/neCompanyApartment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/neCompanyStreet">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyStreetNr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyPostCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="PostCode:"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyApartment"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/neCompanyPostArea">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyNamePostCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyPostArea"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Post Area:"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyStreetNr"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/neCompanyStreetNr"
+                app:layout_constraintTop_toBottomOf="@+id/neCompanyStreetNr">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyPostArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyApartment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Apartment:"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyStreet"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/neCompanyStreetNr">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyApartment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Company Main User -->
+
+            <TextView
+                android:id="@+id/tvcompanycontact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Company Contact"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+                app:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+                app:layout_constraintTop_toBottomOf="@+id/neCompanyPostArea" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyFirstName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="FirstName:"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+                app:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+                app:layout_constraintTop_toBottomOf="@+id/tvcompanycontact">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyLastName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/Lastname"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+                app:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+                app:layout_constraintTop_toBottomOf="@+id/neCompanyFirstName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyUserEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/Email"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+                app:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+                app:layout_constraintTop_toBottomOf="@+id/neCompanyLastName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyUserEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyUserPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/hintPhone"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+                app:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+                app:layout_constraintTop_toBottomOf="@+id/neCompanyUserEmail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyUserPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:hint="@string/hintPass"
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+                app:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+                app:layout_constraintTop_toBottomOf="@+id/neCompanyUserPhone">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNePassword"
+                    android:id="@+id/txtNeCompanyPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />
 
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/neCompanyConfirmPass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Confirm Password"
+                android:maxWidth="@dimen/custom_max_width"
+                android:minWidth="@dimen/custom_min_width"
+                android:minHeight="@dimen/custom_min_height"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
+                app:helperText="Required"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyPostCode"
+                app:layout_constraintStart_toStartOf="@+id/neCompanyPostArea"
+                app:layout_constraintTop_toBottomOf="@+id/neCompanyPassword">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNeCompanyConfirmPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/neSubmit"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Checkout" />
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="Checkout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/neCancel"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/neCompanyConfirmPass"
+                app:layout_constraintTop_toBottomOf="@+id/neCompanyConfirmPass" />
 
             <Button
                 android:id="@+id/neCancel"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="cancel" />
+                android:text="cancel"
+                app:layout_constraintBottom_toBottomOf="@+id/neSubmit"
+                app:layout_constraintEnd_toEndOf="@+id/neCompanyConfirmPass"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/neSubmit"
+                app:layout_constraintTop_toTopOf="@+id/neSubmit" />
 
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

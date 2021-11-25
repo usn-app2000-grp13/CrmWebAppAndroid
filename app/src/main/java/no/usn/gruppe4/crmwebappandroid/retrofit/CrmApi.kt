@@ -20,6 +20,7 @@ import no.usn.gruppe4.crmwebappandroid.models.service.ServiceResponse
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoResponse
 import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
+import no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewCompanyFragment
 import retrofit2.http.*
 import java.util.*
 
@@ -47,6 +48,9 @@ interface CrmApi {
 
     @GET("logout")
     suspend fun logoutUser()
+
+    @POST("newVendor")
+    suspend fun newCompany(@Body req: NewCompanyFragment.newCompany)
 
     //service routes
 
