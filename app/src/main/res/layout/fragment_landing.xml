@@ -139,17 +139,6 @@
                     app:layout_constraintStart_toEndOf="@+id/textView2"
                     app:layout_constraintTop_toTopOf="@+id/textView2" />
 
-                <ImageButton
-                    android:id="@+id/btnSelectUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:background="@color/verryLight"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtUserName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtUserName"
-                    app:srcCompat="@drawable/ic_history" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

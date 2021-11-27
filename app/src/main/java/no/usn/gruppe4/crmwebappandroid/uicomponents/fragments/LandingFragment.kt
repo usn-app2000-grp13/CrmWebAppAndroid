@@ -176,13 +176,15 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         val piechartListfin = ArrayList<Entry>()
         val pieChartnames = ArrayList<String>()
         val colorlist = ArrayList<Int>()
-        colorlist.add(Color.parseColor("#304567"))
-        colorlist.add(Color.parseColor("#309967"))
-        colorlist.add(Color.parseColor("#476567"))
-        colorlist.add(Color.parseColor("#890567"))
-        colorlist.add(Color.parseColor("#a35567"))
-        colorlist.add(Color.parseColor("#ff5f67"))
-        colorlist.add(Color.parseColor("#3ca567"))
+        colorlist.add(Color.parseColor("#56e2cf"))
+        colorlist.add(Color.parseColor("#e25668"))
+        colorlist.add(Color.parseColor("#8a56e2"))
+        colorlist.add(Color.parseColor("#aee256"))
+        colorlist.add(Color.parseColor("#e2cf56"))
+        colorlist.add(Color.parseColor("#5668e2"))
+        colorlist.add(Color.parseColor("#e28956"))
+        colorlist.add(Color.parseColor("#cf56e2"))
+        colorlist.add(Color.parseColor("#68e256"))
         var curindex = 0
         for (i in data){
             pieChartnames.add(i.label)
@@ -193,11 +195,12 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         pieDataSet.setColors(colorlist)
         val pieData = PieData(pieChartnames, pieDataSet)
         pieChart.data = pieData
-
         pieChart.setDrawXValues(true)
         pieChart.setDrawYValues(true)
         pieChart.setValueTextColor(Color.BLUE)
         pieChart.centerText = "Popularity"
+        pieChart.setUsePercentValues(true)
+        pieChart.setDrawLegend(false)
         pieChart.invalidate()
         pieChart.animate()
     }
