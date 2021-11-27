@@ -16,6 +16,8 @@
                 android:id="@+id/editAppTitle"
                 android:hint="@string/hintTitle"
                 app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error_text"
                 style="@style/textInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
