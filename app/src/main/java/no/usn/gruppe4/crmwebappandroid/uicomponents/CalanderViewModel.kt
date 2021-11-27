@@ -12,6 +12,8 @@ import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.mail.MailRequest
 import no.usn.gruppe4.crmwebappandroid.models.mail.RatingRequest
+import no.usn.gruppe4.crmwebappandroid.models.stats.employeePop
+import no.usn.gruppe4.crmwebappandroid.models.stats.servicePop
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
 import java.util.*
 
@@ -58,6 +60,14 @@ class CalanderViewModel: ViewModel() {
     private val _nrTodo: MutableLiveData<Int> = MutableLiveData()
     val nrTodo: LiveData<Int>
         get() = _nrTodo
+
+    private val _statEmployee: MutableLiveData<List<employeePop>> = MutableLiveData()
+    val statEmployee: LiveData<List<employeePop>>
+        get() = _statEmployee
+
+    private val _statService: MutableLiveData<List<servicePop>> = MutableLiveData()
+    val statService: LiveData<List<servicePop>>
+        get() = _statService
 
     fun setCurAppointment(app: Appointment.newAppointment){
         _curAppointment.value = app
@@ -226,6 +236,7 @@ class CalanderViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val data = RetrofitInstance.api.getServiceStats()
+                _statService.value = data.data
                 Log.i(TAG, "data service pop: $data")
             }catch (e: Exception){
                 _errorMessage.value = e.message
@@ -239,6 +250,7 @@ class CalanderViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val data = RetrofitInstance.api.getEmployeeStats()
+                _statEmployee.value = data.data
                 Log.i(TAG, "data employee pop: $data")
             }catch (e: Exception){
                 _errorMessage.value = e.message
