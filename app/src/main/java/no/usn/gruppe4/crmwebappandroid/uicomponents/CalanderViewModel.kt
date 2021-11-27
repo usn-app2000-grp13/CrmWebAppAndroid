@@ -50,9 +50,14 @@ class CalanderViewModel: ViewModel() {
     private val _errorMessage = MutableLiveData<String?>(null)
     val errorMessage: LiveData<String?>
         get() = _errorMessage
+
     private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean>
         get() = _isLoading
+
+    private val _nrTodo: MutableLiveData<Int> = MutableLiveData()
+    val nrTodo: LiveData<Int>
+        get() = _nrTodo
 
     fun setCurAppointment(app: Appointment.newAppointment){
         _curAppointment.value = app
@@ -209,6 +214,45 @@ class CalanderViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 RetrofitInstance.api.sendRatingRequest(req)
+            }catch (e: Exception){
+                _errorMessage.value = e.message
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
+    fun getServicePop(){
+        _errorMessage.value = null
+        viewModelScope.launch {
+            try {
+                val data = RetrofitInstance.api.getServiceStats()
+                Log.i(TAG, "data service pop: $data")
+            }catch (e: Exception){
+                _errorMessage.value = e.message
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
+    fun getEmployeePop(){
+        _errorMessage.value = null
+        viewModelScope.launch {
+            try {
+                val data = RetrofitInstance.api.getEmployeeStats()
+                Log.i(TAG, "data employee pop: $data")
+            }catch (e: Exception){
+                _errorMessage.value = e.message
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
+    fun getTodoCount(){
+        _errorMessage.value = null
+        viewModelScope.launch {
+            try {
+                val data = RetrofitInstance.api.getTodos()
+                _nrTodo.value = data.data.todos.size
             }catch (e: Exception){
                 _errorMessage.value = e.message
                 Log.i(TAG, "Error: $e")

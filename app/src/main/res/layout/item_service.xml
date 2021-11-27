@@ -1,41 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/standardMaterialCardView">
+        style="@style/standardMaterialCardView"
+        android:backgroundTint="?attr/colorSecondaryVariant"
+        app:cardCornerRadius="15dp"
+        android:elevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             style="@style/serviceItemCard">
 
             <TextView
                 android:id="@+id/tvTitle"
+                style="@style/serviceItemCardTextView"
                 android:layout_width="0dp"
                 android:text="@string/testTitle"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvDuration"
+                app:layout_constraintEnd_toStartOf="@+id/imageView6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/serviceItemCardTextView" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvDuration"
+                style="@style/serviceItemCardTextView"
                 android:layout_height="wrap_content"
                 android:text="@string/testDuration"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvPrice"
-                app:layout_constraintStart_toEndOf="@+id/tvTitle"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/serviceItemCardTextView" />
+                app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvPrice"
+                style="@style/serviceItemCardTextView"
                 android:text="@string/testPrice"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvDuration"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/serviceItemCardTextView" />
+                app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDuration"
+                app:layout_constraintEnd_toStartOf="@+id/tvPrice"
+                app:layout_constraintTop_toTopOf="@+id/tvDuration"
+                app:srcCompat="@drawable/ic_money" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+                app:layout_constraintEnd_toStartOf="@+id/tvDuration"
+                app:layout_constraintTop_toTopOf="@+id/tvTitle"
+                app:srcCompat="@drawable/ic_baseline_access_time_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

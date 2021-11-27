@@ -35,6 +35,7 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private var selectedDate = Calendar.getInstance()
     val appointmentList = mutableListOf<Appointment>()
     val employeeList = arrayListOf<Employee>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -55,7 +56,9 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         })
 
         viewModel.getMyAppointmentsDate(id, System.currentTimeMillis())
-
+        viewModel.getTodoCount()
+        viewModel.getServicePop()
+        viewModel.getEmployeePop()
 
 
         viewModel.appointment.observe(viewLifecycleOwner, { appointments ->
@@ -73,6 +76,11 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             binding.txtAppointmentToday.text = nrApp.toString()
             binding.listAppointmentsToday.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item, appointmentList)
             appointmentList.sortBy { it.timeindex }
+        })
+
+        viewModel.nrTodo.observe(viewLifecycleOwner, { todoCount ->
+            nrTodo = todoCount
+            binding.txtTodoCount.text = nrTodo.toString()
         })
 
 

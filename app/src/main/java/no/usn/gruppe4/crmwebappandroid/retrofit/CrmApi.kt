@@ -19,6 +19,8 @@ import no.usn.gruppe4.crmwebappandroid.models.mail.MailRequest
 import no.usn.gruppe4.crmwebappandroid.models.mail.RatingRequest
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.models.service.ServiceResponse
+import no.usn.gruppe4.crmwebappandroid.models.stats.employeePop
+import no.usn.gruppe4.crmwebappandroid.models.stats.servicePop
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoResponse
 import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
@@ -144,4 +146,10 @@ interface CrmApi {
      @POST("admin/requestRating")
      suspend fun sendRatingRequest(@Body req: RatingRequest)
 
+     //statistics routes
+     @GET("stats/ServicePop")
+     suspend fun getServiceStats(): servicePop.servicePopRes
+
+     @GET("stats/EmployeePop")
+     suspend fun getEmployeeStats(): employeePop.employeePopRes
 }
