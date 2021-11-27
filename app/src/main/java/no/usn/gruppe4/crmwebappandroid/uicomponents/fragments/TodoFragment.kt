@@ -64,9 +64,11 @@ class TodoFragment : Fragment() {
             }
 
             override fun onCheckClicked(position: Int) {
-                todolist.get(position)
+                /*todolist.get(position)
                 todoAdepter.notifyDataSetChanged()
-
+                val id = todolist.get(position)._id
+                viewModel.completTodo(Todo.SetComplete(sharedPreferences.get("id")))
+                Ikke implementert helt ! */
             }
 
         })
@@ -80,9 +82,6 @@ class TodoFragment : Fragment() {
             }
             viewModel.newTodo(todo)
         }
-
-
-
 
         // Inflate the layout for this fragment
         return binding.root
