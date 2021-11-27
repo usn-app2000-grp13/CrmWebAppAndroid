@@ -4,8 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_service.view.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 
@@ -15,6 +17,8 @@ class ServiceAdapter (private val context: Context, private val dataset: List<Se
 
     interface OnItemClickListener{
         fun onItemClick(position: Int)
+        fun onDeleteClick(position: Int)
+        fun onEditClick(position: Int)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener){
@@ -27,10 +31,19 @@ class ServiceAdapter (private val context: Context, private val dataset: List<Se
         val tvTitle: TextView = view.findViewById(R.id.tvTitle)
         val tvDuration: TextView = view.findViewById(R.id.tvDuration)
         val tvPrice: TextView = view.findViewById(R.id.tvPrice)
+        val tvDesciption: TextView = view.findViewById(R.id.tvDesciptionService)
+        val btnDelete: Button = view.button
+        val btnEdit: Button = view.button3
         // Hver service item i listen hav hver sin click listener
         init {
             itemView.setOnClickListener{
                 listener.onItemClick(adapterPosition)
+            }
+            btnDelete.setOnClickListener {
+                listener.onDeleteClick(adapterPosition)
+            }
+            btnEdit.setOnClickListener {
+                listener.onEditClick(adapterPosition)
             }
         }
     }
@@ -47,6 +60,7 @@ class ServiceAdapter (private val context: Context, private val dataset: List<Se
         holder.tvTitle.text = item.name
         holder.tvDuration.text = item.duration.toString() + " min"
         holder.tvPrice.text = item.price + " NOK"
+        holder.tvDesciption.text = item.description
     }
 
     override fun getItemCount(): Int {

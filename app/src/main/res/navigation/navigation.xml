@@ -72,6 +72,9 @@
         <action
             android:id="@+id/action_serviceFragment_to_inspectServiceFragment"
             app:destination="@id/inspectServiceFragment" />
+        <action
+            android:id="@+id/action_serviceFragment_to_editServiceFragment"
+            app:destination="@id/editServiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/newServiceFragment"
@@ -95,6 +98,9 @@
         <action
             android:id="@+id/action_editServiceFragment_to_inspectServiceFragment"
             app:destination="@id/inspectServiceFragment" />
+        <action
+            android:id="@+id/action_editServiceFragment_to_serviceFragment"
+            app:destination="@id/serviceFragment" />
     </fragment>
 
 
