@@ -3,6 +3,7 @@ package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.nfc.Tag
 import android.os.Bundle
 import android.os.IBinder
@@ -222,8 +223,8 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         }.setNegativeButton("Cancel"){dialog, which ->
 
         }.setView(dialogLayout)
-
         val dialog = builder.create()
+        dialog.window?.setBackgroundDrawableResource(R.drawable.gradientbackground)
         dialog.show()
     }
 

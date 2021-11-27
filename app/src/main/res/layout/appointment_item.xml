@@ -7,7 +7,6 @@
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
         app:cardElevation="2dp"
-        android:backgroundTint="?attr/colorSecondaryVariant"
         app:cardCornerRadius="15dp"
         >
 
@@ -15,6 +14,7 @@
             android:id="@+id/minimized_View"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/gradientbackground"
             android:visibility="visible">
 
             <TextView
