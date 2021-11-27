@@ -73,6 +73,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
                 }
                 isEdit = true
             }
+
         }
         viewModel.setCurAppointment(appointment)
         appointment.toString()
@@ -231,7 +232,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
 
 
     override fun onDateSet(p0: DatePicker?, year: Int, month: Int, dayofmonth: Int) {
-        textDate.text = reformatDateTime(dayofmonth) + " / " + reformatDateTime(month) + " / " + reformatDateTime(year)
+        textDate.text = reformatDateTime(dayofmonth) + " / " + reformatDateTime(month+1) + " / " + reformatDateTime(year)
         val cal = Calendar.getInstance()
         cal.clear()
         cal.set(year,month,dayofmonth)

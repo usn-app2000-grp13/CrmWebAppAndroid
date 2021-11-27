@@ -239,11 +239,10 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/DescriptionContainer"
-                    android:padding="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/DescriptionContainer">
@@ -256,19 +255,47 @@
                         android:text="@string/btnEdit"
                         android:textColor="?attr/colorOnPrimarySurface"
                         app:icon="@drawable/ic_baseline_create_24"
-                        app:iconTint="@android:color/primary_text_dark" />
+                        app:iconTint="@android:color/primary_text_dark"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnSendMessage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btnSendMessage"
+                        app:layout_constraintTop_toTopOf="@+id/btnSendMessage" />
 
                     <Button
                         android:id="@+id/btnDeleteAppointment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
                         android:text="@string/btnDelete"
                         android:textColor="@color/design_default_color_on_primary"
                         app:icon="@drawable/ic_baseline_delete_24"
-                        app:iconTint="@color/design_default_color_on_primary" />
+                        app:iconTint="@color/design_default_color_on_primary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnSendMessage"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </RelativeLayout>
+                    <Button
+                        android:id="@+id/btnSendMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_toStartOf="@+id/btnEditAppointment"
+                        android:layout_toEndOf="@+id/btnDeleteAppointment"
+                        android:text="Message"
+                        app:icon="@drawable/ic_baseline_email_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnDeleteAppointment"
+                        app:layout_constraintEnd_toStartOf="@+id/btnEditAppointment"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btnDeleteAppointment"
+                        app:layout_constraintTop_toTopOf="@+id/btnDeleteAppointment" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

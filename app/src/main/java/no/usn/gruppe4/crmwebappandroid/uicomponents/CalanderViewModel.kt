@@ -10,6 +10,8 @@ import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
+import no.usn.gruppe4.crmwebappandroid.models.mail.MailRequest
+import no.usn.gruppe4.crmwebappandroid.models.mail.RatingRequest
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
 import java.util.*
 
@@ -186,6 +188,30 @@ class CalanderViewModel: ViewModel() {
                 Log.i(TAG, "Error: $e")
             }finally {
                 _isLoading.value = false
+            }
+        }
+    }
+
+    fun sendUserMail(req: MailRequest){
+        _errorMessage.value = null
+        viewModelScope.launch {
+            try {
+                RetrofitInstance.api.sendMail(req)
+            }catch (e: Exception){
+                _errorMessage.value = e.message
+                Log.i(TAG, "Error: $e")
+            }
+        }
+    }
+
+    fun sendRatingRequest(req: RatingRequest){
+        _errorMessage.value = null
+        viewModelScope.launch {
+            try {
+                RetrofitInstance.api.sendRatingRequest(req)
+            }catch (e: Exception){
+                _errorMessage.value = e.message
+                Log.i(TAG, "Error: $e")
             }
         }
     }
