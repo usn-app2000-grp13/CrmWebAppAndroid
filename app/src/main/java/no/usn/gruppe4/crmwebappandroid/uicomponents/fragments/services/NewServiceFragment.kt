@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputEditText
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewServiceBinding
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
@@ -27,25 +28,18 @@ class NewServiceFragment : Fragment() {
 
         // 1b) Kaller newService() serviceViewModel. Den er et database kall
         binding.btnSubmit.setOnClickListener{
-            var name = binding.editAppTxtTitle.text.toString()
-            var description = binding.editAppTxtDescription.text.toString()
-            var duration = binding.editAppTxtDuration.text.toString()
-            var price =  binding.editAppTxtPrice.text.toString()
+            var ok = true
+            if (!isFilled(binding.editAppTxtTitle)) ok = false;
+            if (!isFilled(binding.editAppTxtDescription)) ok = false;
+            if (!isFilled(binding.editAppTxtDuration)) ok = false;
+            if (!isFilled(binding.editAppTxtPrice)) ok = false;
 
-            if (name == "") {
-                Toast.makeText(requireContext(), getString(R.string.missingNameMsg), Toast.LENGTH_LONG).show()
-            }
-            else if (description == "") {
-                Toast.makeText(requireContext(), getString(R.string.missingDescriptionMsg), Toast.LENGTH_LONG).show()
-            }
-            else if (duration == "") {
-                Toast.makeText(requireContext(), getString(R.string.missingDurationMsg), Toast.LENGTH_LONG).show()
-            }
-            else if (price == "") {
-                Toast.makeText(requireContext(), getString(R.string.missingPriceMsg), Toast.LENGTH_LONG).show()
-            }
-            else {
-                val service = Service("null",description,duration.toInt(),name,price)
+            if (ok) {
+                var name = binding.editAppTxtTitle.text.toString()
+                var description = binding.editAppTxtDescription.text.toString()
+                var duration = binding.editAppTxtDuration.text.toString()
+                var price =  binding.editAppTxtPrice.text.toString()
+                var service = Service("null",description,duration.toInt(),name,price)
                 serviceViewModel.newService(service)
             }
         }
@@ -63,4 +57,14 @@ class NewServiceFragment : Fragment() {
         return binding.root
     }
 
+    fun isFilled(element: TextInputEditText): Boolean{
+        if (element.length() < 1){
+            element.error = "Required!"
+            return false
+        }else{
+            return true
+        }
+    }
+
 }
+
