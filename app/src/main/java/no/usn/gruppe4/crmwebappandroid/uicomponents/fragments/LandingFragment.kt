@@ -3,15 +3,15 @@ package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.graphics.Color
+import android.nfc.Tag
 import android.os.Bundle
+import android.os.IBinder
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.DatePicker
-import android.widget.Toast
+import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.charts.PieChart
@@ -26,6 +26,7 @@ import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
+import no.usn.gruppe4.crmwebappandroid.models.mail.MailRequest
 import no.usn.gruppe4.crmwebappandroid.models.stats.employeePop
 import no.usn.gruppe4.crmwebappandroid.models.stats.servicePop
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
@@ -33,7 +34,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-
+private const val TAG = "LandingFragment"
 class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
     private lateinit var binding: FragmentLandingBinding
@@ -45,6 +46,7 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private var selectedDate = Calendar.getInstance()
     val appointmentList = mutableListOf<Appointment>()
     val employeeList = arrayListOf<Employee>()
+    val customerList = mutableListOf<Customer>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +65,12 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         viewModel.employees.observe(viewLifecycleOwner, { employees ->
             employeeList.clear()
             employeeList.addAll(employees)
+        })
+
+        viewModel.getCustomers()
+        viewModel.customers.observe(viewLifecycleOwner, { customers ->
+            customerList.clear()
+            customerList.addAll(customers)
         })
 
         viewModel.getMyAppointmentsDate(id, System.currentTimeMillis())
@@ -131,6 +139,9 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         binding.historyContainer.setOnClickListener {
             findNavController().navigate(R.id.action_landingFragment_to_appointmentHistoryFragment)
         }
+        binding.msgContainer.setOnClickListener {
+            showMailDialog()
+        }
 
 
 
@@ -188,6 +199,34 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         pieChart.centerText = "Popularity"
         pieChart.invalidate()
         pieChart.animate()
+    }
+
+    private fun showMailDialog(){
+        var msg = ""
+        var recipient = ""
+        val builder = AlertDialog.Builder(requireContext())
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.message_dialog_w_choice, null)
+        val textBox = dialogLayout.findViewById<EditText>(R.id.ETmessage)
+        val spinner = dialogLayout.findViewById<Spinner>(R.id.spinner)
+        spinner.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item, customerList)
+        builder.setTitle("Send mail to user").setPositiveButton("Send"){dialog, which ->
+            msg = textBox.text.toString()
+            val cust = spinner.selectedItem as Customer
+            recipient = cust.email!!
+            sendEmails(msg, recipient)
+        }.setNegativeButton("Cancel"){dialog, which ->
+
+        }.setView(dialogLayout)
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    fun sendEmails(message: String, email: String){
+        Log.i("epost", "send to: $email")
+        viewModel.sendUserMail(MailRequest(message, message, email, "Message", "Test", email))
+        Toast.makeText(requireContext(), "Message send!", Toast.LENGTH_SHORT).show()
     }
 
 
