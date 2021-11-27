@@ -1,21 +1,27 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import kotlinx.android.synthetic.main.mail_dialog.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentAppointmentClickedBinding
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
+import no.usn.gruppe4.crmwebappandroid.models.mail.MailRequest
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 import java.text.SimpleDateFormat
@@ -95,6 +101,10 @@ class AppointmentClicked : Fragment() {
             findNavController().navigate(R.id.action_appointmentClicked_to_newAppointmentFragment, bundle)
         }
 
+        binding.btnSendMessage.setOnClickListener {
+            showMailDialog()
+        }
+
         getChips()
         viewModel.status.observe(viewLifecycleOwner, {
             if (it){
@@ -149,6 +159,42 @@ class AppointmentClicked : Fragment() {
         chip.isCloseIconVisible = true
         chip.setChipBackgroundColorResource(R.color.primary)
         return chip
+    }
+
+    private fun showMailDialog(){
+        var msg = ""
+        val builder = AlertDialog.Builder(requireContext())
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.mail_dialog, null)
+        val textBox = dialogLayout.findViewById<EditText>(R.id.txtMail)
+
+        builder.setTitle("Send mail to user").setPositiveButton("Send"){dialog, which ->
+            msg = textBox.text.toString()
+            sendEmails(msg)
+        }.setNegativeButton("Cancel"){dialog, which ->
+
+            Log.i(TAG, "Pressed cancel")
+        }.setView(dialogLayout)
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    fun sendEmails(message: String){
+        for (i in tmpCustomers){
+            val customer = findCustomers(i._id!!)
+            val email = customer!!.email
+            Log.i("epost", "send to: $email")
+            viewModel.sendUserMail(MailRequest(message, message, email!!, "Appointment", "Test", email!!))
+            Toast.makeText(requireContext(), "Message send!", Toast.LENGTH_SHORT).show()
+        }
+    }
+    fun findCustomers(id: String):Customer?{
+        for (i in customerList){
+            if (i._id.equals(id))
+                return i
+        }
+        return null
     }
 
 }

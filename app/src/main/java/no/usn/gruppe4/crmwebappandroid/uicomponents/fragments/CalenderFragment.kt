@@ -23,7 +23,6 @@ import no.usn.gruppe4.crmwebappandroid.models.appointment.*
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
-import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
 import java.util.*
 
 private const val TAG = "CalenderFragment"
@@ -32,8 +31,19 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private lateinit var viewModel: CalanderViewModel
     private lateinit var binding: FragmentCalenderBinding
     private val appointmentList = mutableListOf<Appointment>()
-    private var selectedDate = Date()
+    private lateinit var selectedDate: Date
     private lateinit var sharedPreferences: SharedPrefInterface
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments != null){
+            arguments?.getLong("selectedDate").let { el->
+                selectedDate = Date(el!!)
+            }
+        }else{
+            selectedDate = Date()
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -46,19 +56,19 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         sharedPreferences = SecSharePref(requireContext(), "secrets")
         val username = sharedPreferences.get("name")
         val id = sharedPreferences.get("id")
-        viewModel.getMyAppointmentsDate(id, System.currentTimeMillis())
+        viewModel.getMyAppointmentsDate(id, System.currentTimeMillis().minus(2629800000))
         //val myDataset = getAppointmentList()
         val adapter = AppointmentAdapter(requireContext(), appointmentList)
         val headerAdapter = AppointmentHeaderAdapter(selectedDate, username)
         val concatAdapter = ConcatAdapter(headerAdapter, adapter)
-
+        viewModel.changeDate(selectedDate)
 
 
         binding.recyclerView.adapter = concatAdapter
 
         viewModel.appointment.observe(viewLifecycleOwner, { appointments ->
             appointmentList.clear()
-            val appointmentIterator = appointments.iterator();
+            val appointmentIterator = appointments.iterator()
             while (appointmentIterator.hasNext()){
                 val app = appointmentIterator.next()
                 if (app.checkDate(selectedDate)){
@@ -67,6 +77,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             }
             //appointmentList.addAll(appointments)
             appointmentList.sortBy { it.timeindex }
+            Log.i(TAG, appointmentList.toString())
             adapter.notifyDataSetChanged()
             binding.recyclerView.scheduleLayoutAnimation()
         })
@@ -75,7 +86,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             headerAdapter.curDate = headerAdapter.setCurDate(it)
             try {
                 appointmentList.clear()
-                val appointmentIterator = viewModel.appointment.value!!.iterator();
+                val appointmentIterator = viewModel.appointment.value!!.iterator()
                 while (appointmentIterator.hasNext()){
                     val app = appointmentIterator.next()
                     if (app.checkDate(selectedDate)){
@@ -111,7 +122,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         //On swipe down refresh
         binding.swipeLayout.setOnRefreshListener {
             binding.swipeLayout.isRefreshing = true
-            viewModel.getMyAppointmentsDate(id, System.currentTimeMillis())
+            viewModel.getMyAppointmentsDate(id, System.currentTimeMillis().minus(31560000000))
             Log.i("refresh called", "Refreshing")
             binding.swipeLayout.isRefreshing = false
         }

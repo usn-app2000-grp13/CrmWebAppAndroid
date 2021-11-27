@@ -15,6 +15,8 @@ import no.usn.gruppe4.crmwebappandroid.models.login.LoginRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.ResetPasswordRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
 import no.usn.gruppe4.crmwebappandroid.models.login.Test
+import no.usn.gruppe4.crmwebappandroid.models.mail.MailRequest
+import no.usn.gruppe4.crmwebappandroid.models.mail.RatingRequest
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.models.service.ServiceResponse
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
@@ -135,10 +137,11 @@ interface CrmApi {
      suspend fun deleteCustomer(@Body req: CustomerViewModel.DeleteCustomer): CustomerResponseNoArray
 
 
-/*
+     //mail routes
+     @POST("admin/sendEmail")
+     suspend fun sendMail(@Body req: MailRequest)
 
+     @POST("admin/requestRating")
+     suspend fun sendRatingRequest(@Body req: RatingRequest)
 
-    appointment/:id
-
- */
 }

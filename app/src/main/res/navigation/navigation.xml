@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/calenderFragment">
+    app:startDestination="@id/landingFragment">
 
     <fragment
         android:id="@+id/calenderFragment"
@@ -169,4 +169,26 @@
             android:id="@+id/action_customerEditFragment_to_customerFragment"
             app:destination="@id/customerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/landingFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.LandingFragment"
+        android:label="fragment_landing"
+        tools:layout="@layout/fragment_landing" >
+        <action
+            android:id="@+id/action_landingFragment_to_calenderFragment"
+            app:destination="@id/calenderFragment" />
+        <action
+            android:id="@+id/action_landingFragment_to_newAppointmentFragment"
+            app:destination="@id/newAppointmentFragment" />
+        <action
+            android:id="@+id/action_landingFragment_to_todoFragment"
+            app:destination="@id/todoFragment" />
+        <action
+            android:id="@+id/action_landingFragment_to_appointmentHistoryFragment"
+            app:destination="@id/appointmentHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appointmentHistoryFragment"
+        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.AppointmentHistoryFragment"
+        android:label="AppointmentHistoryFragment" />
 </navigation>
