@@ -72,4 +72,7 @@ dependencies {
 
     //secureSharedPreferances
     implementation 'androidx.security:security-crypto:1.1.0-alpha03'
+
+    //statistics charts
+    implementation 'org.quanqi:mpandroidchart:1.7.5'
 }

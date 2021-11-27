@@ -12,6 +12,64 @@
             android:layout_height="match_parent"
             tools:context=".uicomponents.fragments.LandingFragment">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerEmployeePop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/card_layoutdark"
+                app:layout_constraintEnd_toStartOf="@id/guidelineR"
+                app:layout_constraintStart_toStartOf="@+id/guidelineL"
+                app:layout_constraintTop_toBottomOf="@+id/historyContainer">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Employee Activity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/piechart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="250dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerServicePop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/card_layoutdark"
+                app:layout_constraintEnd_toStartOf="@id/guidelineR"
+                app:layout_constraintStart_toStartOf="@+id/guidelineL"
+                app:layout_constraintTop_toBottomOf="@+id/containerEmployeePop">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service Popularity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/piechartservice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="250dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineB"
                 android:layout_width="wrap_content"
@@ -94,40 +152,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/nextAppContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/card_layoutdark"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineR"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guidelineL"
-                app:layout_constraintTop_toBottomOf="@+id/userContainer"
-                android:elevation="4dp">
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Upcoming Appointments:"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ListView
-                    android:id="@+id/listAppointmentsToday"
-                    android:layout_width="250dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/appsTodayContainer"
@@ -138,7 +163,7 @@
                 android:background="@drawable/card_layoutdark"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineM"
                 app:layout_constraintStart_toStartOf="@+id/guidelineL"
-                app:layout_constraintTop_toBottomOf="@+id/nextAppContainer"
+                app:layout_constraintTop_toBottomOf="@+id/userContainer"
                 android:elevation="4dp">
 
                 <TextView
@@ -174,7 +199,7 @@
                 android:background="@drawable/card_layoutdark"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineR"
                 app:layout_constraintStart_toStartOf="@+id/guidelineM"
-                app:layout_constraintTop_toBottomOf="@+id/nextAppContainer"
+                app:layout_constraintTop_toBottomOf="@+id/userContainer"
                 >
 
                 <TextView
