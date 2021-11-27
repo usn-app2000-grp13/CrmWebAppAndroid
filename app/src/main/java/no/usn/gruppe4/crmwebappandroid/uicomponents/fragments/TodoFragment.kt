@@ -56,9 +56,9 @@ class TodoFragment : Fragment() {
             }
 
             override fun onDeleteClick(position: Int) {
+                val id = todolist.get(position)._id
                 todolist.removeAt(position)
                 todoAdepter.notifyDataSetChanged()
-                val id = todolist.get(position)._id
                 Log.i("check", "check if clicked delete $position $id")
                 viewModel.deleteTodo(Todo.deleteTodo(sharedPreferences.get("id"), IdRequest(id)))
             }

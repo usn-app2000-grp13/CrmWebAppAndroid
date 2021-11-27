@@ -85,11 +85,12 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             val appointmentIterator = appointments.iterator();
             while (appointmentIterator.hasNext()){
                 val app = appointmentIterator.next()
-                if (app.checkDate(todayDate) && !app.customers.isNullOrEmpty()){
+                if (app.checkDate(todayDate)){
                     appointmentList.add(app)
                 }
             }
             nrApp = appointmentList.size
+            binding.txtAppointmentToday.text = nrApp.toString()
             Log.i("appointments in list", " $appointmentList")
             appointmentList.sortBy { it.timeindex }
         })

@@ -20,6 +20,7 @@ import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCalenderBinding
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.*
+import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
@@ -71,8 +72,10 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             val appointmentIterator = appointments.iterator()
             while (appointmentIterator.hasNext()){
                 val app = appointmentIterator.next()
-                if (app.checkDate(selectedDate)){
-                    appointmentList.add(app)
+                if (app.customers?.get(0)?._customer != null){
+                    if (app.checkDate(selectedDate)){
+                        appointmentList.add(app)
+                    }
                 }
             }
             //appointmentList.addAll(appointments)
@@ -89,10 +92,13 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                 val appointmentIterator = viewModel.appointment.value!!.iterator()
                 while (appointmentIterator.hasNext()){
                     val app = appointmentIterator.next()
-                    if (app.checkDate(selectedDate)){
-                        appointmentList.add(app)
+                    if (app.customers?.get(0)?._customer != null) {
+                        if (app.checkDate(selectedDate)) {
+                            appointmentList.add(app)
+                        }
                     }
                 }
+                Log.i(TAG, "faulty data: $appointmentList")
             }catch (e: Exception){
 
             }
@@ -175,6 +181,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         val alert = builder.create()
         alert.show()
     }
+
 
 
 
