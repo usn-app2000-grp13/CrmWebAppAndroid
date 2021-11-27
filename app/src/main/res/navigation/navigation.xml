@@ -70,9 +70,6 @@
             android:id="@+id/action_serviceFragment_to_newServiceFragment"
             app:destination="@id/newServiceFragment" />
         <action
-            android:id="@+id/action_serviceFragment_to_inspectServiceFragment"
-            app:destination="@id/inspectServiceFragment" />
-        <action
             android:id="@+id/action_serviceFragment_to_editServiceFragment"
             app:destination="@id/editServiceFragment" />
     </fragment>
@@ -82,27 +79,14 @@
         android:label="New service"
         tools:layout="@layout/fragment_new_service" />
     <fragment
-        android:id="@+id/inspectServiceFragment"
-        android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.InspectServiceFragment"
-        android:label="Inspect service"
-        tools:layout="@layout/fragment_inspect_service">
-        <action
-            android:id="@+id/action_inspectServiceFragment_to_editServiceFragment"
-            app:destination="@id/editServiceFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/editServiceFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.EditServiceFragment"
         android:label="Edit service"
         tools:layout="@layout/fragment_edit_service" >
         <action
-            android:id="@+id/action_editServiceFragment_to_inspectServiceFragment"
-            app:destination="@id/inspectServiceFragment" />
-        <action
             android:id="@+id/action_editServiceFragment_to_serviceFragment"
             app:destination="@id/serviceFragment" />
     </fragment>
-
 
     <fragment
         android:id="@+id/todoFragment"

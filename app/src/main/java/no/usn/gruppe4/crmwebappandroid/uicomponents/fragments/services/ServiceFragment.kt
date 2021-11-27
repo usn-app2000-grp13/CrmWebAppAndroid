@@ -49,9 +49,6 @@ class ServiceFragment : Fragment() {
         // 4) Lytter metode som registrerer klikk på en service i listen
         adapter.setOnItemClickListener(object: ServiceAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
-                val bundle = Bundle()
-                bundle.putParcelable("service", serviceList[position])
-                findNavController().navigate(R.id.action_serviceFragment_to_inspectServiceFragment, bundle)
             }
 
             override fun onDeleteClick(position: Int) {

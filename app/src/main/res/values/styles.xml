@@ -31,29 +31,6 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <!-- card -->
-    <style name="card">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">100dp</item>
-        <item name="android:padding">@dimen/smallMargin</item>
-        <item name="android:paddingStart">50dp</item>
-        <item name="android:background">@color/verryLight</item>
-    </style>
-
-    <style name="cardTitle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">?attr/colorOnSecondary</item>
-        <item name="android:paddingBottom">@dimen/smallMargin</item>
-    </style>
-
-    <style name="cardValue">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
     <!-- btn -->
     <style name="btnContainer">
         <item name="android:layout_width">match_parent</item>
