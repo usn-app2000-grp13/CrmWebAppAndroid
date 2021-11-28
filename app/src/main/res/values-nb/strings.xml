@@ -64,5 +64,31 @@
     <string name="missingDescriptionMsg">Beskrivelse kan ikke være tom!</string>
     <string name="missingDurationMsg">Varighet kan ikke være tom!</string>
     <string name="missingPriceMsg">Pris kan ikke være tom!</string>
+    <string name="code">Kode</string>
+    <string name="todotoday">Å gjøre idag</string>
+    <string name="appointmentsToday">Avtaler idag</string>
+    <string name="addAppointment">Ny avtale</string>
+    <string name="pickDate">Velg dato</string>
+    <string name="name">Navn</string>
+    <string name="rating">Vurdering</string>
+    <string name="messageCustomer">Kunde melding</string>
+    <string name="appointmentHistory">Avtale historie</string>
+    <string name="employeeActivity">Ansatt aktivitet</string>
+    <string name="servicePopularity">Tjeneste popularitet</string>
+    <string name="emptyStar">Stjerne ikon</string>
+    <string name="placeholderValue">0</string>
+    <string name="placeholderText">placeholder</string>
+    <string name="calanderIcon">kalender ikon</string>
+    <string name="emailIcon">epost ikon</string>
+    <string name="historyIcon">historie ikon</string>
+    <string name="addIcon">ny ikon</string>
+    <string name="sendEmailToCustomer">Send epost till kunde</string>
+    <string name="btnSend">Send</string>
+    <string name="messageSendSuccess">Melding er sendt</string>
+    <string name="placeholderDate">01/01/2020</string>
+    <string name="placeholderTime">12:00</string>
+    <string name="btnMessage">Melding</string>
+    <string name="btnRating">Få vurdering</string>
+    <string name="btnResetPassword">tilbakestill passord</string>
 
 </resources>

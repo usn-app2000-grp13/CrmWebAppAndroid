@@ -162,8 +162,8 @@
     <fragment
         android:id="@+id/landingFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.LandingFragment"
-        android:label="fragment_landing"
-        tools:layout="@layout/fragment_landing" >
+        android:label="landing"
+        tools:layout="@layout/fragment_landing">
         <action
             android:id="@+id/action_landingFragment_to_calenderFragment"
             app:destination="@id/calenderFragment" />

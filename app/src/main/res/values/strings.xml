@@ -65,6 +65,31 @@
     <string name="missingDurationMsg">Duration can not be empty</string>
     <string name="missingPriceMsg">Price can not be empty</string>
     <string name="code">code</string>
+    <string name="todotoday">Todo\'s today</string>
+    <string name="appointmentsToday">Appointments today</string>
+    <string name="addAppointment">Add appointment</string>
+    <string name="pickDate">Pick date</string>
+    <string name="name">Name</string>
+    <string name="rating">Rating</string>
+    <string name="messageCustomer">Message customer</string>
+    <string name="appointmentHistory">Appointment history</string>
+    <string name="employeeActivity">Employee activity</string>
+    <string name="servicePopularity">Service popularity</string>
+    <string name="emptyStar">Star</string>
+    <string name="placeholderValue">0</string>
+    <string name="placeholderText">placeholder</string>
+    <string name="calanderIcon">calender</string>
+    <string name="emailIcon">email</string>
+    <string name="historyIcon">history icon</string>
+    <string name="addIcon">add icon</string>
+    <string name="sendEmailToCustomer">Send email to customer</string>
+    <string name="btnSend">Send</string>
+    <string name="messageSendSuccess">Message send</string>
+    <string name="placeholderDate">01/01/2020</string>
+    <string name="placeholderTime">12:00</string>
+    <string name="btnMessage">Message</string>
+    <string name="btnRating">Get rated</string>
+    <string name="btnResetPassword">Reset password</string>
 
     <string-array name="services">
         <item>HairCut Adult</item>

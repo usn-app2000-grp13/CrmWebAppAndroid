@@ -2,7 +2,6 @@ package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -18,9 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentCalenderBinding
-import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.appointment.*
-import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
@@ -47,7 +44,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         // Inflate the layout for this fragment
         binding = FragmentCalenderBinding.inflate(inflater)
@@ -92,19 +89,15 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                 getCorrectAppointments(it)
                 adapter.notifyDataSetChanged()
             }catch (e: Exception){
-
+                Log.i(TAG, "Error: $e")
             }
-
-
         })
 
         //Api error handling
         viewModel.errorMessage.observe(viewLifecycleOwner, {
             if (it == null){
-                binding.errorImage.visibility = View.GONE
                 Log.i("ErrorMessageTest", "No errors")
             } else {
-                binding.errorImage.visibility = View.VISIBLE
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             }
         })
@@ -141,12 +134,12 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             findNavController().navigate(R.id.action_calenderFragment_to_newAppointmentFragment)
         }
         binding.fabChooseDate.setOnClickListener {
-            var today = Calendar.getInstance()
-            today.time = selectedDate;
-            val year: Int? = today?.get(Calendar.YEAR)
-            val month: Int? = today?.get(Calendar.MONTH)
-            val day: Int? = today?.get(Calendar.DAY_OF_MONTH)
-            DatePickerDialog(requireContext(), this, year!!, month!!, day!!).show()
+            val today = Calendar.getInstance()
+            today.time = selectedDate
+            val year: Int = today.get(Calendar.YEAR)
+            val month: Int = today.get(Calendar.MONTH)
+            val day: Int = today.get(Calendar.DAY_OF_MONTH)
+            DatePickerDialog(requireContext(), this, year, month, day).show()
         }
         return binding.root
     }
@@ -160,19 +153,6 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         selectedDate = cal.time
         Log.i("date", "$selectedDate")
         viewModel.changeDate(selectedDate)
-    }
-
-    fun deleteAppointment(appointment: Appointment){
-        viewModel.removeAppointment(IdRequest(appointment._id))
-    }
-    private fun createErrorDialog(message: String) {
-        val builder = AlertDialog.Builder(requireContext())
-            .setMessage(message)
-            .setPositiveButton("Close", DialogInterface.OnClickListener {
-                    dialogInterface, i -> requireActivity().finish()
-            })
-        val alert = builder.create()
-        alert.show()
     }
 
     private fun getCorrectAppointments(date: Date){

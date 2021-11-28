@@ -29,11 +29,11 @@
             >
 
 
-
             <TextView
                 android:id="@+id/txtUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:text="CRMapp"
                 android:textSize="96sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
                     android:id="@+id/resetPasswordbtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Reset Password" />
+                    android:text="@string/btnResetPassword" />
 
             </LinearLayout>
 

@@ -88,7 +88,7 @@
                             android:editable="false"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
-                            android:text="01/01/1999" />
+                            android:text="@string/placeholderDate" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,7 +116,7 @@
                             android:editable="false"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
-                            android:text="15:40" />
+                            android:text="@string/placeholderTime" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -225,6 +225,7 @@
                         android:layout_marginBottom="16dp"
                         android:clickable="false"
                         android:cursorVisible="false"
+                        android:hint="@string/hintComment"
                         android:editable="false"
                         android:ems="10"
                         android:focusable="false"
@@ -235,7 +236,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:autofillHints="" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -288,7 +290,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_toStartOf="@+id/btnEditAppointment"
                         android:layout_toEndOf="@+id/btnDeleteAppointment"
-                        android:text="Message"
+                        android:text="@string/btnMessage"
                         app:icon="@drawable/ic_baseline_email_24"
                         app:layout_constraintBottom_toBottomOf="@+id/btnSendRating"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -303,7 +305,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="24dp"
                         android:enabled="false"
-                        android:text="Get Rated"
+                        android:text="@string/btnRating"
                         app:icon="@drawable/ic_baseline_star_rate_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnSendMessage"

@@ -25,11 +25,11 @@ import java.util.*
 
 class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-    lateinit var textDate: TextView
-    lateinit var textTime: TextView
-    lateinit var SPService: Spinner
-    lateinit var SPCustomer: Spinner
-    lateinit var SPEmployee: Spinner
+    private lateinit var textDate: TextView
+    private lateinit var textTime: TextView
+    private lateinit var SPService: Spinner
+    private lateinit var SPCustomer: Spinner
+    private lateinit var SPEmployee: Spinner
     private lateinit var viewModel: CalanderViewModel
     private lateinit var binding: FragmentNewAppointmentBinding
     private var serviceList = mutableListOf<Service>()
@@ -80,7 +80,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?): View {
         //binding
         binding = FragmentNewAppointmentBinding.inflate(inflater)
 
@@ -91,6 +91,15 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         SPService = binding.editAppService
         SPCustomer = binding.editAppCustomer
         SPEmployee = binding.editAppEmployee
+
+        if (appointment.date == null){
+            val today = Calendar.getInstance().time as Date
+            appointment.date = today
+            textDate.text = reformatDateTime(today.day) + " / " + reformatDateTime(today.month+1) + " / " + reformatDateTime(today.year)
+
+            textTime.text = reformatDateTime(today.hours+1) + ":" + reformatDateTime(today.minutes)
+            appointment.timeindex = ((today.hours+1)*60) + today.minutes
+        }
 
         //viewmodel observes curappointment
         viewModel.curAppointment.observe(viewLifecycleOwner, {
@@ -220,10 +229,10 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         })
 
         if (appointment.date != null){
-            textDate.text = SimpleDateFormat("yyyy-MM-dd").format(appointment?.date)
+            textDate.text = SimpleDateFormat("yyyy-MM-dd").format(appointment.date)
         }
         if (appointment.timeindex != null){
-            textTime.text = timeIndexFormat(appointment?.timeindex!!)
+            textTime.text = timeIndexFormat(appointment.timeindex!!)
         }
         getChips()
         // Inflate the layout for this fragment
@@ -248,7 +257,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         Log.i("Time change", appointment.toString())
     }
 
-    fun reformatDateTime(element: Int): String{
+    private fun reformatDateTime(element: Int): String{
         var res = ""
         if (element < 10){
             res += "0$element"
@@ -256,7 +265,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         return res
     }
 
-    fun timeIndexFormat(timeindex: Int): String{
+    private fun timeIndexFormat(timeindex: Int): String{
         var res = ""
         val clockM = timeindex % 60
         val clockH = (timeindex - clockM) / 60

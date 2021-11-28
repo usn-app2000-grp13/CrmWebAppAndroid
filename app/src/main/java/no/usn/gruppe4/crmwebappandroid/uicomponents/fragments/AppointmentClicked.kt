@@ -7,14 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import kotlinx.android.synthetic.main.mail_dialog.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentAppointmentClickedBinding
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
@@ -28,9 +26,10 @@ import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
+private const val TAG = "AppointmentClicked"
+
 class AppointmentClicked : Fragment() {
 
-    private var TAG = "AppointmentClicked"
     private var appointment: Appointment? = null
     lateinit var binding: FragmentAppointmentClickedBinding
     private lateinit var viewModel: CalanderViewModel
@@ -61,7 +60,7 @@ class AppointmentClicked : Fragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentAppointmentClickedBinding.inflate(inflater)
 
         //initialize viemodel
@@ -132,7 +131,7 @@ class AppointmentClicked : Fragment() {
     }
 
 
-    fun timeIndexFormat(timeindex: Int): String{
+    private fun timeIndexFormat(timeindex: Int): String{
         var res = ""
         val clockM = timeindex % 60
         val clockH = (timeindex - clockM) / 60
@@ -176,10 +175,10 @@ class AppointmentClicked : Fragment() {
         val dialogLayout = inflater.inflate(R.layout.mail_dialog, null)
         val textBox = dialogLayout.findViewById<EditText>(R.id.txtMail)
 
-        builder.setTitle("Send mail to user").setPositiveButton("Send"){dialog, which ->
+        builder.setTitle("Send mail to user").setPositiveButton("Send"){ _, _ ->
             msg = textBox.text.toString()
             sendEmails(msg)
-        }.setNegativeButton("Cancel"){dialog, which ->
+        }.setNegativeButton("Cancel"){ _, _ ->
 
             Log.i(TAG, "Pressed cancel")
         }.setView(dialogLayout)
@@ -188,7 +187,7 @@ class AppointmentClicked : Fragment() {
         dialog.show()
     }
 
-    fun sendEmails(message: String){
+    private fun sendEmails(message: String){
         for (i in tmpCustomers){
             val customer = findCustomers(i._id!!)
             val email = customer!!.email
@@ -197,7 +196,7 @@ class AppointmentClicked : Fragment() {
             Toast.makeText(requireContext(), "Message send!", Toast.LENGTH_SHORT).show()
         }
     }
-    fun findCustomers(id: String):Customer?{
+    private fun findCustomers(id: String):Customer?{
         for (i in customerList){
             if (i._id.equals(id))
                 return i
