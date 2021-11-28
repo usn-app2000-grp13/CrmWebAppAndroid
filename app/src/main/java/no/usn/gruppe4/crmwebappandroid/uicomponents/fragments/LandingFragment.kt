@@ -83,6 +83,9 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         viewModel.appointment.observe(viewLifecycleOwner, { appointments ->
             val todayDate = Date()
             appointmentList.clear()
+            appointmentList.addAll(appointments)
+            calculateRating()
+            appointmentList.clear()
             val appointmentIterator = appointments.iterator();
             while (appointmentIterator.hasNext()){
                 val app = appointmentIterator.next()
@@ -232,6 +235,31 @@ class LandingFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         Log.i("epost", "send to: $email")
         viewModel.sendUserMail(MailRequest(message, message, email, "Message", "Test", email))
         Toast.makeText(requireContext(), "Message send!", Toast.LENGTH_SHORT).show()
+    }
+
+    fun calculateRating(){
+        var numberOfRatings = 0
+        var totalRating = 0.0
+        var myRating = 0
+        for (i in appointmentList){
+            if (!i.ratings.isNullOrEmpty()){
+                for (i in i.ratings){
+                    numberOfRatings++
+                    totalRating += i.rating
+                    Log.i(TAG, "rating found! $numberOfRatings $totalRating")
+                }
+            }
+        }
+        if (numberOfRatings > 0){
+            myRating = (totalRating / numberOfRatings).toInt()
+        }
+        when(myRating){
+            1 -> binding.filledStar1.visibility = View.VISIBLE
+            2 -> binding.filledStar2.visibility = View.VISIBLE
+            3 -> binding.filledStar3.visibility = View.VISIBLE
+            4 -> binding.filledStar4.visibility = View.VISIBLE
+            5 -> binding.filledStar5.visibility = View.VISIBLE
+        }
     }
 
 

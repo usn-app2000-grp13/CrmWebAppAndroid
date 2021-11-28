@@ -22,9 +22,11 @@ import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.mail.MailRequest
+import no.usn.gruppe4.crmwebappandroid.models.mail.RatingRequest
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
 import java.text.SimpleDateFormat
+import java.util.*
 
 class AppointmentClicked : Fragment() {
 
@@ -78,6 +80,12 @@ class AppointmentClicked : Fragment() {
             employeeList.addAll(it)
         })
 
+        if (appointment!!.checkDatePast(Date(System.currentTimeMillis()))){
+            binding.btnSendRating.isEnabled = true
+            binding.btnSendRating.setOnClickListener {
+                viewModel.sendRatingRequest(RatingRequest(appointment!!._id!!))
+            }
+        }
         chipGroup = binding.customerChips
         Log.i(TAG, "appointment Received: ${appointment.toString()}")
 
@@ -196,5 +204,6 @@ class AppointmentClicked : Fragment() {
         }
         return null
     }
+
 
 }

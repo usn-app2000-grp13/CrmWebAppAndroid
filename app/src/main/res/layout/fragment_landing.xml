@@ -117,16 +117,16 @@
                 app:layout_constraintStart_toStartOf="@+id/guidelineL"
                 app:layout_constraintTop_toTopOf="@+id/guidelineT">
 
+
+
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
                     android:text="Name:"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -140,6 +140,118 @@
                     app:layout_constraintBottom_toBottomOf="@+id/textView2"
                     app:layout_constraintStart_toEndOf="@+id/textView2"
                     app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Rating"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                <ImageView
+                    android:id="@+id/emptystar1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                    app:layout_constraintStart_toEndOf="@+id/textView9"
+                    app:layout_constraintTop_toTopOf="@+id/textView9"
+                    app:srcCompat="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:id="@+id/emptystar2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/emptystar1"
+                    app:layout_constraintStart_toEndOf="@+id/emptystar1"
+                    app:layout_constraintTop_toTopOf="@+id/emptystar1"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:id="@+id/emptystar3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/emptystar2"
+                    app:layout_constraintStart_toEndOf="@+id/emptystar2"
+                    app:layout_constraintTop_toTopOf="@+id/emptystar2"
+                    app:srcCompat="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:id="@+id/emptystar4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/emptystar3"
+                    app:layout_constraintStart_toEndOf="@+id/emptystar3"
+                    app:layout_constraintTop_toTopOf="@+id/emptystar3"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:id="@+id/emptystar5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/emptystar4"
+                    app:layout_constraintStart_toEndOf="@+id/emptystar4"
+                    app:layout_constraintTop_toTopOf="@+id/emptystar4"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:id="@+id/filledStar1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                    app:layout_constraintStart_toEndOf="@+id/textView9"
+                    app:layout_constraintTop_toTopOf="@+id/textView9"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_baseline_star_rate_24" />
+
+                <ImageView
+                    android:id="@+id/filledStar2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/emptystar1"
+                    app:layout_constraintStart_toEndOf="@+id/emptystar1"
+                    app:layout_constraintTop_toTopOf="@+id/emptystar1"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_baseline_star_rate_24" />
+
+                <ImageView
+                    android:id="@+id/filledStar3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                    app:layout_constraintStart_toEndOf="@+id/emptystar2"
+                    app:layout_constraintTop_toTopOf="@+id/textView9"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_baseline_star_rate_24" />
+
+                <ImageView
+                    android:id="@+id/filledStar4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                    app:layout_constraintStart_toEndOf="@+id/emptystar3"
+                    app:layout_constraintTop_toTopOf="@+id/textView9"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_baseline_star_rate_24" />
+
+                <ImageView
+                    android:id="@+id/filledStar5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                    app:layout_constraintStart_toEndOf="@+id/emptystar4"
+                    app:layout_constraintTop_toTopOf="@+id/textView9"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_baseline_star_rate_24" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

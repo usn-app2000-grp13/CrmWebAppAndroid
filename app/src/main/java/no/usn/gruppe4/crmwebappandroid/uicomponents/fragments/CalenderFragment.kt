@@ -88,22 +88,14 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         viewModel.date.observe(viewLifecycleOwner, {
             headerAdapter.curDate = headerAdapter.setCurDate(it)
             try {
-                appointmentList.clear()
-                val appointmentIterator = viewModel.appointment.value!!.iterator()
-                while (appointmentIterator.hasNext()){
-                    val app = appointmentIterator.next()
-                    if (app.customers?.get(0)?._customer != null) {
-                        if (app.checkDate(selectedDate)) {
-                            appointmentList.add(app)
-                        }
-                    }
-                }
-                Log.i(TAG, "faulty data: $appointmentList")
+                selectedDate = it
+                getCorrectAppointments(it)
+                adapter.notifyDataSetChanged()
             }catch (e: Exception){
 
             }
 
-            adapter.notifyDataSetChanged()
+
         })
 
         //Api error handling
@@ -131,6 +123,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             viewModel.getMyAppointmentsDate(id, System.currentTimeMillis().minus(31560000000))
             Log.i("refresh called", "Refreshing")
             binding.swipeLayout.isRefreshing = false
+            getCorrectAppointments(selectedDate)
         }
 
         //list item click inspect appointment
@@ -180,6 +173,20 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             })
         val alert = builder.create()
         alert.show()
+    }
+
+    private fun getCorrectAppointments(date: Date){
+        appointmentList.clear()
+        val appointmentIterator = viewModel.appointment.value!!.iterator()
+        while (appointmentIterator.hasNext()){
+            val app = appointmentIterator.next()
+            if (app.customers?.get(0)?._customer != null) {
+                if (app.checkDate(date)) {
+                    appointmentList.add(app)
+                }
+            }
+        }
+        Log.i(TAG, "Appointments: $appointmentList")
     }
 
 

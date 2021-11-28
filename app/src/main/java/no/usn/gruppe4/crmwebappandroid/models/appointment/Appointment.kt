@@ -1,10 +1,13 @@
 package no.usn.gruppe4.crmwebappandroid.models.appointment
 
+import android.annotation.SuppressLint
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
+import java.text.SimpleDateFormat
+import java.time.temporal.ChronoUnit
 import java.util.*
 
 @Parcelize
@@ -20,8 +23,14 @@ data class Appointment(
     var services: MutableList<OneAppointmentResponse.Service>?,
     var timeindex: Int?,
 ) : Parcelable {
+    @SuppressLint("SimpleDateFormat")
     fun checkDate(date: Date): Boolean{
-        return date.year == this.date!!.year && date.month == this.date!!.month && date.day == this.date!!.day
+        val fmt = SimpleDateFormat("yyyyMMdd")
+        return fmt.format(this.date!!).equals(fmt.format(date))
+    }
+
+    fun checkDatePast(date: Date): Boolean{
+        return this.date!!.before(date)
     }
 
     @Parcelize
