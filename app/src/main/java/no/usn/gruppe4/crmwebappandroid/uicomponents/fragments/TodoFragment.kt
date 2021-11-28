@@ -75,7 +75,11 @@ class TodoFragment : Fragment() {
 
         binding.todoAddBT.setOnClickListener {
             val todoTitle = todoET.text.toString()
-            val todo = Todo(_id = id, todoTitle)
+            //do not send an hardcoded _id  when creating a new todo
+            //if set to null the server will create the id itself.
+            //if it is a hardcoded value all todos will get the same _id, and then
+            //manipulating them will be a challenge.
+            val todo = Todo(_id = null, todoTitle)
             if (todoTitle.isNotEmpty()) {
                 todoAdepter.addTodo(todo)
                 todoET.text.clear()
