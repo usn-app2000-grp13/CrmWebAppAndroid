@@ -16,6 +16,16 @@
         <item name="android:padding">@dimen/largeMargin</item>
     </style>
 
+    <!-- heading -->
+    <style name="heading">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxWidth">@dimen/custom_max_width</item>
+        <item name="android:minWidth">@dimen/custom_min_width</item>
+        <item name="android:minHeight">@dimen/custom_min_height</item>
+        <item name="android:layout_margin">@dimen/largeMargin</item>
+    </style>
+
     <!-- textInputLayout -->
     <style name="textInputLayout">
         <item name="android:layout_width">match_parent</item>
