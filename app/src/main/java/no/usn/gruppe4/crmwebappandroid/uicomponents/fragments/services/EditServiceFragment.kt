@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEditServiceBinding
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputEditText
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.models.service.ServiceViewModel
 
@@ -29,12 +30,12 @@ class EditServiceFragment : Fragment() {
             service = el!!
         }
 
-        // 2a) serviceViewModel (db)
+        // 1b) serviceViewModel (db)
         serviceViewModel = ViewModelProvider(this).get(ServiceViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // 1b) Setter den aktuelle servicen sine verdier inn
+        // 2a) Setter den aktuelle servicen sine verdier inn
         binding = FragmentEditServiceBinding.inflate(inflater)
         binding.editAppTxtTitle.setText(service.name)
         binding.editAppTxtDescription.setText(service.description)
@@ -43,34 +44,23 @@ class EditServiceFragment : Fragment() {
 
         // 2b) Update knappen kaller serviceViewModel.updateService(service) (db)
         binding.btnApply.setOnClickListener{
-            var name = binding.editAppTxtTitle.text.toString()
-            var description = binding.editAppTxtDescription.text.toString()
-            var duration = binding.editAppTxtDuration.text.toString()
-            var price =  binding.editAppTxtPrice.text.toString()
+            var ok = true
+            if (!isFilled(binding.editAppTxtTitle)) ok = false;
+            if (!isFilled(binding.editAppTxtDescription)) ok = false;
+            if (!isFilled(binding.editAppTxtDuration)) ok = false;
+            if (!isFilled(binding.editAppTxtPrice)) ok = false;
 
-            if (name == "") {
-                Toast.makeText(requireContext(), getString(R.string.missingNameMsg), Toast.LENGTH_LONG).show()
-            }
-            else if (description == "") {
-                Toast.makeText(requireContext(), getString(R.string.missingDescriptionMsg), Toast.LENGTH_LONG).show()
-            }
-            else if (duration == "") {
-                Toast.makeText(requireContext(), getString(R.string.missingDurationMsg), Toast.LENGTH_LONG).show()
-            }
-            else if (price == "") {
-                Toast.makeText(requireContext(), getString(R.string.missingPriceMsg), Toast.LENGTH_LONG).show()
-            }
-            else {
-                service.name = name
-                service.description = description
-                service.duration = duration.toInt()
-                service.price =  price
+            if (ok) {
+                var name = binding.editAppTxtTitle.text.toString()
+                var description = binding.editAppTxtDescription.text.toString()
+                var duration = binding.editAppTxtDuration.text.toString()
+                var price =  binding.editAppTxtPrice.text.toString()
                 serviceViewModel.updateService(service)
                 findNavController().popBackStack()
             }
         }
 
-        // Cancel knappen sender brukeren tilbake
+        // 2c)Cancel knappen sender brukeren tilbake
         binding.btnCancel.setOnClickListener{
             findNavController().popBackStack()
         }
@@ -78,4 +68,12 @@ class EditServiceFragment : Fragment() {
         return binding.root
     }
 
+    fun isFilled(element: TextInputEditText): Boolean{
+        if (element.length() < 1){
+            element.error = "Required!"
+            return false
+        }else{
+            return true
+        }
+    }
 }

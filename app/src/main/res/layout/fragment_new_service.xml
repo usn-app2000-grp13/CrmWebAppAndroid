@@ -12,14 +12,17 @@
             tools:context=".uicomponents.fragments.services.NewServiceFragment"
             style="@style/standardLinearLayout">
 
+            <TextView
+                android:id="@+id/heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create a new Service" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppTitle"
                 android:hint="@string/hintTitle"
                 app:endIconMode="clear_text"
-                app:errorEnabled="true"
-                app:errorIconDrawable="@drawable/ic_error_text"
                 style="@style/textInputLayout">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtTitle"
                     android:text="@string/testTitle"
@@ -31,7 +34,6 @@
                 android:hint="@string/hintDescription"
                 app:endIconMode="clear_text"
                 style="@style/textInputLayout" >
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtDescription"
                     android:text="@string/testDescription"
@@ -44,7 +46,6 @@
                 android:hint="@string/hintDuration"
                 app:endIconMode="clear_text"
                 style="@style/textInputLayout" >
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtDuration"
                     android:text="@string/testDuration"
@@ -59,7 +60,6 @@
                 android:hint="@string/hintPrice"
                 app:endIconMode="clear_text"
                 style="@style/textInputLayout" >
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtPrice"
                     android:text="@string/testPrice"
