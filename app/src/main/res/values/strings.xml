@@ -66,13 +66,13 @@
     <string name="missingPriceMsg">Price can not be empty</string>
     <string name="code">code</string>
     <string name="todotoday">Todo\'s today</string>
-    <string name="appointmentsToday">Appointments today</string>
+    <string name="appointmentsToday">Appointments</string>
     <string name="addAppointment">Add appointment</string>
     <string name="pickDate">Pick date</string>
     <string name="name">Name</string>
     <string name="rating">Rating</string>
     <string name="messageCustomer">Message customer</string>
-    <string name="appointmentHistory">Appointment history</string>
+    <string name="appointmentHistory">History</string>
     <string name="employeeActivity">Employee activity</string>
     <string name="servicePopularity">Service popularity</string>
     <string name="emptyStar">Star</string>
