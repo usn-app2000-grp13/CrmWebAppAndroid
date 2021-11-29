@@ -45,10 +45,11 @@
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/customer_item.xml" value="0.4" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/employee_item.xml" value="0.246875" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_calender.xml" value="0.245018115942029" />
-        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_customer.xml" value="0.12035010940919037" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_customer.xml" value="0.264" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_customer_edit.xml" value="0.1793478260869565" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_edit_customer.xml" value="0.20260416666666667" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_edit_employee.xml" value="0.20260416666666667" />
+        <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_landing.xml" value="0.1621376811594203" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_new_customer.xml" value="0.20199275362318841" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/fragment_service.xml" value="0.259375" />
         <entry key="..\:/CrmWebAppAndroid/app/src/main/res/layout/item_service.xml" value="0.20989583333333334" />

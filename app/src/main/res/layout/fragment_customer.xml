@@ -10,19 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:contentDescription="background image of circle"
-            android:id="@+id/imageView4"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
-            android:src="@drawable/bgcircle"
-            tools:ignore="ImageContrastCheck,MissingConstraints"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="121dp" />
-
-
-
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/customerRecyclerView"
@@ -43,6 +30,8 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/newCustomer"
             android:src="@android:drawable/ic_input_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

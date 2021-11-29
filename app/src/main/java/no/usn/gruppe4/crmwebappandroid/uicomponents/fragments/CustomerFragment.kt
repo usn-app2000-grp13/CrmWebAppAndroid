@@ -34,6 +34,7 @@ class CustomerFragment : Fragment() {
             customerList.clear()
             customerList.addAll(it)
             adapter.notifyDataSetChanged()
+            binding.customerRecyclerView.scheduleLayoutAnimation()
         })
 
 

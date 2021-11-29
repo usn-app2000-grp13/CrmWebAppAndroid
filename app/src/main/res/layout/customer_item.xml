@@ -11,15 +11,22 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/gradientbackground"
+            android:elevation="4dp"
+            android:fadingEdge="none"
+            android:focusable="auto"
+            android:padding="4dp"
+            android:paddingBottom="8dp">
 
 
             <TextView
                 android:id="@+id/custFirstname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/hintFirstName"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -27,9 +34,9 @@
 
             <TextView
                 android:id="@+id/custLastname"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/hintLastName"
                 android:textSize="24sp"
@@ -38,10 +45,10 @@
 
             <TextView
                 android:id="@+id/custPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="56dp"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="50dp"
                 android:text="@string/hintPhone"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,10 +56,10 @@
 
             <TextView
                 android:id="@+id/custEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="56dp"
+                android:layout_width="173dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="50dp"
                 android:text="@string/hintEmail"
                 android:textSize="24sp"
                 app:layout_constraintStart_toEndOf="@+id/custPhone"
