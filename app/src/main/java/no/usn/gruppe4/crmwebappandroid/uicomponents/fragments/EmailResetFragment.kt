@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputEditText
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEmailResetBinding
 import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
@@ -31,11 +32,16 @@ class EmailResetFragment : Fragment() {
         }
         binding.btnRpSubmit.setOnClickListener{
             viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-            val RpEmailValue = binding.RpEmailValue.text?.toString()
-            val RpCodeValue = binding.RpCodeValue.text?.toString()
-            if (RpEmailValue != null && RpCodeValue!=null) {
-                viewModel.getPasswordResetVerification(RpEmailValue,RpCodeValue)
-                findNavController().navigate(R.id.action_emailResetFragment_to_resetPasswordFragment)
+            var ok = true
+            if(!isFilled(binding.RpEmailValue)) ok = false
+            if(!isFilled(binding.RpCodeValue)) ok = false
+            if(ok){
+                val RpEmailValue = binding.RpEmailValue.text?.toString()
+                val RpCodeValue = binding.RpCodeValue.text?.toString()
+                if (RpEmailValue != null && RpCodeValue != null) {
+                    viewModel.getPasswordResetVerification(RpEmailValue, RpCodeValue)
+                    findNavController().navigate(R.id.action_emailResetFragment_to_resetPasswordFragment)
+                }
             }
         }
         binding.btnRpCancel.setOnClickListener{
@@ -48,5 +54,14 @@ class EmailResetFragment : Fragment() {
         return binding.root
     }
 
-
+    private fun isFilled(element: TextInputEditText): Boolean{
+        var res: Boolean
+        if (element.text!!.isEmpty() ){
+            element.error = "Required!"
+            res =  false
+        }else{
+            res =  true
+        }
+        return res;
+    }
 }

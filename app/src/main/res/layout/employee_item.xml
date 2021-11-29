@@ -8,14 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:cardBackgroundColor="?attr/colorSecondary">
+        >
 
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/calenderItem"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradientbackground"
+            android:fadingEdge="none"
+            android:focusable="auto"
+            android:padding="4dp"
+            android:paddingBottom="8dp">
 
 
             <TextView
@@ -44,12 +49,13 @@
                 android:id="@+id/calItemPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:text="3452435"
                 android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/calItemLastname"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calItemFirstname" />
+
             <TextView
                 android:id="@+id/calItemEmail"
                 android:layout_width="wrap_content"
