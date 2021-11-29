@@ -10,6 +10,7 @@
         android:elevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/gradientbackground"
             style="@style/serviceItemCard"
             android:layout_height="wrap_content">
 
