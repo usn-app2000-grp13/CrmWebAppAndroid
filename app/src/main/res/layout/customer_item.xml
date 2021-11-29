@@ -28,7 +28,7 @@
                 android:id="@+id/custFirstname"
                 android:layout_width="110dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/hintFirstName"
                 android:textSize="24sp"
@@ -40,33 +40,35 @@
                 android:layout_width="110dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:text="@string/hintLastName"
                 android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/custFirstname"
                 app:layout_constraintStart_toEndOf="@+id/custFirstname"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/custFirstname" />
 
             <TextView
                 android:id="@+id/custPhone"
                 android:layout_width="110dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/hintPhone"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/custFirstname" />
 
             <TextView
                 android:id="@+id/custEmail"
                 android:layout_width="173dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/hintEmail"
                 android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/custPhone"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/custPhone" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
