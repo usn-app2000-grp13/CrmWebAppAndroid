@@ -127,7 +127,10 @@ class AppointmentClicked : Fragment() {
         })
 
         if (appointment!!.checkDatePast(Date())){
-            binding.btnEditAppointment.isEnabled = false;
+            binding.btnEditAppointment.isEnabled = false
+        }
+        if (appointment!!.checkDataFuture(Date())){
+            binding.btnSendRating.isEnabled = false
         }
 
         // Inflate the layout for this fragment

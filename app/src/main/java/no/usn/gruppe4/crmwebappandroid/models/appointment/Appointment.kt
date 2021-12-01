@@ -28,6 +28,10 @@ data class Appointment(
         return fmt.format(this.date!!).equals(fmt.format(date))
     }
 
+    fun checkDataFuture(date: Date): Boolean {
+        return this.date!!.after(date)
+    }
+
     fun checkDatePast(date: Date): Boolean{
         return this.date!!.before(date)
     }
