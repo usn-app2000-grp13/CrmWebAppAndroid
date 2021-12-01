@@ -126,6 +126,10 @@ class AppointmentClicked : Fragment() {
             }
         })
 
+        if (appointment!!.checkDatePast(Date())){
+            binding.btnEditAppointment.isEnabled = false;
+        }
+
         // Inflate the layout for this fragment
         return binding.root
     }
