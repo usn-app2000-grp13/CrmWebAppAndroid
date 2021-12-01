@@ -42,10 +42,12 @@
                 android:id="@+id/calItemPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="5dp"
                 android:text="3452435"
                 android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/calItemEmail"
                 app:layout_constraintStart_toEndOf="@+id/calItemLastname"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,11 +55,10 @@
                 android:id="@+id/calItemEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:text="asdf@test.sd"
                 android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/calItemPhone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputEditText
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEditEmployeeBinding
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewEmployeeBinding
@@ -74,11 +76,32 @@ class EditEmployeeFragment : Fragment() {
                 level = employee?.level, updatedAt = null
             )
             viewModel.alterEmployee(newEmployee)
-            val bundle = Bundle()
-            bundle.putParcelable("employee", newEmployee)
-            findNavController().navigate(
-                R.id.action_editEmployeeFragment_to_employeeCard, bundle
-            )
+            var test = false
+            viewModel.bool.observe(viewLifecycleOwner,{
+                test =it
+                if(test){
+                    val bundle = Bundle()
+                    bundle.putParcelable("employee", newEmployee)
+                    findNavController().navigate(
+                        R.id.action_editEmployeeFragment_to_employeeCard, bundle
+                    )
+                }else{
+                    val text = "Api has not accepted the request yet!"
+                    val duration = Toast.LENGTH_SHORT
+                    val toast = Toast.makeText(context, text, duration)
+                    toast.show()
+
+                }
+            })
+
+
+            if(!test){
+                val text = "Api error!"
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(context, text, duration)
+                toast.show()
+            }
+
         }
 
 

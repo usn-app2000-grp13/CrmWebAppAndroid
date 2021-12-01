@@ -15,6 +15,10 @@ class EmployeeViewModel: ViewModel() {
 
     //hold the employee objects
     private val _employees: MutableLiveData<List<Employee>> = MutableLiveData()
+    private val _bool: MutableLiveData<Boolean> = MutableLiveData()
+
+    val bool: LiveData<Boolean>
+        get() = _bool
 
     //create a list of employees
     val employee : LiveData<List<Employee>>
@@ -38,8 +42,9 @@ class EmployeeViewModel: ViewModel() {
         viewModelScope.launch {
             try {
 
-                RetrofitInstance.api.postEmployees(employee)
+               val data =  RetrofitInstance.api.postEmployees(employee)
                 //here should there be a boolean
+                _bool.value = data.success
                 Log.i(TAG, "Employee added")
             }catch (e: Exception){
                 Log.i(TAG, "Error: $e")
@@ -50,8 +55,9 @@ class EmployeeViewModel: ViewModel() {
     fun deleteEmployee(employee: DeleteEmployee){
         viewModelScope.launch {
         try {
-            RetrofitInstance.api.deleteEmployees(employee)
+            val data = RetrofitInstance.api.deleteEmployees(employee)
             //here should there be a boolean
+            _bool.value = data.success
             Log.i(TAG, "Employee deleted")
         }catch (e: Exception){
             Log.i(TAG, "Error: $e")
@@ -62,7 +68,8 @@ class EmployeeViewModel: ViewModel() {
     fun alterEmployee(employee: Employee){
         viewModelScope.launch  {
             try {
-                RetrofitInstance.api.putEmployees(employee)
+                val data = RetrofitInstance.api.putEmployees(employee)
+                _bool.value = data.success
                 Log.i(TAG, "Employee altered")
             } catch (e: Exception) {
                 Log.i(TAG, "Error: $e")

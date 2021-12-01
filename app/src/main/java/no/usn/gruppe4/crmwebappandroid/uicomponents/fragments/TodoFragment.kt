@@ -83,8 +83,9 @@ class TodoFragment : Fragment() {
             if (todoTitle.isNotEmpty()) {
                 todoAdepter.addTodo(todo)
                 todoET.text.clear()
+                viewModel.newTodo(todo)
             }
-            viewModel.newTodo(todo)
+            //viewModel.newTodo(todo)
         }
 
         // Inflate the layout for this fragment
