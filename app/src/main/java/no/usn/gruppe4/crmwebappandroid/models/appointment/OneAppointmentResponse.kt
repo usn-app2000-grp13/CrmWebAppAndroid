@@ -2,9 +2,6 @@ package no.usn.gruppe4.crmwebappandroid.models.appointment
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
-import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
-import no.usn.gruppe4.crmwebappandroid.models.service.Service
 
 @Parcelize
 data class OneAppointmentResponse(

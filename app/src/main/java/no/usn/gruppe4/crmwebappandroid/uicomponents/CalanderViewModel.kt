@@ -139,23 +139,6 @@ class CalanderViewModel: ViewModel() {
         }
     }
 
-    fun getAllAppointments(){
-        _errorMessage.value = null
-        _isLoading.value = true
-        viewModelScope.launch {
-            try {
-                val data = RetrofitInstance.api.getAppointments()
-                _appointments.value = data.data
-                Log.i(TAG, "appointment data: $data")
-            }catch (e: Exception){
-                _errorMessage.value = e.message
-                Log.i(TAG, "Error: $e")
-            }finally {
-                _isLoading.value = false
-            }
-        }
-    }
-
     fun getCustomers(){
         _errorMessage.value = null
         _isLoading.value = true

@@ -71,7 +71,7 @@
     <string name="pickDate">Pick date</string>
     <string name="name">Name</string>
     <string name="rating">Rating</string>
-    <string name="messageCustomer">Message customer</string>
+    <string name="messageCustomer">Message</string>
     <string name="appointmentHistory">History</string>
     <string name="employeeActivity">Employee activity</string>
     <string name="servicePopularity">Service popularity</string>

@@ -76,9 +76,6 @@ interface CrmApi {
     @GET("appointments/{employee}/{date}")
     suspend fun getMyAppointments2(@Path("employee") _id: String, @Path("date") date: Date): OneAppointmentResponse
 
-    @GET("appointment")
-    suspend fun getAppointments(): OneAppointmentResponse
-
     @POST("newAppointment")
     suspend fun addAppointment(@Body req: Appointment.newAppointment)
 

@@ -1,7 +1,6 @@
 package no.usn.gruppe4.crmwebappandroid.models.appointment
 
 import android.os.Parcelable
-import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
