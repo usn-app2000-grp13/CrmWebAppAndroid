@@ -90,5 +90,7 @@
     <string name="btnMessage">Melding</string>
     <string name="btnRating">Få vurdering</string>
     <string name="btnResetPassword">tilbakestill passord</string>
+    <string name="btnLogout">Logout</string>
+    <string name="userInfo">Bruker Info</string>
 
 </resources>

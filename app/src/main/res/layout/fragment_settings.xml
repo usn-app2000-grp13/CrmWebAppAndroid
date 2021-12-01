@@ -19,7 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="User Info"
+                android:text="@string/userInfo"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"/>
 
@@ -43,7 +43,7 @@
                         android:id="@+id/txtFname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Bjorn"
+                        android:text="@string/placeholderText"
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusable="false"
@@ -66,7 +66,7 @@
                         android:id="@+id/txtLName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Keymis"
+                        android:text="@string/placeholderText"
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusable="false"
@@ -89,7 +89,7 @@
                         android:id="@+id/txtEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="test@test.test"
+                        android:text="@string/placeholderText"
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusable="false"
@@ -112,7 +112,7 @@
                         android:id="@+id/txtTlf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="99999999"
+                        android:text="@string/placeholderValue"
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusable="false"
@@ -141,7 +141,7 @@
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:text="EvenVeien" />
+                        android:text="@string/placeholderText" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -168,7 +168,7 @@
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:text="33" />
+                        android:text="@string/placeholderValue" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -195,7 +195,7 @@
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:text="Bø" />
+                        android:text="@string/placeholderText" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -222,7 +222,7 @@
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:text="9999" />
+                        android:text="@string/placeholderValue" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -260,7 +260,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tfApartment"
                     android:layout_alignParentStart="true"
-                    android:text="edit"
+                    android:text="@string/btnEdit"
                     android:layout_margin="10dp"/>
                 <Button
                     android:id="@+id/btnLogout"
@@ -268,7 +268,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tfApartment"
                     android:layout_alignParentEnd="true"
-                    android:text="Logout"
+                    android:text="@string/btnLogout"
                     android:layout_margin="10dp"/>
 
             </RelativeLayout>
