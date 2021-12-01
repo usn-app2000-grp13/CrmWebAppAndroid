@@ -11,13 +11,13 @@ data class Employee (
     val _vendor: String?,
     val active: Boolean?,
     val createdAt: String?,
-    val email: String?,
-    val firstname: String?,
-    val lastname: String?,
+    var email: String?,
+    var firstname: String?,
+    var lastname: String?,
     val level: Int?,
-    val phone: String?,
+    var phone: String?,
     val updatedAt: String?,
-    val address: Address?,
+    var address: Address?,
     val password: String?,
     val __v: Int?): Parcelable {
     override fun toString(): String {

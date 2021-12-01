@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_settings.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentSettingsBinding
+import no.usn.gruppe4.crmwebappandroid.models.Tools
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
@@ -26,6 +28,7 @@ class SettingsFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPrefInterface
     private lateinit var viewModel: SettingsViewModel
     private lateinit var user: Employee
+    private val tools = Tools()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
@@ -45,6 +48,20 @@ class SettingsFragment : Fragment() {
             updateFields()
         })
 
+        viewModel.status.observe(viewLifecycleOwner, {
+            if (it == 3){
+                viewModel.getMyData(sharedPreferences.get("id"))
+            }
+        })
+
+        viewModel.errorMessage.observe(viewLifecycleOwner, {
+            if (it != null){
+                Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         binding.btnLogout.setOnClickListener {
             sharedPreferences.clear()
             viewModel.logout()
@@ -59,6 +76,7 @@ class SettingsFragment : Fragment() {
                 btnEditMode.text = getString(R.string.btnSubmit)
             }else{
                 btnEditMode.text = getString(R.string.btnEdit)
+                verifyData()
             }
         }
         // Inflate the layout for this fragment
@@ -106,6 +124,19 @@ class SettingsFragment : Fragment() {
             elmt2.setBoxBackgroundColorResource(R.color.white)
         }
 
+    }
+    private fun verifyData(){
+        var address = user.address
+        if (tools.verifyCheck(binding.txtFname)){ user.firstname = binding.txtFname.text.toString()}
+        if (tools.verifyCheck(binding.txtLName)){ user. lastname = binding.txtLName.text.toString()}
+        if (tools.verifyCheck(binding.txtEmail)){ user.email = binding.txtEmail.text.toString()}
+        if (tools.verifyCheck(binding.txtTlf)){ user.phone = binding.txtTlf.text.toString()}
+        if (tools.verifyCheck(binding.txtAdr)){ address?.street = binding.txtAdr.text.toString()}
+        if (tools.verifyCheck(binding.txtStreetNr)){ address?.streetNumber = binding.txtStreetNr.text.toString()}
+        if (tools.verifyCheck(binding.txtPostArea)){ address?.postArea = binding.txtPostArea.text.toString()}
+        if (tools.verifyCheck(binding.txtPostCode)){ address?.postCode = binding.txtPostCode.text.toString()}
+        if (binding.txtApartment.text != null) { address?.apartment = binding.txtApartment.text.toString()}
+        viewModel.alterEmployee(user)
     }
 
 }

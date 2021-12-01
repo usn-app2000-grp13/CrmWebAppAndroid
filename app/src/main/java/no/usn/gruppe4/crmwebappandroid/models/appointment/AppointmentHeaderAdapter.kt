@@ -11,24 +11,19 @@ import androidx.recyclerview.widget.RecyclerView
 import no.usn.gruppe4.crmwebappandroid.R
 import java.util.*
 
-class AppointmentHeaderAdapter(date: Date, curUser: String): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AppointmentHeaderAdapter(date: Date, curUser: String): RecyclerView.Adapter<AppointmentHeaderAdapter.HeaderViewHolder>() {
     @RequiresApi(Build.VERSION_CODES.N)
     var curDate = setCurDate(date)
-    val curEmployee = curUser
+    private val curEmployee = curUser
 
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val dateTextView: TextView = itemView.findViewById(R.id.apHeader)
         val employeeTextView: TextView = itemView.findViewById(R.id.apEmployee)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeaderViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.appointment_header, parent, false)
         return HeaderViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        holder.itemView.findViewById<TextView>(R.id.apHeader).text = curDate
-        holder.itemView.findViewById<TextView>(R.id.apEmployee).text = curEmployee
     }
 
     override fun getItemCount(): Int {
@@ -37,7 +32,12 @@ class AppointmentHeaderAdapter(date: Date, curUser: String): RecyclerView.Adapte
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun setCurDate(newDate: Date) : String{
-        val formater = SimpleDateFormat("dd/MM/yyyy")
+        val formater = SimpleDateFormat("dd/MM/yyyy", Locale.GERMANY)
         return  formater.format(newDate)
+    }
+
+    override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {
+        holder.dateTextView.text = curDate
+        holder.employeeTextView.text = curEmployee
     }
 }
