@@ -91,30 +91,4 @@
     <string name="btnRating">Get rated</string>
     <string name="btnResetPassword">Reset password</string>
 
-    <string-array name="services">
-        <item>HairCut Adult</item>
-        <item>Hair Coloring</item>
-        <item>HairCut Kids</item>
-        <item>Bride Package</item>
-    </string-array>
-    <string-array name="employees">
-        <item>Cato</item>
-        <item>Bjorn</item>
-        <item>Trygve</item>
-    </string-array>
-    <string-array name="customers">
-        <item>Bjarne Betjent</item>
-        <item>Max Mekker</item>
-        <item>Dorothea Dahl</item>
-        <item>William Gates</item>
-        <item>Charles Darvin</item>
-        <item>HRH P. Charles</item>
-        <item>Elton John</item>
-        <item>Thomas Anderson</item>
-        <item>Dave Murphy</item>
-        <item>Clark Kent</item>
-        <item>Mrs. Doubtfire</item>
-    </string-array>
-
-
 </resources>

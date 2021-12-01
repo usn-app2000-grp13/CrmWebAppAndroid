@@ -15,7 +15,6 @@ import com.google.android.material.chip.Chip
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewAppointmentBinding
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
-import no.usn.gruppe4.crmwebappandroid.models.appointment.Datasource
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
@@ -148,7 +147,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
 
         //date selector
         binding.tfDate.setEndIconOnClickListener {
-            val cal = Datasource().getTodayCalender()
+            val cal = Calendar.getInstance()
             val year: Int? = cal?.get(Calendar.YEAR)
             val month: Int? = cal?.get(Calendar.MONTH)
             val day: Int? = cal?.get(Calendar.DAY_OF_MONTH)
@@ -157,7 +156,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
 
         //time selector
         binding.tfTime.setEndIconOnClickListener {
-            val cal = Datasource().getTodayCalender()
+            val cal = Calendar.getInstance()
             val hour: Int? = cal?.get(Calendar.HOUR)
             val minute: Int? = cal?.get(Calendar.MINUTE)
             TimePickerDialog(requireContext(), this, hour!!, minute!!, true).show()

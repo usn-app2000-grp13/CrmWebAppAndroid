@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import no.usn.gruppe4.crmwebappandroid.R
-import java.text.SimpleDateFormat
-import java.util.*
 
 class AppointmentAdapter(private val context: Context, private val dataset: List<Appointment>): RecyclerView.Adapter<AppointmentAdapter.ItemViewHolder>() {
 

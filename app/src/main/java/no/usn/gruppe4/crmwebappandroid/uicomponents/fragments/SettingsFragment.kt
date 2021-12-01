@@ -1,46 +1,34 @@
 package no.usn.gruppe4.crmwebappandroid.uicomponents.fragments
 
-import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_settings.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentSettingsBinding
-import no.usn.gruppe4.crmwebappandroid.models.appointment.Datasource
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginActivity
-import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
-import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
 import no.usn.gruppe4.crmwebappandroid.uicomponents.SettingsViewModel
-import java.util.*
 
 
 class SettingsFragment : Fragment() {
 
     lateinit var binding: FragmentSettingsBinding
-    var editable = false
+    private var editable = false
     private lateinit var sharedPreferences: SharedPrefInterface
     private lateinit var viewModel: SettingsViewModel
     private lateinit var user: Employee
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?): View {
 
         binding = FragmentSettingsBinding.inflate(inflater)
 
@@ -68,9 +56,9 @@ class SettingsFragment : Fragment() {
             turnEditable()
             editable = !editable
             if (editable){
-                btnEditMode.text = "Done"
+                btnEditMode.text = getString(R.string.btnSubmit)
             }else{
-                btnEditMode.text = "Edit"
+                btnEditMode.text = getString(R.string.btnEdit)
             }
         }
         // Inflate the layout for this fragment
@@ -103,7 +91,7 @@ class SettingsFragment : Fragment() {
     }
 
     //make textField editable!
-    fun flipEditable(element: TextInputEditText, elmt2: TextInputLayout){
+    private fun flipEditable(element: TextInputEditText, elmt2: TextInputLayout){
         if (!editable){
             element.isClickable = true
             element.isCursorVisible = true
@@ -119,14 +107,5 @@ class SettingsFragment : Fragment() {
         }
 
     }
-
-    fun reformatDateTime(element: Int): String{
-        var res = ""
-        if (element < 10){
-            res += "0$element"
-        }else res += element.toString()
-        return res
-    }
-
 
 }

@@ -23,4 +23,9 @@ data class OneAppointmentResponse(
         val _id: String?,
         var _employee: no.usn.gruppe4.crmwebappandroid.models.employee.Employee?
     ): Parcelable
+    @Parcelize
+    data class Rating(
+        val _id: String,
+        val rating: Double,
+    ):Parcelable
 }

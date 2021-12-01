@@ -7,7 +7,6 @@ import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import java.text.SimpleDateFormat
-import java.time.temporal.ChronoUnit
 import java.util.*
 
 @Parcelize
@@ -19,7 +18,7 @@ data class Appointment(
     var duration: Int?,
     var employees: MutableList<OneAppointmentResponse.Employee>?,
     val paymentReceived: Boolean?,
-    val ratings: MutableList<AppointmentResponse.Rating>?,
+    val ratings: MutableList<OneAppointmentResponse.Rating>?,
     var services: MutableList<OneAppointmentResponse.Service>?,
     var timeindex: Int?,
 ) : Parcelable {
