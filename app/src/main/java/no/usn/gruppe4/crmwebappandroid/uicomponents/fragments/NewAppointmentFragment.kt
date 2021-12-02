@@ -20,7 +20,6 @@ import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
@@ -98,7 +97,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
             appointment.date = today
             textDate.text = tools.formatDate(today)
             appointment.timeindex = ((today.hours+1)*60) + today.minutes
-            textTime.text = tools.timeIndexFormat(appointment.timeindex!!);
+            textTime.text = tools.timeIndexFormat(appointment.timeindex!!)
         }
 
         //viewmodel observes curappointment
@@ -149,18 +148,18 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         //date selector
         binding.tfDate.setEndIconOnClickListener {
             val cal = Calendar.getInstance()
-            val year: Int? = cal?.get(Calendar.YEAR)
-            val month: Int? = cal?.get(Calendar.MONTH)
-            val day: Int? = cal?.get(Calendar.DAY_OF_MONTH)
-            DatePickerDialog(requireContext(), this, year!!, month!!, day!!).show()
+            val year: Int = cal.get(Calendar.YEAR)
+            val month: Int = cal.get(Calendar.MONTH)
+            val day: Int = cal.get(Calendar.DAY_OF_MONTH)
+            DatePickerDialog(requireContext(), this, year, month, day).show()
         }
 
         //time selector
         binding.tfTime.setEndIconOnClickListener {
             val cal = Calendar.getInstance()
-            val hour: Int? = cal?.get(Calendar.HOUR)
-            val minute: Int? = cal?.get(Calendar.MINUTE)
-            TimePickerDialog(requireContext(), this, hour!!, minute!!, true).show()
+            val hour: Int = cal.get(Calendar.HOUR)
+            val minute: Int = cal.get(Calendar.MINUTE)
+            TimePickerDialog(requireContext(), this, hour, minute, true).show()
         }
 
         binding.btnCancel.setOnClickListener {
