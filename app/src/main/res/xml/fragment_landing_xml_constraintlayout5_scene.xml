@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="750"
+        motion:autoTransition="animateToEnd">
+       <KeyFrameSet>
+       </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/containerEmployeePop"
+            android:elevation="4dp"
+            motion:layout_constraintEnd_toStartOf="@id/guidelineR"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/historyContainer"
+            motion:layout_constraintStart_toStartOf="@+id/guidelineL"
+            android:layout_marginTop="8dp"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/containerServicePop"
+            android:elevation="4dp"
+            motion:layout_constraintEnd_toStartOf="@id/guidelineR"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            motion:layout_constraintTop_toBottomOf="@+id/containerEmployeePop"
+            motion:layout_constraintStart_toStartOf="@+id/guidelineL"
+            android:layout_marginTop="8dp"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/userContainer"
+            android:elevation="4dp"
+            motion:layout_constraintEnd_toStartOf="@+id/guidelineR"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="@+id/guidelineT"
+            motion:layout_constraintStart_toStartOf="@+id/guidelineL"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/appsTodayContainer"
+            android:elevation="4dp"
+            motion:layout_constraintEnd_toStartOf="@+id/guidelineM"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/todoTodayContainer"
+            android:layout_marginEnd="4dp"
+            motion:layout_constraintTop_toBottomOf="@+id/userContainer"
+            motion:layout_constraintStart_toStartOf="@+id/guidelineL"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/todoTodayContainer"
+            android:elevation="4dp"
+            motion:layout_constraintEnd_toStartOf="@+id/guidelineR"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/userContainer"
+            android:layout_marginStart="4dp"
+            motion:layout_constraintStart_toStartOf="@+id/guidelineM"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/addContainer"
+            android:elevation="4dp"
+            motion:layout_constraintEnd_toEndOf="@+id/appsTodayContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/findContainer"
+            motion:layout_constraintTop_toBottomOf="@+id/appsTodayContainer"
+            motion:layout_constraintStart_toStartOf="@+id/guidelineL"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/findContainer"
+            android:elevation="4dp"
+            motion:layout_constraintEnd_toStartOf="@+id/guidelineR"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/todoTodayContainer"
+            motion:layout_constraintStart_toStartOf="@+id/todoTodayContainer"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/msgContainer"
+            android:elevation="4dp"
+            motion:layout_constraintEnd_toEndOf="@+id/addContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/addContainer"
+            motion:layout_constraintStart_toStartOf="@+id/guidelineL"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/historyContainer"
+            android:elevation="4dp"
+            motion:layout_constraintEnd_toStartOf="@+id/guidelineR"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/msgContainer"
+            motion:layout_constraintTop_toBottomOf="@+id/findContainer"
+            motion:layout_constraintStart_toStartOf="@+id/findContainer"
+            android:layout_marginTop="8dp"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:alpha="0" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+    </ConstraintSet>
+</MotionScene>

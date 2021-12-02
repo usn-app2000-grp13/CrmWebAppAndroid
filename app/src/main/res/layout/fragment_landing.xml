@@ -7,9 +7,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/constraintLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layoutDescription="@xml/fragment_landing_xml_constraintlayout5_scene"
             tools:context=".uicomponents.fragments.LandingFragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,8 +19,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:elevation="4dp"
                 android:background="@drawable/gradientbackground"
+                android:elevation="4dp"
                 app:layout_constraintEnd_toStartOf="@id/guidelineR"
                 app:layout_constraintStart_toStartOf="@+id/guidelineL"
                 app:layout_constraintTop_toBottomOf="@+id/historyContainer">
@@ -216,10 +218,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:contentDescription="@string/emptyStar"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/textView9"
                     app:layout_constraintStart_toEndOf="@+id/textView9"
                     app:layout_constraintTop_toTopOf="@+id/textView9"
-                    android:visibility="gone"
                     app:srcCompat="@drawable/ic_baseline_star_rate_24" />
 
                 <ImageView
@@ -227,10 +229,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/emptyStar"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/emptystar1"
                     app:layout_constraintStart_toEndOf="@+id/emptystar1"
                     app:layout_constraintTop_toTopOf="@+id/emptystar1"
-                    android:visibility="gone"
                     app:srcCompat="@drawable/ic_baseline_star_rate_24" />
 
                 <ImageView
@@ -238,10 +240,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/emptyStar"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/textView9"
                     app:layout_constraintStart_toEndOf="@+id/emptystar2"
                     app:layout_constraintTop_toTopOf="@+id/textView9"
-                    android:visibility="gone"
                     app:srcCompat="@drawable/ic_baseline_star_rate_24" />
 
                 <ImageView
@@ -249,10 +251,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/emptyStar"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/textView9"
                     app:layout_constraintStart_toEndOf="@+id/emptystar3"
                     app:layout_constraintTop_toTopOf="@+id/textView9"
-                    android:visibility="gone"
                     app:srcCompat="@drawable/ic_baseline_star_rate_24" />
 
                 <ImageView
@@ -260,10 +262,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/emptyStar"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/textView9"
                     app:layout_constraintStart_toEndOf="@+id/emptystar4"
                     app:layout_constraintTop_toTopOf="@+id/textView9"
-                    android:visibility="gone"
                     app:srcCompat="@drawable/ic_baseline_star_rate_24" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -488,6 +490,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
     </ScrollView>
 </layout>
