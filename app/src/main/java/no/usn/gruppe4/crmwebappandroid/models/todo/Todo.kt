@@ -16,12 +16,12 @@ data class Todo  (
         val todos: IdTodo
     )
 
-    data class addTodo(
+    data class AddTodo(
         val todos: Todo,
 
     )
 
-    data class deleteTodo(
+    data class DeleteTodo(
         val _id: String,
         val todos: IdRequest
     )

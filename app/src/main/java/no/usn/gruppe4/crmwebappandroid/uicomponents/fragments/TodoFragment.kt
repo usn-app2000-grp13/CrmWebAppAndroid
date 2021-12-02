@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_todo.*
+import kotlinx.android.synthetic.main.item_todo.*
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentTodoBinding
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
@@ -46,6 +47,12 @@ class TodoFragment : Fragment() {
             binding.TodoRv.scheduleLayoutAnimation()
         })
 
+        viewModel.status.observe(viewLifecycleOwner, {
+            if (it == 2){
+                viewModel.getTodo()
+            }
+        })
+
         todoAdepter = TodoAdapter(requireContext(),todolist)
         binding.TodoRv.adapter = todoAdepter
 
@@ -55,19 +62,16 @@ class TodoFragment : Fragment() {
             }
 
             override fun onDeleteClick(position: Int) {
-                val id = todolist.get(position)._id
-                todolist.removeAt(position)
-                todoAdepter.notifyDataSetChanged()
+                val curId = todolist.get(position)._id
                 Log.i("check", "check if clicked delete $position $id")
-                viewModel.deleteTodo(Todo.deleteTodo(sharedPreferences.get("id"), IdRequest(id)))
+                viewModel.deleteTodo(Todo.DeleteTodo(id, IdRequest(curId)))
             }
 
             override fun onCheckClicked(position: Int) {
-                val id = todolist.get(position)._id
-                todolist.get(position)
-                todoAdepter.notifyDataSetChanged()
-                //viewModel.completTodo(Todo.SetComplete(sharedPreferences.get("id"),IdRequest, ))
-
+                    val curId = todolist.get(position)._id
+                    Log.i("check", "check if clicked checked $position $id")
+                    viewModel.completTodo(Todo.SetComplete(id,Todo.IdTodo(curId!!)))
+                    viewModel.getTodo()
             }
 
         })

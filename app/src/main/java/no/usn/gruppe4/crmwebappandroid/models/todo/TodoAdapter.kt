@@ -38,8 +38,10 @@ class TodoAdapter(
                 listener.onDeleteClick(adapterPosition)
             }
             checkBox.setOnClickListener {
-                if (!checkBox.isChecked) {
+                val value = checkBox.isChecked
+                if (value == true){
                     listener.onCheckClicked(adapterPosition)
+                    checkBox.isChecked = true
                 }
             }
         }

@@ -18,6 +18,10 @@ class TodoViewModel: ViewModel() {
     val todos : LiveData<List<Todo>>
             get() = _todo
 
+    val _status: MutableLiveData<Int> = MutableLiveData(1)
+    val status : LiveData<Int>
+        get() = _status
+
     fun getTodo(){
         viewModelScope.launch {
             try {
@@ -26,6 +30,8 @@ class TodoViewModel: ViewModel() {
                 Log.i(TAG,"data: $data")
             }catch (e: Exception){
                 Log.i(TAG,"Error $e")
+            }finally {
+                _status.value = 1
             }
         }
     }
@@ -34,22 +40,26 @@ class TodoViewModel: ViewModel() {
     fun newTodo(todo: Todo){
         viewModelScope.launch {
             try {
-                RetrofitInstance.api.addTodo(Todo.addTodo(todo))
+                RetrofitInstance.api.addTodo(Todo.AddTodo(todo))
                 Log.i(TAG,"Todo is added")
             }catch (e: Exception){
                 Log.i(TAG, "Error: $e")
+            }finally {
+                _status.value = 2
             }
         }
     }
 
     // Delete todos
-    fun deleteTodo(idRequest: Todo.deleteTodo){
+    fun deleteTodo(idRequest: Todo.DeleteTodo){
         viewModelScope.launch {
             try {
                 RetrofitInstance.api.deleteTodo(idRequest)
                 Log.i(TAG,"Deleted completed todos of items $idRequest")
             }catch (e: Exception){
                 Log.i(TAG,"Error $e")
+            }finally {
+                _status.value = 2
             }
         }
     }
@@ -62,6 +72,8 @@ class TodoViewModel: ViewModel() {
                 RetrofitInstance.api.setTodoComplete(todoComplete)
             }catch (e: Exception) {
                 Log.i(TAG, "Error $e")
+            }finally {
+                _status.value = 2
             }
         }
     }
