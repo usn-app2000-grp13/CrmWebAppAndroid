@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
@@ -53,6 +54,7 @@ class NewCustomerFragment : Fragment() {
             } else {
                 Log.d("validate", "Email NOT validated")
                 feedBackMessage = "Email not valid"
+                binding.editAppTxtCustomerEmail.error = "Email NOT validated"
             }
 
             val validFirstName = firstname?.let { it1 -> checkIfInputIsCorrect(it1) }
@@ -61,26 +63,30 @@ class NewCustomerFragment : Fragment() {
 
             if (validFirstName == false) {
                 feedBackMessage += "\n Invalid firstname"
+                binding.editAppTxtCustomerFirstname.error = "Invalid firstname"
             }
             if (validLastName == false){
                 feedBackMessage += "\n Invalid lastname"
+                binding.editAppTxtCustomerLastname.error = "Invalid lastname"
             }
             if (validPhone == false){
                 feedBackMessage += "\n Invalid phone input"
+                binding.editAppTxtCustomerPhone.error = "Invalid phone input"
             }
 
             if (feedBackMessage.isNotEmpty()){
                 /* show feedback and do not send into the server */
                 Log.e("Feedback: ", feedBackMessage)
+                Toast.makeText(requireContext(), feedBackMessage, Toast.LENGTH_LONG).show()
             } else {
                 val customer = Customer(_id = null, firstname = firstname, lastname = lastname, phone = phone,
                     email = email)
 
                 viewModel.newCustomer(customer)
+                findNavController().navigate(
+                    R.id.action_newCustomerFragment_to_customerFragment)
             }
 
-            findNavController().navigate(
-                R.id.action_newCustomerFragment_to_customerFragment)
         }
         return binding.root
     }
