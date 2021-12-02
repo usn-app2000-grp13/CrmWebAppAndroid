@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_todo.*
-import kotlinx.android.synthetic.main.item_todo.*
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentTodoBinding
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
@@ -64,28 +63,23 @@ class TodoFragment : Fragment() {
             }
 
             override fun onCheckClicked(position: Int) {
-                /*todolist.get(position)
-                todoAdepter.notifyDataSetChanged()
                 val id = todolist.get(position)._id
-                viewModel.completTodo(Todo.SetComplete(sharedPreferences.get("id")))
-                Ikke implementert helt ! */
+                todolist.get(position)
+                todoAdepter.notifyDataSetChanged()
+                //viewModel.completTodo(Todo.SetComplete(sharedPreferences.get("id"),IdRequest, ))
+
             }
 
         })
 
         binding.todoAddBT.setOnClickListener {
             val todoTitle = todoET.text.toString()
-            //do not send an hardcoded _id  when creating a new todo
-            //if set to null the server will create the id itself.
-            //if it is a hardcoded value all todos will get the same _id, and then
-            //manipulating them will be a challenge.
             val todo = Todo(_id = null, todoTitle)
             if (todoTitle.isNotEmpty()) {
                 todoAdepter.addTodo(todo)
                 todoET.text.clear()
                 viewModel.newTodo(todo)
             }
-            //viewModel.newTodo(todo)
         }
 
         // Inflate the layout for this fragment

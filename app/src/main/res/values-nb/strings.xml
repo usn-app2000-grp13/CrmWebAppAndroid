@@ -95,5 +95,8 @@
     <string name="send_email">Send email</string>
     <string name="Continue">Gå videre</string>
     <string name="See_e_mail_for_reset_code">Se e-mail for nulstill kode!</string>
+    <string name="addTodoBT">Legg til gjøremål</string>
+    <string name="enterTodoEt">Skriv inn gjøremål</string>
+
 
 </resources>
