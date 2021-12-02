@@ -7,8 +7,8 @@
 
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="1dp"
@@ -48,6 +48,7 @@
                 android:text="" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/customerEditEmail"
             android:layout_width="match_parent"
@@ -83,11 +84,13 @@
                 android:inputType="textPhonetic"
                 android:text="" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/customerSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="submit" />
+
         <Button
             android:id="@+id/customerCancel"
             android:layout_width="match_parent"
