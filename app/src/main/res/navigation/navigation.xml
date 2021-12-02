@@ -165,7 +165,7 @@
     <fragment
         android:id="@+id/landingFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.LandingFragment"
-        android:label="landing"
+        android:label="@string/home"
         tools:layout="@layout/fragment_landing">
         <action
             android:id="@+id/action_landingFragment_to_calenderFragment"
@@ -183,5 +183,5 @@
     <fragment
         android:id="@+id/appointmentHistoryFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.AppointmentHistoryFragment"
-        android:label="AppointmentHistoryFragment" />
+        android:label="@string/titleAppointmentHistory" />
 </navigation>

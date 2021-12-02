@@ -101,4 +101,7 @@
     <string name="Services">Tjenester</string>
     <string name="NewService">Legg til ny tjeneste</string>
     <string name="EditService">Endre tjeneste</string>
+    <string name="home">Hjem</string>
+    <string name="titleAppointmentHistory">Avtale historie</string>
+    <string name="recipient">Mottaker</string>
 </resources>

@@ -101,4 +101,7 @@
     <string name="Services">Services</string>
     <string name="NewService">New Service</string>
     <string name="EditService">Edit Service</string>
+    <string name="home">Home</string>
+    <string name="titleAppointmentHistory">Appointment history</string>
+    <string name="recipient">Recipient</string>
 </resources>
