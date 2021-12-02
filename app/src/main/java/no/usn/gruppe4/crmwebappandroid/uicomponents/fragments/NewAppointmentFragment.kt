@@ -166,6 +166,12 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
             findNavController().navigate(R.id.action_newAppointmentFragment_to_calenderFragment)
         }
 
+        binding.btnAppEditNewCus.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putBoolean("fromAppointment", true)
+            findNavController().navigate(R.id.action_newAppointmentFragment_to_newCustomerFragment, bundle)
+        }
+
         binding.btnSubmit.setOnClickListener {
             var duration = 0
             if (selectedServices.size > 0){

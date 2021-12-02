@@ -13,11 +13,24 @@ import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewCustomerBinding
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.customer.CustomerViewModel
+import java.util.*
 
 
 class NewCustomerFragment : Fragment() {
     lateinit var binding: FragmentNewCustomerBinding
     lateinit var viewModel:CustomerViewModel
+    var fromAppointment = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        if (arguments != null){
+            arguments?.getBoolean("fromAppointment").let { el->
+                if (el != null) {
+                    fromAppointment = el
+                }
+            }
+        }
+        super.onCreate(savedInstanceState)
+    }
 
     private fun checkEmail(email: String): Boolean {
         /* https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/ */
@@ -83,8 +96,12 @@ class NewCustomerFragment : Fragment() {
                     email = email)
 
                 viewModel.newCustomer(customer)
-                findNavController().navigate(
-                    R.id.action_newCustomerFragment_to_customerFragment)
+                if (fromAppointment){
+                    findNavController().popBackStack()
+                }else{
+                    findNavController().navigate(
+                        R.id.action_newCustomerFragment_to_customerFragment)
+                }
             }
 
         }

@@ -103,6 +103,9 @@
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popUpTo="@id/calenderFragment" />
+        <action
+            android:id="@+id/action_newAppointmentFragment_to_newCustomerFragment"
+            app:destination="@id/newCustomerFragment" />
     </fragment>
     <fragment
         android:id="@+id/newEmployeeFragment"
