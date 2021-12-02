@@ -184,10 +184,11 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
                 }
             }
 
+
             appointment.comment = binding.editAppTxtComment.text.toString()
             appointment.duration = duration
 
-            if (appointment.date != null && appointment.timeindex != null){
+            if (checkInput()){
                 if (isEdit){
                     Log.i("UpdatedCustomer", appointment.toString())
                     viewModel.updateAppointment(appointment)
@@ -195,7 +196,7 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
                     Log.i("NewCustomer", appointment.toString())
                     viewModel.newAppointment(appointment)
                 }
-                findNavController().navigate(R.id.action_newAppointmentFragment_to_calenderFragment)
+                findNavController().popBackStack()
             }
         }
 
@@ -308,6 +309,27 @@ class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, T
         SPEmployee.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item, availableEmployees)
         availableCustomers = customerList.filter { !selectedCustomers.contains(it) } as MutableList<Customer>
         SPCustomer.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item, availableCustomers)
+    }
+
+    private fun checkInput(): Boolean{
+        if (appointment.date == null){
+            Toast.makeText(requireContext(), "No date is given", Toast.LENGTH_SHORT).show()
+            return false
+        }else if(appointment.timeindex == null){
+            Toast.makeText(requireContext(), "No time is given", Toast.LENGTH_SHORT).show()
+            return false
+        }else if(appointment.customers.isEmpty()){
+            Toast.makeText(requireContext(), "No customers are listed", Toast.LENGTH_SHORT).show()
+            return false
+        }else if(appointment.employees.isEmpty()){
+            Toast.makeText(requireContext(), "No employees are listed", Toast.LENGTH_SHORT).show()
+            return false
+        }else if (appointment.services.isEmpty()){
+            Toast.makeText(requireContext(), "No services are listed", Toast.LENGTH_SHORT).show()
+            return false
+        }else{
+            return true
+        }
     }
 
 }
