@@ -69,7 +69,7 @@ class CalenderFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             val appointmentIterator = appointments.iterator()
             while (appointmentIterator.hasNext()){
                 val app = appointmentIterator.next()
-                if (app.customers?.get(0)?._customer != null){
+                if (app.customers?.get(0)?._customer != null && app.services?.get(0)?._service != null && app.employees?.get(0)?._employee != null){
                     if (app.checkDate(selectedDate)){
                         appointmentList.add(app)
                     }
