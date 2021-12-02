@@ -97,6 +97,7 @@
     <string name="See_e_mail_for_reset_code">Se e-mail for nulstill kode!</string>
     <string name="addTodoBT">Legg til gjøremål</string>
     <string name="enterTodoEt">Skriv inn gjøremål</string>
+    <string name="todos">Gjøremål</string>
 
 
 </resources>

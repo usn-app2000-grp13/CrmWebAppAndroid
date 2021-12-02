@@ -97,5 +97,6 @@
     <string name="See_e_mail_for_reset_code">See e-mail for reset code!</string>
     <string name="addTodoBT">Add Todo</string>
     <string name="enterTodoEt">Enter Todo</string>
+    <string name="todos">Todos</string>
 
 </resources>
