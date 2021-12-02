@@ -16,6 +16,7 @@ import com.google.android.material.chip.ChipGroup
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentAppointmentClickedBinding
 import no.usn.gruppe4.crmwebappandroid.models.IdRequest
+import no.usn.gruppe4.crmwebappandroid.models.Tools
 import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
@@ -23,7 +24,6 @@ import no.usn.gruppe4.crmwebappandroid.models.mail.MailRequest
 import no.usn.gruppe4.crmwebappandroid.models.mail.RatingRequest
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
 import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 private const val TAG = "AppointmentClicked"
@@ -41,6 +41,7 @@ class AppointmentClicked : Fragment() {
     private var customerList = mutableListOf<Customer>()
     private var tmpEmployees: MutableList<Employee> = mutableListOf()
     private var employeeList = mutableListOf<Employee>()
+    private val tools = Tools()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,8 +89,8 @@ class AppointmentClicked : Fragment() {
         chipGroup = binding.customerChips
         Log.i(TAG, "appointment Received: ${appointment.toString()}")
 
-        binding.txtTime.setText(timeIndexFormat(appointment?.timeindex!!))
-        binding.txtDate.setText(SimpleDateFormat("yyyy-MM-dd").format(appointment?.date))
+        binding.txtTime.setText(tools.timeIndexFormat(appointment?.timeindex!!))
+        binding.txtDate.setText(tools.formatDate(appointment?.date!!))
         if (appointment?.comment.toString().isEmpty()){
             binding.txtNotes.setText("")
         }else{
@@ -137,24 +138,6 @@ class AppointmentClicked : Fragment() {
         return binding.root
     }
 
-
-    private fun timeIndexFormat(timeindex: Int): String{
-        var res = ""
-        val clockM = timeindex % 60
-        val clockH = (timeindex - clockM) / 60
-
-        if (clockH < 10){
-            res += "0$clockH:"
-        }else{
-            res += "$clockH:"
-        }
-        if (clockM < 10) {
-            res += "0$clockM"
-        }else{
-            res += "$clockM"
-        }
-        return res
-    }
     private fun getChips(){
         for (i in tmpCustomers){
             binding.customerChips.addView(addChip(i.toString()))
