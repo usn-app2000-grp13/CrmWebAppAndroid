@@ -12,12 +12,6 @@
             tools:context=".uicomponents.fragments.services.NewServiceFragment"
             style="@style/standardLinearLayout">
 
-            <TextView
-                android:id="@+id/heading"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Create a new Service" />
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editAppTitle"
                 android:hint="@string/hintTitle"

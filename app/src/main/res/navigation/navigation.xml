@@ -64,7 +64,7 @@
     <fragment
         android:id="@+id/serviceFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.ServiceFragment"
-        android:label="Services"
+        android:label="@string/Services"
         tools:layout="@layout/fragment_service" >
         <action
             android:id="@+id/action_serviceFragment_to_newServiceFragment"
@@ -76,12 +76,12 @@
     <fragment
         android:id="@+id/newServiceFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.NewServiceFragment"
-        android:label="New service"
-        tools:layout="@layout/fragment_new_service" />
+        android:label="@string/NewService"
+        tools:layout="@layout/fragment_new_service"/>
     <fragment
         android:id="@+id/editServiceFragment"
         android:name="no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.services.EditServiceFragment"
-        android:label="Edit service"
+        android:label="@string/EditService"
         tools:layout="@layout/fragment_edit_service" >
         <action
             android:id="@+id/action_editServiceFragment_to_serviceFragment"

@@ -49,12 +49,11 @@ class EditServiceFragment : Fragment() {
             if (!isFilled(binding.editAppTxtDescription)) ok = false;
             if (!isFilled(binding.editAppTxtDuration)) ok = false;
             if (!isFilled(binding.editAppTxtPrice)) ok = false;
-
             if (ok) {
-                var name = binding.editAppTxtTitle.text.toString()
-                var description = binding.editAppTxtDescription.text.toString()
-                var duration = binding.editAppTxtDuration.text.toString()
-                var price =  binding.editAppTxtPrice.text.toString()
+                service.name = binding.editAppTxtTitle.text.toString()
+                service.description = binding.editAppTxtDescription.text.toString()
+                service.duration = binding.editAppTxtDuration.text.toString().toInt()
+                service.price =  binding.editAppTxtPrice.text.toString()
                 serviceViewModel.updateService(service)
                 findNavController().popBackStack()
             }

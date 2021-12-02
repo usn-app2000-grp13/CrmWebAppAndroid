@@ -98,5 +98,7 @@
     <string name="addTodoBT">Add Todo</string>
     <string name="enterTodoEt">Enter Todo</string>
     <string name="todos">Todos</string>
-
+    <string name="Services">Services</string>
+    <string name="NewService">New Service</string>
+    <string name="EditService">Edit Service</string>
 </resources>

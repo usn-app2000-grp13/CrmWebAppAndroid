@@ -34,11 +34,8 @@ class ServiceAdapter (private val context: Context, private val dataset: List<Se
         val tvDesciption: TextView = view.findViewById(R.id.tvDesciptionService)
         val btnDelete: Button = view.button
         val btnEdit: Button = view.button3
-        // Hver service item i listen hav hver sin click listener
+        // Hver service item i listen har sine click listeners
         init {
-            itemView.setOnClickListener{
-                listener.onItemClick(adapterPosition)
-            }
             btnDelete.setOnClickListener {
                 listener.onDeleteClick(adapterPosition)
             }

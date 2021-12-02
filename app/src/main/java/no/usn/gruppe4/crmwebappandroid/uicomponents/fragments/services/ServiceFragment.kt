@@ -30,7 +30,7 @@ class ServiceFragment : Fragment() {
         // 1a) serviceViewModel
         serviceViewModel = ViewModelProvider(this).get(ServiceViewModel::class.java)
 
-        // 1b) Kaller serviceViewModel sin getServices()-metode. Den er et database kall
+        // 1b) Kaller serviceViewModel sin getServices()-metode.
         serviceViewModel.getServices()
 
         // 2) ServiceAdapter (kobler sammen listen og recyclervievet)
@@ -46,11 +46,18 @@ class ServiceFragment : Fragment() {
             Log.i("test", "services $serviceList")
         })
 
-        // 4) Lytter metode som registrerer klikk på en service i listen
         adapter.setOnItemClickListener(object: ServiceAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
             }
 
+            // 4) onEditClick
+            override fun onEditClick(position: Int) {
+                val bundle = Bundle()
+                bundle.putParcelable("service", serviceList[position])
+                findNavController().navigate(R.id.action_serviceFragment_to_editServiceFragment,bundle)
+            }
+
+            // 5) onDeleteClick
             override fun onDeleteClick(position: Int) {
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setMessage(getString(R.string.deleteServiceDialog))
@@ -68,12 +75,6 @@ class ServiceFragment : Fragment() {
                     }
                 val alert = builder.create()
                 alert.show()
-            }
-
-            override fun onEditClick(position: Int) {
-                val bundle = Bundle()
-                bundle.putParcelable("service", serviceList[position])
-                findNavController().navigate(R.id.action_serviceFragment_to_editServiceFragment,bundle)
             }
         })
         binding.rvServices.setHasFixedSize(true)

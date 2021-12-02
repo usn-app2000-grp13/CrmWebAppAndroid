@@ -98,6 +98,8 @@
     <string name="addTodoBT">Legg til gjøremål</string>
     <string name="enterTodoEt">Skriv inn gjøremål</string>
     <string name="todos">Gjøremål</string>
-
+    <string name="Services">Tjenester</string>
+    <string name="NewService">Legg til ny tjeneste</string>
+    <string name="EditService">Endre tjeneste</string>
 
 </resources>
