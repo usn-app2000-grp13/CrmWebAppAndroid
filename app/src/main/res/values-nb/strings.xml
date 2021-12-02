@@ -92,5 +92,8 @@
     <string name="btnResetPassword">tilbakestill passord</string>
     <string name="btnLogout">Logout</string>
     <string name="userInfo">Bruker Info</string>
+    <string name="send_email">Send email</string>
+    <string name="Continue">Gå videre</string>
+    <string name="See_e_mail_for_reset_code">Se e-mail for nulstill kode!</string>
 
 </resources>

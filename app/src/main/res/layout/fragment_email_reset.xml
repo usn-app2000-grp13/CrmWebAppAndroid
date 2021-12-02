@@ -48,8 +48,8 @@
                 android:hint="@string/code"
                 android:maxWidth="@dimen/custom_max_width"
                 android:minWidth="@dimen/custom_min_width"
-                android:minHeight="@dimen/custom_min_height">>
-
+                android:minHeight="@dimen/custom_min_height"
+                android:visibility="gone">
                 <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/RpCodeValue"
                     android:layout_width="match_parent"
@@ -59,16 +59,22 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
-
             <Button
                 android:id="@+id/btnRpSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/btnSubmit"
+                android:text="@string/Continue"
+                android:visibility="gone"
                 app:icon="@drawable/ic_baseline_create_24" />
+
+            <Button
+                android:id="@+id/btnRpSendEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/send_email"
+                app:icon="@drawable/ic_baseline_email_24" />
+
+
 
             <Button
                 android:id="@+id/btnRpCancel"
@@ -76,6 +82,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btnCancel"
                 app:icon="@drawable/ic_baseline_delete_24" />
+
+
 
 
         </LinearLayout>

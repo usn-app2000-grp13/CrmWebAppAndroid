@@ -101,13 +101,9 @@ class LoginFragment : Fragment() {
 
         //onClickListener for the resetPassword button will use the email of a user to send a password reset request to the api (this sends a email)
         binding.resetPasswordbtn.setOnClickListener {
-            val email = binding.editTextTextEmailAddress2.text.toString()
-            if (email != null){
-                viewModel.resetPassword(ResetPasswordRequest(email))
+
                 findNavController().navigate(R.id.action_loginFragment_to_emailResetFragment)
-            }else {
-                //make email field show error
-            }
+
         }
 
         //inflate the layout

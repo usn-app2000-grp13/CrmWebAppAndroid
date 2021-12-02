@@ -92,5 +92,8 @@
     <string name="btnResetPassword">Reset password</string>
     <string name="btnLogout">Logout</string>
     <string name="userInfo">User Info</string>
+    <string name="send_email">Send email</string>
+    <string name="Continue">Continue</string>
+    <string name="See_e_mail_for_reset_code">See e-mail for reset code!</string>
 
 </resources>
