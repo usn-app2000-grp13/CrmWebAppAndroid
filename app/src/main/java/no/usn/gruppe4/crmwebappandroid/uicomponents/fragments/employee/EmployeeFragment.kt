@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
@@ -31,6 +32,11 @@ class EmployeeFragment : Fragment() {
         //val myDataset = getEmployeeList()
         //val adapter = EmployeeAdapter(requireContext(), myDataset)
 
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // Handle the back button event
+            findNavController().popBackStack()
+        }
+
 
         viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
 
@@ -39,7 +45,7 @@ class EmployeeFragment : Fragment() {
         val adapter = EmployeeAdapter(requireContext(), employeeList)
 
 
-        viewModel.employee.observe(viewLifecycleOwner, {
+        viewModel.employees.observe(viewLifecycleOwner, {
             employeeList.clear()
             employeeList.addAll(it)
             adapter.notifyDataSetChanged()

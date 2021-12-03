@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
@@ -33,6 +34,12 @@ class EditEmployeeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentEditEmployeeBinding.inflate(inflater)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // Handle the back button event
+            findNavController().popBackStack()
+        }
+
         binding.txtNeFirstName.setText(employee?.firstname)
         binding.txtNeLastName.setText(employee?.lastname)
         binding.txtNePhone.setText(employee?.phone)
@@ -46,9 +53,7 @@ class EditEmployeeFragment : Fragment() {
         binding.neCancel.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("employee", employee)
-            findNavController().navigate(
-                R.id.action_editEmployeeFragment_to_employeeCard, bundle
-            )
+            findNavController().popBackStack()
         }
         binding.neSubmit.setOnClickListener {
             viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
@@ -82,9 +87,7 @@ class EditEmployeeFragment : Fragment() {
                 if(test){
                     val bundle = Bundle()
                     bundle.putParcelable("employee", newEmployee)
-                    findNavController().navigate(
-                        R.id.action_editEmployeeFragment_to_employeeCard, bundle
-                    )
+                    findNavController().popBackStack()
                 }else{
                     val text = "Api has not accepted the request yet!"
                     val duration = Toast.LENGTH_SHORT

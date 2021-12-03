@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
@@ -28,9 +29,13 @@ class NewEmployeeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentNewEmployeeBinding.inflate(inflater)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // Handle the back button event
+            findNavController().popBackStack()
+        }
         // Inflate the layout for this fragment
-        binding.neCancel.setOnClickListener{findNavController().navigate(
-            R.id.action_newEmployeeFragment_to_employeeFragment)}
+        binding.neCancel.setOnClickListener{findNavController().popBackStack()}
 
         binding.neSubmit.setOnClickListener{
             viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
@@ -73,9 +78,7 @@ class NewEmployeeFragment : Fragment() {
                    test =it
                    //if success is true
                    if(test){
-                       findNavController().navigate(
-                           R.id.action_newEmployeeFragment_to_employeeFragment
-                       )
+                       findNavController().popBackStack()
                    }
                    // if it remains false
                    else{

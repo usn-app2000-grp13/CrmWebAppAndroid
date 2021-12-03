@@ -120,6 +120,9 @@ interface CrmApi {
     @PUT("employee")
     suspend fun putEmployees(@Body req: Employee): EmployeeResponseNoArray
 
+    @GET("/api/employee/{id}")
+    suspend fun getEmployee(@Path("id") id:String):EmployeeResponseNoArray
+
 
     //customer routes
 

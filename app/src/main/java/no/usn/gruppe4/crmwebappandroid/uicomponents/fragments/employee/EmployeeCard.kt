@@ -36,7 +36,7 @@ class EmployeeCard : Fragment() {
         // This callback will only be called when MyFragment is at least Started.
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
             // Handle the back button event
-            findNavController().navigate(R.id.action_employeeCard_to_employeeFragment)
+            findNavController().popBackStack()
         }
 
         var tvEmpFirstnameValue = binding.tvEmpFirstnameValue
@@ -46,12 +46,21 @@ class EmployeeCard : Fragment() {
         var tvEmpLevelValue = binding.tvEmpLevelValue
         var tvEmpAddressValue = binding.tvEmpAddressValue
 
+        viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
+
+        employee?._id?.let { viewModel.getEmployee(it) }
+        viewModel.employee.observe(viewLifecycleOwner,{
+            employee = it
+
+
         tvEmpFirstnameValue.text = employee?.firstname
         tvEmpLastnameValue.text = employee?.lastname
         tvEmpPhoneValue.text = employee?.phone
         tvEmpEmailValue.text = employee?.email
         tvEmpLevelValue.text = employee?.level.toString()
         tvEmpAddressValue.text = employee?.address?.street + " " + employee?.address?.streetNumber + ", " + employee?.address?.postArea + " " + employee?.address?.postCode
+        })
+
 
         binding.btnEmpEdit.setOnClickListener {
             val bundle = Bundle()
@@ -64,7 +73,6 @@ class EmployeeCard : Fragment() {
                 .setCancelable(false)
                 .setPositiveButton("Yes") { dialog, _ ->
                     // Dismiss the dialog
-                    viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
                     val employee = EmployeeViewModel.DeleteEmployee(id = employee?._id)
                     viewModel.deleteEmployee(employee)
                     dialog.dismiss()
@@ -72,9 +80,7 @@ class EmployeeCard : Fragment() {
                     viewModel.bool.observe(viewLifecycleOwner,{
                         test =it
                         if(test){
-                            findNavController().navigate(
-                                R.id.action_employeeCard_to_employeeFragment
-                            )
+                            findNavController().popBackStack()
                         }else{
                             val text = "Api has not accepted the request yet!"
                             val duration = Toast.LENGTH_SHORT
