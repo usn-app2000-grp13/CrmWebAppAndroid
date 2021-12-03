@@ -6,14 +6,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/constraintLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".uicomponents.fragments.services.AppointmentClicked"
             android:orientation="vertical"
             android:padding="25dp"
             android:paddingTop="25dp"
-            >
+            app:layoutDescription="@xml/fragment_new_appointment_xml_constraintlayout6_scene"
+            tools:context=".uicomponents.fragments.services.AppointmentClicked">
 
             <!-- date time  -->
             <ProgressBar
@@ -310,8 +312,7 @@
                 app:endIconMode="clear_text"
                 app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
                 app:layout_constraintEnd_toEndOf="@+id/employeeContainer"
-                app:layout_constraintStart_toStartOf="@+id/employeeContainer"
-                >
+                app:layout_constraintStart_toStartOf="@+id/employeeContainer">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAppTxtComment"
@@ -358,6 +359,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
     </ScrollView>
 </layout>
