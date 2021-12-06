@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
 
 const val TAG  = "EmployeeViewModel"
@@ -16,7 +17,8 @@ class EmployeeViewModel: ViewModel() {
     //hold the employee objects
     private val _employees: MutableLiveData<List<Employee>> = MutableLiveData()
     private val _bool: MutableLiveData<Boolean> = MutableLiveData()
-    private  val _employee: MutableLiveData<Employee> = MutableLiveData()
+    private val _employee: MutableLiveData<Employee> = MutableLiveData()
+    private val _login: MutableLiveData<SessionResponse.Data> = MutableLiveData()
 
     val bool: LiveData<Boolean>
         get() = _bool
@@ -27,6 +29,9 @@ class EmployeeViewModel: ViewModel() {
 
     val employee : LiveData<Employee>
         get() = _employee
+
+    val login: LiveData<SessionResponse.Data>
+        get() = _login
 
     //async method for api call
     fun getEmployees(){
@@ -90,6 +95,18 @@ class EmployeeViewModel: ViewModel() {
             } catch (e: Exception) {
                 Log.i(TAG, "Error: $e")
             }
+        }
+    }
+    fun getLogin(){
+        viewModelScope.launch {
+            try {
+                //call the previously created retrofit get call
+                val data = RetrofitInstance.api.login()
+                //Take a list of Employees and put in _employees
+                _login.value = data.data
+
+            }catch(e: Exception){
+                Log.i(TAG,"Error: $e")}
         }
     }
     data class DeleteEmployee(val id: String?)

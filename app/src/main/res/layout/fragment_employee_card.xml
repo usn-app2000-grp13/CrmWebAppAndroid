@@ -215,7 +215,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:text="@string/btnEdit"
-                app:icon="@drawable/ic_baseline_create_24" />
+                app:icon="@drawable/ic_baseline_create_24"
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/btnEmDelete"
@@ -223,7 +224,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:text="@string/btnDelete"
-                app:icon="@drawable/ic_baseline_delete_24" />
+                app:icon="@drawable/ic_baseline_delete_24"
+                android:visibility="gone"/>
 
         </FrameLayout>
 

@@ -10,11 +10,13 @@ import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_employee_card.*
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEmployeeCardBinding
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentNewEmployeeBinding
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
+import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
 
 
 class EmployeeCard : Fragment() {
@@ -23,6 +25,7 @@ class EmployeeCard : Fragment() {
     lateinit var viewModel: EmployeeViewModel
 
     private var employee: Employee? = null
+    private var login : SessionResponse.Data? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.getParcelable<Employee>("employee").let { el->
@@ -38,6 +41,8 @@ class EmployeeCard : Fragment() {
             // Handle the back button event
             findNavController().popBackStack()
         }
+
+
 
         var tvEmpFirstnameValue = binding.tvEmpFirstnameValue
         var tvEmpLastnameValue = binding.tvEmpLastnameValue
@@ -60,53 +65,64 @@ class EmployeeCard : Fragment() {
         tvEmpLevelValue.text = employee?.level.toString()
         tvEmpAddressValue.text = employee?.address?.street + " " + employee?.address?.streetNumber + ", " + employee?.address?.postArea + " " + employee?.address?.postCode
         })
+        login = SessionResponse.Data(active = false,firstname = "", lastname = "", id = "", level = 0, vendor = "")
+        login.let {viewModel.getLogin()}
+
+        viewModel.login.observe(viewLifecycleOwner,{
+            login = it
 
 
-        binding.btnEmpEdit.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putParcelable("employee", employee)
-            findNavController().navigate(R.id.action_employeeCard_to_editEmployeeFragment,bundle)
-        }
-        binding.btnEmDelete.setOnClickListener{
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setMessage("Are you sure you want to DELETE this employee?")
-                .setCancelable(false)
-                .setPositiveButton("Yes") { dialog, _ ->
-                    // Dismiss the dialog
-                    val employee = EmployeeViewModel.DeleteEmployee(id = employee?._id)
-                    viewModel.deleteEmployee(employee)
-                    dialog.dismiss()
-                    var test = false
-                    viewModel.bool.observe(viewLifecycleOwner,{
-                        test =it
-                        if(test){
-                            findNavController().popBackStack()
-                        }else{
-                            val text = "Api has not accepted the request yet!"
+        if(login!!.level >= 2){
+            binding.btnEmpEdit.visibility = View.VISIBLE
+            binding.btnEmDelete.visibility = View.VISIBLE
+            binding.btnEmpEdit.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putParcelable("employee", employee)
+                findNavController().navigate(R.id.action_employeeCard_to_editEmployeeFragment,bundle)
+            }
+            binding.btnEmDelete.setOnClickListener{
+                val builder = AlertDialog.Builder(requireContext())
+                builder.setMessage("Are you sure you want to DELETE this employee?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes") { dialog, _ ->
+                        // Dismiss the dialog
+                        val employee = EmployeeViewModel.DeleteEmployee(id = employee?._id)
+                        viewModel.deleteEmployee(employee)
+                        dialog.dismiss()
+                        var test = false
+                        viewModel.bool.observe(viewLifecycleOwner,{
+                            test =it
+                            if(test){
+                                findNavController().popBackStack()
+                            }else{
+                                val text = "Api has not accepted the request yet!"
+                                val duration = Toast.LENGTH_SHORT
+
+
+                                val toast = Toast.makeText(context, text, duration)
+                                toast.show()
+
+                            }
+                        })
+                        if(!test){
+                            val text = "Api error!"
                             val duration = Toast.LENGTH_SHORT
 
 
                             val toast = Toast.makeText(context, text, duration)
                             toast.show()
-
                         }
-                    })
-                    if(!test){
-                        val text = "Api error!"
-                        val duration = Toast.LENGTH_SHORT
-
-
-                        val toast = Toast.makeText(context, text, duration)
-                        toast.show()
                     }
-                }
-                .setNegativeButton("No") { dialog, id ->
-                    // Dismiss the dialog
-                    dialog.dismiss()
-                }
-            val alert = builder.create()
-            alert.show()
-        }
+                    .setNegativeButton("No") { dialog, id ->
+                        // Dismiss the dialog
+                        dialog.dismiss()
+                    }
+                val alert = builder.create()
+                alert.show()
+            }
+        } })
+
+
 
 
         return binding.root

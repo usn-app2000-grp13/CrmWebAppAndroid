@@ -27,7 +27,11 @@ class NewEmployeeFragment : Fragment() {
     lateinit var binding: FragmentNewEmployeeBinding
     lateinit var viewModel: EmployeeViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val binding = FragmentNewEmployeeBinding.inflate(inflater)
 
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
@@ -35,18 +39,19 @@ class NewEmployeeFragment : Fragment() {
             findNavController().popBackStack()
         }
         // Inflate the layout for this fragment
-        binding.neCancel.setOnClickListener{findNavController().popBackStack()}
+        binding.neCancel.setOnClickListener { findNavController().popBackStack() }
 
-        binding.neSubmit.setOnClickListener{
+        binding.neSubmit.setOnClickListener {
             viewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
             var ok = true
 
-            if(!isFilled(binding.txtNeFirstName)) ok = false
-            if(!isFilled(binding.txtNeLastName)) ok = false
-            if(!isFilled(binding.txtNeEmail)) ok = false
-            if(!isFilled(binding.txtNePassword)) ok = false
+            if (!isFilled(binding.txtNeFirstName)) ok = false
+            if (!isFilled(binding.txtNeLastName)) ok = false
+            if (!isFilled(binding.txtNeEmail)) ok = false
+            if (!isFilled(binding.txtNePassword)) ok = false
+            if (!checkEmail(binding.txtNeEmail)) ok = false;
 
-           if (ok){
+            if (ok) {
                 val firstname = binding.txtNeFirstName.text?.toString()
                 val lastname = binding.txtNeLastName.text?.toString()
                 val phone = binding.txtNePhone.text?.toString()
@@ -70,38 +75,36 @@ class NewEmployeeFragment : Fragment() {
                     level = 1, updatedAt = null
                 )
 
-               viewModel.newEmployee(employee)
-               var test = false
+                viewModel.newEmployee(employee)
+                var test = false
 
-               //check if success is true on the api call
-               viewModel.bool.observe(viewLifecycleOwner,{
-                   test =it
-                   //if success is true
-                   if(test){
-                       findNavController().popBackStack()
-                   }
-                   // if it remains false
-                   else{
-                       val text = "Api has not accepted the request yet!"
-                       val duration = Toast.LENGTH_SHORT
-                       val toast = Toast.makeText(context, text, duration)
-                       toast.show()
-                   }
-               })
+                //check if success is true on the api call
+                viewModel.bool.observe(viewLifecycleOwner, {
+                    test = it
+                    //if success is true
+                    if (test) {
+                        findNavController().popBackStack()
+                    }
+                    // if it remains false
+                    else {
+                        val text = "Api has not accepted the request yet!"
+                        val duration = Toast.LENGTH_SHORT
+                        val toast = Toast.makeText(context, text, duration)
+                        toast.show()
+                    }
+                })
 
-            //
-            if(!test){
-                val text = "Api error!"
-                val duration = Toast.LENGTH_SHORT
+                //
+                if (!test) {
+                    val text = "Api error!"
+                    val duration = Toast.LENGTH_SHORT
 
-                val toast = Toast.makeText(context, text, duration)
-                toast.show()
+                    val toast = Toast.makeText(context, text, duration)
+                    toast.show()
+                }
+
+
             }
-
-
-
-            }
-
 
 
         }
@@ -113,16 +116,26 @@ class NewEmployeeFragment : Fragment() {
 
     }
 
-    private fun isFilled(element: TextInputEditText): Boolean{
+    private fun isFilled(element: TextInputEditText): Boolean {
         var res: Boolean
-        if (element.text!!.isEmpty() ){
+        if (element.text!!.isEmpty()) {
             element.error = "Required!"
-            res =  false
-        }else{
-            res =  true
+            res = false
+        } else {
+            res = true
         }
         return res;
     }
 
+    private fun checkEmail(element: TextInputEditText): Boolean {
+        var res: Boolean
+        /* https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/ */
+        val emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+        res = element.text!!.matches(Regex(emailPattern))
+        if(!res){
+            element.error = "invalid email address"
+        }
 
+        return res
+    }
 }
