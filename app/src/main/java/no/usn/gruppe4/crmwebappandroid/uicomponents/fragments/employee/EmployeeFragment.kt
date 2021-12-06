@@ -13,14 +13,17 @@ import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEmployeeBinding
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeAdapter
 import no.usn.gruppe4.crmwebappandroid.models.employee.EmployeeViewModel
+import no.usn.gruppe4.crmwebappandroid.models.login.SessionResponse
 
 
 class EmployeeFragment : Fragment() {
 
     private val employeeList = mutableListOf<Employee>()
+    private var login : SessionResponse.Data? = null
 
     lateinit var viewModel: EmployeeViewModel
     lateinit var binding: FragmentEmployeeBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,7 +64,17 @@ class EmployeeFragment : Fragment() {
         })
         binding.empRecyclerView.setHasFixedSize(true)
 
-        // Inflate the layout for this fragment
+        login = SessionResponse.Data(active = false,firstname = "", lastname = "", id = "", level = 0, vendor = "")
+        login.let {viewModel.getLogin()}
+
+        viewModel.login.observe(viewLifecycleOwner, {
+            login = it
+            if(login!!.level >= 2){
+                binding.fabNewEmployee.visibility = View.VISIBLE
+            }
+        })
+
+            // Inflate the layout for this fragment
         binding.fabNewEmployee.setOnClickListener {
             findNavController().navigate(R.id.action_employeeFragment_to_newEmployeeFragment2)
         }
