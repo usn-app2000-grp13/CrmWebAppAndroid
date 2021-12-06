@@ -81,30 +81,5 @@ class EmployeeFragment : Fragment() {
         return binding.root
     }
 
-    /*fun getEmployeeList(): List<Employee>{
-        val jsonFileString = getJSONDataFromAsset(requireContext(), "employees.json")
-        if(jsonFileString != null){
-            Log.i("JSONENTRY", jsonFileString)
-        }
-        val gson = Gson()
-        val listEmployeeType = object : TypeToken<List<Employee>>() {}.type
-
-        var employees: List<Employee> = gson.fromJson(jsonFileString, listEmployeeType)
-        employees.forEachIndexed { idx, employee -> Log.i("data", ">Item $idx: \n$employee") }
-        return employees
-    }
-
-    fun getJSONDataFromAsset(context: Context, fileName: String): String? {
-        val jsonString: String
-        try {
-            jsonString = context.assets.open(fileName).bufferedReader().use {
-                it.readText()
-            }
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-            return null
-        }
-        return jsonString
-    }*/
 
 }
