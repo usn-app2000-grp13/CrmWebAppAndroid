@@ -36,6 +36,7 @@ class EmailResetFragment : Fragment() {
         binding.btnRpSendEmail.setOnClickListener{
             var ok = true
             if(!isFilled(binding.RpEmailValue)) ok = false
+            if(!checkEmail(binding.RpEmailValue)) ok = false
             if (ok){
                 val RpEmailValue = binding.RpEmailValue.text?.toString()
                 if (RpEmailValue != null){
@@ -54,6 +55,7 @@ class EmailResetFragment : Fragment() {
             var ok = true
             if(!isFilled(binding.RpEmailValue)) ok = false
             if(!isFilled(binding.RpCodeValue)) ok = false
+            if(!checkEmail(binding.RpEmailValue)) ok = false
             if(ok){
                 val RpEmailValue = binding.RpEmailValue.text?.toString()
                 val RpCodeValue = binding.RpCodeValue.text?.toString()
@@ -82,5 +84,16 @@ class EmailResetFragment : Fragment() {
             res =  true
         }
         return res;
+    }
+    private fun checkEmail(element: TextInputEditText): Boolean {
+        var res: Boolean
+        /* https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/ */
+        val emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+        res = element.text!!.matches(Regex(emailPattern))
+        if(!res){
+            element.error = "invalid email address"
+        }
+
+        return res
     }
 }
