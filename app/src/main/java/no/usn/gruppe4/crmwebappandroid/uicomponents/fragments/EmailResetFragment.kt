@@ -64,14 +64,14 @@ class EmailResetFragment : Fragment() {
                     viewModel.success.observe(viewLifecycleOwner,{
                         val test = it
                         if(test){
-                            val text = "code verified"
+                            val text = getString(R.string.code_verified)
                             val duration = Toast.LENGTH_LONG
 
                             val toast = Toast.makeText(context, text, duration)
                             toast.show()
                             findNavController().navigate(R.id.action_emailResetFragment_to_resetPasswordFragment)
                         }else{
-                            binding.RpCodeValue.error = "code not verified!"
+                            binding.RpCodeValue.error = getString(R.string.code_not_verified)
                         }
                     })
 

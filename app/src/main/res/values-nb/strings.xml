@@ -104,5 +104,7 @@
     <string name="home">Hjem</string>
     <string name="titleAppointmentHistory">Avtale historie</string>
     <string name="recipient">Mottaker</string>
+    <string name="code_verified">Kode verifisert</string>
+    <string name="code_not_verified">Kode ikke verifisert!</string>
 
 </resources>

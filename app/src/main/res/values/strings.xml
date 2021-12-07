@@ -104,4 +104,6 @@
     <string name="home">Home</string>
     <string name="titleAppointmentHistory">Appointment history</string>
     <string name="recipient">Recipient</string>
+    <string name="code_verified">code verified</string>
+    <string name="code_not_verified">code not verified!</string>
 </resources>
