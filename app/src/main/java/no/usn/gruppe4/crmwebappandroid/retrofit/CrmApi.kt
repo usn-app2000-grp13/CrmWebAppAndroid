@@ -23,7 +23,7 @@ import no.usn.gruppe4.crmwebappandroid.models.stats.employeePop
 import no.usn.gruppe4.crmwebappandroid.models.stats.servicePop
 import no.usn.gruppe4.crmwebappandroid.models.todo.Todo
 import no.usn.gruppe4.crmwebappandroid.models.todo.TodoResponse
-import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
+import no.usn.gruppe4.crmwebappandroid.models.login.LoginViewModel
 import no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewCompanyFragment
 import retrofit2.http.*
 import java.util.*

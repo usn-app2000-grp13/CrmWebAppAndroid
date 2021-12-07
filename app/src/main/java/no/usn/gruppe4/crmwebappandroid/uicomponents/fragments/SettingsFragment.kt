@@ -18,7 +18,7 @@ import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginActivity
-import no.usn.gruppe4.crmwebappandroid.uicomponents.SettingsViewModel
+import no.usn.gruppe4.crmwebappandroid.models.settings.SettingsViewModel
 
 
 class SettingsFragment : Fragment() {

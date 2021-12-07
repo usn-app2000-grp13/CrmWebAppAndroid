@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEmailResetBinding
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentResetPasswordBinding
-import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
+import no.usn.gruppe4.crmwebappandroid.models.login.LoginViewModel
 
 class ResetPasswordFragment : Fragment() {
     lateinit var binding: FragmentResetPasswordBinding

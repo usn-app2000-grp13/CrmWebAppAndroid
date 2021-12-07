@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputEditText
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentEmailResetBinding
 import no.usn.gruppe4.crmwebappandroid.models.login.ResetPasswordRequest
-import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
+import no.usn.gruppe4.crmwebappandroid.models.login.LoginViewModel
 
 
 class EmailResetFragment : Fragment() {

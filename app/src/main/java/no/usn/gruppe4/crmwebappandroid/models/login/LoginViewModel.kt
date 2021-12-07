@@ -1,4 +1,4 @@
-package no.usn.gruppe4.crmwebappandroid.uicomponents
+package no.usn.gruppe4.crmwebappandroid.models.login
 
 import android.content.Context
 import android.util.Log

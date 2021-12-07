@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import no.usn.gruppe4.crmwebappandroid.R
 import no.usn.gruppe4.crmwebappandroid.databinding.FragmentLoginBinding
 import no.usn.gruppe4.crmwebappandroid.models.login.*
-import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
+import no.usn.gruppe4.crmwebappandroid.models.login.LoginViewModel
 import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
 
 private const val TAG = "LoginFragment"

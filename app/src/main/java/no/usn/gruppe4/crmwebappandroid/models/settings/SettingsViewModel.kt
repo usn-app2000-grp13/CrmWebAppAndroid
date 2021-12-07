@@ -1,4 +1,4 @@
-package no.usn.gruppe4.crmwebappandroid.uicomponents
+package no.usn.gruppe4.crmwebappandroid.models.settings
 
 import android.util.Log
 import androidx.lifecycle.LiveData

@@ -22,7 +22,7 @@ import no.usn.gruppe4.crmwebappandroid.models.login.LoginRequest
 import no.usn.gruppe4.crmwebappandroid.models.login.SecSharePref
 import no.usn.gruppe4.crmwebappandroid.models.login.SharedPrefInterface
 import no.usn.gruppe4.crmwebappandroid.models.appointment.CalanderViewModel
-import no.usn.gruppe4.crmwebappandroid.uicomponents.LoginViewModel
+import no.usn.gruppe4.crmwebappandroid.models.login.LoginViewModel
 import no.usn.gruppe4.crmwebappandroid.uicomponents.MainActivity
 
 private const val TAG = "NewCompanyFragment"
