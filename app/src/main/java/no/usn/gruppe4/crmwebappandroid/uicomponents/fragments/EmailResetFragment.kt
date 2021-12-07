@@ -61,7 +61,20 @@ class EmailResetFragment : Fragment() {
                 val RpCodeValue = binding.RpCodeValue.text?.toString()
                 if (RpEmailValue != null && RpCodeValue != null) {
                     viewModel.getPasswordResetVerification(RpEmailValue, RpCodeValue)
-                    findNavController().navigate(R.id.action_emailResetFragment_to_resetPasswordFragment)
+                    viewModel.success.observe(viewLifecycleOwner,{
+                        val test = it
+                        if(test){
+                            val text = "code verified"
+                            val duration = Toast.LENGTH_LONG
+
+                            val toast = Toast.makeText(context, text, duration)
+                            toast.show()
+                            findNavController().navigate(R.id.action_emailResetFragment_to_resetPasswordFragment)
+                        }else{
+                            binding.RpCodeValue.error = "code not verified!"
+                        }
+                    })
+
                 }
             }
         }

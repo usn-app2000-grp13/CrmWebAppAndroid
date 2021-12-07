@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import no.usn.gruppe4.crmwebappandroid.models.login.*
 import no.usn.gruppe4.crmwebappandroid.retrofit.RetrofitInstance
 import no.usn.gruppe4.crmwebappandroid.uicomponents.fragments.NewCompanyFragment
+import retrofit2.HttpException
 import java.lang.IllegalArgumentException
 
 
@@ -31,6 +32,10 @@ class LoginViewModel() : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean>
         get() = _isLoading
+
+    private val _success: MutableLiveData<Boolean> = MutableLiveData()
+    val success: LiveData<Boolean>
+        get() = _success
 
 
     fun loginCall(req: LoginRequest): Boolean{
@@ -73,10 +78,12 @@ class LoginViewModel() : ViewModel() {
     fun getPasswordResetVerification(email: String, code: String){
         viewModelScope.launch {
             try {
-                RetrofitInstance.api.getPasswordResetVerification(email, code)
+                val data = RetrofitInstance.api.getPasswordResetVerification(email, code)
                 Log.i(TAG, "password reset continues")
+                _success.value = data.success
             }catch (e: Exception){
-                Log.i(TAG, e.toString())
+                Log.i(TAG, "getPasswordResetVerification error : $e")
+                _success.value = false
             }
         }
     }
@@ -86,7 +93,7 @@ class LoginViewModel() : ViewModel() {
                 RetrofitInstance.api.setPassword(newPassword)
                 Log.i(TAG, "password reset finished")
             }catch (e: Exception){
-                Log.i(TAG, e.toString())
+                (e as? HttpException)?.response()?.errorBody()?.string()?.let { Log.i(TAG, it) }
             }
         }
     }
