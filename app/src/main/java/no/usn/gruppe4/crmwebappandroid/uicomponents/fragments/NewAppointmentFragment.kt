@@ -19,7 +19,7 @@ import no.usn.gruppe4.crmwebappandroid.models.appointment.Appointment
 import no.usn.gruppe4.crmwebappandroid.models.customer.Customer
 import no.usn.gruppe4.crmwebappandroid.models.employee.Employee
 import no.usn.gruppe4.crmwebappandroid.models.service.Service
-import no.usn.gruppe4.crmwebappandroid.uicomponents.CalanderViewModel
+import no.usn.gruppe4.crmwebappandroid.models.appointment.CalanderViewModel
 import java.util.*
 
 class NewAppointmentFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
